@@ -6,15 +6,15 @@
 }
 
 :root {
-    --primary-color: #06b6d4;
-    --primary-dark: #0891b2;
-    --secondary-color: #64748b;
-    --text-dark: #f1f5f9;
-    --text-light: #cbd5e1;
-    --bg-light: #1e293b;
-    --bg-white: #0f172a;
-    --border-color: #334155;
-    --accent-color: #f59e0b;
+    --primary-color: #8b5cf6;
+    --primary-dark: #7c3aed;
+    --secondary-color: #a78bfa;
+    --text-dark: #f3f4f6;
+    --text-light: #d1d5db;
+    --bg-light: #1f2937;
+    --bg-white: #111827;
+    --border-color: #374151;
+    --accent-color: #ec4899;
     --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
     --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4);
     --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5);
@@ -25,10 +25,7 @@ body {
     line-height: 1.6;
     color: var(--text-dark);
     background-color: var(--bg-white);
-    background-image: 
-        radial-gradient(at 0% 0%, rgba(6, 182, 212, 0.1) 0px, transparent 50%),
-        radial-gradient(at 100% 100%, rgba(245, 158, 11, 0.1) 0px, transparent 50%);
-    background-attachment: fixed;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .container {
@@ -43,7 +40,7 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    background: rgba(15, 23, 42, 0.95);
+    background: rgba(17, 24, 39, 0.95);
     backdrop-filter: blur(10px);
     box-shadow: var(--shadow-sm);
     z-index: 1000;
@@ -116,10 +113,7 @@ body {
 .hero {
     margin-top: 80px;
     padding: 6rem 0;
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
-    background-image: 
-        radial-gradient(circle at 20% 50%, rgba(6, 182, 212, 0.2) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(245, 158, 11, 0.15) 0%, transparent 50%);
+    background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #1e293b 100%);
     color: white;
     position: relative;
     overflow: hidden;
@@ -132,7 +126,8 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, rgba(6, 182, 212, 0.1) 0%, rgba(245, 158, 11, 0.1) 100%);
+    background: radial-gradient(circle at 20% 50%, rgba(139, 92, 246, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(236, 72, 153, 0.2) 0%, transparent 50%);
     pointer-events: none;
 }
 
@@ -141,6 +136,8 @@ body {
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
     align-items: center;
+    position: relative;
+    z-index: 1;
 }
 
 .hero h1 {
@@ -186,25 +183,23 @@ body {
 
 .btn-primary {
     background: var(--primary-color);
-    color: var(--bg-white);
+    color: white;
 }
 
 .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 0 20px rgba(6, 182, 212, 0.5);
-    background: var(--primary-dark);
+    box-shadow: var(--shadow-lg);
 }
 
 .btn-secondary {
     background: transparent;
     color: white;
-    border: 2px solid var(--primary-color);
+    border: 2px solid white;
 }
 
 .btn-secondary:hover {
-    background: var(--primary-color);
-    color: var(--bg-white);
-    box-shadow: 0 0 20px rgba(6, 182, 212, 0.5);
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--primary-color);
 }
 
 .hero-image {
@@ -219,15 +214,10 @@ body {
     max-width: 100%;
     object-fit: cover;
     border-radius: 1rem;
-    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.5), 0 0 30px rgba(6, 182, 212, 0.3);
-    border: 4px solid rgba(6, 182, 212, 0.3);
-    transition: all 0.3s ease;
-}
-
-.profile-photo:hover {
-    transform: scale(1.02);
-    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.5), 0 0 40px rgba(6, 182, 212, 0.5);
-    border-color: rgba(6, 182, 212, 0.5);
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.5), 0 0 30px rgba(139, 92, 246, 0.3);
+    border: 4px solid rgba(139, 92, 246, 0.3);
+    position: relative;
+    z-index: 1;
 }
 
 /* Sections */
@@ -276,7 +266,6 @@ body {
     bottom: 0;
     width: 2px;
     background: linear-gradient(180deg, var(--primary-color), var(--accent-color));
-    box-shadow: 0 0 10px rgba(6, 182, 212, 0.5);
 }
 
 .timeline-item {
@@ -294,16 +283,20 @@ body {
     border-radius: 50%;
     background: var(--primary-color);
     border: 3px solid var(--bg-white);
-    box-shadow: 0 0 10px rgba(6, 182, 212, 0.5), var(--shadow-md);
+    box-shadow: var(--shadow-md);
+    box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.7);
     animation: pulse 2s infinite;
 }
 
 @keyframes pulse {
-    0%, 100% {
-        box-shadow: 0 0 10px rgba(6, 182, 212, 0.5), var(--shadow-md);
+    0% {
+        box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.7);
     }
-    50% {
-        box-shadow: 0 0 20px rgba(6, 182, 212, 0.8), var(--shadow-md);
+    70% {
+        box-shadow: 0 0 0 10px rgba(139, 92, 246, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(139, 92, 246, 0);
     }
 }
 
@@ -373,7 +366,7 @@ body {
     border-radius: 1rem;
     box-shadow: var(--shadow-md);
     border: 1px solid var(--border-color);
-    transition: all 0.3s ease;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .skill-category:hover {
@@ -398,17 +391,17 @@ body {
 .skill-tag {
     padding: 0.5rem 1rem;
     background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-    color: var(--bg-white);
+    color: white;
     border-radius: 0.5rem;
     font-weight: 500;
     font-size: 0.875rem;
-    box-shadow: 0 2px 8px rgba(6, 182, 212, 0.3);
-    transition: all 0.3s ease;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .skill-tag:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(6, 182, 212, 0.5);
+    box-shadow: var(--shadow-md);
 }
 
 .skill-highlight {
@@ -540,20 +533,19 @@ body {
     gap: 1rem;
     padding: 1.5rem;
     background: var(--bg-light);
-    border: 1px solid var(--border-color);
     border-radius: 0.75rem;
     text-decoration: none;
     color: var(--text-dark);
     transition: all 0.3s;
     font-size: 1.125rem;
+    border: 1px solid var(--border-color);
 }
 
 .contact-item:hover {
-    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    background: var(--primary-color);
     color: white;
     transform: translateY(-2px);
-    box-shadow: 0 0 20px rgba(6, 182, 212, 0.5), var(--shadow-md);
-    border-color: var(--primary-color);
+    box-shadow: var(--shadow-md);
 }
 
 .contact-item svg {
@@ -562,7 +554,7 @@ body {
 
 /* Footer */
 .footer {
-    background: var(--bg-light);
+    background: #0f172a;
     color: var(--text-light);
     padding: 2rem 0;
     text-align: center;
@@ -576,14 +568,14 @@ body {
         left: -100%;
         top: 70px;
         flex-direction: column;
-        background: var(--bg-light);
-        border-top: 1px solid var(--border-color);
+        background: var(--bg-white);
         width: 100%;
         text-align: center;
         transition: 0.3s;
         box-shadow: var(--shadow-lg);
         padding: 2rem 0;
         gap: 1rem;
+        border-top: 1px solid var(--border-color);
     }
 
     .nav-menu.active {
