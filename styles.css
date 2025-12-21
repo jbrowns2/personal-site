@@ -6,18 +6,18 @@
 }
 
 :root {
-    --primary-color: #2563eb;
-    --primary-dark: #1e40af;
-    --secondary-color: #64748b;
-    --text-dark: #1e293b;
-    --text-light: #64748b;
-    --bg-light: #f8fafc;
-    --bg-white: #ffffff;
-    --border-color: #e2e8f0;
-    --accent-color: #f97316;
-    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+    --primary-color: #06b6d4;
+    --primary-dark: #0891b2;
+    --secondary-color: #94a3b8;
+    --text-dark: #f1f5f9;
+    --text-light: #cbd5e1;
+    --bg-light: #1e293b;
+    --bg-white: #0f172a;
+    --border-color: #334155;
+    --accent-color: #f59e0b;
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.5);
 }
 
 body {
@@ -25,6 +25,10 @@ body {
     line-height: 1.6;
     color: var(--text-dark);
     background-color: var(--bg-white);
+    background-image: 
+        radial-gradient(at 0% 0%, rgba(6, 182, 212, 0.1) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(245, 158, 11, 0.1) 0px, transparent 50%);
+    background-attachment: fixed;
 }
 
 .container {
@@ -39,11 +43,12 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(15, 23, 42, 0.95);
     backdrop-filter: blur(10px);
     box-shadow: var(--shadow-sm);
     z-index: 1000;
     padding: 1rem 0;
+    border-bottom: 1px solid var(--border-color);
 }
 
 .navbar .container {
@@ -111,8 +116,23 @@ body {
 .hero {
     margin-top: 80px;
     padding: 6rem 0;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
     color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(6, 182, 212, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(245, 158, 11, 0.15) 0%, transparent 50%);
+    pointer-events: none;
 }
 
 .hero-content {
@@ -164,24 +184,26 @@ body {
 }
 
 .btn-primary {
-    background: white;
-    color: var(--primary-color);
+    background: var(--primary-color);
+    color: var(--bg-white);
 }
 
 .btn-primary:hover {
+    background: var(--primary-dark);
     transform: translateY(-2px);
-    box-shadow: var(--shadow-lg);
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.4);
 }
 
 .btn-secondary {
     background: transparent;
     color: white;
-    border: 2px solid white;
+    border: 2px solid var(--primary-color);
 }
 
 .btn-secondary:hover {
-    background: white;
-    color: var(--primary-color);
+    background: var(--primary-color);
+    color: var(--bg-white);
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.4);
 }
 
 .hero-image {
@@ -196,8 +218,10 @@ body {
     max-width: 100%;
     object-fit: cover;
     border-radius: 1rem;
-    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.3);
-    border: 4px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.5), 0 0 30px rgba(6, 182, 212, 0.3);
+    border: 4px solid var(--primary-color);
+    position: relative;
+    z-index: 1;
 }
 
 /* Sections */
@@ -245,7 +269,7 @@ body {
     top: 0;
     bottom: 0;
     width: 2px;
-    background: var(--border-color);
+    background: linear-gradient(180deg, var(--primary-color), var(--accent-color));
 }
 
 .timeline-item {
@@ -263,7 +287,17 @@ body {
     border-radius: 50%;
     background: var(--primary-color);
     border: 3px solid var(--bg-white);
-    box-shadow: var(--shadow-md);
+    box-shadow: 0 0 10px rgba(6, 182, 212, 0.5), var(--shadow-md);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 0 10px rgba(6, 182, 212, 0.5), var(--shadow-md);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(6, 182, 212, 0.8), var(--shadow-md);
+    }
 }
 
 .timeline-header {
@@ -327,10 +361,18 @@ body {
 }
 
 .skill-category {
-    background: var(--bg-white);
+    background: var(--bg-light);
     padding: 2rem;
     border-radius: 1rem;
     box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.skill-category:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.2);
+    transform: translateY(-2px);
 }
 
 .skill-category h3 {
@@ -348,11 +390,18 @@ body {
 
 .skill-tag {
     padding: 0.5rem 1rem;
-    background: var(--primary-color);
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
     color: white;
     border-radius: 0.5rem;
     font-weight: 500;
     font-size: 0.875rem;
+    box-shadow: 0 2px 4px rgba(6, 182, 212, 0.3);
+    transition: all 0.3s ease;
+}
+
+.skill-tag:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(6, 182, 212, 0.4);
 }
 
 .skill-highlight {
@@ -615,13 +664,15 @@ body {
     color: var(--text-dark);
     transition: all 0.3s;
     font-size: 1.125rem;
+    border: 1px solid var(--border-color);
 }
 
 .contact-item:hover {
-    background: var(--primary-color);
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
     color: white;
     transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.4);
+    border-color: var(--primary-color);
 }
 
 .contact-item svg {
@@ -630,10 +681,11 @@ body {
 
 /* Footer */
 .footer {
-    background: var(--text-dark);
-    color: white;
+    background: var(--bg-light);
+    color: var(--text-dark);
     padding: 2rem 0;
     text-align: center;
+    border-top: 1px solid var(--border-color);
 }
 
 /* Responsive Design */
@@ -643,13 +695,14 @@ body {
         left: -100%;
         top: 70px;
         flex-direction: column;
-        background: white;
+        background: var(--bg-light);
         width: 100%;
         text-align: center;
         transition: 0.3s;
         box-shadow: var(--shadow-lg);
         padding: 2rem 0;
         gap: 1rem;
+        border-bottom: 1px solid var(--border-color);
     }
 
     .nav-menu.active {
