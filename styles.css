@@ -148,6 +148,12 @@ body {
     flex-wrap: wrap;
 }
 
+.hero-buttons .btn {
+    flex: 1;
+    min-width: 180px;
+    text-align: center;
+}
+
 .btn {
     padding: 0.875rem 2rem;
     border-radius: 0.5rem;
