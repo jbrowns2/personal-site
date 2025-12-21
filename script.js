@@ -60,7 +60,7 @@ const observer = new IntersectionObserver((entries) => {
 }, observerOptions);
 
 // Observe all sections
-document.querySelectorAll('.section, .timeline-item, .skill-category, .education-item').forEach(el => {
+document.querySelectorAll('.section, .timeline-item, .skill-category, .education-item, .project-card').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(20px)';
     el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
