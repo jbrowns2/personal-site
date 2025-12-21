@@ -18,8 +18,33 @@ A modern, professional portfolio website showcasing skills, experience, and achi
 
 ## Getting Started
 
+### Development
+
 1. Open `index.html` in a web browser
 2. No build process or dependencies required - it's a static website
+
+### Production Build
+
+For production deployment, minify the files to optimize performance:
+
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+2. Build for production:
+   ```bash
+   npm run build
+   ```
+
+3. Deploy the `dist/` folder to your hosting service
+
+The build process will:
+- Minify HTML (remove whitespace, comments, optimize attributes)
+- Minify CSS (remove comments, optimize selectors)
+- Minify JavaScript (compress and mangle code)
+- Copy all static assets (images, PDFs, etc.)
+- Generate file size comparison report
 
 ## Customization
 
@@ -42,10 +67,15 @@ Edit the CSS variables in `styles.css`:
 
 ### Deploying
 
-You can deploy this website to:
+**For Production:**
+1. Run `npm run build` to create optimized files in the `dist/` folder
+2. Deploy the `dist/` folder to your hosting service
+
+**For Development/Testing:**
+You can deploy the root folder directly to:
 - **GitHub Pages**: Push to a GitHub repository and enable Pages
-- **Netlify**: Drag and drop the folder
-- **Vercel**: Connect your repository
+- **Netlify**: Drag and drop the folder (or connect repo and set build command: `npm run build` and publish directory: `dist`)
+- **Vercel**: Connect your repository (auto-detects build settings)
 - Any static hosting service
 
 ## Browser Support

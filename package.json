@@ -1,0 +1,21 @@
+{
+  "name": "personal-site",
+  "version": "1.0.0",
+  "description": "Jonathan Brownstein - Personal Portfolio Website",
+  "scripts": {
+    "build": "node build.js",
+    "minify": "npm run build"
+  },
+  "devDependencies": {
+    "html-minifier-terser": "^7.2.0",
+    "cssnano": "^6.0.1",
+    "postcss": "^8.4.35",
+    "terser": "^5.26.0"
+  },
+  "keywords": [
+    "portfolio",
+    "website"
+  ],
+  "author": "Jonathan Brownstein",
+  "license": "UNLICENSED"
+}
