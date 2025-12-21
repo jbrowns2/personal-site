@@ -317,6 +317,21 @@ body {
     color: var(--text-dark);
 }
 
+.timeline-section-header {
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+}
+
+.education-header {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 0;
+    padding-top: 1rem;
+    border-top: 2px solid var(--border-color);
+    margin-top: 1rem;
+}
+
 /* Skills Section */
 .skills-grid {
     display: grid;
