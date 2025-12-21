@@ -474,18 +474,20 @@ body {
 }
 
 .project-card {
-    background: var(--bg-white);
+    background: var(--bg-light);
     border-radius: 1rem;
     box-shadow: var(--shadow-md);
     overflow: hidden;
-    transition: all 0.3s;
+    transition: all 0.3s ease;
     display: flex;
     flex-direction: column;
+    border: 1px solid var(--border-color);
 }
 
 .project-card:hover {
     transform: translateY(-5px);
-    box-shadow: var(--shadow-lg);
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.2), var(--shadow-lg);
+    border-color: var(--primary-color);
 }
 
 .project-header {
@@ -507,7 +509,7 @@ body {
 
 .project-type {
     padding: 0.375rem 0.875rem;
-    background: var(--primary-color);
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
     color: white;
     border-radius: 1rem;
     font-size: 0.75rem;
@@ -515,6 +517,7 @@ body {
     text-transform: uppercase;
     letter-spacing: 0.5px;
     white-space: nowrap;
+    box-shadow: 0 2px 4px rgba(6, 182, 212, 0.3);
 }
 
 .project-content {
@@ -563,19 +566,21 @@ body {
 
 .tech-tag {
     padding: 0.375rem 0.75rem;
-    background: var(--bg-light);
+    background: var(--bg-white);
     color: var(--text-dark);
     border-radius: 0.5rem;
     font-size: 0.8125rem;
     font-weight: 500;
     border: 1px solid var(--border-color);
-    transition: all 0.2s;
+    transition: all 0.3s ease;
 }
 
 .tech-tag:hover {
-    background: var(--primary-color);
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
     color: white;
     border-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(6, 182, 212, 0.4);
 }
 
 .project-actions {
