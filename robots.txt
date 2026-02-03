@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://jonathansbrownstein.com/sitemap.xml
+Sitemap: https://www.jonathansbrownstein.com/sitemap.xml
 
