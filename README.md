@@ -78,6 +78,31 @@ You can deploy the root folder directly to:
 - **Vercel**: Connect your repository (auto-detects build settings)
 - Any static hosting service
 
+## Google Search (Get Indexed)
+
+The site is set up for search engines (meta tags, canonical URL, sitemap, JSON-LD). To get it **indexed on Google**:
+
+1. **Deploy the site** so it’s live at `https://www.jonathansbrownstein.com` (or your domain).
+
+2. **Add the property in Google Search Console**
+   - Go to [Google Search Console](https://search.google.com/search-console)
+   - Sign in with your Google account
+   - Click **Add property**
+   - Choose **URL prefix** and enter: `https://www.jonathansbrownstein.com`
+   - Verify ownership using one of the options (HTML file upload, DNS record, or HTML meta tag—your host may offer a “verification” step that gives you a meta tag to add to `index.html`)
+
+3. **Submit the sitemap**
+   - In Search Console, open your property → **Sitemaps** (left sidebar)
+   - Enter: `sitemap.xml` and click **Submit**
+   - Sitemap URL: `https://www.jonathansbrownstein.com/sitemap.xml`
+
+4. **Request indexing** (optional, speeds things up)
+   - In Search Console, use **URL Inspection** (top search bar)
+   - Enter `https://www.jonathansbrownstein.com/`
+   - Click **Request indexing**
+
+Google usually picks up the site within a few days; full indexing can take a bit longer.
+
 ## Browser Support
 
 - Chrome (latest)

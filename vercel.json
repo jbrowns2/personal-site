@@ -1,5 +1,13 @@
 {
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
-  "installCommand": "npm install"
+  "installCommand": "npm install",
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "jonathansbrownstein.com" }],
+      "destination": "https://www.jonathansbrownstein.com/:path*",
+      "permanent": true
+    }
+  ]
 }
