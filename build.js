@@ -95,7 +95,7 @@ async function build() {
     }
     
     // Copy other static files
-    const staticFiles = ['robots.txt', 'sitemap.xml'];
+    const staticFiles = ['robots.txt', 'sitemap.xml', 'favicon.svg', 'favicon.ico'];
     staticFiles.forEach(file => {
       if (fs.existsSync(file)) {
         fs.copyFileSync(file, path.join(distDir, file));
