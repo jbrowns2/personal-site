@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /Projects/
 
 Sitemap: https://www.jonathansbrownstein.com/sitemap.xml
-
