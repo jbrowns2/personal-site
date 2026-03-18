@@ -1,4 +1,78 @@
 // ============================================
+// PRELOADER
+// ============================================
+(function initPreloader() {
+    const preloader = document.getElementById('preloader');
+    if (!preloader) return;
+
+    const MIN_DISPLAY = 600;
+    const loadStart = performance.now();
+
+    window.addEventListener('load', function () {
+        const elapsed = performance.now() - loadStart;
+        const remaining = Math.max(0, MIN_DISPLAY - elapsed);
+
+        setTimeout(function () {
+            preloader.classList.add('hidden');
+            document.documentElement.classList.remove('loading');
+
+            preloader.addEventListener('transitionend', function () {
+                preloader.remove();
+            }, { once: true });
+        }, remaining);
+    });
+})();
+
+// ============================================
+// THEME TOGGLE
+// ============================================
+const themeModule = (function initTheme() {
+    const toggle = document.querySelector('.theme-toggle');
+    const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+    const DARK_COLOR = '99, 102, 241';
+    const LIGHT_COLOR = '79, 70, 229';
+
+    function getTheme() {
+        return document.documentElement.getAttribute('data-theme') || 'dark';
+    }
+
+    function applyTheme(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+        if (metaThemeColor) {
+            metaThemeColor.setAttribute('content', theme === 'light' ? '#f8fafc' : '#0a0a1a');
+        }
+        if (toggle) {
+            toggle.setAttribute('aria-label',
+                theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'
+            );
+        }
+    }
+
+    function getParticleColor() {
+        return getTheme() === 'light' ? LIGHT_COLOR : DARK_COLOR;
+    }
+
+    if (toggle) {
+        toggle.addEventListener('click', function () {
+            const next = getTheme() === 'dark' ? 'light' : 'dark';
+            localStorage.setItem('theme', next);
+            applyTheme(next);
+        });
+    }
+
+    const systemPref = window.matchMedia('(prefers-color-scheme: light)');
+    systemPref.addEventListener('change', function (e) {
+        if (!localStorage.getItem('theme')) {
+            applyTheme(e.matches ? 'light' : 'dark');
+        }
+    });
+
+    applyTheme(getTheme());
+
+    return { getParticleColor: getParticleColor };
+})();
+
+// ============================================
 // CURRENT YEAR
 // ============================================
 document.getElementById('current-year').textContent = new Date().getFullYear();
@@ -36,6 +110,7 @@ document.getElementById('current-year').textContent = new Date().getFullYear();
 
     function draw() {
         ctx.clearRect(0, 0, width, height);
+        const rgb = themeModule.getParticleColor();
 
         for (let i = 0; i < particles.length; i++) {
             const p = particles[i];
@@ -49,7 +124,7 @@ document.getElementById('current-year').textContent = new Date().getFullYear();
 
             ctx.beginPath();
             ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(99, 102, 241, ${p.opacity})`;
+            ctx.fillStyle = `rgba(${rgb}, ${p.opacity})`;
             ctx.fill();
 
             for (let j = i + 1; j < particles.length; j++) {
@@ -62,7 +137,7 @@ document.getElementById('current-year').textContent = new Date().getFullYear();
                     ctx.beginPath();
                     ctx.moveTo(p.x, p.y);
                     ctx.lineTo(q.x, q.y);
-                    ctx.strokeStyle = `rgba(99, 102, 241, ${0.08 * (1 - dist / 120)})`;
+                    ctx.strokeStyle = `rgba(${rgb}, ${0.08 * (1 - dist / 120)})`;
                     ctx.lineWidth = 0.5;
                     ctx.stroke();
                 }
