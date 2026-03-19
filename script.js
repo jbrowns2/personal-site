@@ -1,4 +1,18 @@
 // ============================================
+// COMING SOON OVERLAY
+// ============================================
+(function initComingSoon() {
+    const overlay = document.getElementById('coming-soon-overlay');
+    if (!overlay) return;
+
+    document.body.style.overflow = 'hidden';
+
+    const preloader = document.getElementById('preloader');
+    if (preloader) preloader.remove();
+    document.documentElement.classList.remove('loading');
+})();
+
+// ============================================
 // PRELOADER
 // ============================================
 (function initPreloader() {
@@ -94,7 +108,11 @@ document.getElementById('current-year').textContent = new Date().getFullYear();
     }
 
     function createParticles() {
-        const count = Math.floor((width * height) / 15000);
+        var isMobile = width < 768;
+        var divisor = isMobile ? 35000 : 15000;
+        var maxCount = isMobile ? 30 : 150;
+        var count = Math.min(Math.floor((width * height) / divisor), maxCount);
+        var maxDist = isMobile ? 100 : 120;
         particles = [];
         for (let i = 0; i < count; i++) {
             particles.push({
@@ -106,6 +124,7 @@ document.getElementById('current-year').textContent = new Date().getFullYear();
                 opacity: Math.random() * 0.5 + 0.1,
             });
         }
+        particles._maxDist = maxDist;
     }
 
     function draw() {
@@ -133,11 +152,12 @@ document.getElementById('current-year').textContent = new Date().getFullYear();
                 const dy = p.y - q.y;
                 const dist = Math.sqrt(dx * dx + dy * dy);
 
-                if (dist < 120) {
+                var maxDist = particles._maxDist || 120;
+                if (dist < maxDist) {
                     ctx.beginPath();
                     ctx.moveTo(p.x, p.y);
                     ctx.lineTo(q.x, q.y);
-                    ctx.strokeStyle = `rgba(${rgb}, ${0.08 * (1 - dist / 120)})`;
+                    ctx.strokeStyle = `rgba(${rgb}, ${0.08 * (1 - dist / maxDist)})`;
                     ctx.lineWidth = 0.5;
                     ctx.stroke();
                 }
