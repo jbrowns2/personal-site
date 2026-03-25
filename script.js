@@ -627,21 +627,48 @@ let overlay = document.createElement('div');
 overlay.className = 'nav-overlay';
 document.body.appendChild(overlay);
 
-function toggleMobileNav() {
-    const isOpen = navMenu.classList.toggle('active');
-    navToggle.classList.toggle('active');
-    navToggle.setAttribute('aria-expanded', isOpen);
-    overlay.classList.toggle('active');
+function setMobileNav(open) {
+    const isOpen = Boolean(open);
+    navMenu.classList.toggle('active', isOpen);
+    navToggle.classList.toggle('active', isOpen);
+    navToggle.setAttribute('aria-expanded', String(isOpen));
+    overlay.classList.toggle('active', isOpen);
     document.body.style.overflow = isOpen ? 'hidden' : '';
 }
 
-navToggle.addEventListener('click', toggleMobileNav);
-overlay.addEventListener('click', toggleMobileNav);
+function toggleMobileNav() {
+    const isOpen = !navMenu.classList.contains('active');
+    setMobileNav(isOpen);
+}
+
+function closeMobileNav() {
+    setMobileNav(false);
+}
+
+function syncMobileNavForViewport() {
+    if (window.innerWidth > 768 && navMenu.classList.contains('active')) {
+        closeMobileNav();
+    }
+}
+
+function handleMobileNavKeydown(event) {
+    if (event.key === 'Escape' && navMenu.classList.contains('active')) {
+        closeMobileNav();
+    }
+}
+
+if (navToggle && navMenu) {
+    navToggle.setAttribute('aria-expanded', 'false');
+    navToggle.addEventListener('click', toggleMobileNav);
+    overlay.addEventListener('click', closeMobileNav);
+    window.addEventListener('resize', syncMobileNavForViewport);
+    document.addEventListener('keydown', handleMobileNavKeydown);
+}
 
 document.querySelectorAll('.nav-menu a').forEach((link) => {
     link.addEventListener('click', () => {
         if (navMenu.classList.contains('active')) {
-            toggleMobileNav();
+            closeMobileNav();
         }
     });
 });

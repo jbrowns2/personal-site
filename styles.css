@@ -241,6 +241,7 @@ html {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 5.5rem;
 }
 
 html.loading {
@@ -353,7 +354,12 @@ html.access-unlocked #access-gate {
     align-items: center;
     justify-content: center;
     background: var(--bg-deep);
-    overflow: hidden;
+    overflow-y: auto;
+    padding:
+        max(1rem, env(safe-area-inset-top))
+        max(1rem, env(safe-area-inset-right))
+        max(1rem, env(safe-area-inset-bottom))
+        max(1rem, env(safe-area-inset-left));
 }
 
 #access-gate.access-gate--exiting {
@@ -634,6 +640,11 @@ body {
     -webkit-tap-highlight-color: transparent;
 }
 
+img {
+    max-width: 100%;
+    height: auto;
+}
+
 #bg-canvas {
     position: fixed;
     top: 0;
@@ -684,6 +695,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 0.75rem;
 }
 
 .nav-brand {
@@ -694,6 +706,8 @@ body {
     color: var(--text-primary);
     font-weight: 600;
     font-size: 1rem;
+    flex: 1 1 auto;
+    min-width: 0;
 }
 
 .brand-icon {
@@ -712,6 +726,10 @@ body {
 
 .brand-text {
     font-size: 1rem;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .nav-menu {
@@ -719,6 +737,7 @@ body {
     list-style: none;
     gap: 0.25rem;
     align-items: center;
+    flex-shrink: 0;
 }
 
 .nav-menu a {
@@ -761,6 +780,7 @@ body {
     gap: 5px;
     padding: 4px;
     touch-action: manipulation;
+    flex-shrink: 0;
 }
 
 .nav-toggle span {
@@ -799,6 +819,7 @@ body {
     position: relative;
     margin-left: 0.25rem;
     touch-action: manipulation;
+    flex-shrink: 0;
 }
 
 .theme-toggle:hover {
@@ -857,6 +878,8 @@ body,
    ============================================ */
 .hero {
     min-height: 100vh;
+    min-height: 100svh;
+    min-height: 100dvh;
     display: flex;
     align-items: center;
     padding: 8rem 0 4rem;
@@ -1795,6 +1818,7 @@ body,
 .project-award {
     display: inline-flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 0.5rem;
     padding: 0.5rem 1rem;
     background: rgba(245, 158, 11, 0.1);
@@ -2022,7 +2046,8 @@ body,
     font-size: 0.9rem;
     font-weight: 500;
     color: var(--text-primary);
-    word-break: break-all;
+    word-break: break-word;
+    overflow-wrap: anywhere;
 }
 
 /* ============================================
@@ -2225,7 +2250,11 @@ body,
 /* --- Tablet Portrait (≤768px) --- */
 @media (max-width: 768px) {
     .container {
-        padding: 0 1.5rem;
+        padding:
+            0
+            max(1.5rem, env(safe-area-inset-right))
+            0
+            max(1.5rem, env(safe-area-inset-left));
     }
 
     .nav-menu {
@@ -2233,12 +2262,16 @@ body,
         left: 0;
         top: 0;
         bottom: 0;
-        width: min(380px, 85vw);
+        width: min(22rem, calc(100vw - 3rem));
         flex-direction: column;
         background: rgba(10, 10, 26, 0.98);
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
-        padding: 5rem 2rem calc(2rem + env(safe-area-inset-bottom));
+        padding:
+            max(5rem, calc(env(safe-area-inset-top) + 4rem))
+            1.5rem
+            calc(2rem + env(safe-area-inset-bottom))
+            max(1.25rem, env(safe-area-inset-left));
         gap: 0.25rem;
         transform: translateX(-100%);
         transition: transform var(--transition-base);
@@ -2271,6 +2304,12 @@ body,
 
     .theme-toggle {
         z-index: 1001;
+        margin-left: 0;
+    }
+
+    .nav-brand .brand-text {
+        max-width: 11rem;
+        font-size: 0.9rem;
     }
 
     .hero {
@@ -2426,7 +2465,7 @@ body,
     }
 
     .contact-cards {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .contact-value {
@@ -2460,7 +2499,11 @@ body,
 /* --- Large Phone (≤600px) --- */
 @media (max-width: 600px) {
     .container {
-        padding: 0 1.25rem;
+        padding:
+            0
+            max(1.25rem, env(safe-area-inset-right))
+            0
+            max(1.25rem, env(safe-area-inset-left));
     }
 
     .hero-content {
@@ -2470,6 +2513,10 @@ body,
     .hero-buttons {
         flex-direction: column;
         align-items: stretch;
+    }
+
+    .hero-buttons .btn {
+        width: 100%;
     }
 
     .highlights-grid {
@@ -2500,7 +2547,11 @@ body,
 /* --- Small Phone (≤480px) --- */
 @media (max-width: 480px) {
     .container {
-        padding: 0 1rem;
+        padding:
+            0
+            max(1rem, env(safe-area-inset-right))
+            0
+            max(1rem, env(safe-area-inset-left));
     }
 
     .hero {
@@ -2652,6 +2703,13 @@ body,
 
     .nav-brand .brand-text {
         font-size: 0.85rem;
+        max-width: 9rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .nav-brand .brand-text {
+        max-width: 7.5rem;
     }
 }
 
