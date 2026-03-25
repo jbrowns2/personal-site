@@ -4,9 +4,17 @@
   "description": "Jonathan Brownstein - Personal Portfolio Website",
   "scripts": {
     "build": "node build.js",
-    "minify": "npm run build"
+    "minify": "npm run build",
+    "dev": "serve -l 3000 .",
+    "dev:vercel": "npx vercel dev",
+    "gate:hash": "node scripts/hash-gate-code.js"
+  },
+  "dependencies": {
+    "@neondatabase/serverless": "^0.10.4",
+    "bcryptjs": "^2.4.3"
   },
   "devDependencies": {
+    "serve": "^14.2.4",
     "html-minifier-terser": "^7.2.0",
     "cssnano": "^6.0.1",
     "postcss": "^8.4.35",

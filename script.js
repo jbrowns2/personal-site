@@ -1,15 +1,393 @@
 // ============================================
-// COMING SOON OVERLAY
+// ACCESS GATE + PRELOADER BOOTSTRAP
 // ============================================
-(function initComingSoon() {
-    const overlay = document.getElementById('coming-soon-overlay');
-    if (!overlay) return;
+(function initAccessGateAndPreloader() {
+    const STORAGE_KEY = 'portfolio_unlocked';
+    const API_BASE = '/api';
 
-    document.body.style.overflow = 'hidden';
+    let gateApiReady = false;
+    let serverBlockUntil = 0;
+    let gateThrottleUiTimer = null;
 
-    const preloader = document.getElementById('preloader');
-    if (preloader) preloader.remove();
-    document.documentElement.classList.remove('loading');
+    function normalizePhrase(s) {
+        return String(s).trim().toUpperCase().replace(/[^A-Z0-9]/g, '');
+    }
+
+    function gateIsPlausibleGuess(phrase) {
+        const n = normalizePhrase(phrase);
+        return n.length >= 6 && n.length <= 8;
+    }
+
+    async function gateFetchJson(path, options) {
+        const opts = Object.assign({ method: 'GET', credentials: 'include' }, options);
+        const r = await fetch(API_BASE + path, opts);
+        const ct = r.headers.get('content-type') || '';
+        const isJson = ct.indexOf('application/json') !== -1;
+        let body = null;
+        if (isJson) {
+            try {
+                body = await r.json();
+            } catch (e) {}
+        }
+        const ra = parseInt(r.headers.get('retry-after') || '0', 10) || 0;
+        return { ok: r.ok, status: r.status, body: body, retryAfter: ra };
+    }
+
+    function gateApplyServerBlock(body, retryAfterHeader) {
+        let sec = 0;
+        if (body && typeof body.retryAfterSec === 'number' && body.retryAfterSec > 0) {
+            sec = body.retryAfterSec;
+        } else if (retryAfterHeader > 0) {
+            sec = retryAfterHeader;
+        }
+        if (sec > 0) {
+            serverBlockUntil = Date.now() + sec * 1000;
+        }
+    }
+
+    function gateClearServerBlock() {
+        serverBlockUntil = 0;
+    }
+
+    function gateGetBlocking() {
+        const now = Date.now();
+        if (serverBlockUntil > now) {
+            const ms = serverBlockUntil - now;
+            return {
+                kind: ms > 120000 ? 'locked' : 'cooldown',
+                until: serverBlockUntil,
+            };
+        }
+        return null;
+    }
+
+    async function gateLoadSession() {
+        try {
+            const res = await gateFetchJson('/access-status', { method: 'GET' });
+            if (!res.body || typeof res.body.ready !== 'boolean') {
+                return { ready: false, unlocked: false };
+            }
+            gateApiReady = !!res.body.ready;
+            if (gateApiReady && res.body.blockedUntilSec > 0) {
+                serverBlockUntil = Date.now() + res.body.blockedUntilSec * 1000;
+            }
+            return {
+                ready: gateApiReady,
+                unlocked: !!res.body.unlocked,
+            };
+        } catch (e) {
+            return { ready: false, unlocked: false };
+        }
+    }
+
+    async function gateVerifyCode(code) {
+        const res = await gateFetchJson('/verify-access', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ code: code }),
+        });
+        if (res.status === 503) {
+            return { ok: false, unavailable: true };
+        }
+        if (res.status === 429) {
+            gateApplyServerBlock(res.body, res.retryAfter);
+            return { ok: false, throttled: true };
+        }
+        if (res.status === 200 && res.body && res.body.ok) {
+            gateClearServerBlock();
+            return { ok: true };
+        }
+        if (res.status === 401) {
+            return { ok: false };
+        }
+        return { ok: false, unavailable: true };
+    }
+
+    function gateFormatRemaining(ms) {
+        if (ms <= 0) {
+            return 'a moment';
+        }
+        const sec = Math.ceil(ms / 1000);
+        if (sec < 60) {
+            return sec + (sec === 1 ? ' second' : ' seconds');
+        }
+        const min = Math.ceil(sec / 60);
+        return min + (min === 1 ? ' minute' : ' minutes');
+    }
+
+    function scheduleGateThrottleUiSync(syncFn, untilTs) {
+        if (gateThrottleUiTimer) {
+            clearTimeout(gateThrottleUiTimer);
+            gateThrottleUiTimer = null;
+        }
+        const delay = Math.min(Math.max(0, untilTs - Date.now() + 150), 2147483647);
+        gateThrottleUiTimer = setTimeout(function () {
+            gateThrottleUiTimer = null;
+            syncFn();
+        }, delay);
+    }
+
+    function applyUnlockedDom(opts) {
+        document.documentElement.classList.remove('access-locked');
+        document.documentElement.classList.add('access-unlocked');
+        document.body.style.overflow = '';
+        if (opts && opts.clearLoading) {
+            document.documentElement.classList.remove('loading');
+        }
+    }
+
+    const gateEl = document.getElementById('access-gate');
+
+    function initGateForm() {
+        const gate = gateEl;
+        const form = document.getElementById('access-gate-form');
+        const segs = Array.prototype.slice.call(document.querySelectorAll('.access-seg'));
+        const errEl = document.getElementById('access-gate-error');
+        const submitBtn = form ? form.querySelector('.access-gate-submit') : null;
+        if (!form || !segs.length || !gate || !submitBtn) return;
+
+        function getCode() {
+            return segs
+                .map(function (inp) {
+                    return inp.value;
+                })
+                .join('');
+        }
+
+        function clearError() {
+            if (gate.dataset.gateThrottle === '1') {
+                return;
+            }
+            errEl.textContent = '';
+            segs.forEach(function (el) {
+                el.setAttribute('aria-invalid', 'false');
+            });
+            gate.classList.remove('access-gate--error');
+        }
+
+        function showError(msg) {
+            delete gate.dataset.gateThrottle;
+            errEl.textContent = msg;
+            segs.forEach(function (el) {
+                el.setAttribute('aria-invalid', 'true');
+            });
+            gate.classList.add('access-gate--error');
+            void gate.offsetWidth;
+            setTimeout(function () {
+                gate.classList.remove('access-gate--error');
+            }, 500);
+        }
+
+        function fillFromString(str) {
+            const chars = normalizePhrase(str).slice(0, segs.length).split('');
+            segs.forEach(function (el, i) {
+                el.value = chars[i] || '';
+            });
+        }
+
+        segs.forEach(function (input, idx) {
+            input.addEventListener('keydown', function (e) {
+                if (e.key === 'Backspace' && !input.value && idx > 0) {
+                    e.preventDefault();
+                    segs[idx - 1].focus();
+                    segs[idx - 1].value = '';
+                }
+                if (e.key === 'ArrowLeft' && idx > 0) {
+                    e.preventDefault();
+                    segs[idx - 1].focus();
+                }
+                if (e.key === 'ArrowRight' && idx < segs.length - 1) {
+                    e.preventDefault();
+                    segs[idx + 1].focus();
+                }
+            });
+
+            input.addEventListener('input', function () {
+                clearError();
+                let v = input.value;
+                if (v.length > 1) {
+                    fillFromString(v);
+                    const filled = normalizePhrase(v).length;
+                    const next = Math.min(idx + Math.max(filled, 1), segs.length - 1);
+                    segs[next].focus();
+                    return;
+                }
+                v = normalizePhrase(v).slice(0, 1);
+                input.value = v;
+                if (v && idx < segs.length - 1) {
+                    segs[idx + 1].focus();
+                }
+            });
+
+            input.addEventListener('paste', function (e) {
+                e.preventDefault();
+                const text = (e.clipboardData || window.clipboardData).getData('text') || '';
+                fillFromString(text);
+                const len = Math.min(normalizePhrase(text).length, segs.length);
+                const focusIdx = len === 0 ? 0 : Math.min(len - 1, segs.length - 1);
+                segs[focusIdx].focus();
+            });
+        });
+
+        function syncGateThrottleUi() {
+            if (gateThrottleUiTimer) {
+                clearTimeout(gateThrottleUiTimer);
+                gateThrottleUiTimer = null;
+            }
+            const block = gateGetBlocking();
+            gate.classList.remove('access-gate--locked', 'access-gate--cooldown');
+            if (!block) {
+                if (gate.dataset.gateThrottle === '1') {
+                    errEl.textContent = '';
+                    delete gate.dataset.gateThrottle;
+                }
+                segs.forEach(function (el) {
+                    el.disabled = false;
+                });
+                submitBtn.disabled = false;
+                return;
+            }
+            gate.dataset.gateThrottle = '1';
+            const msLeft = block.until - Date.now();
+            if (block.kind === 'locked') {
+                gate.classList.add('access-gate--locked');
+                errEl.textContent =
+                    'Too many attempts. Try again in ' + gateFormatRemaining(msLeft) + '.';
+                segs.forEach(function (el) {
+                    el.disabled = true;
+                });
+                submitBtn.disabled = true;
+            } else {
+                gate.classList.add('access-gate--cooldown');
+                errEl.textContent =
+                    'Please wait ' + gateFormatRemaining(msLeft) + ' before trying again.';
+                segs.forEach(function (el) {
+                    el.disabled = false;
+                });
+                submitBtn.disabled = true;
+            }
+            scheduleGateThrottleUiSync(syncGateThrottleUi, block.until);
+        }
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            clearError();
+            if (gateGetBlocking()) {
+                syncGateThrottleUi();
+                return;
+            }
+            if (!gateApiReady) {
+                showError(
+                    'Access verification needs the live site. Use your deployed URL or run npx vercel dev from this project.'
+                );
+                return;
+            }
+            const code = normalizePhrase(getCode());
+            if (code.length < 6) {
+                showError('Enter the full access code (6–8 characters).');
+                segs[0].focus();
+                return;
+            }
+            if (code.length > 8) {
+                showError('The phrase has too many characters.');
+                return;
+            }
+            submitBtn.disabled = true;
+            gateVerifyCode(code).then(function (result) {
+                submitBtn.disabled = false;
+                if (result.unavailable) {
+                    showError('Verification is temporarily unavailable. Try again shortly.');
+                    return;
+                }
+                if (result.throttled || gateGetBlocking()) {
+                    syncGateThrottleUi();
+                    return;
+                }
+                if (!result.ok) {
+                    showError("That code doesn't match. Try again.");
+                    return;
+                }
+                if (gateThrottleUiTimer) {
+                    clearTimeout(gateThrottleUiTimer);
+                    gateThrottleUiTimer = null;
+                }
+                gateClearServerBlock();
+                gate.classList.remove('access-gate--locked', 'access-gate--cooldown');
+                delete gate.dataset.gateThrottle;
+                if (/^#access=/.test(window.location.hash)) {
+                    history.replaceState(null, '', window.location.pathname + window.location.search);
+                }
+                applyUnlockedDom({ clearLoading: true });
+                gate.classList.add('access-gate--success');
+                const inner = form.closest('.access-gate-inner');
+                const msg = document.createElement('p');
+                msg.className = 'access-gate-success-msg';
+                msg.textContent = 'Access granted';
+                if (inner) inner.appendChild(msg);
+
+                gate.classList.add('access-gate--exiting');
+                gate.addEventListener('transitionend', function onTe(ev) {
+                    if (ev.propertyName !== 'opacity') return;
+                    gate.removeEventListener('transitionend', onTe);
+                    gate.remove();
+                });
+            });
+        });
+
+        syncGateThrottleUi();
+        if (!segs[0].disabled) {
+            segs[0].focus();
+        } else {
+            submitBtn.focus();
+        }
+    }
+
+    (async function runBootstrap() {
+        const session = await gateLoadSession();
+        let stored = false;
+        if (session.ready) {
+            stored = !!session.unlocked;
+        } else {
+            try {
+                stored = localStorage.getItem(STORAGE_KEY) === '1';
+            } catch (e) {}
+        }
+
+        if (!stored && session.ready) {
+            const hash = window.location.hash;
+            const m = /^#access=([^&#]+)/.exec(hash);
+            if (m) {
+                const phrase = decodeURIComponent(m[1].replace(/\+/g, ' '));
+                if (gateIsPlausibleGuess(phrase)) {
+                    const r = await gateVerifyCode(normalizePhrase(phrase));
+                    if (r.ok) {
+                        stored = true;
+                    }
+                }
+                history.replaceState(null, '', window.location.pathname + window.location.search);
+            }
+        }
+
+        const preloader = document.getElementById('preloader');
+
+        if (stored) {
+            applyUnlockedDom();
+            if (typeof window.__portfolioPreloaderStart === 'function') {
+                window.__portfolioPreloaderStart();
+                window.__portfolioPreloaderStart = undefined;
+            }
+            return;
+        }
+
+        document.documentElement.classList.add('access-locked');
+        document.documentElement.classList.remove('access-unlocked');
+        if (preloader) preloader.remove();
+        document.documentElement.classList.remove('loading');
+        document.body.style.overflow = 'hidden';
+        window.__portfolioPreloaderStart = undefined;
+
+        if (gateEl) initGateForm();
+    })();
 })();
 
 // ============================================
@@ -22,19 +400,28 @@
     const MIN_DISPLAY = 600;
     const loadStart = performance.now();
 
-    window.addEventListener('load', function () {
-        const elapsed = performance.now() - loadStart;
-        const remaining = Math.max(0, MIN_DISPLAY - elapsed);
+    function startPreloaderFlow() {
+        window.addEventListener('load', function () {
+            const elapsed = performance.now() - loadStart;
+            const remaining = Math.max(0, MIN_DISPLAY - elapsed);
 
-        setTimeout(function () {
-            preloader.classList.add('hidden');
-            document.documentElement.classList.remove('loading');
+            setTimeout(function () {
+                preloader.classList.add('hidden');
+                document.documentElement.classList.remove('loading');
 
-            preloader.addEventListener('transitionend', function () {
-                preloader.remove();
-            }, { once: true });
-        }, remaining);
-    });
+                preloader.addEventListener('transitionend', function () {
+                    preloader.remove();
+                }, { once: true });
+            }, remaining);
+        });
+    }
+
+    if (document.documentElement.classList.contains('access-unlocked')) {
+        startPreloaderFlow();
+        return;
+    }
+
+    window.__portfolioPreloaderStart = startPreloaderFlow;
 })();
 
 // ============================================

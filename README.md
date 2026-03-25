@@ -78,6 +78,18 @@ You can deploy the root folder directly to:
 - **Vercel**: Connect your repository (auto-detects build settings)
 - Any static hosting service
 
+### Private access gate (Vercel + Neon)
+
+The resume access code is **verified on the server** (bcrypt, no secret in the browser), **rate-limited and lockouts are stored in Neon** (per IP), and a successful login sets an **HttpOnly, `SameSite` session cookie** signed with `GATE_SESSION_SECRET`.
+
+1. Create a [Neon](https://neon.tech) project and run the SQL in `neon/schema.sql` in the Neon SQL editor.
+2. In Vercel → Project → Settings → Environment Variables, add:
+   - `DATABASE_URL` — your Neon connection string (serverless pooler URL is recommended).
+   - `ACCESS_CODE_BCRYPT` — run `npm run gate:hash -- YOURCODE` locally and paste the printed value.
+   - `GATE_SESSION_SECRET` — at least 32 random characters (for example `node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"`).
+3. Deploy on **Vercel** from the repo root (not `dist` alone) so `/api/*` serverless routes are included; keep the existing build (`outputDirectory: dist`).
+4. Local full stack: copy `.env.example` to `.env`, fill values, then `npm run dev:vercel` (or `npx vercel dev`). Plain `npm run dev` only serves static files and cannot verify the gate.
+
 ## Google Search (Get Indexed)
 
 The site is set up for search engines (meta tags, canonical URL, sitemap, JSON-LD). To get it **indexed on Google**:

@@ -28,6 +28,10 @@ npm-debug.log*
 # Dependencies
 node_modules/
 
+# Secrets (Neon + gate — use Vercel env in production)
+.env
+.env.local
+
 # Build output
 dist/
 
