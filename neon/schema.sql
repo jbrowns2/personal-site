@@ -14,8 +14,19 @@ CREATE INDEX IF NOT EXISTS idx_portfolio_gate_attempts_ip_time
 CREATE TABLE IF NOT EXISTS portfolio_gate_lockout (
     ip INET PRIMARY KEY,
     locked_until TIMESTAMPTZ NOT NULL,
+    lockout_count INT NOT NULL DEFAULT 1,
     updated_at TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 
--- Optional: schedule in Neon or cron to prune old attempts (e.g. > 30 days).
--- DELETE FROM portfolio_gate_attempts WHERE attempted_at < now() - interval '30 days';
+-- If upgrading an existing deployment, run this migration:
+-- ALTER TABLE portfolio_gate_lockout
+--   ADD COLUMN IF NOT EXISTS lockout_count INT NOT NULL DEFAULT 1;
+
+CREATE TABLE IF NOT EXISTS portfolio_gate_status_checks (
+    id BIGSERIAL PRIMARY KEY,
+    ip INET NOT NULL,
+    checked_at TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+CREATE INDEX IF NOT EXISTS idx_portfolio_gate_status_checks_ip_time
+    ON portfolio_gate_status_checks (ip, checked_at DESC);

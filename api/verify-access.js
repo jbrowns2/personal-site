@@ -67,12 +67,14 @@ module.exports = async function verifyAccess(req, res) {
                     retryAfterSec: retryAfterSec,
                 });
             }
+            gate.maybePruneOldRecords(sql).catch(function () {});
             return res.status(401).json({ ok: false });
         }
 
         await gate.recordSuccess(sql, ip);
         const token = gate.signSession(secrets.secret);
         res.setHeader('Set-Cookie', gate.buildSessionCookie(token, req));
+        gate.maybePruneOldRecords(sql).catch(function () {});
         return res.status(200).json({ ok: true });
     } catch (err) {
         console.error('verify-access', err);

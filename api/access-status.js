@@ -14,10 +14,20 @@ module.exports = async function accessStatus(req, res) {
         return res.status(200).json({ unlocked: false, ready: false });
     }
 
+    const ip = gate.getClientIp(req);
+
+    try {
+        const rateLimited = await gate.checkStatusRateLimit(sql, ip);
+        if (rateLimited) {
+            return res.status(429).json({ error: 'too_many_requests' });
+        }
+    } catch (err) {
+        console.error('access-status rate-limit', err);
+    }
+
     const unlocked = gate.sessionUnlocked(req);
     let blockedUntilSec = 0;
     try {
-        const ip = gate.getClientIp(req);
         const lockedUntilMs = await gate.getLockoutUntil(sql, ip);
         if (lockedUntilMs > Date.now()) {
             blockedUntilSec = gate.retryAfterSecFromUntil(lockedUntilMs);
