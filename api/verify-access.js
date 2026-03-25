@@ -12,6 +12,16 @@ module.exports = async function verifyAccess(req, res) {
     const sql = gate.getSql();
     const secrets = gate.loadGateSecrets();
     if (!sql || !secrets) {
+        if (!process.env.DATABASE_URL) {
+            console.error('verify-access: DATABASE_URL is not set (Vercel → Env).');
+        }
+        if (!process.env.ACCESS_CODE_BCRYPT) {
+            console.error('verify-access: ACCESS_CODE_BCRYPT is not set.');
+        }
+        const gss = process.env.GATE_SESSION_SECRET;
+        if (!gss || gss.length < 32) {
+            console.error('verify-access: GATE_SESSION_SECRET must be set and at least 32 characters.');
+        }
         return res.status(503).json({ ok: false, error: 'service_unavailable' });
     }
 

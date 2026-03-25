@@ -4,6 +4,11 @@
   "installCommand": "npm install",
   "redirects": [
     {
+      "source": "/favicon.ico",
+      "destination": "/favicon.svg",
+      "permanent": false
+    },
+    {
       "source": "/:path*",
       "has": [{ "type": "host", "value": "jonathansbrownstein.com" }],
       "destination": "https://www.jonathansbrownstein.com/:path*",
