@@ -401,7 +401,7 @@
     const loadStart = performance.now();
 
     function startPreloaderFlow() {
-        window.addEventListener('load', function () {
+        function afterLoad() {
             const elapsed = performance.now() - loadStart;
             const remaining = Math.max(0, MIN_DISPLAY - elapsed);
 
@@ -413,14 +413,19 @@
                     preloader.remove();
                 }, { once: true });
             }, remaining);
-        });
+        }
+
+        if (document.readyState === 'complete') {
+            afterLoad();
+        } else {
+            window.addEventListener('load', afterLoad, { once: true });
+        }
     }
 
-    if (document.documentElement.classList.contains('access-unlocked')) {
-        startPreloaderFlow();
-        return;
-    }
-
+    // Do not start the preloader from the inline access-unlocked class alone:
+    // localStorage can be out of sync with the server cookie, which would hide
+    // the gate and show this overlay until /access-status returns. Bootstrap
+    // calls __portfolioPreloaderStart only after confirming access.
     window.__portfolioPreloaderStart = startPreloaderFlow;
 })();
 

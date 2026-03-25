@@ -43,7 +43,7 @@
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap">
     <script>
     (function(){var t=localStorage.getItem('theme');if(!t){t=window.matchMedia('(prefers-color-scheme:light)').matches?'light':'dark'}document.documentElement.setAttribute('data-theme',t);document.querySelector('meta[name="theme-color"]').setAttribute('content',t==='light'?'#f8fafc':'#0a0a1a')})();
-    (function(){try{var ok=localStorage.getItem('portfolio_unlocked')==='1';document.documentElement.classList.add(ok?'access-unlocked':'access-locked');}catch(e){document.documentElement.classList.add('access-locked');}})();
+    (function(){document.documentElement.classList.add('access-locked');})();
     </script>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
