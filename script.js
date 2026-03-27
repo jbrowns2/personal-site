@@ -213,7 +213,9 @@
         var honeypotEl = document.getElementById('access-code-confirm');
         var payload = {
             code: code,
-            challengeId: currentChallenge ? currentChallenge.id : null,
+            challengeId: currentChallenge && currentChallenge.id != null
+                ? String(currentChallenge.id)
+                : null,
             nonce: nonce,
             fingerprint: clientFingerprint,
         };
@@ -229,7 +231,11 @@
             startPowSolver(res.body.challenge);
         }
         if (res.status === 503) {
-            return { ok: false, unavailable: true };
+            return {
+                ok: false,
+                unavailable: true,
+                serviceReason: res.body && res.body.reason,
+            };
         }
         if (res.status === 429) {
             gateApplyServerBlock(res.body, res.retryAfter);
@@ -508,7 +514,18 @@
                 setFormVerifyBusy(false);
                 submitBtn.disabled = false;
                 if (result.unavailable) {
-                    showError('Verification is temporarily unavailable. Try again shortly.');
+                    if (
+                        result.serviceReason === 'database_tables_missing' ||
+                        result.serviceReason === 'database_schema_outdated'
+                    ) {
+                        showError(
+                            'The access database needs updating. In Neon, run neon/migration-002-brute-force.sql (or full schema), then try again.',
+                        );
+                    } else {
+                        showError(
+                            'Verification is temporarily unavailable. Confirm Vercel env vars (DATABASE_URL, ACCESS_CODE_BCRYPT, GATE_SESSION_SECRET) and try again.',
+                        );
+                    }
                     return;
                 }
                 if (result.challengeFailed) {

@@ -142,8 +142,15 @@ module.exports = async function verifyAccess(req, res) {
         gate.maybePruneOldRecords(sql).catch(function () {});
         return res.status(200).json({ ok: true });
     } catch (err) {
-        console.error('verify-access', err);
-        return res.status(503).json({ ok: false, error: 'service_unavailable' });
+        console.error('verify-access', err && err.message, err);
+        var body = { ok: false, error: 'service_unavailable' };
+        var code = err && err.code;
+        if (code === '42P01') {
+            body.reason = 'database_tables_missing';
+        } else if (code === '42703') {
+            body.reason = 'database_schema_outdated';
+        }
+        return res.status(503).json(body);
     }
 };
 
