@@ -36,43 +36,108 @@ module.exports = async function verifyAccess(req, res) {
         return res.status(400).json({ ok: false, error: 'invalid_request' });
     }
 
+    // 1. Honeypot: bots fill hidden fields humans never see
+    if (body.accessCodeConfirm) {
+        return res.status(401).json({ ok: false });
+    }
+
     const normalized = gate.normalizePhrase(body.code);
     if (normalized.length < 6 || normalized.length > 8 || body.code.length > gate.MAX_CODE_LEN) {
         return res.status(400).json({ ok: false, error: 'invalid_request' });
     }
 
     const ip = gate.getClientIp(req);
+    const fingerprint = gate.sanitizeFingerprint(body.fingerprint);
 
     try {
-        const lockedUntilMs = await gate.getLockoutUntil(sql, ip);
+        // 2. Validate PoW challenge (also serves as CSRF token)
+        var challengeResult = await gate.validateChallenge(
+            sql,
+            body.challengeId,
+            body.nonce,
+            ip,
+        );
+        if (!challengeResult.valid) {
+            var newChallenge = await gate.issueChallenge(sql, ip);
+            return res.status(400).json({
+                ok: false,
+                error: 'challenge_failed',
+                reason: challengeResult.reason,
+                challenge: newChallenge,
+            });
+        }
+
+        // 3. Global rate limit (distributed attack protection)
+        var globalLimited = await gate.checkGlobalRateLimit(sql);
+        if (globalLimited) {
+            res.setHeader('Retry-After', '15');
+            var retryChallenge = await gate.issueChallenge(sql, ip);
+            return res.status(429).json({
+                ok: false,
+                locked: true,
+                retryAfterSec: 15,
+                challenge: retryChallenge,
+            });
+        }
+
+        // 4. IP lockout check
+        var lockedUntilMs = await gate.getLockoutUntil(sql, ip);
         if (lockedUntilMs > Date.now()) {
-            const retryAfterSec = gate.retryAfterSecFromUntil(lockedUntilMs);
+            var retryAfterSec = gate.retryAfterSecFromUntil(lockedUntilMs);
             res.setHeader('Retry-After', String(retryAfterSec));
+            var lockChallenge = await gate.issueChallenge(sql, ip);
             return res.status(429).json({
                 ok: false,
                 locked: true,
                 retryAfterSec: retryAfterSec,
+                challenge: lockChallenge,
             });
         }
 
-        const match = await bcryptCompareSafe(normalized, secrets.bcryptHash);
-        if (!match) {
-            const fail = await gate.recordFailureAndMaybeLock(sql, ip);
-            if (fail.locked) {
-                const retryAfterSec = gate.retryAfterSecFromUntil(fail.lockedUntilMs);
-                res.setHeader('Retry-After', String(retryAfterSec));
+        // 5. Fingerprint lockout check
+        if (fingerprint) {
+            var fpLockedUntilMs = await gate.getFingerprintLockoutUntil(sql, fingerprint);
+            if (fpLockedUntilMs > Date.now()) {
+                var fpRetryAfterSec = gate.retryAfterSecFromUntil(fpLockedUntilMs);
+                res.setHeader('Retry-After', String(fpRetryAfterSec));
+                var fpChallenge = await gate.issueChallenge(sql, ip);
                 return res.status(429).json({
                     ok: false,
                     locked: true,
-                    retryAfterSec: retryAfterSec,
+                    retryAfterSec: fpRetryAfterSec,
+                    challenge: fpChallenge,
+                });
+            }
+        }
+
+        // 6. Progressive delay based on recent failures
+        var recentFails = await gate.getRecentFailCount(sql, ip);
+        var delayMs = gate.computeProgressiveDelay(recentFails);
+        if (delayMs > 0) {
+            await gate.sleep(delayMs);
+        }
+
+        // 7. Bcrypt compare
+        var match = await bcryptCompareSafe(normalized, secrets.bcryptHash);
+        if (!match) {
+            var fail = await gate.recordFailureAndMaybeLock(sql, ip, fingerprint);
+            var failChallenge = await gate.issueChallenge(sql, ip);
+            if (fail.locked) {
+                var failRetryAfterSec = gate.retryAfterSecFromUntil(fail.lockedUntilMs);
+                res.setHeader('Retry-After', String(failRetryAfterSec));
+                return res.status(429).json({
+                    ok: false,
+                    locked: true,
+                    retryAfterSec: failRetryAfterSec,
+                    challenge: failChallenge,
                 });
             }
             gate.maybePruneOldRecords(sql).catch(function () {});
-            return res.status(401).json({ ok: false });
+            return res.status(401).json({ ok: false, challenge: failChallenge });
         }
 
-        await gate.recordSuccess(sql, ip);
-        const token = gate.signSession(secrets.secret);
+        await gate.recordSuccess(sql, ip, fingerprint);
+        var token = gate.signSession(secrets.secret);
         res.setHeader('Set-Cookie', gate.buildSessionCookie(token, req));
         gate.maybePruneOldRecords(sql).catch(function () {});
         return res.status(200).json({ ok: true });

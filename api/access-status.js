@@ -36,9 +36,19 @@ module.exports = async function accessStatus(req, res) {
         console.error('access-status lockout', err);
     }
 
+    let challenge = null;
+    if (!unlocked) {
+        try {
+            challenge = await gate.issueChallenge(sql, ip);
+        } catch (err) {
+            console.error('access-status challenge', err);
+        }
+    }
+
     return res.status(200).json({
         unlocked: unlocked,
         ready: true,
         blockedUntilSec: blockedUntilSec,
+        challenge: challenge,
     });
 };

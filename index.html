@@ -98,6 +98,10 @@
                         <input type="text" inputmode="numeric" class="access-seg" id="access-seg-6" name="access-seg-6" maxlength="1" pattern="[0-9]" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" enterkeyhint="next" aria-invalid="false">
                         <input type="text" inputmode="numeric" class="access-seg" id="access-seg-7" name="access-seg-7" maxlength="1" pattern="[0-9]" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" enterkeyhint="done" aria-invalid="false">
                     </div>
+                    <div aria-hidden="true" style="position:absolute;left:-9999px;height:0;overflow:hidden;opacity:0">
+                        <label for="access-code-confirm">Leave blank</label>
+                        <input type="text" id="access-code-confirm" name="access-code-confirm" autocomplete="off" tabindex="-1">
+                    </div>
                     <p id="access-gate-error" class="access-gate-error" role="alert" aria-live="assertive"></p>
                     <button type="submit" class="access-gate-submit btn btn-primary">Enter</button>
                 </form>

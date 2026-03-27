@@ -10,6 +10,129 @@
     let gateThrottleUiTimer = null;
     let gateThrottleCountdownId = null;
 
+    let currentChallenge = null;
+    let powSolution = null;
+    let powWorker = null;
+    let clientFingerprint = null;
+
+    // -- PoW Web Worker (inline via Blob) --
+    var POW_WORKER_SRC = [
+        'self.onmessage = async function(e) {',
+        '  var prefix = e.data.prefix;',
+        '  var difficulty = e.data.difficulty;',
+        '  var nonce = 0;',
+        '  while (true) {',
+        '    var candidate = prefix + nonce.toString(16);',
+        '    var buf = new Uint8Array(candidate.length);',
+        '    for (var i = 0; i < candidate.length; i++) buf[i] = candidate.charCodeAt(i);',
+        '    var hash = new Uint8Array(await crypto.subtle.digest("SHA-256", buf));',
+        '    var ok = true;',
+        '    var fullBytes = Math.floor(difficulty / 8);',
+        '    var remainBits = difficulty % 8;',
+        '    for (var j = 0; j < fullBytes; j++) { if (hash[j] !== 0) { ok = false; break; } }',
+        '    if (ok && remainBits > 0) {',
+        '      var mask = 0xff << (8 - remainBits);',
+        '      if ((hash[fullBytes] & mask) !== 0) ok = false;',
+        '    }',
+        '    if (ok) { self.postMessage({ nonce: nonce.toString(16) }); return; }',
+        '    nonce++;',
+        '    if (nonce % 10000 === 0) await new Promise(function(r) { setTimeout(r, 0); });',
+        '  }',
+        '};',
+    ].join('\n');
+
+    function startPowSolver(challenge) {
+        if (!challenge || !challenge.prefix || !challenge.difficulty) return;
+        powSolution = null;
+        currentChallenge = challenge;
+        if (powWorker) {
+            powWorker.terminate();
+        }
+        try {
+            var blob = new Blob([POW_WORKER_SRC], { type: 'application/javascript' });
+            var url = URL.createObjectURL(blob);
+            powWorker = new Worker(url);
+            URL.revokeObjectURL(url);
+            powWorker.onmessage = function (ev) {
+                powSolution = ev.data.nonce;
+            };
+            powWorker.postMessage({ prefix: challenge.prefix, difficulty: challenge.difficulty });
+        } catch (e) {
+            powWorker = null;
+        }
+    }
+
+    function waitForPowSolution(timeoutMs) {
+        if (powSolution) return Promise.resolve(powSolution);
+        var elapsed = 0;
+        var interval = 50;
+        return new Promise(function (resolve) {
+            var check = function () {
+                if (powSolution) return resolve(powSolution);
+                elapsed += interval;
+                if (elapsed >= timeoutMs) return resolve(null);
+                setTimeout(check, interval);
+            };
+            setTimeout(check, interval);
+        });
+    }
+
+    // -- Browser Fingerprint --
+    function collectFingerprint() {
+        if (clientFingerprint) return Promise.resolve(clientFingerprint);
+        var signals = [];
+        signals.push('sw=' + screen.width);
+        signals.push('sh=' + screen.height);
+        signals.push('dpr=' + (window.devicePixelRatio || 1));
+        signals.push('lang=' + (navigator.language || ''));
+        signals.push('plat=' + (navigator.platform || ''));
+        signals.push('tz=' + new Date().getTimezoneOffset());
+        signals.push('cores=' + (navigator.hardwareConcurrency || 0));
+        try {
+            var c = document.createElement('canvas');
+            c.width = 200;
+            c.height = 50;
+            var ctx = c.getContext('2d');
+            if (ctx) {
+                ctx.textBaseline = 'top';
+                ctx.font = '14px Arial';
+                ctx.fillStyle = '#f60';
+                ctx.fillRect(50, 0, 100, 25);
+                ctx.fillStyle = '#069';
+                ctx.fillText('fp:canvas', 2, 15);
+                ctx.fillStyle = 'rgba(102,204,0,0.7)';
+                ctx.fillText('fp:canvas', 4, 17);
+                signals.push('cv=' + c.toDataURL());
+            }
+        } catch (e) {}
+        try {
+            var gl =
+                document.createElement('canvas').getContext('webgl') ||
+                document.createElement('canvas').getContext('experimental-webgl');
+            if (gl) {
+                var dbg = gl.getExtension('WEBGL_debug_renderer_info');
+                if (dbg) {
+                    signals.push('glr=' + gl.getParameter(dbg.UNMASKED_RENDERER_WEBGL));
+                }
+            }
+        } catch (e) {}
+        var raw = signals.join('|');
+        if (!crypto.subtle || !crypto.subtle.digest) {
+            clientFingerprint = raw.slice(0, 64);
+            return Promise.resolve(clientFingerprint);
+        }
+        var buf = new TextEncoder().encode(raw);
+        return crypto.subtle.digest('SHA-256', buf).then(function (hashBuf) {
+            var arr = new Uint8Array(hashBuf);
+            var hex = '';
+            for (var i = 0; i < arr.length; i++) {
+                hex += ('0' + arr[i].toString(16)).slice(-2);
+            }
+            clientFingerprint = hex;
+            return hex;
+        });
+    }
+
     function normalizeGateDigits(s) {
         return String(s).trim().replace(/\D/g, '');
     }
@@ -63,6 +186,7 @@
 
     async function gateLoadSession() {
         try {
+            var fpPromise = collectFingerprint();
             const res = await gateFetchJson('/access-status', { method: 'GET' });
             if (!res.body || typeof res.body.ready !== 'boolean') {
                 return { ready: false, unlocked: false };
@@ -71,6 +195,10 @@
             if (gateApiReady && res.body.blockedUntilSec > 0) {
                 serverBlockUntil = Date.now() + res.body.blockedUntilSec * 1000;
             }
+            if (res.body.challenge) {
+                startPowSolver(res.body.challenge);
+            }
+            await fpPromise;
             return {
                 ready: gateApiReady,
                 unlocked: !!res.body.unlocked,
@@ -81,11 +209,25 @@
     }
 
     async function gateVerifyCode(code) {
+        var nonce = await waitForPowSolution(15000);
+        var honeypotEl = document.getElementById('access-code-confirm');
+        var payload = {
+            code: code,
+            challengeId: currentChallenge ? currentChallenge.id : null,
+            nonce: nonce,
+            fingerprint: clientFingerprint,
+        };
+        if (honeypotEl && honeypotEl.value) {
+            payload.accessCodeConfirm = honeypotEl.value;
+        }
         const res = await gateFetchJson('/verify-access', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ code: code }),
+            body: JSON.stringify(payload),
         });
+        if (res.body && res.body.challenge) {
+            startPowSolver(res.body.challenge);
+        }
         if (res.status === 503) {
             return { ok: false, unavailable: true };
         }
@@ -96,6 +238,9 @@
         if (res.status === 200 && res.body && res.body.ok) {
             gateClearServerBlock();
             return { ok: true };
+        }
+        if (res.status === 400 && res.body && res.body.error === 'challenge_failed') {
+            return { ok: false, challengeFailed: true };
         }
         if (res.status === 401) {
             return { ok: false };
@@ -364,6 +509,12 @@
                 submitBtn.disabled = false;
                 if (result.unavailable) {
                     showError('Verification is temporarily unavailable. Try again shortly.');
+                    return;
+                }
+                if (result.challengeFailed) {
+                    showError('Security check failed. Please try again.');
+                    fillFromString('');
+                    segs[0].focus();
                     return;
                 }
                 if (result.throttled || gateGetBlocking()) {
