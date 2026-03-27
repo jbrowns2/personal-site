@@ -1,54 +1,67 @@
 const gate = require('../lib/gate-backend.js');
 
 module.exports = async function accessStatus(req, res) {
-    if (req.method !== 'GET') {
-        res.setHeader('Allow', 'GET');
-        return res.status(405).json({ error: 'method_not_allowed' });
-    }
-
-    res.setHeader('Cache-Control', 'no-store');
-
-    const sql = gate.getSql();
-    const secrets = gate.loadGateSecrets();
-    if (!sql || !secrets) {
-        return res.status(200).json({ unlocked: false, ready: false });
-    }
-
-    const ip = gate.getClientIp(req);
-
     try {
-        const rateLimited = await gate.checkStatusRateLimit(sql, ip);
-        if (rateLimited) {
-            return res.status(429).json({ error: 'too_many_requests' });
+        if (req.method !== 'GET') {
+            res.setHeader('Allow', 'GET');
+            return res.status(405).json({ error: 'method_not_allowed' });
         }
-    } catch (err) {
-        console.error('access-status rate-limit', err);
-    }
 
-    const unlocked = gate.sessionUnlocked(req);
-    let blockedUntilSec = 0;
-    try {
-        const lockedUntilMs = await gate.getLockoutUntil(sql, ip);
-        if (lockedUntilMs > Date.now()) {
-            blockedUntilSec = gate.retryAfterSecFromUntil(lockedUntilMs);
+        res.setHeader('Cache-Control', 'no-store');
+
+        const sql = gate.getSql();
+        const secrets = gate.loadGateSecrets();
+        if (!sql || !secrets) {
+            return res.status(200).json({ unlocked: false, ready: false });
         }
-    } catch (err) {
-        console.error('access-status lockout', err);
-    }
 
-    let challenge = null;
-    if (!unlocked) {
+        const ip = gate.getClientIp(req);
+
         try {
-            challenge = await gate.issueChallenge(sql, ip);
+            const rateLimited = await gate.checkStatusRateLimit(sql, ip);
+            if (rateLimited) {
+                return res.status(429).json({ error: 'too_many_requests' });
+            }
         } catch (err) {
-            console.error('access-status challenge', err);
+            console.error('access-status rate-limit', err);
+        }
+
+        const unlocked = gate.sessionUnlocked(req);
+        let blockedUntilSec = 0;
+        try {
+            const lockedUntilMs = await gate.getLockoutUntil(sql, ip);
+            if (lockedUntilMs > Date.now()) {
+                blockedUntilSec = gate.retryAfterSecFromUntil(lockedUntilMs);
+            }
+        } catch (err) {
+            console.error('access-status lockout', err);
+        }
+
+        let challenge = null;
+        if (!unlocked) {
+            try {
+                challenge = await gate.issueChallenge(sql, ip);
+            } catch (err) {
+                console.error('access-status challenge', err);
+            }
+        }
+
+        return res.status(200).json({
+            unlocked: unlocked,
+            ready: true,
+            blockedUntilSec: blockedUntilSec,
+            challenge: challenge,
+        });
+    } catch (fatal) {
+        console.error('access-status:unhandled', fatal && fatal.message, fatal);
+        if (!res.headersSent) {
+            res.setHeader('Cache-Control', 'no-store');
+            return res.status(200).json({
+                unlocked: false,
+                ready: false,
+                blockedUntilSec: 0,
+                challenge: null,
+            });
         }
     }
-
-    return res.status(200).json({
-        unlocked: unlocked,
-        ready: true,
-        blockedUntilSec: blockedUntilSec,
-        challenge: challenge,
-    });
 };

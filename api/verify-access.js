@@ -2,6 +2,7 @@ const bcrypt = require('bcryptjs');
 const gate = require('../lib/gate-backend.js');
 
 module.exports = async function verifyAccess(req, res) {
+    try {
     if (req.method !== 'POST') {
         res.setHeader('Allow', 'POST');
         return res.status(405).json({ error: 'method_not_allowed' });
@@ -143,14 +144,21 @@ module.exports = async function verifyAccess(req, res) {
         return res.status(200).json({ ok: true });
     } catch (err) {
         console.error('verify-access', err && err.message, err);
-        var body = { ok: false, error: 'service_unavailable' };
+        var errBody = { ok: false, error: 'service_unavailable' };
         var code = err && err.code;
         if (code === '42P01') {
-            body.reason = 'database_tables_missing';
+            errBody.reason = 'database_tables_missing';
         } else if (code === '42703') {
-            body.reason = 'database_schema_outdated';
+            errBody.reason = 'database_schema_outdated';
         }
-        return res.status(503).json(body);
+        return res.status(503).json(errBody);
+    }
+    } catch (fatal) {
+        console.error('verify-access:unhandled', fatal && fatal.message, fatal);
+        if (!res.headersSent) {
+            res.setHeader('Cache-Control', 'no-store');
+            return res.status(503).json({ ok: false, error: 'service_unavailable' });
+        }
     }
 };
 

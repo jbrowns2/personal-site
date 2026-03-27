@@ -25,5 +25,8 @@
     "website"
   ],
   "author": "Jonathan Brownstein",
-  "license": "UNLICENSED"
+  "license": "UNLICENSED",
+  "engines": {
+    "node": ">=18"
+  }
 }
