@@ -354,6 +354,7 @@ html.access-unlocked #access-gate {
     align-items: center;
     justify-content: center;
     background: var(--bg-deep);
+    overflow-x: hidden;
     overflow-y: auto;
     padding:
         max(1rem, env(safe-area-inset-top))
@@ -522,6 +523,7 @@ html.access-unlocked #access-gate {
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
     transition: border-color var(--transition-base), box-shadow var(--transition-base), background-color var(--transition-base);
+    touch-action: manipulation;
 }
 
 [data-theme="light"] .access-seg {
@@ -587,6 +589,7 @@ html.access-unlocked #access-gate {
     padding: 0.5rem 1rem;
     font-size: 0.8125rem;
     font-weight: 600;
+    touch-action: manipulation;
 }
 
 .access-gate-error {
@@ -651,30 +654,144 @@ html.access-unlocked #access-gate {
 }
 
 @media (max-width: 480px) {
-    .access-segments {
-        flex-wrap: nowrap;
-        justify-content: flex-start;
-        overflow-x: auto;
-        max-width: 100%;
-        padding-bottom: 0.25rem;
-        -webkit-overflow-scrolling: touch;
-        gap: 0.3rem;
-        scrollbar-width: thin;
+    #access-gate {
+        align-items: center;
+        justify-content: center;
+        max-height: 100dvh;
+        overflow-x: hidden;
+        overflow-y: hidden;
+        padding:
+            max(0.5rem, env(safe-area-inset-top))
+            max(0.75rem, env(safe-area-inset-right))
+            max(0.5rem, env(safe-area-inset-bottom))
+            max(0.75rem, env(safe-area-inset-left));
     }
 
-    .access-seg {
-        width: 1.75rem;
-        height: 2.15rem;
-        font-size: 0.9rem;
-        min-width: 2.75rem;
-        min-height: 2.75rem;
-        flex-shrink: 0;
+    .access-gate-inner {
+        padding: 0.625rem 0.75rem;
+        max-width: min(100%, 22rem);
+    }
+
+    .access-gate-intro {
+        margin-bottom: 0.625rem;
+    }
+
+    .access-gate-heading {
+        font-size: clamp(1rem, 5.2vw, 1.35rem);
+        margin-bottom: 0.35rem;
+    }
+
+    .access-gate-subtitle {
+        font-size: 0.75rem;
+        line-height: 1.35;
+    }
+
+    .access-gate-contact {
+        margin-bottom: 0.75rem;
+    }
+
+    .access-gate-contact-list {
+        padding-top: 0.5rem;
     }
 
     .access-gate-contact-row {
         grid-template-columns: 1fr;
-        gap: 0.2rem 0;
+        gap: 0.15rem 0;
+        padding: 0.3rem 0;
     }
+
+    .access-gate-contact-row dt {
+        font-size: 0.625rem;
+    }
+
+    .access-gate-contact-row dd {
+        font-size: 0.75rem;
+    }
+
+    .access-gate-form {
+        gap: 0.65rem;
+    }
+
+    .access-segments {
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: stretch;
+        gap: clamp(0.08rem, 1.2vw, 0.24rem);
+        width: 100%;
+        max-width: 100%;
+        overflow: visible;
+        padding-bottom: 0;
+    }
+
+    .access-seg {
+        flex: 1 1 0;
+        min-width: 0;
+        width: auto;
+        height: 2.5rem;
+        font-size: clamp(0.75rem, 4.5vw, 0.9375rem);
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+    }
+
+    .access-gate-error {
+        font-size: 0.8125rem;
+        line-height: 1.3;
+        min-height: 1.1rem;
+    }
+
+    .access-gate-submit {
+        padding: 0.45rem 0.9rem;
+    }
+}
+
+@media (max-width: 480px) and (max-height: 520px) {
+    .access-gate-intro {
+        margin-bottom: 0.45rem;
+    }
+
+    .access-gate-contact {
+        margin-bottom: 0.5rem;
+    }
+
+    .access-gate-contact-list {
+        padding-top: 0.35rem;
+    }
+
+    .access-gate-contact-row {
+        padding: 0.22rem 0;
+    }
+
+    .access-seg {
+        height: 2.25rem;
+    }
+
+    .access-gate-form {
+        gap: 0.5rem;
+    }
+}
+
+/* Very short viewports: allow vertical scroll only if content still overflows */
+@media (max-width: 480px) and (max-height: 440px) {
+    #access-gate {
+        overflow-y: auto;
+        align-items: flex-start;
+        padding-top: max(0.35rem, env(safe-area-inset-top));
+    }
+}
+
+@media (max-width: 480px) {
+    #access-gate.access-gate--error .access-segments {
+        animation-name: accessGateShakeMobile;
+        animation-duration: 0.35s;
+    }
+}
+
+@keyframes accessGateShakeMobile {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-4px); }
+    40% { transform: translateX(4px); }
+    60% { transform: translateX(-3px); }
+    80% { transform: translateX(3px); }
 }
 
 body {

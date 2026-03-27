@@ -230,6 +230,15 @@
         }
 
         segs.forEach(function (input, idx) {
+            input.addEventListener('focus', function () {
+                // Selecting the current character makes one-tap replacement easier on mobile keyboards.
+                if (typeof input.select === 'function') {
+                    requestAnimationFrame(function () {
+                        input.select();
+                    });
+                }
+            });
+
             input.addEventListener('keydown', function (e) {
                 if (e.key === 'Backspace' && !input.value && idx > 0) {
                     e.preventDefault();
@@ -345,7 +354,7 @@
             }
             const code = normalizePhrase(getCode());
             if (code.length < 6) {
-                showError('Enter the full access code (6–8 characters).');
+                showError('Enter your full access code.');
                 segs[0].focus();
                 return;
             }
