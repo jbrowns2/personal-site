@@ -67,7 +67,7 @@
         <div class="access-gate-inner">
             <header class="access-gate-intro">
                 <h1 id="access-gate-title" class="access-gate-heading">Jonathan Brownstein, MSe, FLMI</h1>
-                <p class="access-gate-subtitle">Enter your access code below. Paste works.</p>
+                <p class="access-gate-subtitle">Enter your 8-digit access code. Paste works.</p>
             </header>
             <address class="access-gate-contact">
                 <dl class="access-gate-contact-list">
@@ -87,16 +87,16 @@
             </address>
             <div class="access-gate-form-wrap">
                 <form id="access-gate-form" class="access-gate-form" novalidate>
-                    <label id="access-gate-label" class="visually-hidden" for="access-seg-0">Access code</label>
+                    <label id="access-gate-label" class="visually-hidden" for="access-seg-0">8-digit access code</label>
                     <div class="access-segments" role="group" aria-labelledby="access-gate-label">
-                        <input type="text" class="access-seg" id="access-seg-0" name="access-seg-0" maxlength="1" inputmode="text" pattern="[A-Za-z0-9]" autocomplete="off" autocorrect="off" autocapitalize="characters" spellcheck="false" enterkeyhint="next" aria-invalid="false">
-                        <input type="text" class="access-seg" id="access-seg-1" name="access-seg-1" maxlength="1" inputmode="text" pattern="[A-Za-z0-9]" autocomplete="off" autocorrect="off" autocapitalize="characters" spellcheck="false" enterkeyhint="next" aria-invalid="false">
-                        <input type="text" class="access-seg" id="access-seg-2" name="access-seg-2" maxlength="1" inputmode="text" pattern="[A-Za-z0-9]" autocomplete="off" autocorrect="off" autocapitalize="characters" spellcheck="false" enterkeyhint="next" aria-invalid="false">
-                        <input type="text" class="access-seg" id="access-seg-3" name="access-seg-3" maxlength="1" inputmode="text" pattern="[A-Za-z0-9]" autocomplete="off" autocorrect="off" autocapitalize="characters" spellcheck="false" enterkeyhint="next" aria-invalid="false">
-                        <input type="text" class="access-seg" id="access-seg-4" name="access-seg-4" maxlength="1" inputmode="text" pattern="[A-Za-z0-9]" autocomplete="off" autocorrect="off" autocapitalize="characters" spellcheck="false" enterkeyhint="next" aria-invalid="false">
-                        <input type="text" class="access-seg" id="access-seg-5" name="access-seg-5" maxlength="1" inputmode="text" pattern="[A-Za-z0-9]" autocomplete="off" autocorrect="off" autocapitalize="characters" spellcheck="false" enterkeyhint="next" aria-invalid="false">
-                        <input type="text" class="access-seg" id="access-seg-6" name="access-seg-6" maxlength="1" inputmode="text" pattern="[A-Za-z0-9]" autocomplete="off" autocorrect="off" autocapitalize="characters" spellcheck="false" enterkeyhint="next" aria-invalid="false">
-                        <input type="text" class="access-seg" id="access-seg-7" name="access-seg-7" maxlength="1" inputmode="text" pattern="[A-Za-z0-9]" autocomplete="off" autocorrect="off" autocapitalize="characters" spellcheck="false" enterkeyhint="done" aria-invalid="false">
+                        <input type="text" inputmode="numeric" class="access-seg" id="access-seg-0" name="access-seg-0" maxlength="1" pattern="[0-9]" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" enterkeyhint="next" aria-invalid="false">
+                        <input type="text" inputmode="numeric" class="access-seg" id="access-seg-1" name="access-seg-1" maxlength="1" pattern="[0-9]" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" enterkeyhint="next" aria-invalid="false">
+                        <input type="text" inputmode="numeric" class="access-seg" id="access-seg-2" name="access-seg-2" maxlength="1" pattern="[0-9]" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" enterkeyhint="next" aria-invalid="false">
+                        <input type="text" inputmode="numeric" class="access-seg" id="access-seg-3" name="access-seg-3" maxlength="1" pattern="[0-9]" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" enterkeyhint="next" aria-invalid="false">
+                        <input type="text" inputmode="numeric" class="access-seg" id="access-seg-4" name="access-seg-4" maxlength="1" pattern="[0-9]" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" enterkeyhint="next" aria-invalid="false">
+                        <input type="text" inputmode="numeric" class="access-seg" id="access-seg-5" name="access-seg-5" maxlength="1" pattern="[0-9]" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" enterkeyhint="next" aria-invalid="false">
+                        <input type="text" inputmode="numeric" class="access-seg" id="access-seg-6" name="access-seg-6" maxlength="1" pattern="[0-9]" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" enterkeyhint="next" aria-invalid="false">
+                        <input type="text" inputmode="numeric" class="access-seg" id="access-seg-7" name="access-seg-7" maxlength="1" pattern="[0-9]" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" enterkeyhint="done" aria-invalid="false">
                     </div>
                     <p id="access-gate-error" class="access-gate-error" role="alert" aria-live="assertive"></p>
                     <button type="submit" class="access-gate-submit btn btn-primary">Enter</button>

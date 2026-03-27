@@ -10,13 +10,12 @@
     let gateThrottleUiTimer = null;
     let gateThrottleCountdownId = null;
 
-    function normalizePhrase(s) {
-        return String(s).trim().toUpperCase().replace(/[^A-Z0-9]/g, '');
+    function normalizeGateDigits(s) {
+        return String(s).trim().replace(/\D/g, '');
     }
 
     function gateIsPlausibleGuess(phrase) {
-        const n = normalizePhrase(phrase);
-        return n.length >= 6 && n.length <= 8;
+        return normalizeGateDigits(phrase).length === 8;
     }
 
     async function gateFetchJson(path, options) {
@@ -223,7 +222,7 @@
         }
 
         function fillFromString(str) {
-            const chars = normalizePhrase(str).slice(0, segs.length).split('');
+            const chars = normalizeGateDigits(str).slice(0, segs.length).split('');
             segs.forEach(function (el, i) {
                 el.value = chars[i] || '';
             });
@@ -260,12 +259,12 @@
                 let v = input.value;
                 if (v.length > 1) {
                     fillFromString(v);
-                    const filled = normalizePhrase(v).length;
+                    const filled = normalizeGateDigits(v).length;
                     const next = Math.min(idx + Math.max(filled, 1), segs.length - 1);
                     segs[next].focus();
                     return;
                 }
-                v = normalizePhrase(v).slice(0, 1);
+                v = normalizeGateDigits(v).slice(0, 1);
                 input.value = v;
                 if (v && idx < segs.length - 1) {
                     segs[idx + 1].focus();
@@ -276,7 +275,7 @@
                 e.preventDefault();
                 const text = (e.clipboardData || window.clipboardData).getData('text') || '';
                 fillFromString(text);
-                const len = Math.min(normalizePhrase(text).length, segs.length);
+                const len = Math.min(normalizeGateDigits(text).length, segs.length);
                 const focusIdx = len === 0 ? 0 : Math.min(len - 1, segs.length - 1);
                 segs[focusIdx].focus();
             });
@@ -352,14 +351,10 @@
                 );
                 return;
             }
-            const code = normalizePhrase(getCode());
-            if (code.length < 6) {
-                showError('Enter your full access code.');
+            const code = normalizeGateDigits(getCode());
+            if (code.length !== 8) {
+                showError('Enter all 8 digits.');
                 segs[0].focus();
-                return;
-            }
-            if (code.length > 8) {
-                showError('The phrase has too many characters.');
                 return;
             }
             submitBtn.disabled = true;
@@ -452,7 +447,7 @@
             if (m) {
                 const phrase = decodeURIComponent(m[1].replace(/\+/g, ' '));
                 if (gateIsPlausibleGuess(phrase)) {
-                    const r = await gateVerifyCode(normalizePhrase(phrase));
+                    const r = await gateVerifyCode(normalizeGateDigits(phrase));
                     if (r.ok) {
                         stored = true;
                     }

@@ -499,16 +499,20 @@ html.access-unlocked #access-gate {
 }
 
 .access-segments {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(8, minmax(1.5rem, 2.15rem));
     justify-content: center;
-    gap: 0.35rem;
-    margin: 0;
+    column-gap: 0.35rem;
+    row-gap: 0.35rem;
+    margin: 0 auto;
     padding: 0;
+    width: fit-content;
+    max-width: 100%;
 }
 
 .access-seg {
-    width: 2rem;
+    width: 100%;
+    min-width: 0;
     height: 2.4rem;
     padding: 0;
     text-align: center;
@@ -524,6 +528,16 @@ html.access-unlocked #access-gate {
     -webkit-backdrop-filter: blur(6px);
     transition: border-color var(--transition-base), box-shadow var(--transition-base), background-color var(--transition-base);
     touch-action: manipulation;
+}
+
+@media (max-width: 640px) {
+    .access-segments {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        width: 100%;
+        justify-content: stretch;
+        column-gap: clamp(0.1rem, 2vw, 0.35rem);
+        row-gap: 0.4rem;
+    }
 }
 
 [data-theme="light"] .access-seg {
@@ -713,22 +727,13 @@ html.access-unlocked #access-gate {
     }
 
     .access-segments {
-        flex-wrap: nowrap;
-        justify-content: center;
-        align-items: stretch;
-        gap: clamp(0.08rem, 1.2vw, 0.24rem);
-        width: 100%;
-        max-width: 100%;
-        overflow: visible;
-        padding-bottom: 0;
+        column-gap: clamp(0.08rem, 1.8vw, 0.28rem);
+        row-gap: 0.35rem;
     }
 
     .access-seg {
-        flex: 1 1 0;
-        min-width: 0;
-        width: auto;
         height: 2.5rem;
-        font-size: clamp(0.75rem, 4.5vw, 0.9375rem);
+        font-size: clamp(0.8rem, 4.2vw, 1rem);
         backdrop-filter: none;
         -webkit-backdrop-filter: none;
     }
