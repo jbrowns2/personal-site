@@ -544,9 +544,42 @@ html.access-unlocked #access-gate {
     cursor: not-allowed;
 }
 
+.access-gate-form[aria-busy="true"] .access-gate-submit {
+    cursor: wait;
+    position: relative;
+}
+
+.access-gate-form[aria-busy="true"] .access-gate-submit::after {
+    content: '';
+    display: inline-block;
+    width: 0.65em;
+    height: 0.65em;
+    margin-left: 0.45em;
+    vertical-align: -0.08em;
+    border: 2px solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: accessGateSubmitSpin 0.65s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .access-gate-form[aria-busy="true"] .access-gate-submit::after {
+        animation: none;
+        border-right-color: currentColor;
+        opacity: 0.5;
+    }
+}
+
+@keyframes accessGateSubmitSpin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 .access-seg::selection {
     background: rgba(99, 102, 241, 0.35);
 }
+
 
 .access-gate-submit {
     margin-top: 0;
@@ -599,7 +632,10 @@ html.access-unlocked #access-gate {
     animation: accessGateWelcome 0.6s ease forwards;
     pointer-events: none;
     text-align: center;
-    white-space: nowrap;
+    white-space: normal;
+    max-width: min(90vw, 20rem);
+    padding: 0 0.5rem;
+    box-sizing: border-box;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -615,14 +651,24 @@ html.access-unlocked #access-gate {
 }
 
 @media (max-width: 480px) {
+    .access-segments {
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        overflow-x: auto;
+        max-width: 100%;
+        padding-bottom: 0.25rem;
+        -webkit-overflow-scrolling: touch;
+        gap: 0.3rem;
+        scrollbar-width: thin;
+    }
+
     .access-seg {
         width: 1.75rem;
         height: 2.15rem;
         font-size: 0.9rem;
-    }
-
-    .access-segments {
-        gap: 0.35rem;
+        min-width: 2.75rem;
+        min-height: 2.75rem;
+        flex-shrink: 0;
     }
 
     .access-gate-contact-row {

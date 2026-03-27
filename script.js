@@ -8,6 +8,7 @@
     let gateApiReady = false;
     let serverBlockUntil = 0;
     let gateThrottleUiTimer = null;
+    let gateThrottleCountdownId = null;
 
     function normalizePhrase(s) {
         return String(s).trim().toUpperCase().replace(/[^A-Z0-9]/g, '');
@@ -146,6 +147,49 @@
         const submitBtn = form ? form.querySelector('.access-gate-submit') : null;
         if (!form || !segs.length || !gate || !submitBtn) return;
 
+        const focusBeforeGateEl = document.activeElement;
+        const submitBtnDefaultText = submitBtn.textContent;
+
+        function clearGateThrottleCountdown() {
+            if (gateThrottleCountdownId !== null) {
+                clearInterval(gateThrottleCountdownId);
+                gateThrottleCountdownId = null;
+            }
+        }
+
+        function setFormVerifyBusy(busy) {
+            form.setAttribute('aria-busy', busy ? 'true' : 'false');
+            submitBtn.textContent = busy ? 'Checking…' : submitBtnDefaultText;
+        }
+
+        function getGateFocusableEls() {
+            const nodes = gate.querySelectorAll(
+                'a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])'
+            );
+            return Array.prototype.filter.call(nodes, function (el) {
+                return el.tabIndex !== -1;
+            });
+        }
+
+        function onGateTabTrap(e) {
+            if (e.key !== 'Tab') return;
+            const items = getGateFocusableEls();
+            if (items.length === 0) return;
+            const first = items[0];
+            const last = items[items.length - 1];
+            if (e.shiftKey) {
+                if (document.activeElement === first) {
+                    e.preventDefault();
+                    last.focus();
+                }
+            } else if (document.activeElement === last) {
+                e.preventDefault();
+                first.focus();
+            }
+        }
+
+        gate.addEventListener('keydown', onGateTabTrap);
+
         function getCode() {
             return segs
                 .map(function (inp) {
@@ -234,6 +278,7 @@
                 clearTimeout(gateThrottleUiTimer);
                 gateThrottleUiTimer = null;
             }
+            clearGateThrottleCountdown();
             const block = gateGetBlocking();
             gate.classList.remove('access-gate--locked', 'access-gate--cooldown');
             if (!block) {
@@ -267,6 +312,22 @@
                 submitBtn.disabled = true;
             }
             scheduleGateThrottleUiSync(syncGateThrottleUi, block.until);
+            gateThrottleCountdownId = window.setInterval(function () {
+                const b = gateGetBlocking();
+                if (!b) {
+                    clearGateThrottleCountdown();
+                    syncGateThrottleUi();
+                    return;
+                }
+                const left = b.until - Date.now();
+                if (b.kind === 'locked') {
+                    errEl.textContent =
+                        'Too many attempts. Try again in ' + gateFormatRemaining(left) + '.';
+                } else {
+                    errEl.textContent =
+                        'Please wait ' + gateFormatRemaining(left) + ' before trying again.';
+                }
+            }, 1000);
         }
 
         form.addEventListener('submit', function (e) {
@@ -293,7 +354,9 @@
                 return;
             }
             submitBtn.disabled = true;
+            setFormVerifyBusy(true);
             gateVerifyCode(code).then(function (result) {
+                setFormVerifyBusy(false);
                 submitBtn.disabled = false;
                 if (result.unavailable) {
                     showError('Verification is temporarily unavailable. Try again shortly.');
@@ -305,12 +368,15 @@
                 }
                 if (!result.ok) {
                     showError("That code doesn't match. Try again.");
+                    fillFromString('');
+                    segs[0].focus();
                     return;
                 }
                 if (gateThrottleUiTimer) {
                     clearTimeout(gateThrottleUiTimer);
                     gateThrottleUiTimer = null;
                 }
+                clearGateThrottleCountdown();
                 gateClearServerBlock();
                 gate.classList.remove('access-gate--locked', 'access-gate--cooldown');
                 delete gate.dataset.gateThrottle;
@@ -329,9 +395,27 @@
                 gate.addEventListener('transitionend', function onTe(ev) {
                     if (ev.propertyName !== 'opacity') return;
                     gate.removeEventListener('transitionend', onTe);
+                    gate.removeEventListener('keydown', onGateTabTrap);
                     gate.remove();
+                    if (
+                        focusBeforeGateEl &&
+                        document.body.contains(focusBeforeGateEl) &&
+                        typeof focusBeforeGateEl.focus === 'function'
+                    ) {
+                        focusBeforeGateEl.focus();
+                    } else {
+                        const next =
+                            document.querySelector('main a[href], .navbar a[href], .navbar button') ||
+                            document.querySelector('a[href], button');
+                        if (next) next.focus();
+                    }
                 });
-            });
+            })
+                .catch(function () {
+                    setFormVerifyBusy(false);
+                    submitBtn.disabled = false;
+                    showError('Verification is temporarily unavailable. Try again shortly.');
+                });
         });
 
         syncGateThrottleUi();
