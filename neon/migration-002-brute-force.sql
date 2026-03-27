@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS portfolio_gate_challenges (
     ip INET NOT NULL,
     created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
     used BOOLEAN NOT NULL DEFAULT false,
-    expires_at TIMESTAMPTZ NOT NULL DEFAULT (now() + interval '5 minutes')
+    expires_at TIMESTAMPTZ NOT NULL DEFAULT (now() + interval '3 minutes')
 );
 
 CREATE INDEX IF NOT EXISTS idx_portfolio_gate_challenges_expires

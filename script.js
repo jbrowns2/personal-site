@@ -209,7 +209,7 @@
     }
 
     async function gateVerifyCode(code) {
-        var nonce = await waitForPowSolution(15000);
+        var nonce = await waitForPowSolution(60000);
         var honeypotEl = document.getElementById('access-code-confirm');
         var payload = {
             code: code,

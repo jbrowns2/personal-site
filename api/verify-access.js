@@ -52,24 +52,50 @@ module.exports = async function verifyAccess(req, res) {
 
     try {
         // 2. Validate PoW challenge (also serves as CSRF token)
-        var challengeResult = await gate.validateChallenge(
-            sql,
-            body.challengeId,
-            body.nonce,
-            ip,
-        );
+        var challengeResult = await gate.validateChallenge(sql, body.challengeId, body.nonce);
         if (!challengeResult.valid) {
+            var failReason = challengeResult.reason;
+            if (failReason === 'pow_invalid') {
+                var powFail = await gate.recordFailureAndMaybeLock(sql, ip, fingerprint);
+                var powChallenge = await gate.issueChallenge(sql, ip);
+                if (powFail.locked) {
+                    var powRa = gate.retryAfterSecFromUntil(powFail.lockedUntilMs);
+                    res.setHeader('Retry-After', String(powRa));
+                    return res.status(429).json({
+                        ok: false,
+                        locked: true,
+                        retryAfterSec: powRa,
+                        challenge: powChallenge,
+                    });
+                }
+                return res.status(400).json({
+                    ok: false,
+                    error: 'challenge_failed',
+                    reason: failReason,
+                    challenge: powChallenge,
+                });
+            }
             var newChallenge = await gate.issueChallenge(sql, ip);
             return res.status(400).json({
                 ok: false,
                 error: 'challenge_failed',
-                reason: challengeResult.reason,
+                reason: failReason,
                 challenge: newChallenge,
             });
         }
 
-        // 3. Global rate limit (distributed attack protection)
-        var globalLimited = await gate.checkGlobalRateLimit(sql);
+        // 3–5. Global / IP / fingerprint limits in parallel (fewer Neon round trips)
+        var limitTriplet = await Promise.all([
+            gate.checkGlobalRateLimit(sql),
+            gate.getLockoutUntil(sql, ip),
+            fingerprint
+                ? gate.getFingerprintLockoutUntil(sql, fingerprint)
+                : Promise.resolve(0),
+        ]);
+        var globalLimited = limitTriplet[0];
+        var lockedUntilMs = limitTriplet[1];
+        var fpLockedUntilMs = limitTriplet[2];
+
         if (globalLimited) {
             res.setHeader('Retry-After', '15');
             var retryChallenge = await gate.issueChallenge(sql, ip);
@@ -81,8 +107,6 @@ module.exports = async function verifyAccess(req, res) {
             });
         }
 
-        // 4. IP lockout check
-        var lockedUntilMs = await gate.getLockoutUntil(sql, ip);
         if (lockedUntilMs > Date.now()) {
             var retryAfterSec = gate.retryAfterSecFromUntil(lockedUntilMs);
             res.setHeader('Retry-After', String(retryAfterSec));
@@ -95,32 +119,26 @@ module.exports = async function verifyAccess(req, res) {
             });
         }
 
-        // 5. Fingerprint lockout check
-        if (fingerprint) {
-            var fpLockedUntilMs = await gate.getFingerprintLockoutUntil(sql, fingerprint);
-            if (fpLockedUntilMs > Date.now()) {
-                var fpRetryAfterSec = gate.retryAfterSecFromUntil(fpLockedUntilMs);
-                res.setHeader('Retry-After', String(fpRetryAfterSec));
-                var fpChallenge = await gate.issueChallenge(sql, ip);
-                return res.status(429).json({
-                    ok: false,
-                    locked: true,
-                    retryAfterSec: fpRetryAfterSec,
-                    challenge: fpChallenge,
-                });
-            }
+        if (fingerprint && fpLockedUntilMs > Date.now()) {
+            var fpRetryAfterSec = gate.retryAfterSecFromUntil(fpLockedUntilMs);
+            res.setHeader('Retry-After', String(fpRetryAfterSec));
+            var fpChallenge = await gate.issueChallenge(sql, ip);
+            return res.status(429).json({
+                ok: false,
+                locked: true,
+                retryAfterSec: fpRetryAfterSec,
+                challenge: fpChallenge,
+            });
         }
 
-        // 6. Progressive delay based on recent failures
-        var recentFails = await gate.getRecentFailCount(sql, ip);
-        var delayMs = gate.computeProgressiveDelay(recentFails);
-        if (delayMs > 0) {
-            await gate.sleep(delayMs);
-        }
-
-        // 7. Bcrypt compare
+        // 6. Bcrypt (correct code path has no artificial delay; wrong guesses penalized below)
         var match = await bcryptCompareSafe(normalized, secrets.bcryptHash);
         if (!match) {
+            var recentFails = await gate.getRecentFailCount(sql, ip);
+            var delayMs = gate.computeProgressiveDelay(recentFails);
+            if (delayMs > 0) {
+                await gate.sleep(delayMs);
+            }
             var fail = await gate.recordFailureAndMaybeLock(sql, ip, fingerprint);
             var failChallenge = await gate.issueChallenge(sql, ip);
             if (fail.locked) {
