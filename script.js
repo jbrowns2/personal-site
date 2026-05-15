@@ -4,6 +4,8 @@
 (function initAccessGateAndPreloader() {
     const STORAGE_KEY = 'portfolio_unlocked';
     const API_BASE = '/api';
+    /** Must match lib/gate-backend.js MIN_CODE_LEN */
+    const MIN_GATE_CODE_LEN = 3;
 
     let gateApiReady = false;
     let serverBlockUntil = 0;
@@ -138,7 +140,7 @@
     }
 
     function gateIsPlausibleGuess(phrase) {
-        return normalizeGateCode(phrase).length >= 6;
+        return normalizeGateCode(phrase).length >= MIN_GATE_CODE_LEN;
     }
 
     async function gateFetchJson(path, options) {
@@ -433,7 +435,7 @@
                 return;
             }
             const code = normalizeGateCode(getCode());
-            if (code.length < 6) {
+            if (code.length < MIN_GATE_CODE_LEN) {
                 showError('Enter your access code.');
                 codeInput.focus();
                 return;

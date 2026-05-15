@@ -43,7 +43,7 @@ module.exports = async function verifyAccess(req, res) {
     }
 
     const normalized = gate.normalizePhrase(body.code);
-    if (normalized.length < 6 || body.code.length > gate.MAX_CODE_LEN) {
+    if (normalized.length < gate.MIN_CODE_LEN || body.code.length > gate.MAX_CODE_LEN) {
         return res.status(400).json({ ok: false, error: 'invalid_request' });
     }
 

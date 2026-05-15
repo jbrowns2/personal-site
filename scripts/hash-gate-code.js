@@ -5,6 +5,7 @@
  * Same normalization as the server: trim, uppercase, strip non-alphanumeric.
  */
 const bcrypt = require('bcryptjs');
+const { MIN_CODE_LEN, MAX_CODE_LEN } = require('../lib/gate-backend.js');
 
 const raw = process.argv[2];
 if (!raw) {
@@ -16,8 +17,10 @@ const normalized = String(raw)
     .trim()
     .toUpperCase()
     .replace(/[^A-Z0-9]/g, '');
-if (normalized.length < 6) {
-    console.error('Code must be at least 6 letters/digits after normalization (max 32).');
+if (normalized.length < MIN_CODE_LEN) {
+    console.error(
+        `Code must be at least ${MIN_CODE_LEN} letters/digits after normalization (max ${MAX_CODE_LEN}).`,
+    );
     process.exit(1);
 }
 
