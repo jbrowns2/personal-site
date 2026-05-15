@@ -499,27 +499,24 @@ html.access-unlocked #access-gate {
 }
 
 .access-segments {
-    display: grid;
-    grid-template-columns: repeat(8, minmax(1.5rem, 2.15rem));
+    display: flex;
     justify-content: center;
-    column-gap: 0.35rem;
-    row-gap: 0.35rem;
+    width: 100%;
+    max-width: 20rem;
     margin: 0 auto;
     padding: 0;
-    width: fit-content;
-    max-width: 100%;
 }
 
 .access-seg {
     width: 100%;
     min-width: 0;
     height: 2.4rem;
-    padding: 0;
-    text-align: center;
+    padding: 0 0.875rem;
+    text-align: left;
     font-family: 'JetBrains Mono', ui-monospace, monospace;
     font-size: 1rem;
     font-weight: 600;
-    letter-spacing: 0;
+    letter-spacing: 0.08em;
     color: var(--text-primary);
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid var(--glass-border);
@@ -528,16 +525,6 @@ html.access-unlocked #access-gate {
     -webkit-backdrop-filter: blur(6px);
     transition: border-color var(--transition-base), box-shadow var(--transition-base), background-color var(--transition-base);
     touch-action: manipulation;
-}
-
-@media (max-width: 640px) {
-    .access-segments {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        width: 100%;
-        justify-content: stretch;
-        column-gap: clamp(0.1rem, 2vw, 0.35rem);
-        row-gap: 0.4rem;
-    }
 }
 
 [data-theme="light"] .access-seg {
@@ -724,11 +711,6 @@ html.access-unlocked #access-gate {
 
     .access-gate-form {
         gap: 0.65rem;
-    }
-
-    .access-segments {
-        column-gap: clamp(0.08rem, 1.8vw, 0.28rem);
-        row-gap: 0.35rem;
     }
 
     .access-seg {

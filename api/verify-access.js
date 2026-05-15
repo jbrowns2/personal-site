@@ -43,7 +43,7 @@ module.exports = async function verifyAccess(req, res) {
     }
 
     const normalized = gate.normalizePhrase(body.code);
-    if (normalized.length < 6 || normalized.length > 8 || body.code.length > gate.MAX_CODE_LEN) {
+    if (normalized.length < 6 || body.code.length > gate.MAX_CODE_LEN) {
         return res.status(400).json({ ok: false, error: 'invalid_request' });
     }
 
@@ -131,8 +131,8 @@ module.exports = async function verifyAccess(req, res) {
             });
         }
 
-        // 6. Bcrypt (correct code path has no artificial delay; wrong guesses penalized below)
-        var match = await bcryptCompareSafe(normalized, secrets.bcryptHash);
+        // 6. Bcrypt — check against all valid hashes in parallel (any match unlocks)
+        var match = await bcryptCompareAny(normalized, secrets.bcryptHashes);
         if (!match) {
             var recentFails = await gate.getRecentFailCount(sql, ip);
             var delayMs = gate.computeProgressiveDelay(recentFails);
@@ -189,5 +189,14 @@ function bcryptCompareSafe(plain, hash) {
             }
             resolve(!!same);
         });
+    });
+}
+
+// Check plain against every hash in parallel; resolves true if any match.
+function bcryptCompareAny(plain, hashes) {
+    return Promise.all(hashes.map(function (h) {
+        return bcryptCompareSafe(plain, h);
+    })).then(function (results) {
+        return results.some(Boolean);
     });
 }

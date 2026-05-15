@@ -133,12 +133,12 @@
         });
     }
 
-    function normalizeGateDigits(s) {
-        return String(s).trim().replace(/\D/g, '');
+    function normalizeGateCode(s) {
+        return String(s).trim().toUpperCase().replace(/[^A-Z0-9]/g, '');
     }
 
     function gateIsPlausibleGuess(phrase) {
-        return normalizeGateDigits(phrase).length === 8;
+        return normalizeGateCode(phrase).length >= 6;
     }
 
     async function gateFetchJson(path, options) {
@@ -292,10 +292,10 @@
     function initGateForm() {
         const gate = gateEl;
         const form = document.getElementById('access-gate-form');
-        const segs = Array.prototype.slice.call(document.querySelectorAll('.access-seg'));
+        const codeInput = document.getElementById('access-code-input');
         const errEl = document.getElementById('access-gate-error');
         const submitBtn = form ? form.querySelector('.access-gate-submit') : null;
-        if (!form || !segs.length || !gate || !submitBtn) return;
+        if (!form || !codeInput || !gate || !submitBtn) return;
 
         const focusBeforeGateEl = document.activeElement;
         const submitBtnDefaultText = submitBtn.textContent;
@@ -341,11 +341,7 @@
         gate.addEventListener('keydown', onGateTabTrap);
 
         function getCode() {
-            return segs
-                .map(function (inp) {
-                    return inp.value;
-                })
-                .join('');
+            return codeInput.value;
         }
 
         function clearError() {
@@ -353,18 +349,14 @@
                 return;
             }
             errEl.textContent = '';
-            segs.forEach(function (el) {
-                el.setAttribute('aria-invalid', 'false');
-            });
+            codeInput.setAttribute('aria-invalid', 'false');
             gate.classList.remove('access-gate--error');
         }
 
         function showError(msg) {
             delete gate.dataset.gateThrottle;
             errEl.textContent = msg;
-            segs.forEach(function (el) {
-                el.setAttribute('aria-invalid', 'true');
-            });
+            codeInput.setAttribute('aria-invalid', 'true');
             gate.classList.add('access-gate--error');
             void gate.offsetWidth;
             setTimeout(function () {
@@ -372,64 +364,8 @@
             }, 500);
         }
 
-        function fillFromString(str) {
-            const chars = normalizeGateDigits(str).slice(0, segs.length).split('');
-            segs.forEach(function (el, i) {
-                el.value = chars[i] || '';
-            });
-        }
-
-        segs.forEach(function (input, idx) {
-            input.addEventListener('focus', function () {
-                // Selecting the current character makes one-tap replacement easier on mobile keyboards.
-                if (typeof input.select === 'function') {
-                    requestAnimationFrame(function () {
-                        input.select();
-                    });
-                }
-            });
-
-            input.addEventListener('keydown', function (e) {
-                if (e.key === 'Backspace' && !input.value && idx > 0) {
-                    e.preventDefault();
-                    segs[idx - 1].focus();
-                    segs[idx - 1].value = '';
-                }
-                if (e.key === 'ArrowLeft' && idx > 0) {
-                    e.preventDefault();
-                    segs[idx - 1].focus();
-                }
-                if (e.key === 'ArrowRight' && idx < segs.length - 1) {
-                    e.preventDefault();
-                    segs[idx + 1].focus();
-                }
-            });
-
-            input.addEventListener('input', function () {
-                clearError();
-                let v = input.value;
-                if (v.length > 1) {
-                    fillFromString(v);
-                    const filled = normalizeGateDigits(v).length;
-                    const next = Math.min(idx + Math.max(filled, 1), segs.length - 1);
-                    segs[next].focus();
-                    return;
-                }
-                v = normalizeGateDigits(v).slice(0, 1);
-                input.value = v;
-                if (v && idx < segs.length - 1) {
-                    segs[idx + 1].focus();
-                }
-            });
-
-            input.addEventListener('paste', function (e) {
-                e.preventDefault();
-                const text = (e.clipboardData || window.clipboardData).getData('text') || '';
-                fillFromString(text);
-                const len = Math.min(normalizeGateDigits(text).length, segs.length);
-                const focusIdx = len === 0 ? 0 : Math.min(len - 1, segs.length - 1);
-                segs[focusIdx].focus();
-            });
+        codeInput.addEventListener('input', function () {
+            clearError();
         });
 
         function syncGateThrottleUi() {
@@ -445,9 +381,7 @@
                     errEl.textContent = '';
                     delete gate.dataset.gateThrottle;
                 }
-                segs.forEach(function (el) {
-                    el.disabled = false;
-                });
+                codeInput.disabled = false;
                 submitBtn.disabled = false;
                 return;
             }
@@ -457,17 +391,13 @@
                 gate.classList.add('access-gate--locked');
                 errEl.textContent =
                     'Too many attempts. Try again in ' + gateFormatRemaining(msLeft) + '.';
-                segs.forEach(function (el) {
-                    el.disabled = true;
-                });
+                codeInput.disabled = true;
                 submitBtn.disabled = true;
             } else {
                 gate.classList.add('access-gate--cooldown');
                 errEl.textContent =
                     'Please wait ' + gateFormatRemaining(msLeft) + ' before trying again.';
-                segs.forEach(function (el) {
-                    el.disabled = false;
-                });
+                codeInput.disabled = false;
                 submitBtn.disabled = true;
             }
             scheduleGateThrottleUiSync(syncGateThrottleUi, block.until);
@@ -502,10 +432,10 @@
                 );
                 return;
             }
-            const code = normalizeGateDigits(getCode());
-            if (code.length !== 8) {
-                showError('Enter all 8 digits.');
-                segs[0].focus();
+            const code = normalizeGateCode(getCode());
+            if (code.length < 6) {
+                showError('Enter your access code.');
+                codeInput.focus();
                 return;
             }
             submitBtn.disabled = true;
@@ -530,8 +460,8 @@
                 }
                 if (result.challengeFailed) {
                     showError('Security check failed. Please try again.');
-                    fillFromString('');
-                    segs[0].focus();
+                    codeInput.value = '';
+                    codeInput.focus();
                     return;
                 }
                 if (result.throttled || gateGetBlocking()) {
@@ -540,8 +470,8 @@
                 }
                 if (!result.ok) {
                     showError("That code doesn't match. Try again.");
-                    fillFromString('');
-                    segs[0].focus();
+                    codeInput.value = '';
+                    codeInput.focus();
                     return;
                 }
                 if (gateThrottleUiTimer) {
@@ -591,8 +521,8 @@
         });
 
         syncGateThrottleUi();
-        if (!segs[0].disabled) {
-            segs[0].focus();
+        if (!codeInput.disabled) {
+            codeInput.focus();
         } else {
             submitBtn.focus();
         }
@@ -615,7 +545,7 @@
             if (m) {
                 const phrase = decodeURIComponent(m[1].replace(/\+/g, ' '));
                 if (gateIsPlausibleGuess(phrase)) {
-                    const r = await gateVerifyCode(normalizeGateDigits(phrase));
+                    const r = await gateVerifyCode(normalizeGateCode(phrase));
                     if (r.ok) {
                         stored = true;
                     }

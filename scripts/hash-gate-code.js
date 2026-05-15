@@ -16,8 +16,8 @@ const normalized = String(raw)
     .trim()
     .toUpperCase()
     .replace(/[^A-Z0-9]/g, '');
-if (normalized.length < 6 || normalized.length > 8) {
-    console.error('Code must be 6–8 letters/digits after normalization.');
+if (normalized.length < 6) {
+    console.error('Code must be at least 6 letters/digits after normalization (max 32).');
     process.exit(1);
 }
 
