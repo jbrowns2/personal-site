@@ -7,7 +7,12 @@
     "minify": "npm run build",
     "dev": "serve -l 3000 .",
     "dev:vercel": "npx vercel dev",
-    "gate:hash": "node scripts/hash-gate-code.js"
+    "gate:hash": "node scripts/hash-gate-code.js",
+    "gate:list": "node scripts/manage-gate-codes.js list",
+    "gate:add": "node scripts/manage-gate-codes.js add",
+    "gate:disable": "node scripts/manage-gate-codes.js disable",
+    "gate:enable": "node scripts/manage-gate-codes.js enable",
+    "gate:remove": "node scripts/manage-gate-codes.js remove"
   },
   "dependencies": {
     "@neondatabase/serverless": "^0.10.4",

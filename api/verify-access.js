@@ -16,9 +16,6 @@ module.exports = async function verifyAccess(req, res) {
         if (!process.env.DATABASE_URL) {
             console.error('verify-access: DATABASE_URL is not set (Vercel → Env).');
         }
-        if (!process.env.ACCESS_CODE_BCRYPT) {
-            console.error('verify-access: ACCESS_CODE_BCRYPT is not set.');
-        }
         const gss = process.env.GATE_SESSION_SECRET;
         if (!gss || gss.length < 32) {
             console.error('verify-access: GATE_SESSION_SECRET must be set and at least 32 characters.');
@@ -131,9 +128,20 @@ module.exports = async function verifyAccess(req, res) {
             });
         }
 
-        // 6. Bcrypt — check against all valid hashes in parallel (any match unlocks)
-        var match = await bcryptCompareAny(normalized, secrets.bcryptHashes);
-        if (!match) {
+        // 6. Bcrypt — check against all active hashes (DB + env fallback) in parallel.
+        var activeHashes = await gate.loadAllGateAccessHashes(sql);
+        if (activeHashes.length === 0) {
+            console.error(
+                'verify-access: no active access codes configured (table portfolio_gate_access_codes is empty and ACCESS_CODE_BCRYPT is unset).',
+            );
+            return res.status(503).json({
+                ok: false,
+                error: 'service_unavailable',
+                reason: 'no_access_codes_configured',
+            });
+        }
+        var matchedHash = await bcryptFindMatch(normalized, activeHashes);
+        if (!matchedHash) {
             var recentFails = await gate.getRecentFailCount(sql, ip);
             var delayMs = gate.computeProgressiveDelay(recentFails);
             if (delayMs > 0) {
@@ -156,6 +164,7 @@ module.exports = async function verifyAccess(req, res) {
         }
 
         await gate.recordSuccess(sql, ip, fingerprint);
+        gate.recordAccessCodeUsed(sql, matchedHash).catch(function () {});
         var token = gate.signSession(secrets.secret);
         res.setHeader('Set-Cookie', gate.buildSessionCookie(token, req));
         gate.maybePruneOldRecords(sql).catch(function () {});
@@ -192,11 +201,17 @@ function bcryptCompareSafe(plain, hash) {
     });
 }
 
-// Check plain against every hash in parallel; resolves true if any match.
-function bcryptCompareAny(plain, hashes) {
+// Check plain against every hash in parallel; resolves with the matched hash
+// (so callers can update last_used_at), or null if no hash matched.
+function bcryptFindMatch(plain, hashes) {
     return Promise.all(hashes.map(function (h) {
-        return bcryptCompareSafe(plain, h);
+        return bcryptCompareSafe(plain, h).then(function (same) {
+            return same ? h : null;
+        });
     })).then(function (results) {
-        return results.some(Boolean);
+        for (var i = 0; i < results.length; i++) {
+            if (results[i]) return results[i];
+        }
+        return null;
     });
 }

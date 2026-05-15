@@ -82,13 +82,38 @@ You can deploy the root folder directly to:
 
 The resume access code is **verified on the server** (bcrypt, no secret in the browser), **rate-limited and lockouts are stored in Neon** (per IP), and a successful login sets an **HttpOnly, `SameSite` session cookie** signed with `GATE_SESSION_SECRET`.
 
-1. Create a [Neon](https://neon.tech) project and run the SQL in `neon/schema.sql` in the Neon SQL editor.
+1. Create a [Neon](https://neon.tech) project and run the SQL in `neon/` in order:
+   - `schema.sql` (new DBs only)
+   - `migration-002-brute-force.sql` (existing DBs missing the brute-force tables)
+   - `migration-003-access-codes.sql` (creates `portfolio_gate_access_codes`)
 2. In Vercel → Project → Settings → Environment Variables, add:
    - `DATABASE_URL` — your Neon connection string (serverless pooler URL is recommended).
-   - `ACCESS_CODE_BCRYPT` — run `npm run gate:hash -- YOURCODE` locally and paste the printed value.
    - `GATE_SESSION_SECRET` — at least 32 random characters (for example `node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"`).
+   - `ACCESS_CODE_BCRYPT` — **optional** (leave unset in normal use). If set, its newline-separated bcrypt hashes are accepted in addition to anything in the DB — useful as a break-glass fallback.
 3. Deploy on **Vercel** from the repo root (not `dist` alone) so `/api/*` serverless routes are included; keep the existing build (`outputDirectory: dist`).
 4. Local full stack: copy `.env.example` to `.env`, fill values, then `npm run dev:vercel` (or `npx vercel dev`). Plain `npm run dev` only serves static files and cannot verify the gate.
+
+#### Managing access codes
+
+Access codes live in the `portfolio_gate_access_codes` table and are managed from the CLI. The verify endpoint caches active hashes for ~30 seconds, so adds / disables propagate within that window without a redeploy.
+
+```bash
+# add a new code (label is just for your own bookkeeping)
+npm run gate:add -- "openthegate" "RGA"
+npm run gate:add -- "openthegate" "RGA" --expires 2026-12-31
+
+# list every code (active + disabled)
+npm run gate:list
+
+# turn one off / back on (id or label)
+npm run gate:disable -- "RGA"
+npm run gate:enable  -- 3
+
+# delete entirely
+npm run gate:remove  -- "RGA"
+```
+
+The CLI reads `DATABASE_URL` from `.env`, normalizes the raw code the same way the server does, and bcrypt-hashes it before insert. The bcrypt hash itself is the only thing stored — the raw code is never written to the DB.
 
 ## Google Search (Get Indexed)
 

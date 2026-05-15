@@ -451,11 +451,15 @@
                         result.serviceReason === 'database_schema_outdated'
                     ) {
                         showError(
-                            'The access database needs updating. In Neon, run neon/migration-002-brute-force.sql (or full schema), then try again.',
+                            'The access database needs updating. In Neon, run the latest migration in neon/, then try again.',
+                        );
+                    } else if (result.serviceReason === 'no_access_codes_configured') {
+                        showError(
+                            'No access codes are configured yet. Add one with `npm run gate:add` and try again.',
                         );
                     } else {
                         showError(
-                            'Verification is temporarily unavailable. Confirm Vercel env vars (DATABASE_URL, ACCESS_CODE_BCRYPT, GATE_SESSION_SECRET) and try again.',
+                            'Verification is temporarily unavailable. Confirm Vercel env vars (DATABASE_URL, GATE_SESSION_SECRET) and try again.',
                         );
                     }
                     return;
