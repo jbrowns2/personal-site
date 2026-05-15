@@ -4,8 +4,9 @@
  *
  * Usage:
  *   node scripts/manage-gate-codes.js list
- *   node scripts/manage-gate-codes.js add "RAW CODE" "Label / company"
- *   node scripts/manage-gate-codes.js add "RAW CODE" "Label" --expires 2026-12-31
+ *   node scripts/manage-gate-codes.js add    "RAW CODE" "Label / company"
+ *   node scripts/manage-gate-codes.js add    "RAW CODE" "Label" --expires 2026-12-31
+ *   node scripts/manage-gate-codes.js rotate "RAW CODE" "Label"   # replace existing label with a fresh hash
  *   node scripts/manage-gate-codes.js disable <id|label>
  *   node scripts/manage-gate-codes.js enable  <id|label>
  *   node scripts/manage-gate-codes.js remove  <id|label>
@@ -27,7 +28,10 @@ const { MIN_CODE_LEN, MAX_CODE_LEN } = require('../lib/gate-backend.js');
 
 loadDotEnvIfPresent(path.join(__dirname, '..', '.env'));
 
-const BCRYPT_COST = 12;
+// Cost 10 = OWASP minimum for bcrypt; ~4× faster than cost 12 with no
+// meaningful security loss for a personal portfolio gate. Re-hash existing
+// codes via the `rotate` command to pick up the speedup.
+const BCRYPT_COST = 10;
 
 main().catch(function (err) {
     console.error(err && err.stack ? err.stack : err);
@@ -50,6 +54,9 @@ async function main() {
             break;
         case 'add':
             await cmdAdd(sql, argv.slice(1));
+            break;
+        case 'rotate':
+            await cmdRotate(sql, argv.slice(1));
             break;
         case 'disable':
             await cmdSetActive(sql, argv.slice(1), false);
@@ -75,8 +82,11 @@ function printUsage() {
             '',
             'Commands:',
             '  list                                  Show every access code (active + disabled).',
-            '  add "RAW CODE" "Label" [--expires YYYY-MM-DD]',
+            '  add    "RAW CODE" "Label" [--expires YYYY-MM-DD]',
             '                                        Hash and insert a new code.',
+            '  rotate "RAW CODE" "Label" [--expires YYYY-MM-DD]',
+            '                                        Replace any existing code(s) with this label by',
+            '                                        a freshly-hashed entry (used to drop bcrypt cost).',
             '  disable <id|label>                    Mark an access code inactive.',
             '  enable  <id|label>                    Re-activate a disabled access code.',
             '  remove  <id|label>                    Permanently delete an access code.',
@@ -119,44 +129,9 @@ async function cmdList(sql) {
 }
 
 async function cmdAdd(sql, args) {
-    const positional = [];
-    let expiresAt = null;
-    for (let i = 0; i < args.length; i++) {
-        const a = args[i];
-        if (a === '--expires' || a === '-e') {
-            expiresAt = args[++i] || null;
-        } else if (a.startsWith('--expires=')) {
-            expiresAt = a.slice('--expires='.length);
-        } else {
-            positional.push(a);
-        }
-    }
-    const rawCode = positional[0];
-    const label = positional[1];
-    if (!rawCode || !label) {
-        console.error(
-            'Usage: node scripts/manage-gate-codes.js add "RAW CODE" "Label" [--expires YYYY-MM-DD]',
-        );
-        process.exit(1);
-    }
-    const normalized = normalizeCode(rawCode);
-    if (normalized.length < MIN_CODE_LEN || normalized.length > MAX_CODE_LEN) {
-        console.error(
-            'Code must be between ' +
-                MIN_CODE_LEN +
-                ' and ' +
-                MAX_CODE_LEN +
-                ' alphanumeric characters after normalization.',
-        );
-        process.exit(1);
-    }
-    if (expiresAt && Number.isNaN(Date.parse(expiresAt))) {
-        console.error('Invalid --expires value (use YYYY-MM-DD or full ISO timestamp).');
-        process.exit(1);
-    }
-
+    const { rawCode, label, expiresIso } = parseAddArgs(args, 'add');
+    const normalized = normalizeAndValidateCode(rawCode);
     const hash = bcrypt.hashSync(normalized, BCRYPT_COST);
-    const expiresIso = expiresAt ? new Date(expiresAt).toISOString() : null;
     const inserted = await sql`
         INSERT INTO portfolio_gate_access_codes (label, bcrypt_hash, active, expires_at)
         VALUES (${label}, ${hash}, true, ${expiresIso})
@@ -175,7 +150,94 @@ async function cmdAdd(sql, args) {
             row.id +
             ' label="' +
             row.label +
-            '"' +
+            '" at bcrypt cost ' +
+            BCRYPT_COST +
+            (row.expires_at ? ' expires=' + toIso(row.expires_at) : '') +
+            '. Propagates within ~30s.',
+    );
+}
+
+function parseAddArgs(args, cmdName) {
+    const positional = [];
+    let expiresAt = null;
+    for (let i = 0; i < args.length; i++) {
+        const a = args[i];
+        if (a === '--expires' || a === '-e') {
+            expiresAt = args[++i] || null;
+        } else if (a.startsWith('--expires=')) {
+            expiresAt = a.slice('--expires='.length);
+        } else {
+            positional.push(a);
+        }
+    }
+    const rawCode = positional[0];
+    const label = positional[1];
+    if (!rawCode || !label) {
+        console.error(
+            'Usage: node scripts/manage-gate-codes.js ' +
+                cmdName +
+                ' "RAW CODE" "Label" [--expires YYYY-MM-DD]',
+        );
+        process.exit(1);
+    }
+    if (expiresAt && Number.isNaN(Date.parse(expiresAt))) {
+        console.error('Invalid --expires value (use YYYY-MM-DD or full ISO timestamp).');
+        process.exit(1);
+    }
+    return {
+        rawCode: rawCode,
+        label: label,
+        expiresIso: expiresAt ? new Date(expiresAt).toISOString() : null,
+    };
+}
+
+function normalizeAndValidateCode(rawCode) {
+    const normalized = normalizeCode(rawCode);
+    if (normalized.length < MIN_CODE_LEN || normalized.length > MAX_CODE_LEN) {
+        console.error(
+            'Code must be between ' +
+                MIN_CODE_LEN +
+                ' and ' +
+                MAX_CODE_LEN +
+                ' alphanumeric characters after normalization.',
+        );
+        process.exit(1);
+    }
+    return normalized;
+}
+
+async function cmdRotate(sql, args) {
+    const { rawCode, label, expiresIso } = parseAddArgs(args, 'rotate');
+    const normalized = normalizeAndValidateCode(rawCode);
+    const newHash = bcrypt.hashSync(normalized, BCRYPT_COST);
+
+    const removed = await sql`
+        DELETE FROM portfolio_gate_access_codes
+        WHERE label = ${label}
+        RETURNING id
+    `;
+    const inserted = await sql`
+        INSERT INTO portfolio_gate_access_codes (label, bcrypt_hash, active, expires_at)
+        VALUES (${label}, ${newHash}, true, ${expiresIso})
+        ON CONFLICT (bcrypt_hash) DO NOTHING
+        RETURNING id, label, active, expires_at, created_at
+    `;
+    if (inserted.length === 0) {
+        console.error(
+            'Insert failed (bcrypt hash collision). Try again — bcrypt salting should make this near-impossible.',
+        );
+        process.exit(1);
+    }
+    const row = inserted[0];
+    console.log(
+        'Rotated label="' +
+            label +
+            '": removed ' +
+            removed.length +
+            ' old row(s), added id=' +
+            row.id +
+            ' at bcrypt cost ' +
+            BCRYPT_COST +
             (row.expires_at ? ' expires=' + toIso(row.expires_at) : '') +
             '. Propagates within ~30s.',
     );

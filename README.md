@@ -105,6 +105,10 @@ npm run gate:add -- "openthegate" "RGA" --expires 2026-12-31
 # list every code (active + disabled)
 npm run gate:list
 
+# replace any rows with this label by a freshly-hashed entry
+# (use this to drop an old high-cost hash to the current default cost 10)
+npm run gate:rotate -- "openthegate" "RGA"
+
 # turn one off / back on (id or label)
 npm run gate:disable -- "RGA"
 npm run gate:enable  -- 3

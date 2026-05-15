@@ -301,6 +301,13 @@
 
         const focusBeforeGateEl = document.activeElement;
         const submitBtnDefaultText = submitBtn.textContent;
+        const gateInner = form.closest('.access-gate-inner');
+        if (gateInner && !gateInner.querySelector('.access-gate-progress')) {
+            const bar = document.createElement('div');
+            bar.className = 'access-gate-progress';
+            bar.setAttribute('aria-hidden', 'true');
+            gateInner.insertBefore(bar, gateInner.firstChild);
+        }
 
         function clearGateThrottleCountdown() {
             if (gateThrottleCountdownId !== null) {
@@ -312,6 +319,7 @@
         function setFormVerifyBusy(busy) {
             form.setAttribute('aria-busy', busy ? 'true' : 'false');
             submitBtn.textContent = busy ? 'Checking…' : submitBtnDefaultText;
+            gate.classList.toggle('access-gate--verifying', !!busy);
         }
 
         function getGateFocusableEls() {
@@ -492,16 +500,33 @@
                     history.replaceState(null, '', window.location.pathname + window.location.search);
                 }
                 applyUnlockedDom({ clearLoading: true });
+                gate.classList.remove('access-gate--verifying');
                 gate.classList.add('access-gate--success');
                 const inner = form.closest('.access-gate-inner');
-                const msg = document.createElement('p');
-                msg.className = 'access-gate-success-msg';
-                msg.textContent = 'Access granted';
-                if (inner) inner.appendChild(msg);
+                if (inner) {
+                    const block = document.createElement('div');
+                    block.className = 'access-gate-success-block';
+                    block.setAttribute('role', 'status');
+                    block.setAttribute('aria-live', 'polite');
+                    block.innerHTML =
+                        '<div class="access-gate-success-check" aria-hidden="true">' +
+                        '<svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>' +
+                        '</div>' +
+                        '<p class="access-gate-success-text">Access granted</p>' +
+                        '<p class="access-gate-success-sub">Opening portal</p>';
+                    inner.appendChild(block);
+                }
 
-                gate.classList.add('access-gate--exiting');
+                // Give the success animation a beat to land before the gate
+                // begins fading out, so the checkmark is actually perceptible.
+                setTimeout(function () {
+                    gate.classList.add('access-gate--exiting');
+                }, 450);
                 gate.addEventListener('transitionend', function onTe(ev) {
-                    if (ev.propertyName !== 'opacity') return;
+                    // Only react to the gate's own opacity transition (the
+                    // exit fade), not the descendant fade-to-0.18 triggered
+                    // by `access-gate--success`, which would fire first.
+                    if (ev.target !== gate || ev.propertyName !== 'opacity') return;
                     gate.removeEventListener('transitionend', onTe);
                     gate.removeEventListener('keydown', onGateTabTrap);
                     gate.remove();
