@@ -45,7 +45,7 @@
     (function(){var t=localStorage.getItem('theme');if(!t){t=window.matchMedia('(prefers-color-scheme:light)').matches?'light':'dark'}document.documentElement.setAttribute('data-theme',t);document.querySelector('meta[name="theme-color"]').setAttribute('content',t==='light'?'#f8fafc':'#0a0a1a')})();
     (function(){document.documentElement.classList.add('access-locked');})();
     </script>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=gate-revamp-2">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     
     <!-- Structured Data (minimal) -->
@@ -63,43 +63,119 @@
 </head>
 <body>
     <!-- Access gate -->
-    <div id="access-gate" class="access-gate" role="dialog" aria-modal="true" aria-labelledby="access-gate-title">
+    <div id="access-gate" class="access-gate" role="dialog" aria-modal="true" aria-labelledby="access-gate-title" data-gate-view="code">
+        <div class="access-gate-aura" aria-hidden="true"></div>
         <div class="access-gate-inner">
             <header class="access-gate-intro">
-                <h1 id="access-gate-title" class="access-gate-heading">Jonathan Brownstein, MSe, FLMI</h1>
-                <p class="access-gate-subtitle">Enter your 8-digit access code. Paste works.</p>
+                <div class="access-gate-brand" aria-hidden="true">
+                    <span class="access-gate-brand-mark">JB</span>
+                </div>
+                <span class="access-gate-pill">
+                    <span class="access-gate-pill-dot" aria-hidden="true"></span>
+                    Private portal &middot; invite required
+                </span>
+                <h1 id="access-gate-title" class="access-gate-heading">Jonathan Brownstein</h1>
+                <p class="access-gate-credential">MSe &middot; FLMI</p>
+                <p class="access-gate-subtitle" data-view="code">Enter the access code I shared with you. Paste works.</p>
+                <p class="access-gate-subtitle" data-view="request">Tell me a little about you and I&rsquo;ll send a code over.</p>
             </header>
-            <address class="access-gate-contact">
-                <dl class="access-gate-contact-list">
-                    <div class="access-gate-contact-row">
-                        <dt>Email</dt>
-                        <dd><a href="mailto:JonathanBrownstein12@icloud.com">JonathanBrownstein12@icloud.com</a></dd>
-                    </div>
-                    <div class="access-gate-contact-row">
-                        <dt>Phone</dt>
-                        <dd><a href="tel:7792470487">(779) 247-0487</a></dd>
-                    </div>
-                    <div class="access-gate-contact-row">
-                        <dt>Location</dt>
-                        <dd>Wauconda, IL</dd>
-                    </div>
-                </dl>
-            </address>
+
+            <section class="access-gate-view access-gate-view--code" data-view="code">
             <div class="access-gate-form-wrap">
                 <form id="access-gate-form" class="access-gate-form" novalidate>
                     <label id="access-gate-label" class="visually-hidden" for="access-code-input">Access code</label>
                     <div class="access-segments">
-                        <input type="text" class="access-seg" id="access-code-input" name="access-code-input" maxlength="32" autocomplete="off" autocorrect="off" autocapitalize="characters" spellcheck="false" enterkeyhint="done" aria-invalid="false" placeholder="Access code">
+                        <span class="access-gate-input-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" focusable="false">
+                                <path d="M21 2l-9.6 9.6"></path>
+                                <path d="M15.5 7.5l3 3"></path>
+                                <circle cx="7.5" cy="15.5" r="5.5"></circle>
+                            </svg>
+                        </span>
+                        <input type="text" class="access-seg" id="access-code-input" name="access-code-input" maxlength="32" autocomplete="one-time-code" autocorrect="off" autocapitalize="off" spellcheck="false" enterkeyhint="done" aria-invalid="false" placeholder="Access code">
                     </div>
                     <div aria-hidden="true" style="position:absolute;left:-9999px;height:0;overflow:hidden;opacity:0">
                         <label for="access-code-confirm">Leave blank</label>
                         <input type="text" id="access-code-confirm" name="access-code-confirm" autocomplete="off" tabindex="-1">
                     </div>
                     <p id="access-gate-error" class="access-gate-error" role="alert" aria-live="assertive"></p>
-                    <button type="submit" class="access-gate-submit btn btn-primary">Enter</button>
+                    <button type="submit" class="access-gate-submit btn btn-primary">
+                        <span class="access-gate-submit-label">Enter portal</span>
+                        <svg class="access-gate-submit-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                            <path d="M5 12h14"></path>
+                            <path d="M13 6l6 6-6 6"></path>
+                        </svg>
+                    </button>
                 </form>
             </div>
-            <p class="access-gate-noscript-msg">JavaScript is required to enter an access code. Use the contact information above to reach Jonathan.</p>
+            <div class="access-gate-divider" role="separator" aria-orientation="horizontal">
+                <span>No code?</span>
+            </div>
+            <div class="access-gate-actions">
+                <button type="button" class="access-gate-action-btn" data-gate-action="show-request">
+                    <span class="access-gate-action-label">Request access</span>
+                    <svg class="access-gate-action-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                        <path d="M5 12h14"></path>
+                        <path d="M13 6l6 6-6 6"></path>
+                    </svg>
+                </button>
+                <p class="access-gate-actions-hint">Or reach Jonathan directly via <a href="mailto:JonathanBrownstein12@icloud.com">email</a> or <a href="tel:7792470487">phone</a>.</p>
+            </div>
+            </section>
+
+            <section class="access-gate-view access-gate-view--request" data-view="request" hidden>
+                <form id="access-request-form" class="access-gate-form access-request-form" novalidate>
+                    <div class="access-gate-field">
+                        <label class="access-gate-field-label" for="access-request-name">Name</label>
+                        <input type="text" id="access-request-name" name="name" class="access-gate-text-input" maxlength="80" autocomplete="name" required placeholder="Your name">
+                    </div>
+                    <div class="access-gate-field">
+                        <label class="access-gate-field-label" for="access-request-email">Email</label>
+                        <input type="email" id="access-request-email" name="email" class="access-gate-text-input" maxlength="254" autocomplete="email" inputmode="email" required placeholder="you@company.com">
+                    </div>
+                    <div class="access-gate-field">
+                        <label class="access-gate-field-label" for="access-request-referral">How did you find me?</label>
+                        <textarea id="access-request-referral" name="referral" class="access-gate-textarea" maxlength="500" rows="3" required placeholder="LinkedIn, a referral, a specific role you have in mind, etc."></textarea>
+                    </div>
+                    <div aria-hidden="true" style="position:absolute;left:-9999px;height:0;overflow:hidden;opacity:0">
+                        <label for="access-request-website">Leave this blank</label>
+                        <input type="text" id="access-request-website" name="access-request-website" autocomplete="off" tabindex="-1">
+                    </div>
+                    <p id="access-request-error" class="access-gate-error" role="alert" aria-live="assertive"></p>
+                    <button type="submit" class="access-gate-submit btn btn-primary">
+                        <span class="access-gate-submit-label">Send request</span>
+                        <svg class="access-gate-submit-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                            <path d="M5 12h14"></path>
+                            <path d="M13 6l6 6-6 6"></path>
+                        </svg>
+                    </button>
+                    <button type="button" class="access-gate-back-link" data-gate-action="show-code">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                            <path d="M19 12H5"></path>
+                            <path d="M11 18l-6-6 6-6"></path>
+                        </svg>
+                        <span>Back to code entry</span>
+                    </button>
+                </form>
+                <div class="access-request-success" id="access-request-success" hidden role="status" aria-live="polite">
+                    <div class="access-request-success-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" focusable="false">
+                            <path d="M5 12.5l4.5 4.5L19 7.5"></path>
+                        </svg>
+                    </div>
+                    <h2 class="access-request-success-title">Request sent.</h2>
+                    <p class="access-request-success-body">Jonathan will review and send a code to the email you provided. If it doesn&rsquo;t land within a day, please reach out directly.</p>
+                    <button type="button" class="access-gate-back-link" data-gate-action="show-code">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                            <path d="M19 12H5"></path>
+                            <path d="M11 18l-6-6 6-6"></path>
+                        </svg>
+                        <span>Back to code entry</span>
+                    </button>
+                </div>
+            </section>
+
+            <p class="access-gate-noscript-msg">JavaScript is required to enter or request an access code. Email <a href="mailto:JonathanBrownstein12@icloud.com">JonathanBrownstein12@icloud.com</a> or call <a href="tel:7792470487">(779) 247-0487</a> to reach Jonathan.</p>
         </div>
     </div>
 
@@ -235,14 +311,6 @@
                                 <line x1="5" y1="12" x2="19" y2="12"></line>
                                 <polyline points="12 5 19 12 12 19"></polyline>
                             </svg>
-                        </a>
-                        <a href="Projects/Jonathan_Brownstein_Resume.pdf" class="btn btn-ghost" download target="_blank" rel="noopener noreferrer">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                                <polyline points="7 10 12 15 17 10"></polyline>
-                                <line x1="12" y1="15" x2="12" y2="3"></line>
-                            </svg>
-                            Download Resume
                         </a>
                     </div>
                 </div>
@@ -994,8 +1062,8 @@
         <style>
             header, main, footer, #bg-canvas, #preloader { display: none !important; }
             html, body { overflow: auto !important; }
-            .access-gate-form-wrap, .access-gate-submit { display: none !important; }
-            .access-gate-noscript-msg { display: block !important; margin-top: 1.5rem; max-width: 24rem; margin-left: auto; margin-right: auto; }
+            .access-gate-form-wrap, .access-gate-submit, .access-gate-subtitle, .access-gate-divider, .access-gate-actions, .access-gate-view--request { display: none !important; }
+            .access-gate-noscript-msg { display: block !important; margin: 0.5rem 0 1rem; max-width: 24rem; margin-left: auto; margin-right: auto; text-align: center; }
             #access-gate { position: fixed; inset: 0; z-index: 10000; display: flex !important; align-items: center; justify-content: center; }
         </style>
     </noscript>

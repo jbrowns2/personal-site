@@ -86,12 +86,34 @@ The resume access code is **verified on the server** (bcrypt, no secret in the b
    - `schema.sql` (new DBs only)
    - `migration-002-brute-force.sql` (existing DBs missing the brute-force tables)
    - `migration-003-access-codes.sql` (creates `portfolio_gate_access_codes`)
+   - `migration-004-access-requests.sql` (creates `portfolio_gate_access_requests` for the "Request access" form)
 2. In Vercel → Project → Settings → Environment Variables, add:
    - `DATABASE_URL` — your Neon connection string (serverless pooler URL is recommended).
    - `GATE_SESSION_SECRET` — at least 32 random characters (for example `node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"`).
    - `ACCESS_CODE_BCRYPT` — **optional** (leave unset in normal use). If set, its newline-separated bcrypt hashes are accepted in addition to anything in the DB — useful as a break-glass fallback.
 3. Deploy on **Vercel** from the repo root (not `dist` alone) so `/api/*` serverless routes are included; keep the existing build (`outputDirectory: dist`).
 4. Local full stack: copy `.env.example` to `.env`, fill values, then `npm run dev:vercel` (or `npx vercel dev`). Plain `npm run dev` only serves static files and cannot verify the gate.
+
+#### Request-access form (Resend)
+
+Visitors without a code can hit the **Request access** button on the gate. The flow is:
+
+1. They submit name / email / how they found me (PoW, honeypot, and per-IP / per-email / per-fingerprint rate limits apply).
+2. The server emails me an approval link signed with `REQUEST_APPROVAL_SECRET` (or `GATE_SESSION_SECRET` if that's unset).
+3. Clicking the link opens `/api/approve-access`, which atomically issues a code derived from the requester's email domain, marks the request approved in the DB, and emails the code to both the requester and me.
+
+Required env vars (all three must be set or the form returns 503):
+
+- `RESEND_API_KEY` — API key from [Resend](https://resend.com/api-keys).
+- `RESEND_FROM_EMAIL` — verified sender, e.g. `"Jonathan Brownstein <portal@yourdomain.com>"`.
+- `RESEND_NOTIFY_EMAIL` — inbox that should receive new requests.
+
+Optional:
+
+- `REQUEST_APPROVAL_SECRET` — dedicated 32+ char secret for approval-link signing. Defaults to `GATE_SESSION_SECRET`.
+- `SITE_URL` — public origin used for approval links (e.g. `https://www.jonathansbrownstein.com`). If unset, the handler falls back to inbound `x-forwarded-*` headers.
+
+Approved requests auto-create access codes in `portfolio_gate_access_codes` (labelled by the email domain, with a 30-day expiry by default), so they show up in `npm run gate:list` and can be disabled the same way as any other code.
 
 #### Managing access codes
 

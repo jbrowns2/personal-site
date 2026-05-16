@@ -300,7 +300,9 @@
         if (!form || !codeInput || !gate || !submitBtn) return;
 
         const focusBeforeGateEl = document.activeElement;
-        const submitBtnDefaultText = submitBtn.textContent;
+        const submitLabelEl = submitBtn.querySelector('.access-gate-submit-label');
+        const submitTextTarget = submitLabelEl || submitBtn;
+        const submitBtnDefaultText = submitTextTarget.textContent;
         const gateInner = form.closest('.access-gate-inner');
         if (gateInner && !gateInner.querySelector('.access-gate-progress')) {
             const bar = document.createElement('div');
@@ -318,7 +320,7 @@
 
         function setFormVerifyBusy(busy) {
             form.setAttribute('aria-busy', busy ? 'true' : 'false');
-            submitBtn.textContent = busy ? 'Checking…' : submitBtnDefaultText;
+            submitTextTarget.textContent = busy ? 'Checking…' : submitBtnDefaultText;
             gate.classList.toggle('access-gate--verifying', !!busy);
         }
 
@@ -438,7 +440,7 @@
             }
             if (!gateApiReady) {
                 showError(
-                    'Access verification needs the live site. Use your deployed URL or run npx vercel dev from this project.'
+                    'The portal is temporarily unavailable. Please try again in a moment.'
                 );
                 return;
             }
@@ -473,8 +475,7 @@
                     return;
                 }
                 if (result.challengeFailed) {
-                    showError('Security check failed. Please try again.');
-                    codeInput.value = '';
+                    showError('Verification refreshed — please click Enter portal again.');
                     codeInput.focus();
                     return;
                 }
@@ -559,6 +560,259 @@
         }
     }
 
+    // ------------------------------------------------------------------
+    // Request-access form & view switching
+    // ------------------------------------------------------------------
+    //
+    // The gate hosts two views inside the same card: "code" (default) and
+    // "request". Switching is done by toggling [data-gate-view] on
+    // #access-gate; CSS hides the inactive view via [hidden] on each
+    // <section data-view="...">. We keep both forms inside the gate so the
+    // tab trap and focus management already implemented by initGateForm
+    // continue to work — display:none rows just drop out of the tab order.
+    //
+    // The request form shares the same PoW challenge and fingerprint that
+    // the gate's solver is already burning CPU on, so requesting access has
+    // zero additional client-side overhead.
+
+    var pageLoadTs = Date.now();
+
+    function setGateView(view) {
+        if (!gateEl) return;
+        var current = gateEl.getAttribute('data-gate-view') || 'code';
+        if (current === view) return;
+        gateEl.setAttribute('data-gate-view', view);
+        var sections = gateEl.querySelectorAll('.access-gate-view');
+        for (var i = 0; i < sections.length; i++) {
+            var s = sections[i];
+            var match = s.getAttribute('data-view') === view;
+            if (match) {
+                s.removeAttribute('hidden');
+            } else {
+                s.setAttribute('hidden', '');
+            }
+        }
+        // Focus the first focusable control in the active view so keyboard
+        // users land somewhere predictable.
+        var active = gateEl.querySelector('.access-gate-view[data-view="' + view + '"]');
+        if (active) {
+            var firstField = active.querySelector(
+                'input:not([type="hidden"]):not([disabled]):not([tabindex="-1"]), textarea:not([disabled]):not([tabindex="-1"]), button:not([disabled]):not([tabindex="-1"])',
+            );
+            if (firstField) firstField.focus();
+        }
+    }
+
+    function initRequestForm() {
+        if (!gateEl) return;
+        var form = document.getElementById('access-request-form');
+        var nameEl = document.getElementById('access-request-name');
+        var emailEl = document.getElementById('access-request-email');
+        var referralEl = document.getElementById('access-request-referral');
+        var hpEl = document.getElementById('access-request-website');
+        var errEl = document.getElementById('access-request-error');
+        var successEl = document.getElementById('access-request-success');
+        var submitBtn = form ? form.querySelector('.access-gate-submit') : null;
+        if (!form || !nameEl || !emailEl || !referralEl || !errEl || !successEl || !submitBtn) {
+            return;
+        }
+        var submitLabelEl = submitBtn.querySelector('.access-gate-submit-label');
+        var submitTextTarget = submitLabelEl || submitBtn;
+        var submitDefaultText = submitTextTarget.textContent;
+
+        // View-switching buttons (works from either view).
+        var switchBtns = gateEl.querySelectorAll('[data-gate-action]');
+        Array.prototype.forEach.call(switchBtns, function (btn) {
+            btn.addEventListener('click', function () {
+                var action = btn.getAttribute('data-gate-action');
+                if (action === 'show-request') {
+                    clearRequestError();
+                    setGateView('request');
+                } else if (action === 'show-code') {
+                    // Returning to code view: also reset the success state
+                    // so a second request later in the session starts fresh.
+                    if (!successEl.hasAttribute('hidden')) {
+                        successEl.setAttribute('hidden', '');
+                        form.removeAttribute('hidden');
+                    }
+                    setGateView('code');
+                }
+            });
+        });
+
+        function clearRequestError() {
+            errEl.textContent = '';
+        }
+        function showRequestError(msg) {
+            errEl.textContent = msg;
+        }
+        function setBusy(busy) {
+            form.setAttribute('aria-busy', busy ? 'true' : 'false');
+            submitTextTarget.textContent = busy ? 'Sending…' : submitDefaultText;
+            submitBtn.disabled = !!busy;
+        }
+
+        [nameEl, emailEl, referralEl].forEach(function (el) {
+            el.addEventListener('input', clearRequestError);
+        });
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            clearRequestError();
+
+            if (!gateApiReady) {
+                showRequestError(
+                    'The portal is temporarily unavailable. Please try again in a moment.',
+                );
+                return;
+            }
+
+            var name = (nameEl.value || '').trim();
+            var emailVal = (emailEl.value || '').trim();
+            var referral = (referralEl.value || '').trim();
+
+            if (name.length < 2) {
+                showRequestError('Please share your name.');
+                nameEl.focus();
+                return;
+            }
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal) || emailVal.length > 254) {
+                showRequestError('Please enter a valid email.');
+                emailEl.focus();
+                return;
+            }
+            if (referral.length < 2) {
+                showRequestError('A short note about how you found me helps me decide.');
+                referralEl.focus();
+                return;
+            }
+
+            setBusy(true);
+            submitRequestAccess({
+                name: name,
+                email: emailVal,
+                referral: referral,
+                hp: hpEl ? hpEl.value : '',
+            })
+                .then(function (result) {
+                    setBusy(false);
+                    if (result.ok) {
+                        form.setAttribute('hidden', '');
+                        successEl.removeAttribute('hidden');
+                        // Reset values so a stale name/email isn't sitting in
+                        // the DOM if the user comes back later.
+                        nameEl.value = '';
+                        emailEl.value = '';
+                        referralEl.value = '';
+                        return;
+                    }
+                    if (result.rateLimited) {
+                        showRequestError(
+                            result.retryAfterSec
+                                ? 'Too many requests. Try again in about ' +
+                                      gateFormatRemaining(result.retryAfterSec * 1000) +
+                                      '.'
+                                : 'Too many requests right now. Please try again later.',
+                        );
+                        return;
+                    }
+                    if (result.unavailable) {
+                        if (result.reason === 'email_not_configured') {
+                            showRequestError(
+                                "The request form isn't fully wired up yet. Please email Jonathan directly.",
+                            );
+                        } else if (result.reason === 'database_tables_missing') {
+                            showRequestError(
+                                'The request database needs updating. Run the latest migration in neon/.',
+                            );
+                        } else if (result.reason === 'email_send_failed') {
+                            showRequestError(
+                                "Couldn't send the notification email. Please try again in a few minutes.",
+                            );
+                        } else {
+                            showRequestError(
+                                'Request is temporarily unavailable. Please try again shortly.',
+                            );
+                        }
+                        return;
+                    }
+                    if (result.invalid) {
+                        if (
+                            result.reason === 'dwell_too_short' ||
+                            result.reason === 'challenge_failed'
+                        ) {
+                            showRequestError(
+                                'Verification timed out. Please try again in a moment.',
+                            );
+                        } else {
+                            showRequestError(
+                                "That didn't look right. Double-check your email and try again.",
+                            );
+                        }
+                        return;
+                    }
+                    showRequestError('Something went wrong. Please try again.');
+                })
+                .catch(function () {
+                    setBusy(false);
+                    showRequestError('Network error. Please try again.');
+                });
+        });
+    }
+
+    async function submitRequestAccess(input) {
+        var nonce = await waitForPowSolution(60000);
+        var payload = {
+            name: input.name,
+            email: input.email,
+            referral: input.referral,
+            challengeId:
+                currentChallenge && currentChallenge.id != null
+                    ? String(currentChallenge.id)
+                    : null,
+            challengeIssuedAt: pageLoadTs,
+            nonce: nonce,
+            fingerprint: clientFingerprint,
+        };
+        if (input.hp) {
+            payload.accessRequestWebsite = input.hp;
+        }
+        var res = await gateFetchJson('/request-access', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+        });
+        if (res.body && res.body.challenge) {
+            startPowSolver(res.body.challenge);
+        }
+        if (res.status === 200 && res.body && res.body.ok) {
+            return { ok: true };
+        }
+        if (res.status === 429) {
+            return {
+                ok: false,
+                rateLimited: true,
+                retryAfterSec:
+                    (res.body && res.body.retryAfterSec) || res.retryAfter || 0,
+            };
+        }
+        if (res.status === 503) {
+            return {
+                ok: false,
+                unavailable: true,
+                reason: res.body && res.body.reason,
+            };
+        }
+        if (res.status === 400) {
+            return {
+                ok: false,
+                invalid: true,
+                reason: res.body && (res.body.error || res.body.reason),
+            };
+        }
+        return { ok: false };
+    }
+
     (async function runBootstrap() {
         const session = await gateLoadSession();
         let stored = false;
@@ -603,7 +857,10 @@
         document.body.style.overflow = 'hidden';
         window.__portfolioPreloaderStart = undefined;
 
-        if (gateEl) initGateForm();
+        if (gateEl) {
+            initGateForm();
+            initRequestForm();
+        }
     })();
 })();
 
