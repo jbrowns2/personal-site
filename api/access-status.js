@@ -1,7 +1,12 @@
 const gate = require('../lib/gate-backend.js');
+const { applyGateCors, handleGateCorsPreflight } = require('../lib/gate-cors.js');
 
 module.exports = async function accessStatus(req, res) {
     try {
+        if (handleGateCorsPreflight(req, res)) {
+            return;
+        }
+        applyGateCors(req, res);
         if (req.method !== 'GET') {
             res.setHeader('Allow', 'GET');
             return res.status(405).json({ error: 'method_not_allowed' });

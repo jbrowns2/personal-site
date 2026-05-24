@@ -12,6 +12,8 @@
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="theme-color" content="#0a0a1a">
     <meta name="color-scheme" content="dark light">
+    <!-- Optional: pin gate API when using `vercel dev` so preview does not fall back to production.
+         Example: <meta name="gate-api-base" content="http://localhost:3000/api"> -->
     <link rel="canonical" href="https://www.jonathansbrownstein.com/">
     <link rel="sitemap" type="application/xml" title="Sitemap" href="https://www.jonathansbrownstein.com/sitemap.xml">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -67,16 +69,12 @@
         <div class="access-gate-aura" aria-hidden="true"></div>
         <div class="access-gate-inner">
             <header class="access-gate-intro">
-                <div class="access-gate-brand" aria-hidden="true">
-                    <span class="access-gate-brand-mark">JB</span>
-                </div>
                 <span class="access-gate-pill">
                     <span class="access-gate-pill-dot" aria-hidden="true"></span>
                     Private portal &middot; invite required
                 </span>
                 <h1 id="access-gate-title" class="access-gate-heading">Jonathan Brownstein</h1>
                 <p class="access-gate-credential">MSe &middot; FLMI</p>
-                <p class="access-gate-subtitle" data-view="code">Enter the access code I shared with you. Paste works.</p>
                 <p class="access-gate-subtitle" data-view="request">Tell me a little about you and I&rsquo;ll send a code over.</p>
             </header>
 
@@ -107,19 +105,6 @@
                         </svg>
                     </button>
                 </form>
-            </div>
-            <div class="access-gate-divider" role="separator" aria-orientation="horizontal">
-                <span>No code?</span>
-            </div>
-            <div class="access-gate-actions">
-                <button type="button" class="access-gate-action-btn" data-gate-action="show-request">
-                    <span class="access-gate-action-label">Request access</span>
-                    <svg class="access-gate-action-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-                        <path d="M5 12h14"></path>
-                        <path d="M13 6l6 6-6 6"></path>
-                    </svg>
-                </button>
-                <p class="access-gate-actions-hint">Or reach Jonathan directly via <a href="mailto:JonathanBrownstein12@icloud.com">email</a> or <a href="tel:7792470487">phone</a>.</p>
             </div>
             </section>
 

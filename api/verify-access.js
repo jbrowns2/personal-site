@@ -1,8 +1,13 @@
 const bcrypt = require('bcryptjs');
 const gate = require('../lib/gate-backend.js');
+const { applyGateCors, handleGateCorsPreflight } = require('../lib/gate-cors.js');
 
 module.exports = async function verifyAccess(req, res) {
     try {
+    if (handleGateCorsPreflight(req, res)) {
+        return;
+    }
+    applyGateCors(req, res);
     if (req.method !== 'POST') {
         res.setHeader('Allow', 'POST');
         return res.status(405).json({ error: 'method_not_allowed' });

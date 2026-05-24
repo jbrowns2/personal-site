@@ -21,6 +21,7 @@
 
 const gate = require('../lib/gate-backend.js');
 const email = require('../lib/email.js');
+const { applyGateCors, handleGateCorsPreflight } = require('../lib/gate-cors.js');
 
 // Minimum time between the challenge being issued and the request submission.
 // Trips on bots that instantly POST without rendering the form. Gate also
@@ -36,6 +37,10 @@ function genericAck(res) {
 
 module.exports = async function requestAccess(req, res) {
     try {
+        if (handleGateCorsPreflight(req, res)) {
+            return;
+        }
+        applyGateCors(req, res);
         if (req.method !== 'POST') {
             res.setHeader('Allow', 'POST');
             return res.status(405).json({ error: 'method_not_allowed' });

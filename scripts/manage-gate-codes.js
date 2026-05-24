@@ -6,6 +6,7 @@
  *   node scripts/manage-gate-codes.js list
  *   node scripts/manage-gate-codes.js add    "RAW CODE" "Label / company"
  *   node scripts/manage-gate-codes.js add    "RAW CODE" "Label" --expires 2026-12-31
+ *   node scripts/manage-gate-codes.js add    "RAW CODE" "Label" --expires-in 120
  *   node scripts/manage-gate-codes.js rotate "RAW CODE" "Label"   # replace existing label with a fresh hash
  *   node scripts/manage-gate-codes.js disable <id|label>
  *   node scripts/manage-gate-codes.js enable  <id|label>
@@ -82,9 +83,9 @@ function printUsage() {
             '',
             'Commands:',
             '  list                                  Show every access code (active + disabled).',
-            '  add    "RAW CODE" "Label" [--expires YYYY-MM-DD]',
+            '  add    "RAW CODE" "Label" [--expires YYYY-MM-DD | --expires-in Nd]',
             '                                        Hash and insert a new code.',
-            '  rotate "RAW CODE" "Label" [--expires YYYY-MM-DD]',
+            '  rotate "RAW CODE" "Label" [--expires YYYY-MM-DD | --expires-in Nd]',
             '                                        Replace any existing code(s) with this label by',
             '                                        a freshly-hashed entry (used to drop bcrypt cost).',
             '  disable <id|label>                    Mark an access code inactive.',
@@ -94,6 +95,7 @@ function printUsage() {
             'Examples:',
             '  npm run gate:list',
             '  npm run gate:add -- "openthegate" "RGA"',
+            '  npm run gate:add -- "openthegate" "RGA" --expires-in 120',
             '  npm run gate:disable -- "RGA"',
             '',
             'Reads DATABASE_URL from .env or process.env. The server caches active hashes',
@@ -160,12 +162,17 @@ async function cmdAdd(sql, args) {
 function parseAddArgs(args, cmdName) {
     const positional = [];
     let expiresAt = null;
+    let expiresIn = null;
     for (let i = 0; i < args.length; i++) {
         const a = args[i];
         if (a === '--expires' || a === '-e') {
             expiresAt = args[++i] || null;
         } else if (a.startsWith('--expires=')) {
             expiresAt = a.slice('--expires='.length);
+        } else if (a === '--expires-in') {
+            expiresIn = args[++i] || null;
+        } else if (a.startsWith('--expires-in=')) {
+            expiresIn = a.slice('--expires-in='.length);
         } else {
             positional.push(a);
         }
@@ -176,19 +183,52 @@ function parseAddArgs(args, cmdName) {
         console.error(
             'Usage: node scripts/manage-gate-codes.js ' +
                 cmdName +
-                ' "RAW CODE" "Label" [--expires YYYY-MM-DD]',
+                ' "RAW CODE" "Label" [--expires YYYY-MM-DD | --expires-in Nd]',
         );
         process.exit(1);
     }
-    if (expiresAt && Number.isNaN(Date.parse(expiresAt))) {
-        console.error('Invalid --expires value (use YYYY-MM-DD or full ISO timestamp).');
+    if (expiresAt && expiresIn) {
+        console.error('Use either --expires or --expires-in, not both.');
         process.exit(1);
+    }
+    let expiresIso = null;
+    if (expiresIn) {
+        expiresIso = expiresInToIso(expiresIn);
+        if (!expiresIso) {
+            console.error(
+                'Invalid --expires-in (use a positive number of days, e.g. 120 or 120d, max 3650).',
+            );
+            process.exit(1);
+        }
+    } else if (expiresAt) {
+        if (Number.isNaN(Date.parse(expiresAt))) {
+            console.error('Invalid --expires value (use YYYY-MM-DD or full ISO timestamp).');
+            process.exit(1);
+        }
+        expiresIso = new Date(expiresAt).toISOString();
     }
     return {
         rawCode: rawCode,
         label: label,
-        expiresIso: expiresAt ? new Date(expiresAt).toISOString() : null,
+        expiresIso: expiresIso,
     };
+}
+
+/** @returns {string|null} ISO timestamp or null if invalid */
+function expiresInToIso(raw) {
+    const t = String(raw || '')
+        .trim()
+        .toLowerCase();
+    let m = /^(\d+)\s*d$/.exec(t);
+    let days = m ? parseInt(m[1], 10) : NaN;
+    if (Number.isNaN(days)) {
+        m = /^(\d+)$/.exec(t);
+        days = m ? parseInt(m[1], 10) : NaN;
+    }
+    if (!Number.isFinite(days) || days <= 0 || days > 3650) {
+        return null;
+    }
+    return new Date(Date.now() + days * 864e5).toISOString();
 }
 
 function normalizeAndValidateCode(rawCode) {

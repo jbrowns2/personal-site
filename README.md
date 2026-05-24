@@ -123,6 +123,7 @@ Access codes live in the `portfolio_gate_access_codes` table and are managed fro
 # add a new code (label is just for your own bookkeeping)
 npm run gate:add -- "openthegate" "RGA"
 npm run gate:add -- "openthegate" "RGA" --expires 2026-12-31
+npm run gate:add -- "openthegate" "RGA" --expires-in 120   # 120 days from now (or use 120d)
 
 # list every code (active + disabled)
 npm run gate:list

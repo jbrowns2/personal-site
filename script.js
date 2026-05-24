@@ -3,7 +3,19 @@
 // ============================================
 (function initAccessGateAndPreloader() {
     const STORAGE_KEY = 'portfolio_unlocked';
-    const API_BASE = '/api';
+    /** Deployed API used when /api is missing on localhost (static preview). */
+    const GATE_PRODUCTION_API_BASE = 'https://www.jonathansbrownstein.com/api';
+    const gateApiBaseMetaEl = document.querySelector('meta[name="gate-api-base"]');
+    const gateApiBaseMetaContent =
+        gateApiBaseMetaEl && gateApiBaseMetaEl.getAttribute('content')
+            ? gateApiBaseMetaEl.getAttribute('content').trim()
+            : '';
+    const API_BASE_FROM_META = gateApiBaseMetaContent.length > 0;
+    const API_BASE = API_BASE_FROM_META
+        ? gateApiBaseMetaContent.replace(/\/+$/, '')
+        : '/api';
+    /** API host that served the session challenge (must match verify/request POSTs). */
+    let gateActiveApiBase = API_BASE;
     /** Must match lib/gate-backend.js MIN_CODE_LEN */
     const MIN_GATE_CODE_LEN = 3;
 
@@ -143,9 +155,22 @@
         return normalizeGateCode(phrase).length >= MIN_GATE_CODE_LEN;
     }
 
-    async function gateFetchJson(path, options) {
+    async function gateFetchJson(path, options, baseOverride) {
+        const baseUrl = baseOverride != null ? baseOverride : API_BASE;
         const opts = Object.assign({ method: 'GET', credentials: 'include' }, options);
-        const r = await fetch(API_BASE + path, opts);
+        let r;
+        try {
+            r = await fetch(baseUrl + path, opts);
+        } catch (e) {
+            return {
+                ok: false,
+                status: 0,
+                body: null,
+                retryAfter: 0,
+                isJson: false,
+                fetchError: true,
+            };
+        }
         const ct = r.headers.get('content-type') || '';
         const isJson = ct.indexOf('application/json') !== -1;
         let body = null;
@@ -155,7 +180,7 @@
             } catch (e) {}
         }
         const ra = parseInt(r.headers.get('retry-after') || '0', 10) || 0;
-        return { ok: r.ok, status: r.status, body: body, retryAfter: ra };
+        return { ok: r.ok, status: r.status, body: body, retryAfter: ra, isJson: isJson };
     }
 
     function gateApplyServerBlock(body, retryAfterHeader) {
@@ -186,13 +211,61 @@
         return null;
     }
 
+    function isLocalDevPreviewHost() {
+        if (window.location.protocol === 'file:') {
+            return true;
+        }
+        const h = window.location.hostname;
+        return h === 'localhost' || h === '127.0.0.1';
+    }
+
+    function shouldFallbackToProductionApi() {
+        return isLocalDevPreviewHost() && !API_BASE_FROM_META;
+    }
+
+    function accessStatusNeedsRetry(res) {
+        if (res.fetchError) {
+            return true;
+        }
+        if (!res.isJson) {
+            return true;
+        }
+        if (!res.body || typeof res.body.ready !== 'boolean') {
+            return true;
+        }
+        if (res.body.ready === false) {
+            return true;
+        }
+        return false;
+    }
+
+    function gateFetchNeedsRetryForPost(res) {
+        if (res.fetchError) {
+            return true;
+        }
+        if (res.status === 404 || res.status === 502) {
+            return true;
+        }
+        if (!res.isJson && res.status >= 400) {
+            return true;
+        }
+        return false;
+    }
+
     async function gateLoadSession() {
         try {
             var fpPromise = collectFingerprint();
-            const res = await gateFetchJson('/access-status', { method: 'GET' });
+            var res = await gateFetchJson('/access-status', { method: 'GET' }, API_BASE);
+            var usedBase = API_BASE;
+            if (shouldFallbackToProductionApi() && accessStatusNeedsRetry(res)) {
+                res = await gateFetchJson('/access-status', { method: 'GET' }, GATE_PRODUCTION_API_BASE);
+                usedBase = GATE_PRODUCTION_API_BASE;
+            }
             if (!res.body || typeof res.body.ready !== 'boolean') {
+                gateActiveApiBase = API_BASE;
                 return { ready: false, unlocked: false };
             }
+            gateActiveApiBase = usedBase;
             gateApiReady = !!res.body.ready;
             if (gateApiReady && res.body.blockedUntilSec > 0) {
                 serverBlockUntil = Date.now() + res.body.blockedUntilSec * 1000;
@@ -206,6 +279,7 @@
                 unlocked: !!res.body.unlocked,
             };
         } catch (e) {
+            gateActiveApiBase = API_BASE;
             return { ready: false, unlocked: false };
         }
     }
@@ -224,11 +298,19 @@
         if (honeypotEl && honeypotEl.value) {
             payload.accessCodeConfirm = honeypotEl.value;
         }
-        const res = await gateFetchJson('/verify-access', {
+        var verifyOpts = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload),
-        });
+        };
+        var res = await gateFetchJson('/verify-access', verifyOpts, gateActiveApiBase);
+        if (
+            shouldFallbackToProductionApi() &&
+            gateActiveApiBase !== GATE_PRODUCTION_API_BASE &&
+            gateFetchNeedsRetryForPost(res)
+        ) {
+            res = await gateFetchJson('/verify-access', verifyOpts, GATE_PRODUCTION_API_BASE);
+        }
         if (res.body && res.body.challenge) {
             startPowSolver(res.body.challenge);
         }
@@ -777,11 +859,19 @@
         if (input.hp) {
             payload.accessRequestWebsite = input.hp;
         }
-        var res = await gateFetchJson('/request-access', {
+        var reqOpts = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload),
-        });
+        };
+        var res = await gateFetchJson('/request-access', reqOpts, gateActiveApiBase);
+        if (
+            shouldFallbackToProductionApi() &&
+            gateActiveApiBase !== GATE_PRODUCTION_API_BASE &&
+            gateFetchNeedsRetryForPost(res)
+        ) {
+            res = await gateFetchJson('/request-access', reqOpts, GATE_PRODUCTION_API_BASE);
+        }
         if (res.body && res.body.challenge) {
             startPowSolver(res.body.challenge);
         }
