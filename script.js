@@ -608,7 +608,6 @@
             }
             submitBtn.disabled = true;
             setFormVerifyBusy(true);
-            setGateHint('Checking your code\u2026');
             gateVerifyCode(code).then(function (result) {
                 setFormVerifyBusy(false);
                 submitBtn.disabled = false;
@@ -1338,16 +1337,32 @@ document.querySelectorAll('.nav-menu a').forEach((link) => {
 // ============================================
 // SMOOTH SCROLLING
 // ============================================
+function scrollToSection(selector) {
+    const target = document.querySelector(selector);
+    if (!target) return;
+
+    const top = target.getBoundingClientRect().top + window.scrollY - 80;
+    window.scrollTo({
+        top: Math.max(0, top),
+        behavior: 'smooth',
+    });
+}
+
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            const top = target.getBoundingClientRect().top + window.scrollY - 80;
-            window.scrollTo({
-                top: Math.max(0, top),
-                behavior: 'smooth',
-            });
+        scrollToSection(this.getAttribute('href'));
+    });
+});
+
+document.querySelectorAll('.stat[data-scroll-to]').forEach((stat) => {
+    const handleActivate = () => scrollToSection(stat.dataset.scrollTo);
+
+    stat.addEventListener('click', handleActivate);
+    stat.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            handleActivate();
         }
     });
 });

@@ -2095,6 +2095,16 @@ body,
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3), 0 0 20px var(--accent-glow);
 }
 
+.stat-link {
+    cursor: pointer;
+    touch-action: manipulation;
+}
+
+.stat-link:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
 .stat-accent {
     position: absolute;
     top: 0;

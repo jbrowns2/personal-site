@@ -97,7 +97,7 @@
                         <input type="text" id="access-code-confirm" name="access-code-confirm" autocomplete="off" tabindex="-1">
                     </div>
                     <div id="access-gate-message" class="access-gate-message" role="alert" aria-live="assertive" hidden></div>
-                    <p id="access-gate-hint" class="access-gate-hint">Loading&hellip;</p>
+                    <p id="access-gate-hint" class="access-gate-hint" hidden></p>
                     <button type="submit" class="access-gate-submit btn btn-primary">
                         <span class="access-gate-submit-label">Enter portal</span>
                         <svg class="access-gate-submit-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
@@ -270,7 +270,13 @@
                             </div>
                             <span class="stat-label">Records Processed</span>
                         </div>
-                        <div class="stat">
+                        <div
+                            class="stat stat-link"
+                            role="button"
+                            tabindex="0"
+                            data-scroll-to="#education"
+                            aria-label="View education and credentials"
+                        >
                             <div class="stat-accent"></div>
                             <div class="stat-icon-wrap">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
