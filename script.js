@@ -633,10 +633,7 @@
                     return;
                 }
                 if (!result.ok) {
-                    showGateError(
-                        'Wrong code',
-                        'Check your email and try again. Too many tries will lock you out briefly.',
-                    );
+                    showGateError('Incorrect code, try again');
                     codeInput.value = '';
                     codeInput.focus();
                     return;
