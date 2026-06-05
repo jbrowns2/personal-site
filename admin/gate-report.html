@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Gate Invitation Report</title>
+    <link rel="stylesheet" href="gate-report.css">
+</head>
+<body>
+    <header class="report-header">
+        <div>
+            <h1>Access Gate — Invitation Report</h1>
+            <p class="report-subtitle">Local-only dashboard · employer outreach tracking</p>
+        </div>
+        <div class="report-header-actions">
+            <button type="button" id="btn-refresh" class="btn">Refresh</button>
+            <button type="button" id="btn-export" class="btn btn-secondary">Export CSV</button>
+            <span id="generated-at" class="generated-at"></span>
+        </div>
+    </header>
+
+    <main id="report-app">
+        <div id="report-loading" class="report-loading">Loading report…</div>
+        <div id="report-error" class="report-error" hidden></div>
+        <div id="report-content" hidden>
+
+            <section class="summary-cards" id="summary-cards"></section>
+
+            <section class="charts-row">
+                <div class="chart-panel">
+                    <h2>Invitation funnel</h2>
+                    <div id="funnel-chart" class="funnel-chart"></div>
+                </div>
+                <div class="chart-panel">
+                    <h2>Daily activity (30d)</h2>
+                    <div id="daily-chart" class="bar-chart"></div>
+                </div>
+                <div class="chart-panel">
+                    <h2>Failed breakdown</h2>
+                    <div id="failed-chart" class="bar-chart"></div>
+                </div>
+                <div class="chart-panel">
+                    <h2>Pending aging</h2>
+                    <div id="aging-chart" class="bar-chart"></div>
+                </div>
+            </section>
+
+            <section class="action-panels" id="action-panels"></section>
+
+            <section class="toolbar">
+                <div class="status-tabs" id="status-tabs">
+                    <button type="button" class="tab active" data-status="all">All</button>
+                    <button type="button" class="tab" data-status="pending">Pending</button>
+                    <button type="button" class="tab" data-status="responded">Responded</button>
+                    <button type="button" class="tab" data-status="expired_unused">Expired</button>
+                    <button type="button" class="tab" data-status="disabled">Disabled</button>
+                </div>
+                <input type="search" id="search-box" class="search-box" placeholder="Search employer, contact, email…">
+                <select id="sort-select" class="sort-select">
+                    <option value="invited-desc">Invited (newest)</option>
+                    <option value="invited-asc">Invited (oldest)</option>
+                    <option value="pending-desc">Days pending</option>
+                    <option value="first-use-desc">First use (newest)</option>
+                    <option value="uses-desc">Use count</option>
+                    <option value="failed-desc">Failed tries</option>
+                    <option value="label-asc">Employer A–Z</option>
+                </select>
+                <select id="outcome-filter" class="sort-select">
+                    <option value="all">All events</option>
+                    <option value="success">Success only</option>
+                    <option value="incorrect">Incorrect</option>
+                    <option value="disabled_code">Disabled code</option>
+                    <option value="expired_code">Expired code</option>
+                </select>
+            </section>
+
+            <section class="table-section">
+                <h2>Invitations</h2>
+                <div class="table-wrap">
+                    <table class="invitations-table" id="invitations-table">
+                        <thead>
+                            <tr>
+                                <th>Employer</th>
+                                <th>Contact</th>
+                                <th>Role</th>
+                                <th>Invited</th>
+                                <th>Status</th>
+                                <th>First use</th>
+                                <th>Last use</th>
+                                <th>Uses</th>
+                                <th>Failed</th>
+                                <th>Before</th>
+                                <th>Days</th>
+                                <th>Engagement</th>
+                                <th>Expires</th>
+                            </tr>
+                        </thead>
+                        <tbody id="invitations-tbody"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="feed-section">
+                <h2>Recent activity</h2>
+                <ul id="activity-feed" class="activity-feed"></ul>
+            </section>
+        </div>
+    </main>
+
+    <aside id="detail-drawer" class="detail-drawer" hidden>
+        <div class="drawer-backdrop" id="drawer-backdrop"></div>
+        <div class="drawer-panel">
+            <button type="button" class="drawer-close" id="drawer-close" aria-label="Close">×</button>
+            <div id="drawer-content"></div>
+        </div>
+    </aside>
+
+    <script src="gate-report.js"></script>
+</body>
+</html>

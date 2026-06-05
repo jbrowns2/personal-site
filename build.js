@@ -89,6 +89,10 @@ async function build() {
       copyDir('images', path.join(distDir, 'images'));
       console.log('✅ Images copied');
     }
+    if (fs.existsSync('admin')) {
+      copyDir('admin', path.join(distDir, 'admin'));
+      console.log('✅ Admin dashboard copied');
+    }
     if (fs.existsSync('Projects')) {
       copyDir('Projects', path.join(distDir, 'Projects'));
       console.log('✅ Projects copied');

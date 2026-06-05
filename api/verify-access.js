@@ -147,6 +147,17 @@ module.exports = async function verifyAccess(req, res) {
         }
         var matchedHash = await bcryptFindMatch(normalized, activeHashes);
         if (!matchedHash) {
+            var failure = await gate.resolveFailureOutcome(sql, normalized);
+            await gate.recordAccessCodeEvent(sql, {
+                outcome: failure.outcome,
+                codeId: failure.codeId,
+                attemptLookupHash: gate.computeCodeLookupHash(normalized),
+                ip: ip,
+                fingerprint: fingerprint,
+                userAgent: req.headers['user-agent'] || null,
+            }).catch(function (err) {
+                console.error('verify-access:recordFailureEvent', err && err.message);
+            });
             var recentFails = await gate.getRecentFailCount(sql, ip);
             var delayMs = gate.computeProgressiveDelay(recentFails);
             if (delayMs > 0) {
@@ -169,7 +180,19 @@ module.exports = async function verifyAccess(req, res) {
         }
 
         await gate.recordSuccess(sql, ip, fingerprint);
-        gate.recordAccessCodeUsed(sql, matchedHash).catch(function () {});
+        var codeRow = await gate.findAccessCodeByHash(sql, matchedHash);
+        if (codeRow) {
+            await gate.recordAccessCodeEvent(sql, {
+                outcome: 'success',
+                codeId: codeRow.id,
+                attemptLookupHash: gate.computeCodeLookupHash(normalized),
+                ip: ip,
+                fingerprint: fingerprint,
+                userAgent: req.headers['user-agent'] || null,
+            }).catch(function (err) {
+                console.error('verify-access:recordSuccessEvent', err && err.message);
+            });
+        }
         var token = gate.signSession(secrets.secret);
         res.setHeader('Set-Cookie', gate.buildSessionCookie(token, req));
         gate.maybePruneOldRecords(sql).catch(function () {});

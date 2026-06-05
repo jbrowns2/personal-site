@@ -25,7 +25,12 @@ const fs = require('fs');
 const path = require('path');
 const bcrypt = require('bcryptjs');
 const { neon } = require('@neondatabase/serverless');
-const { MIN_CODE_LEN, MAX_CODE_LEN } = require('../lib/gate-backend.js');
+const {
+    MIN_CODE_LEN,
+    MAX_CODE_LEN,
+    computeCodeLookupHash,
+    invalidateAccessCodeCache,
+} = require('../lib/gate-backend.js');
 
 loadDotEnvIfPresent(path.join(__dirname, '..', '.env'));
 
@@ -84,8 +89,10 @@ function printUsage() {
             'Commands:',
             '  list                                  Show every access code (active + disabled).',
             '  add    "RAW CODE" "Label" [--expires YYYY-MM-DD | --expires-in Nd]',
+            '       [--contact NAME] [--email ADDR] [--role TITLE] [--notes TEXT]',
             '                                        Hash and insert a new code.',
             '  rotate "RAW CODE" "Label" [--expires YYYY-MM-DD | --expires-in Nd]',
+            '       [--contact NAME] [--email ADDR] [--role TITLE] [--notes TEXT]',
             '                                        Replace any existing code(s) with this label by',
             '                                        a freshly-hashed entry (used to drop bcrypt cost).',
             '  disable <id|label>                    Mark an access code inactive.',
@@ -107,7 +114,8 @@ function printUsage() {
 
 async function cmdList(sql) {
     const rows = await sql`
-        SELECT id, label, active, expires_at, last_used_at, created_at
+        SELECT id, label, active, expires_at, last_used_at, created_at,
+               code_lookup_hash, contact_name, contact_email, role_title, notes
         FROM portfolio_gate_access_codes
         ORDER BY active DESC, created_at DESC, id DESC
     `;
@@ -122,6 +130,10 @@ async function cmdList(sql) {
             id: r.id,
             label: r.label,
             active: r.active,
+            lookup_hash: r.code_lookup_hash ? 'yes' : 'no',
+            contact: r.contact_name || '',
+            email: r.contact_email || '',
+            role: r.role_title || '',
             expires_at: r.expires_at ? toIso(r.expires_at) : '',
             last_used_at: r.last_used_at ? toIso(r.last_used_at) : '',
             created_at: toIso(r.created_at),
@@ -131,15 +143,21 @@ async function cmdList(sql) {
 }
 
 async function cmdAdd(sql, args) {
-    const { rawCode, label, expiresIso } = parseAddArgs(args, 'add');
-    const normalized = normalizeAndValidateCode(rawCode);
+    const parsed = parseAddArgs(args, 'add');
+    const normalized = normalizeAndValidateCode(parsed.rawCode);
     const hash = bcrypt.hashSync(normalized, BCRYPT_COST);
+    const lookupHash = computeCodeLookupHash(normalized);
     const inserted = await sql`
-        INSERT INTO portfolio_gate_access_codes (label, bcrypt_hash, active, expires_at)
-        VALUES (${label}, ${hash}, true, ${expiresIso})
+        INSERT INTO portfolio_gate_access_codes
+            (label, bcrypt_hash, active, expires_at, code_lookup_hash,
+             contact_name, contact_email, role_title, notes)
+        VALUES
+            (${parsed.label}, ${hash}, true, ${parsed.expiresIso}, ${lookupHash},
+             ${parsed.contactName}, ${parsed.contactEmail}, ${parsed.roleTitle}, ${parsed.notes})
         ON CONFLICT (bcrypt_hash) DO NOTHING
         RETURNING id, label, active, expires_at, created_at
     `;
+    invalidateAccessCodeCache();
     if (inserted.length === 0) {
         console.error(
             'That bcrypt hash already exists in the table — did you add this code already?',
@@ -163,6 +181,10 @@ function parseAddArgs(args, cmdName) {
     const positional = [];
     let expiresAt = null;
     let expiresIn = null;
+    let contactName = null;
+    let contactEmail = null;
+    let roleTitle = null;
+    let notes = null;
     for (let i = 0; i < args.length; i++) {
         const a = args[i];
         if (a === '--expires' || a === '-e') {
@@ -173,6 +195,22 @@ function parseAddArgs(args, cmdName) {
             expiresIn = args[++i] || null;
         } else if (a.startsWith('--expires-in=')) {
             expiresIn = a.slice('--expires-in='.length);
+        } else if (a === '--contact') {
+            contactName = args[++i] || null;
+        } else if (a.startsWith('--contact=')) {
+            contactName = a.slice('--contact='.length);
+        } else if (a === '--email') {
+            contactEmail = args[++i] || null;
+        } else if (a.startsWith('--email=')) {
+            contactEmail = a.slice('--email='.length);
+        } else if (a === '--role') {
+            roleTitle = args[++i] || null;
+        } else if (a.startsWith('--role=')) {
+            roleTitle = a.slice('--role='.length);
+        } else if (a === '--notes') {
+            notes = args[++i] || null;
+        } else if (a.startsWith('--notes=')) {
+            notes = a.slice('--notes='.length);
         } else {
             positional.push(a);
         }
@@ -211,6 +249,10 @@ function parseAddArgs(args, cmdName) {
         rawCode: rawCode,
         label: label,
         expiresIso: expiresIso,
+        contactName: contactName,
+        contactEmail: contactEmail,
+        roleTitle: roleTitle,
+        notes: notes,
     };
 }
 
@@ -247,21 +289,27 @@ function normalizeAndValidateCode(rawCode) {
 }
 
 async function cmdRotate(sql, args) {
-    const { rawCode, label, expiresIso } = parseAddArgs(args, 'rotate');
-    const normalized = normalizeAndValidateCode(rawCode);
+    const parsed = parseAddArgs(args, 'rotate');
+    const normalized = normalizeAndValidateCode(parsed.rawCode);
     const newHash = bcrypt.hashSync(normalized, BCRYPT_COST);
+    const lookupHash = computeCodeLookupHash(normalized);
 
     const removed = await sql`
         DELETE FROM portfolio_gate_access_codes
-        WHERE label = ${label}
+        WHERE label = ${parsed.label}
         RETURNING id
     `;
     const inserted = await sql`
-        INSERT INTO portfolio_gate_access_codes (label, bcrypt_hash, active, expires_at)
-        VALUES (${label}, ${newHash}, true, ${expiresIso})
+        INSERT INTO portfolio_gate_access_codes
+            (label, bcrypt_hash, active, expires_at, code_lookup_hash,
+             contact_name, contact_email, role_title, notes)
+        VALUES
+            (${parsed.label}, ${newHash}, true, ${parsed.expiresIso}, ${lookupHash},
+             ${parsed.contactName}, ${parsed.contactEmail}, ${parsed.roleTitle}, ${parsed.notes})
         ON CONFLICT (bcrypt_hash) DO NOTHING
         RETURNING id, label, active, expires_at, created_at
     `;
+    invalidateAccessCodeCache();
     if (inserted.length === 0) {
         console.error(
             'Insert failed (bcrypt hash collision). Try again — bcrypt salting should make this near-impossible.',
@@ -271,7 +319,7 @@ async function cmdRotate(sql, args) {
     const row = inserted[0];
     console.log(
         'Rotated label="' +
-            label +
+            parsed.label +
             '": removed ' +
             removed.length +
             ' old row(s), added id=' +

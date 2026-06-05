@@ -87,6 +87,7 @@ The resume access code is **verified on the server** (bcrypt, no secret in the b
    - `migration-002-brute-force.sql` (existing DBs missing the brute-force tables)
    - `migration-003-access-codes.sql` (creates `portfolio_gate_access_codes`)
    - `migration-004-access-requests.sql` (creates `portfolio_gate_access_requests` for the "Request access" form)
+   - `migration-005-access-code-uses.sql` (unified event log for successful and incorrect code entries + outreach metadata)
 2. In Vercel → Project → Settings → Environment Variables, add:
    - `DATABASE_URL` — your Neon connection string (serverless pooler URL is recommended).
    - `GATE_SESSION_SECRET` — at least 32 random characters (for example `node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"`).
@@ -120,8 +121,11 @@ Approved requests auto-create access codes in `portfolio_gate_access_codes` (lab
 Access codes live in the `portfolio_gate_access_codes` table and are managed from the CLI. The verify endpoint caches active hashes for ~30 seconds, so adds / disables propagate within that window without a redeploy.
 
 ```bash
-# add a new code (label is just for your own bookkeeping)
+# add a new code (label is employer / company for your bookkeeping)
 npm run gate:add -- "openthegate" "RGA"
+npm run gate:add -- "JPMC2026" "JPMorgan Chase" \
+  --contact "Jane Recruiter" --email "jane@jpmchase.com" \
+  --role "VP Quant Analytics" --notes "LinkedIn outreach 2026-05-01"
 npm run gate:add -- "openthegate" "RGA" --expires 2026-12-31
 npm run gate:add -- "openthegate" "RGA" --expires-in 120   # 120 days from now (or use 120d)
 
@@ -140,7 +144,35 @@ npm run gate:enable  -- 3
 npm run gate:remove  -- "RGA"
 ```
 
-The CLI reads `DATABASE_URL` from `.env`, normalizes the raw code the same way the server does, and bcrypt-hashes it before insert. The bcrypt hash itself is the only thing stored — the raw code is never written to the DB.
+The CLI reads `DATABASE_URL` from `.env`, normalizes the raw code the same way the server does, and bcrypt-hashes it before insert. The bcrypt hash and a SHA-256 lookup hash are stored — the raw code is never written to the DB. Existing codes created before migration 005 need `gate:rotate` once to populate `code_lookup_hash` for exact failure attribution.
+
+#### Access code event logging
+
+Every code submission (correct or incorrect) is recorded in `portfolio_gate_access_code_events`:
+
+| Outcome | When |
+|---------|------|
+| `success` | Valid active code |
+| `incorrect` | Wrong / unknown code (typos attributed via same IP/fingerprint before a later success) |
+| `disabled_code` | Exact match to an inactive code |
+| `expired_code` | Exact match to an expired code |
+
+#### Local invitation report (dashboard + CLI)
+
+Reporting is **local only**. Set `ALLOW_GATE_REPORT=true` in `.env` (never on Vercel production).
+
+```bash
+# Terminal report
+npm run gate:report
+npm run gate:report -- --status pending --min-days 14
+npm run gate:report -- --csv
+
+# Web dashboard (requires full stack)
+npm run dev:vercel
+# open http://localhost:3000/admin/gate-report.html
+```
+
+The dashboard shows response rates, failed-entry tracking, follow-up lists (stale pending, tried-but-never-succeeded), daily activity charts, and per-employer event timelines. Export invitations as CSV from the dashboard or API (`GET /api/gate-report?format=csv`).
 
 ## Google Search (Get Indexed)
 
