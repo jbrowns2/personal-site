@@ -391,7 +391,7 @@
     }
 
     var GATE_HINT_DEFAULT =
-        'Codes are case-insensitive. Spaces and hyphens are fine. Once you enter, this device stays signed in for a week.';
+        'Capitals and spaces don\u2019t matter. You\u2019ll stay logged in for 7 days.';
 
     function scheduleGateThrottleUiSync(syncFn, untilTs) {
         if (gateThrottleUiTimer) {
@@ -546,21 +546,20 @@
             }
             gate.dataset.gateThrottle = '1';
             const msLeft = block.until - Date.now();
-            const waitDetail =
-                'You can try again in ' + gateFormatRemaining(msLeft) + '.';
+            const waitDetail = 'Try again in ' + gateFormatRemaining(msLeft) + '.';
             if (block.kind === 'locked') {
                 gate.classList.add('access-gate--locked');
                 showGateWait(
-                    'Sign-in paused for security',
-                    'After several incorrect codes, entry is locked on this device. ' + waitDetail,
+                    'Too many wrong tries',
+                    'Wait a bit, then enter your code again. ' + waitDetail,
                 );
                 codeInput.disabled = true;
                 submitBtn.disabled = true;
             } else {
                 gate.classList.add('access-gate--cooldown');
                 showGateWait(
-                    'Please wait a moment',
-                    'The server asked us to slow down briefly. ' + waitDetail,
+                    'Wait a moment',
+                    waitDetail,
                 );
                 codeInput.disabled = false;
                 submitBtn.disabled = true;
@@ -575,18 +574,14 @@
                     return;
                 }
                 const left = b.until - Date.now();
-                const tickDetail =
-                    'You can try again in ' + gateFormatRemaining(left) + '.';
+                const tickDetail = 'Try again in ' + gateFormatRemaining(left) + '.';
                 if (b.kind === 'locked') {
                     showGateWait(
-                        'Sign-in paused for security',
-                        'After several incorrect codes, entry is locked on this device. ' + tickDetail,
+                        'Too many wrong tries',
+                        'Wait a bit, then enter your code again. ' + tickDetail,
                     );
                 } else {
-                    showGateWait(
-                        'Please wait a moment',
-                        'The server asked us to slow down briefly. ' + tickDetail,
-                    );
+                    showGateWait('Wait a moment', tickDetail);
                 }
             }, 1000);
         }
@@ -600,38 +595,38 @@
             }
             if (!gateApiReady) {
                 showGateError(
-                    "Can't connect to the portal yet",
-                    "The verification service didn't respond. Refresh the page or try again in a minute.",
+                    'Can\u2019t load right now',
+                    'Refresh the page or try again in a minute.',
                 );
                 return;
             }
             const code = normalizeGateCode(getCode());
             if (code.length < MIN_GATE_CODE_LEN) {
                 showGateError(
-                    'Enter your access code',
-                    'Use the code from your invite email, or request access below.',
+                    'Enter your code',
+                    'Check your email, or request access below.',
                 );
                 codeInput.focus();
                 return;
             }
             submitBtn.disabled = true;
             setFormVerifyBusy(true);
-            setGateHint('Checking your code securely\u2026');
+            setGateHint('Checking your code\u2026');
             gateVerifyCode(code).then(function (result) {
                 setFormVerifyBusy(false);
                 submitBtn.disabled = false;
                 setGateHint(GATE_HINT_DEFAULT);
                 if (result.unavailable) {
                     showGateError(
-                        "The portal isn't accepting codes right now",
-                        'This is usually temporary. Wait a minute, refresh, or request access below.',
+                        'Not working right now',
+                        'Wait a minute and try again, or request access below.',
                     );
                     return;
                 }
                 if (result.challengeFailed) {
                     showGateError(
-                        'Security check refreshed',
-                        'The page runs a quick background check before verifying. Click Enter portal again.',
+                        'Try again',
+                        'Click Enter portal one more time.',
                     );
                     codeInput.focus();
                     return;
@@ -642,8 +637,8 @@
                 }
                 if (!result.ok) {
                     showGateError(
-                        "That code didn't match",
-                        'Double-check the code in your email. A few more misses will pause entry briefly.',
+                        'Wrong code',
+                        'Check your email and try again. Too many tries will lock you out briefly.',
                     );
                     codeInput.value = '';
                     codeInput.focus();
@@ -673,8 +668,8 @@
                         '<div class="access-gate-success-check" aria-hidden="true">' +
                         '<svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>' +
                         '</div>' +
-                        '<p class="access-gate-success-text">Access granted</p>' +
-                        '<p class="access-gate-success-sub">Opening portal</p>';
+                        '<p class="access-gate-success-text">You\u2019re in</p>' +
+                        '<p class="access-gate-success-sub">Opening the site</p>';
                     inner.appendChild(block);
                 }
 
@@ -710,16 +705,16 @@
                     submitBtn.disabled = false;
                     setGateHint(GATE_HINT_DEFAULT);
                     showGateError(
-                        'Verification unavailable',
-                        'A network error interrupted the check. Wait a moment and try again.',
+                        'Connection problem',
+                        'Check your internet and try again.',
                     );
                 });
         });
 
         if (!gateApiReady) {
             showGateError(
-                "Can't connect to the portal yet",
-                "The verification service didn't respond. Refresh the page or try again in a minute.",
+                'Can\u2019t load right now',
+                'Refresh the page or try again in a minute.',
             );
             setGateHint('');
         } else if (!gateGetBlocking()) {
@@ -839,8 +834,8 @@
 
             if (!gateApiReady) {
                 showRequestError(
-                    "Can't send requests right now",
-                    "The portal service didn't respond. Refresh the page or try again in a minute.",
+                    'Can\u2019t send right now',
+                    'Refresh the page or try again in a minute.',
                 );
                 return;
             }
@@ -850,17 +845,17 @@
             var referral = (referralEl.value || '').trim();
 
             if (name.length < 2) {
-                showRequestError('Add your name', 'So Jonathan knows who is reaching out.');
+                showRequestError('Add your name', 'Jonathan needs to know who you are.');
                 nameEl.focus();
                 return;
             }
             if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal) || emailVal.length > 254) {
-                showRequestError('Enter a valid email', 'If approved, your access code will be sent here.');
+                showRequestError('Add your email', 'Your code will be sent here if approved.');
                 emailEl.focus();
                 return;
             }
             if (referral.length < 2) {
-                showRequestError('Share how you found me', 'A sentence or two helps Jonathan decide whether to approve.');
+                showRequestError('Tell us how you found Jonathan', 'A quick note is all you need.');
                 referralEl.focus();
                 return;
             }
@@ -886,30 +881,30 @@
                     }
                     if (result.rateLimited) {
                         showRequestError(
-                            'Too many requests',
+                            'Slow down',
                             result.retryAfterSec
-                                ? 'Please wait ' +
+                                ? 'Wait ' +
                                       gateFormatRemaining(result.retryAfterSec * 1000) +
-                                      ' before sending another request.'
-                                : 'Please wait a while before sending another request.',
+                                      ' before trying again.'
+                                : 'Wait a while before trying again.',
                         );
                         return;
                     }
                     if (result.unavailable) {
                         if (result.reason === 'email_not_configured') {
                             showRequestError(
-                                'Request form unavailable',
-                                'Please email Jonathan directly for now.',
+                                'Form not available',
+                                'Email Jonathan directly for now.',
                             );
                         } else if (result.reason === 'email_send_failed') {
                             showRequestError(
-                                "Couldn't send your request",
-                                'The notification email failed. Try again in a few minutes.',
+                                'Didn\u2019t go through',
+                                'Try again in a few minutes.',
                             );
                         } else {
                             showRequestError(
-                                "Can't send requests right now",
-                                'This is usually temporary. Wait a minute and try again.',
+                                'Not working right now',
+                                'Wait a minute and try again.',
                             );
                         }
                         return;
@@ -920,27 +915,27 @@
                             result.reason === 'challenge_failed'
                         ) {
                             showRequestError(
-                                'Security check timed out',
-                                'The page runs a quick background check first. Try again in a moment.',
+                                'Try again',
+                                'Wait a moment, then hit Send request again.',
                             );
                         } else {
                             showRequestError(
-                                'Please check your details',
-                                'Make sure your email looks right, then try again.',
+                                'Check your info',
+                                'Make sure your email looks right.',
                             );
                         }
                         return;
                     }
                     showRequestError(
                         'Something went wrong',
-                        'Please try again. If it keeps failing, email Jonathan directly.',
+                        'Try again, or email Jonathan directly.',
                     );
                 })
                 .catch(function () {
                     setBusy(false);
                     showRequestError(
-                        'Network error',
-                        'Your request did not reach the server. Check your connection and try again.',
+                        'No connection',
+                        'Check your internet and try again.',
                     );
                 });
         });
