@@ -390,9 +390,6 @@
         el.className = 'access-gate-message access-gate-message--' + (opts.kind || 'error');
     }
 
-    var GATE_HINT_DEFAULT =
-        'Capitals and spaces don\u2019t matter. You\u2019ll stay logged in for 7 days.';
-
     function scheduleGateThrottleUiSync(syncFn, untilTs) {
         if (gateThrottleUiTimer) {
             clearTimeout(gateThrottleUiTimer);
@@ -541,7 +538,7 @@
                 gate.classList.remove('access-gate--wait');
                 codeInput.disabled = false;
                 submitBtn.disabled = false;
-                setGateHint(GATE_HINT_DEFAULT);
+                setGateHint('');
                 return;
             }
             gate.dataset.gateThrottle = '1';
@@ -615,7 +612,7 @@
             gateVerifyCode(code).then(function (result) {
                 setFormVerifyBusy(false);
                 submitBtn.disabled = false;
-                setGateHint(GATE_HINT_DEFAULT);
+                setGateHint('');
                 if (result.unavailable) {
                     showGateError(
                         'Not working right now',
@@ -703,7 +700,7 @@
                 .catch(function () {
                     setFormVerifyBusy(false);
                     submitBtn.disabled = false;
-                    setGateHint(GATE_HINT_DEFAULT);
+                    setGateHint('');
                     showGateError(
                         'Connection problem',
                         'Check your internet and try again.',
@@ -718,7 +715,7 @@
             );
             setGateHint('');
         } else if (!gateGetBlocking()) {
-            setGateHint(GATE_HINT_DEFAULT);
+            setGateHint('');
         }
         syncGateThrottleUi();
         if (!codeInput.disabled) {
