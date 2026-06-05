@@ -1159,21 +1159,79 @@ html.access-unlocked #access-gate {
     opacity: 0.45;
 }
 
-.access-gate-error {
-    min-height: 0;
+.access-gate-message {
     margin: 0;
-    font-size: 0.85rem;
-    line-height: 1.4;
-    color: #f87171;
+    padding: 0.7rem 0.85rem;
+    border-radius: var(--radius-sm);
+    text-align: center;
+    line-height: 1.45;
+}
+
+.access-gate-message[hidden] {
+    display: none !important;
+}
+
+.access-gate-message-title {
+    margin: 0;
+    font-size: 0.88rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+}
+
+.access-gate-message-detail {
+    margin: 0.28rem 0 0;
+    font-size: 0.8rem;
+    font-weight: 400;
+    opacity: 0.92;
+}
+
+.access-gate-message--error {
+    color: #fecaca;
+    background: rgba(248, 113, 113, 0.1);
+    border: 1px solid rgba(248, 113, 113, 0.28);
+}
+
+[data-theme="light"] .access-gate-message--error {
+    color: #991b1b;
+    background: rgba(220, 38, 38, 0.06);
+    border-color: rgba(220, 38, 38, 0.22);
+}
+
+.access-gate-message--wait {
+    color: #fde68a;
+    background: rgba(251, 191, 36, 0.1);
+    border: 1px solid rgba(251, 191, 36, 0.28);
+}
+
+[data-theme="light"] .access-gate-message--wait {
+    color: #92400e;
+    background: rgba(245, 158, 11, 0.08);
+    border-color: rgba(245, 158, 11, 0.28);
+}
+
+.access-gate-hint {
+    margin: 0;
+    font-size: 0.76rem;
+    line-height: 1.5;
+    color: var(--text-muted);
     text-align: center;
 }
 
-.access-gate-error:empty {
+.access-gate-hint[hidden] {
+    display: none !important;
+}
+
+.access-gate-hint--request {
+    margin-top: 0.15rem;
+}
+
+#access-gate.access-gate--wait .access-gate-hint,
+#access-gate.access-gate--locked .access-gate-hint {
     display: none;
 }
 
-[data-theme="light"] .access-gate-error {
-    color: #dc2626;
+#access-gate.access-gate--verifying .access-gate-hint {
+    color: var(--text-secondary);
 }
 
 .access-gate-noscript-msg {
@@ -1508,10 +1566,16 @@ html.access-unlocked #access-gate {
         height: 0.95rem;
     }
 
-    .access-gate-error {
-        font-size: 0.8125rem;
-        line-height: 1.3;
-        min-height: 1.1rem;
+    .access-gate-message-title {
+        font-size: 0.84rem;
+    }
+
+    .access-gate-message-detail {
+        font-size: 0.78rem;
+    }
+
+    .access-gate-hint {
+        font-size: 0.74rem;
     }
 
     .access-gate-submit {

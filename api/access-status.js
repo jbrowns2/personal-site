@@ -22,11 +22,11 @@ module.exports = async function accessStatus(req, res) {
 
         const ip = gate.getClientIp(req);
 
+        // Soft rate limit: skip recording the check when over cap, but still
+        // return a normal 200 so the gate stays usable (verify-access has its
+        // own stricter limits for actual code attempts).
         try {
-            const rateLimited = await gate.checkStatusRateLimit(sql, ip);
-            if (rateLimited) {
-                return res.status(429).json({ error: 'too_many_requests' });
-            }
+            await gate.checkStatusRateLimit(sql, ip);
         } catch (err) {
             console.error('access-status rate-limit', err);
         }

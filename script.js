@@ -261,6 +261,14 @@
                 res = await gateFetchJson('/access-status', { method: 'GET' }, GATE_PRODUCTION_API_BASE);
                 usedBase = GATE_PRODUCTION_API_BASE;
             }
+            if (res.status === 429) {
+                // Legacy servers returned 429 when status checks were over cap.
+                // Treat as ready so verify-access can still run; PoW challenge
+                // will be issued on the next verify attempt if missing here.
+                gateActiveApiBase = usedBase;
+                await fpPromise;
+                return { ready: true, unlocked: false };
+            }
             if (!res.body || typeof res.body.ready !== 'boolean') {
                 gateActiveApiBase = API_BASE;
                 return { ready: false, unlocked: false };
@@ -350,6 +358,41 @@
         return min + (min === 1 ? ' minute' : ' minutes');
     }
 
+    function gateEscapeHtml(s) {
+        return String(s)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;');
+    }
+
+    function gateRenderMessage(el, opts) {
+        if (!el) return;
+        var title = opts && opts.title ? String(opts.title) : '';
+        var detail = opts && opts.detail ? String(opts.detail) : '';
+        if (!title && !detail) {
+            el.innerHTML = '';
+            el.setAttribute('hidden', '');
+            el.className = 'access-gate-message';
+            return;
+        }
+        var html = '';
+        if (title) {
+            html +=
+                '<p class="access-gate-message-title">' + gateEscapeHtml(title) + '</p>';
+        }
+        if (detail) {
+            html +=
+                '<p class="access-gate-message-detail">' + gateEscapeHtml(detail) + '</p>';
+        }
+        el.innerHTML = html;
+        el.removeAttribute('hidden');
+        el.className = 'access-gate-message access-gate-message--' + (opts.kind || 'error');
+    }
+
+    var GATE_HINT_DEFAULT =
+        'Codes are case-insensitive. Spaces and hyphens are fine. Once you enter, this device stays signed in for a week.';
+
     function scheduleGateThrottleUiSync(syncFn, untilTs) {
         if (gateThrottleUiTimer) {
             clearTimeout(gateThrottleUiTimer);
@@ -377,7 +420,8 @@
         const gate = gateEl;
         const form = document.getElementById('access-gate-form');
         const codeInput = document.getElementById('access-code-input');
-        const errEl = document.getElementById('access-gate-error');
+        const msgEl = document.getElementById('access-gate-message');
+        const hintEl = document.getElementById('access-gate-hint');
         const submitBtn = form ? form.querySelector('.access-gate-submit') : null;
         if (!form || !codeInput || !gate || !submitBtn) return;
 
@@ -438,28 +482,47 @@
             return codeInput.value;
         }
 
-        function clearError() {
+        function setGateHint(text) {
+            if (!hintEl) return;
+            if (text) {
+                hintEl.textContent = text;
+                hintEl.removeAttribute('hidden');
+            } else {
+                hintEl.textContent = '';
+                hintEl.setAttribute('hidden', '');
+            }
+        }
+
+        function clearGateMessage() {
             if (gate.dataset.gateThrottle === '1') {
                 return;
             }
-            errEl.textContent = '';
+            gateRenderMessage(msgEl, null);
             codeInput.setAttribute('aria-invalid', 'false');
-            gate.classList.remove('access-gate--error');
+            gate.classList.remove('access-gate--error', 'access-gate--wait');
         }
 
-        function showError(msg) {
+        function showGateError(title, detail) {
             delete gate.dataset.gateThrottle;
-            errEl.textContent = msg;
+            gateRenderMessage(msgEl, { kind: 'error', title: title, detail: detail || '' });
             codeInput.setAttribute('aria-invalid', 'true');
             gate.classList.add('access-gate--error');
+            gate.classList.remove('access-gate--wait');
             void gate.offsetWidth;
             setTimeout(function () {
                 gate.classList.remove('access-gate--error');
             }, 500);
         }
 
+        function showGateWait(title, detail) {
+            gateRenderMessage(msgEl, { kind: 'wait', title: title, detail: detail || '' });
+            codeInput.setAttribute('aria-invalid', 'false');
+            gate.classList.remove('access-gate--error');
+            gate.classList.add('access-gate--wait');
+        }
+
         codeInput.addEventListener('input', function () {
-            clearError();
+            clearGateMessage();
         });
 
         function syncGateThrottleUi() {
@@ -472,28 +535,37 @@
             gate.classList.remove('access-gate--locked', 'access-gate--cooldown');
             if (!block) {
                 if (gate.dataset.gateThrottle === '1') {
-                    errEl.textContent = '';
+                    gateRenderMessage(msgEl, null);
                     delete gate.dataset.gateThrottle;
                 }
+                gate.classList.remove('access-gate--wait');
                 codeInput.disabled = false;
                 submitBtn.disabled = false;
+                setGateHint(GATE_HINT_DEFAULT);
                 return;
             }
             gate.dataset.gateThrottle = '1';
             const msLeft = block.until - Date.now();
+            const waitDetail =
+                'You can try again in ' + gateFormatRemaining(msLeft) + '.';
             if (block.kind === 'locked') {
                 gate.classList.add('access-gate--locked');
-                errEl.textContent =
-                    'Too many attempts. Try again in ' + gateFormatRemaining(msLeft) + '.';
+                showGateWait(
+                    'Sign-in paused for security',
+                    'After several incorrect codes, entry is locked on this device. ' + waitDetail,
+                );
                 codeInput.disabled = true;
                 submitBtn.disabled = true;
             } else {
                 gate.classList.add('access-gate--cooldown');
-                errEl.textContent =
-                    'Please wait ' + gateFormatRemaining(msLeft) + ' before trying again.';
+                showGateWait(
+                    'Please wait a moment',
+                    'The server asked us to slow down briefly. ' + waitDetail,
+                );
                 codeInput.disabled = false;
                 submitBtn.disabled = true;
             }
+            setGateHint('');
             scheduleGateThrottleUiSync(syncGateThrottleUi, block.until);
             gateThrottleCountdownId = window.setInterval(function () {
                 const b = gateGetBlocking();
@@ -503,61 +575,64 @@
                     return;
                 }
                 const left = b.until - Date.now();
+                const tickDetail =
+                    'You can try again in ' + gateFormatRemaining(left) + '.';
                 if (b.kind === 'locked') {
-                    errEl.textContent =
-                        'Too many attempts. Try again in ' + gateFormatRemaining(left) + '.';
+                    showGateWait(
+                        'Sign-in paused for security',
+                        'After several incorrect codes, entry is locked on this device. ' + tickDetail,
+                    );
                 } else {
-                    errEl.textContent =
-                        'Please wait ' + gateFormatRemaining(left) + ' before trying again.';
+                    showGateWait(
+                        'Please wait a moment',
+                        'The server asked us to slow down briefly. ' + tickDetail,
+                    );
                 }
             }, 1000);
         }
 
         form.addEventListener('submit', function (e) {
             e.preventDefault();
-            clearError();
+            clearGateMessage();
             if (gateGetBlocking()) {
                 syncGateThrottleUi();
                 return;
             }
             if (!gateApiReady) {
-                showError(
-                    'The portal is temporarily unavailable. Please try again in a moment.'
+                showGateError(
+                    "Can't connect to the portal yet",
+                    "The verification service didn't respond. Refresh the page or try again in a minute.",
                 );
                 return;
             }
             const code = normalizeGateCode(getCode());
             if (code.length < MIN_GATE_CODE_LEN) {
-                showError('Enter your access code.');
+                showGateError(
+                    'Enter your access code',
+                    'Use the code from your invite email, or request access below.',
+                );
                 codeInput.focus();
                 return;
             }
             submitBtn.disabled = true;
             setFormVerifyBusy(true);
+            setGateHint('Checking your code securely\u2026');
             gateVerifyCode(code).then(function (result) {
                 setFormVerifyBusy(false);
                 submitBtn.disabled = false;
+                setGateHint(GATE_HINT_DEFAULT);
                 if (result.unavailable) {
-                    if (
-                        result.serviceReason === 'database_tables_missing' ||
-                        result.serviceReason === 'database_schema_outdated'
-                    ) {
-                        showError(
-                            'The access database needs updating. In Neon, run the latest migration in neon/, then try again.',
-                        );
-                    } else if (result.serviceReason === 'no_access_codes_configured') {
-                        showError(
-                            'No access codes are configured yet. Add one with `npm run gate:add` and try again.',
-                        );
-                    } else {
-                        showError(
-                            'Verification is temporarily unavailable. Confirm Vercel env vars (DATABASE_URL, GATE_SESSION_SECRET) and try again.',
-                        );
-                    }
+                    showGateError(
+                        "The portal isn't accepting codes right now",
+                        'This is usually temporary. Wait a minute, refresh, or request access below.',
+                    );
                     return;
                 }
                 if (result.challengeFailed) {
-                    showError('Verification refreshed — please click Enter portal again.');
+                    showGateError(
+                        'Security check refreshed',
+                        'The page runs a quick background check before verifying. Click Enter portal again.',
+                    );
                     codeInput.focus();
                     return;
                 }
@@ -566,7 +641,10 @@
                     return;
                 }
                 if (!result.ok) {
-                    showError("That code doesn't match. Try again.");
+                    showGateError(
+                        "That code didn't match",
+                        'Double-check the code in your email. A few more misses will pause entry briefly.',
+                    );
                     codeInput.value = '';
                     codeInput.focus();
                     return;
@@ -630,10 +708,23 @@
                 .catch(function () {
                     setFormVerifyBusy(false);
                     submitBtn.disabled = false;
-                    showError('Verification is temporarily unavailable. Try again shortly.');
+                    setGateHint(GATE_HINT_DEFAULT);
+                    showGateError(
+                        'Verification unavailable',
+                        'A network error interrupted the check. Wait a moment and try again.',
+                    );
                 });
         });
 
+        if (!gateApiReady) {
+            showGateError(
+                "Can't connect to the portal yet",
+                "The verification service didn't respond. Refresh the page or try again in a minute.",
+            );
+            setGateHint('');
+        } else if (!gateGetBlocking()) {
+            setGateHint(GATE_HINT_DEFAULT);
+        }
         syncGateThrottleUi();
         if (!codeInput.disabled) {
             codeInput.focus();
@@ -692,10 +783,10 @@
         var emailEl = document.getElementById('access-request-email');
         var referralEl = document.getElementById('access-request-referral');
         var hpEl = document.getElementById('access-request-website');
-        var errEl = document.getElementById('access-request-error');
+        var msgEl = document.getElementById('access-request-message');
         var successEl = document.getElementById('access-request-success');
         var submitBtn = form ? form.querySelector('.access-gate-submit') : null;
-        if (!form || !nameEl || !emailEl || !referralEl || !errEl || !successEl || !submitBtn) {
+        if (!form || !nameEl || !emailEl || !referralEl || !msgEl || !successEl || !submitBtn) {
             return;
         }
         var submitLabelEl = submitBtn.querySelector('.access-gate-submit-label');
@@ -723,10 +814,14 @@
         });
 
         function clearRequestError() {
-            errEl.textContent = '';
+            gateRenderMessage(msgEl, null);
         }
-        function showRequestError(msg) {
-            errEl.textContent = msg;
+        function showRequestError(title, detail) {
+            gateRenderMessage(msgEl, {
+                kind: 'error',
+                title: title,
+                detail: detail || '',
+            });
         }
         function setBusy(busy) {
             form.setAttribute('aria-busy', busy ? 'true' : 'false');
@@ -744,7 +839,8 @@
 
             if (!gateApiReady) {
                 showRequestError(
-                    'The portal is temporarily unavailable. Please try again in a moment.',
+                    "Can't send requests right now",
+                    "The portal service didn't respond. Refresh the page or try again in a minute.",
                 );
                 return;
             }
@@ -754,17 +850,17 @@
             var referral = (referralEl.value || '').trim();
 
             if (name.length < 2) {
-                showRequestError('Please share your name.');
+                showRequestError('Add your name', 'So Jonathan knows who is reaching out.');
                 nameEl.focus();
                 return;
             }
             if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal) || emailVal.length > 254) {
-                showRequestError('Please enter a valid email.');
+                showRequestError('Enter a valid email', 'If approved, your access code will be sent here.');
                 emailEl.focus();
                 return;
             }
             if (referral.length < 2) {
-                showRequestError('A short note about how you found me helps me decide.');
+                showRequestError('Share how you found me', 'A sentence or two helps Jonathan decide whether to approve.');
                 referralEl.focus();
                 return;
             }
@@ -790,30 +886,30 @@
                     }
                     if (result.rateLimited) {
                         showRequestError(
+                            'Too many requests',
                             result.retryAfterSec
-                                ? 'Too many requests. Try again in about ' +
+                                ? 'Please wait ' +
                                       gateFormatRemaining(result.retryAfterSec * 1000) +
-                                      '.'
-                                : 'Too many requests right now. Please try again later.',
+                                      ' before sending another request.'
+                                : 'Please wait a while before sending another request.',
                         );
                         return;
                     }
                     if (result.unavailable) {
                         if (result.reason === 'email_not_configured') {
                             showRequestError(
-                                "The request form isn't fully wired up yet. Please email Jonathan directly.",
-                            );
-                        } else if (result.reason === 'database_tables_missing') {
-                            showRequestError(
-                                'The request database needs updating. Run the latest migration in neon/.',
+                                'Request form unavailable',
+                                'Please email Jonathan directly for now.',
                             );
                         } else if (result.reason === 'email_send_failed') {
                             showRequestError(
-                                "Couldn't send the notification email. Please try again in a few minutes.",
+                                "Couldn't send your request",
+                                'The notification email failed. Try again in a few minutes.',
                             );
                         } else {
                             showRequestError(
-                                'Request is temporarily unavailable. Please try again shortly.',
+                                "Can't send requests right now",
+                                'This is usually temporary. Wait a minute and try again.',
                             );
                         }
                         return;
@@ -824,20 +920,28 @@
                             result.reason === 'challenge_failed'
                         ) {
                             showRequestError(
-                                'Verification timed out. Please try again in a moment.',
+                                'Security check timed out',
+                                'The page runs a quick background check first. Try again in a moment.',
                             );
                         } else {
                             showRequestError(
-                                "That didn't look right. Double-check your email and try again.",
+                                'Please check your details',
+                                'Make sure your email looks right, then try again.',
                             );
                         }
                         return;
                     }
-                    showRequestError('Something went wrong. Please try again.');
+                    showRequestError(
+                        'Something went wrong',
+                        'Please try again. If it keeps failing, email Jonathan directly.',
+                    );
                 })
                 .catch(function () {
                     setBusy(false);
-                    showRequestError('Network error. Please try again.');
+                    showRequestError(
+                        'Network error',
+                        'Your request did not reach the server. Check your connection and try again.',
+                    );
                 });
         });
     }

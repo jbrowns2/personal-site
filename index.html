@@ -75,6 +75,7 @@
                 </span>
                 <h1 id="access-gate-title" class="access-gate-heading">Jonathan Brownstein</h1>
                 <p class="access-gate-credential">MSe &middot; FLMI</p>
+                <p class="access-gate-subtitle" data-view="code">Enter the code from your invite email to open the portal.</p>
                 <p class="access-gate-subtitle" data-view="request">Tell me a little about you and I&rsquo;ll send a code over.</p>
             </header>
 
@@ -96,7 +97,8 @@
                         <label for="access-code-confirm">Leave blank</label>
                         <input type="text" id="access-code-confirm" name="access-code-confirm" autocomplete="off" tabindex="-1">
                     </div>
-                    <p id="access-gate-error" class="access-gate-error" role="alert" aria-live="assertive"></p>
+                    <div id="access-gate-message" class="access-gate-message" role="alert" aria-live="assertive" hidden></div>
+                    <p id="access-gate-hint" class="access-gate-hint">Preparing secure entry&hellip;</p>
                     <button type="submit" class="access-gate-submit btn btn-primary">
                         <span class="access-gate-submit-label">Enter portal</span>
                         <svg class="access-gate-submit-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
@@ -105,6 +107,17 @@
                         </svg>
                     </button>
                 </form>
+            </div>
+            <div class="access-gate-divider" aria-hidden="true"><span>or</span></div>
+            <div class="access-gate-actions">
+                <button type="button" class="access-gate-action-btn" data-gate-action="show-request">
+                    <span>Don&rsquo;t have a code? Request access</span>
+                    <svg class="access-gate-action-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                        <path d="M5 12h14"></path>
+                        <path d="M13 6l6 6-6 6"></path>
+                    </svg>
+                </button>
+                <p class="access-gate-actions-hint">Prefer to reach out directly? <a href="mailto:JonathanBrownstein12@icloud.com">Email Jonathan</a></p>
             </div>
             </section>
 
@@ -126,7 +139,8 @@
                         <label for="access-request-website">Leave this blank</label>
                         <input type="text" id="access-request-website" name="access-request-website" autocomplete="off" tabindex="-1">
                     </div>
-                    <p id="access-request-error" class="access-gate-error" role="alert" aria-live="assertive"></p>
+                    <div id="access-request-message" class="access-gate-message" role="alert" aria-live="assertive" hidden></div>
+                    <p class="access-gate-hint access-gate-hint--request">Jonathan reviews each request personally. If approved, a code arrives by email within a day.</p>
                     <button type="submit" class="access-gate-submit btn btn-primary">
                         <span class="access-gate-submit-label">Send request</span>
                         <svg class="access-gate-submit-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
