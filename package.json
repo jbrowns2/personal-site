@@ -14,7 +14,8 @@
     "gate:disable": "node scripts/manage-gate-codes.js disable",
     "gate:enable": "node scripts/manage-gate-codes.js enable",
     "gate:remove": "node scripts/manage-gate-codes.js remove",
-    "gate:report": "node scripts/gate-report.js"
+    "gate:report": "node scripts/gate-report.js",
+    "gate:report:reset": "node scripts/reset-gate-report.js"
   },
   "dependencies": {
     "@neondatabase/serverless": "^0.10.4",

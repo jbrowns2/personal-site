@@ -1,0 +1,7 @@
+Jonathan Brownstein, MSE, FLMI — internal application Ref. 3047 — AVP, ReFlex Underwriting Solutions (ReFlex & ReFlex Select · U.S. Life Solutions)
+
+• Impact: 15+ years insurance/reinsurance (including U.S. life reinsurance); MS Economics + FLMI. At Hannover Re: production forecasting and ML on Databricks-based workflows, enterprise metadata and lineage (Field Inventory Report), valuation-grade analytics; underwriting-adjacent data quality and decision-support for actuarial/finance; CEO-level recognition on SAL modernization; governed, audit-ready delivery.
+
+• Delivery: Cross-functional analytics execution across IT, actuarial, underwriting-aligned partners, data engineering, BI, and governance—informs prioritization and feasibility, aligns scope to capacity, and lands compliant production releases with predictable quality and audit-suitable documentation.
+
+• Fit: Supports Hannover Re’s automated underwriting ecosystem (ReFlex / ReFlex Select)—digital underwriting workflows; third-party and multi-channel data in governed analytics layers; iterative patterns aligned with agile product execution; translates portfolio complexity into reliable underwriting and valuation capabilities.

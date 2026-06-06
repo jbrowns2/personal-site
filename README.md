@@ -88,6 +88,7 @@ The resume access code is **verified on the server** (bcrypt, no secret in the b
    - `migration-003-access-codes.sql` (creates `portfolio_gate_access_codes`)
    - `migration-004-access-requests.sql` (creates `portfolio_gate_access_requests` for the "Request access" form)
    - `migration-005-access-code-uses.sql` (unified event log for successful and incorrect code entries + outreach metadata)
+   - `migration-006-access-code-display.sql` (`access_code` column for local CLI reporting)
 2. In Vercel → Project → Settings → Environment Variables, add:
    - `DATABASE_URL` — your Neon connection string (serverless pooler URL is recommended).
    - `GATE_SESSION_SECRET` — at least 32 random characters (for example `node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"`).

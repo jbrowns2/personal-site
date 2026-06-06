@@ -115,7 +115,8 @@ function printUsage() {
 async function cmdList(sql) {
     const rows = await sql`
         SELECT id, label, active, expires_at, last_used_at, created_at,
-               code_lookup_hash, contact_name, contact_email, role_title, notes
+               code_lookup_hash, access_code, contact_name, contact_email,
+               role_title, notes
         FROM portfolio_gate_access_codes
         ORDER BY active DESC, created_at DESC, id DESC
     `;
@@ -131,6 +132,7 @@ async function cmdList(sql) {
             label: r.label,
             active: r.active,
             lookup_hash: r.code_lookup_hash ? 'yes' : 'no',
+            access_code: r.access_code || '',
             contact: r.contact_name || '',
             email: r.contact_email || '',
             role: r.role_title || '',
@@ -149,10 +151,10 @@ async function cmdAdd(sql, args) {
     const lookupHash = computeCodeLookupHash(normalized);
     const inserted = await sql`
         INSERT INTO portfolio_gate_access_codes
-            (label, bcrypt_hash, active, expires_at, code_lookup_hash,
+            (label, bcrypt_hash, active, expires_at, code_lookup_hash, access_code,
              contact_name, contact_email, role_title, notes)
         VALUES
-            (${parsed.label}, ${hash}, true, ${parsed.expiresIso}, ${lookupHash},
+            (${parsed.label}, ${hash}, true, ${parsed.expiresIso}, ${lookupHash}, ${normalized},
              ${parsed.contactName}, ${parsed.contactEmail}, ${parsed.roleTitle}, ${parsed.notes})
         ON CONFLICT (bcrypt_hash) DO NOTHING
         RETURNING id, label, active, expires_at, created_at
@@ -301,10 +303,10 @@ async function cmdRotate(sql, args) {
     `;
     const inserted = await sql`
         INSERT INTO portfolio_gate_access_codes
-            (label, bcrypt_hash, active, expires_at, code_lookup_hash,
+            (label, bcrypt_hash, active, expires_at, code_lookup_hash, access_code,
              contact_name, contact_email, role_title, notes)
         VALUES
-            (${parsed.label}, ${newHash}, true, ${parsed.expiresIso}, ${lookupHash},
+            (${parsed.label}, ${newHash}, true, ${parsed.expiresIso}, ${lookupHash}, ${normalized},
              ${parsed.contactName}, ${parsed.contactEmail}, ${parsed.roleTitle}, ${parsed.notes})
         ON CONFLICT (bcrypt_hash) DO NOTHING
         RETURNING id, label, active, expires_at, created_at

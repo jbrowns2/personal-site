@@ -94,6 +94,7 @@ async function main() {
 
     const header =
         pad('STATUS', 10) +
+        pad('CODE', 18) +
         pad('EMPLOYER', 22) +
         pad('CONTACT', 24) +
         pad('INVITED', 12) +
@@ -113,6 +114,7 @@ async function main() {
                 : inv.daysToFirstUse;
         console.log(
             pad(inv.responseStatus, 10) +
+                pad(inv.accessCode || '—', 18) +
                 pad(inv.employerLabel, 22) +
                 pad(contact, 24) +
                 pad(fmtDate(inv.invitedAt), 12) +
