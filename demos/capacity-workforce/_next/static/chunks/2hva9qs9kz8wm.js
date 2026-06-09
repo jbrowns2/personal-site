@@ -1,0 +1,1 @@
+(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["object"==typeof document?document.currentScript:void 0,39612,e=>{"use strict";var t=e.i(43476),r=e.i(71645),s=e.i(18566);e.s(["default",0,function(){let e=(0,s.useRouter)();return(0,r.useEffect)(()=>{e.replace("/")},[e]),(0,t.jsx)("p",{className:"supply-redirect-msg",children:"Redirecting to dashboard…"})}])}]);

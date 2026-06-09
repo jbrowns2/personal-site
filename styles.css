@@ -1469,6 +1469,331 @@ html.access-unlocked #access-gate {
     100% { opacity: 1; transform: translate(-50%, -50%); }
 }
 
+/* Interviewer demo launcher (access code JPMC210741105) */
+/* ── Demo access floating action button ────────────────────────── */
+.demo-access-fab {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 9000;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.75rem 1.2rem;
+    border-radius: 50px;
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    color: #1a0a00;
+    font-size: 0.88rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    text-decoration: none;
+    box-shadow: 0 4px 18px rgba(245, 158, 11, 0.55), 0 2px 6px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transform: translateY(12px) scale(0.96);
+    transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+        box-shadow 0.2s ease, background 0.2s ease;
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+.demo-access-fab--visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+}
+
+.demo-access-fab:hover,
+.demo-access-fab:focus-visible {
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+    box-shadow: 0 6px 24px rgba(245, 158, 11, 0.75), 0 2px 8px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px) scale(1.02);
+    outline: none;
+}
+
+.demo-access-fab:focus-visible {
+    outline: 2px solid #fbbf24;
+    outline-offset: 3px;
+}
+
+.demo-access-fab svg {
+    flex-shrink: 0;
+}
+
+@media (max-width: 480px) {
+    .demo-access-fab span {
+        display: none;
+    }
+    .demo-access-fab {
+        padding: 0.85rem;
+        border-radius: 50%;
+        bottom: 1.25rem;
+        right: 1.25rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .demo-access-fab {
+        transition: opacity 0.1s ease;
+        transform: none !important;
+    }
+}
+
+/* ── Demo invite modal ──────────────────────────────────────────── */
+.demo-invite-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 10001;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.25rem;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+}
+
+.demo-invite-modal--open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.demo-invite-modal--exiting {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.demo-invite-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(4, 6, 14, 0.88);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+[data-theme="light"] .demo-invite-backdrop {
+    background: rgba(15, 23, 42, 0.55);
+}
+
+.demo-invite-card {
+    position: relative;
+    z-index: 1;
+    width: min(100%, 28rem);
+    padding: 1.65rem 1.65rem 1.45rem;
+    background: #12122a;
+    border: 1px solid rgba(148, 163, 184, 0.22);
+    border-radius: var(--radius-lg);
+    box-shadow:
+        0 24px 64px rgba(0, 0, 0, 0.55),
+        0 0 0 1px rgba(255, 255, 255, 0.04) inset;
+    transform: translateY(12px) scale(0.98);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    -webkit-font-smoothing: antialiased;
+}
+
+[data-theme="light"] .demo-invite-card {
+    background: #ffffff;
+    border-color: rgba(15, 23, 42, 0.12);
+    box-shadow:
+        0 24px 64px rgba(15, 23, 42, 0.18),
+        0 0 0 1px rgba(255, 255, 255, 0.9) inset;
+}
+
+.demo-invite-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.1rem;
+}
+
+.demo-invite-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 0.7rem;
+    background: rgba(99, 102, 241, 0.2);
+    color: #c7d2fe;
+    border: 1px solid rgba(129, 140, 248, 0.35);
+}
+
+[data-theme="light"] .demo-invite-icon {
+    background: rgba(79, 70, 229, 0.12);
+    color: var(--accent);
+    border-color: rgba(79, 70, 229, 0.25);
+}
+
+.demo-invite-modal--open .demo-invite-card {
+    transform: translateY(0) scale(1);
+}
+
+.demo-invite-close {
+    position: absolute;
+    top: 0.85rem;
+    right: 0.85rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border: none;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #cbd5e1;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+[data-theme="light"] .demo-invite-close {
+    background: rgba(15, 23, 42, 0.06);
+    color: var(--text-secondary);
+}
+
+.demo-invite-close:hover {
+    background: rgba(255, 255, 255, 0.16);
+    color: #f8fafc;
+}
+
+[data-theme="light"] .demo-invite-close:hover {
+    background: rgba(15, 23, 42, 0.1);
+    color: var(--text-primary);
+}
+
+.demo-invite-eyebrow {
+    margin: 0;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #fbbf24;
+}
+
+[data-theme="light"] .demo-invite-eyebrow {
+    color: #b45309;
+}
+
+.demo-invite-lead {
+    margin: 0 0 0.5rem;
+    padding-right: 2rem;
+    font-size: 1.02rem;
+    line-height: 1.55;
+    color: #cbd5e1;
+}
+
+[data-theme="light"] .demo-invite-lead {
+    color: #334155;
+}
+
+.demo-invite-lead strong {
+    color: #f8fafc;
+    font-weight: 700;
+}
+
+[data-theme="light"] .demo-invite-lead strong {
+    color: #0f172a;
+}
+
+.demo-invite-title {
+    margin: 0 0 0.85rem;
+    padding-right: 2rem;
+    font-size: clamp(1.15rem, 3vw, 1.35rem);
+    line-height: 1.4;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: #f8fafc;
+}
+
+[data-theme="light"] .demo-invite-title {
+    color: #0f172a;
+}
+
+.demo-invite-body {
+    margin: 0 0 1.35rem;
+    padding-top: 0.95rem;
+    border-top: 1px solid rgba(148, 163, 184, 0.22);
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: #94a3b8;
+}
+
+[data-theme="light"] .demo-invite-body {
+    border-top-color: rgba(15, 23, 42, 0.1);
+    color: #475569;
+}
+
+.demo-invite-actions {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.75rem;
+    align-items: stretch;
+}
+
+.demo-invite-actions .btn {
+    justify-content: center;
+    min-width: 0;
+    font-size: 0.95rem;
+    font-weight: 600;
+    min-height: 2.75rem;
+}
+
+.demo-invite-actions .btn-primary {
+    grid-column: 1;
+}
+
+.demo-invite-actions .btn-secondary {
+    grid-column: 2;
+    white-space: nowrap;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(148, 163, 184, 0.28);
+    color: #e2e8f0;
+}
+
+.demo-invite-actions .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.14);
+    border-color: rgba(148, 163, 184, 0.4);
+    color: #f8fafc;
+}
+
+[data-theme="light"] .demo-invite-actions .btn-secondary {
+    background: #f1f5f9;
+    border-color: rgba(15, 23, 42, 0.12);
+    color: #334155;
+}
+
+[data-theme="light"] .demo-invite-actions .btn-secondary:hover {
+    background: #e2e8f0;
+    border-color: rgba(15, 23, 42, 0.18);
+    color: #0f172a;
+}
+
+@media (max-width: 480px) {
+    .demo-invite-card {
+        padding: 1.25rem 1.15rem 1.15rem;
+    }
+
+    .demo-invite-actions {
+        grid-template-columns: 1fr;
+    }
+
+    .demo-invite-actions .btn-primary,
+    .demo-invite-actions .btn-secondary {
+        grid-column: 1;
+        width: 100%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .demo-invite-modal,
+    .demo-invite-card {
+        transition: none;
+    }
+
+    .demo-invite-modal--open .demo-invite-card {
+        transform: none;
+    }
+}
+
 @media (max-width: 480px) {
     #access-gate {
         align-items: center;

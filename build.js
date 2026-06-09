@@ -97,6 +97,10 @@ async function build() {
       copyDir('Projects', path.join(distDir, 'Projects'));
       console.log('✅ Projects copied');
     }
+    if (fs.existsSync('demos')) {
+      copyDir('demos', path.join(distDir, 'demos'));
+      console.log('✅ Demos copied');
+    }
     
     // Copy other static files
     const staticFiles = ['robots.txt', 'sitemap.xml', 'favicon.svg'];

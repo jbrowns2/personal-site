@@ -18,6 +18,8 @@
     let gateActiveApiBase = API_BASE;
     /** Must match lib/gate-backend.js MIN_CODE_LEN */
     const MIN_GATE_CODE_LEN = 3;
+    /** JPMC Quant Analytics interview access code — minimal demo launcher for interviewers. */
+    const DEMO_INVITE_ACCESS_CODE = 'JPMC210741105';
 
     let gateApiReady = false;
     let serverBlockUntil = 0;
@@ -149,6 +151,126 @@
 
     function normalizeGateCode(s) {
         return String(s).trim().toUpperCase().replace(/[^A-Z0-9]/g, '');
+    }
+
+    function isDemoInviteAccessCode(code) {
+        return normalizeGateCode(code) === DEMO_INVITE_ACCESS_CODE;
+    }
+
+    const DEMO_ACCESS_FLAG_KEY = 'portfolio_demo_access_granted';
+
+    function markDemoAccess() {
+        try { localStorage.setItem(DEMO_ACCESS_FLAG_KEY, '1'); } catch (e) {}
+    }
+
+    function hasDemoAccess() {
+        try { return localStorage.getItem(DEMO_ACCESS_FLAG_KEY) === '1'; } catch (e) { return false; }
+    }
+
+    const CAPACITY_WELCOME_ENTRY_KEY = 'capacity-workforce-welcome-entry';
+
+    function markCapacityWorkforceWelcomeEntry() {
+        try { sessionStorage.setItem(CAPACITY_WELCOME_ENTRY_KEY, '1'); } catch (e) {}
+    }
+
+    document.addEventListener('click', function (ev) {
+        const link = ev.target.closest('a[href*="capacity-workforce"]');
+        if (link) markCapacityWorkforceWelcomeEntry();
+    }, true);
+
+    function scheduleDemoInvitePopup() {
+        window.setTimeout(showDemoInvitePopup, 950);
+    }
+
+    function injectDemoAccessButton() {
+        if (document.getElementById('demo-access-fab')) return;
+        const fab = document.createElement('a');
+        fab.id = 'demo-access-fab';
+        fab.className = 'demo-access-fab';
+        fab.href = '/demos/capacity-workforce/';
+        fab.target = '_blank';
+        fab.rel = 'noopener noreferrer';
+        fab.setAttribute('aria-label', 'Open Capacity & Workforce Modeling Lab Dashboard sample');
+        fab.innerHTML =
+            '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+            '<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>' +
+            '<polyline points="15 3 21 3 21 9"></polyline>' +
+            '<line x1="10" y1="14" x2="21" y2="3"></line>' +
+            '</svg>' +
+            '<span>Open demo</span>';
+        document.body.appendChild(fab);
+        requestAnimationFrame(function () { fab.classList.add('demo-access-fab--visible'); });
+    }
+
+    function showDemoInvitePopup() {
+        if (document.getElementById('demo-invite-modal')) return;
+
+        const overlay = document.createElement('div');
+        overlay.id = 'demo-invite-modal';
+        overlay.className = 'demo-invite-modal';
+        overlay.setAttribute('role', 'dialog');
+        overlay.setAttribute('aria-modal', 'true');
+        overlay.setAttribute('aria-labelledby', 'demo-invite-title');
+
+        overlay.innerHTML =
+            '<div class="demo-invite-backdrop" data-demo-invite-dismiss aria-hidden="true"></div>' +
+            '<div class="demo-invite-card">' +
+            '<button type="button" class="demo-invite-close" aria-label="Close" data-demo-invite-dismiss>' +
+            '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">' +
+            '<line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line>' +
+            '</svg></button>' +
+            '<div class="demo-invite-header">' +
+            '<div class="demo-invite-icon" aria-hidden="true">' +
+            '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">' +
+            '<path d="M3 3v18h18"></path><path d="M18 17V9"></path><path d="M13 17V5"></path><path d="M8 17v-3"></path>' +
+            '</svg></div>' +
+            '<p class="demo-invite-eyebrow">Portfolio sample</p>' +
+            '</div>' +
+            '<p class="demo-invite-lead"><strong>Jonathan Brownstein</strong> invites you to view a sample</p>' +
+            '<h2 id="demo-invite-title" class="demo-invite-title">Capacity &amp; Workforce Modeling Lab Dashboard</h2>' +
+            '<div class="demo-invite-actions">' +
+            '<a href="/demos/capacity-workforce/" class="btn btn-primary" target="_blank" rel="noopener noreferrer">' +
+            '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">' +
+            '<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>' +
+            '<polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line>' +
+            '</svg>View dashboard</a>' +
+            '<button type="button" class="btn btn-secondary" data-demo-invite-dismiss>Not now</button>' +
+            '</div>' +
+            '</div>';
+
+        function closeDemoInvitePopup() {
+            overlay.classList.add('demo-invite-modal--exiting');
+            overlay.addEventListener('transitionend', function onExit(ev) {
+                if (ev.target !== overlay || ev.propertyName !== 'opacity') return;
+                overlay.removeEventListener('transitionend', onExit);
+                overlay.remove();
+                if (!document.documentElement.classList.contains('access-locked')) {
+                    document.body.style.overflow = '';
+                }
+            });
+        }
+
+        overlay.addEventListener('click', function (ev) {
+            if (ev.target.closest('[data-demo-invite-dismiss]')) {
+                closeDemoInvitePopup();
+            }
+        });
+
+        overlay.addEventListener('keydown', function (ev) {
+            if (ev.key === 'Escape') {
+                ev.preventDefault();
+                closeDemoInvitePopup();
+            }
+        });
+
+        document.body.appendChild(overlay);
+        document.body.style.overflow = 'hidden';
+
+        window.requestAnimationFrame(function () {
+            overlay.classList.add('demo-invite-modal--open');
+            const primary = overlay.querySelector('.btn-primary');
+            if (primary) primary.focus();
+        });
     }
 
     function gateIsPlausibleGuess(phrase) {
@@ -649,6 +771,11 @@
                     history.replaceState(null, '', window.location.pathname + window.location.search);
                 }
                 applyUnlockedDom({ clearLoading: true });
+                if (isDemoInviteAccessCode(code)) {
+                    markDemoAccess();
+                    scheduleDemoInvitePopup();
+                    injectDemoAccessButton();
+                }
                 gate.classList.remove('access-gate--verifying');
                 gate.classList.add('access-gate--success');
                 const inner = form.closest('.access-gate-inner');
@@ -1015,6 +1142,11 @@
                     const r = await gateVerifyCode(normalizeGateCode(phrase));
                     if (r.ok) {
                         stored = true;
+                        if (isDemoInviteAccessCode(phrase)) {
+                            markDemoAccess();
+                            scheduleDemoInvitePopup();
+                            injectDemoAccessButton();
+                        }
                     }
                 }
                 history.replaceState(null, '', window.location.pathname + window.location.search);
@@ -1025,6 +1157,9 @@
 
         if (stored) {
             applyUnlockedDom();
+            if (hasDemoAccess()) {
+                injectDemoAccessButton();
+            }
             if (typeof window.__portfolioPreloaderStart === 'function') {
                 window.__portfolioPreloaderStart();
                 window.__portfolioPreloaderStart = undefined;
