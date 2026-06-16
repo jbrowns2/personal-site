@@ -193,10 +193,14 @@ module.exports = async function verifyAccess(req, res) {
                 console.error('verify-access:recordSuccessEvent', err && err.message);
             });
         }
-        var token = gate.signSession(secrets.secret);
+        var employmentType = gate.EMPLOYMENT_TYPE_FULL_TIME;
+        if (codeRow && codeRow.employment_type) {
+            employmentType = gate.normalizeEmploymentType(codeRow.employment_type);
+        }
+        var token = gate.signSession(secrets.secret, employmentType);
         res.setHeader('Set-Cookie', gate.buildSessionCookie(token, req));
         gate.maybePruneOldRecords(sql).catch(function () {});
-        return res.status(200).json({ ok: true });
+        return res.status(200).json({ ok: true, employmentType: employmentType });
     } catch (err) {
         console.error('verify-access', err && err.message, err);
         var errBody = { ok: false, error: 'service_unavailable' };

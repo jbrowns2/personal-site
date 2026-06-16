@@ -30,6 +30,9 @@ const {
     MAX_CODE_LEN,
     computeCodeLookupHash,
     invalidateAccessCodeCache,
+    normalizeEmploymentType,
+    EMPLOYMENT_TYPE_FULL_TIME,
+    EMPLOYMENT_TYPE_CONTRACT,
 } = require('../lib/gate-backend.js');
 
 loadDotEnvIfPresent(path.join(__dirname, '..', '.env'));
@@ -90,9 +93,11 @@ function printUsage() {
             '  list                                  Show every access code (active + disabled).',
             '  add    "RAW CODE" "Label" [--expires YYYY-MM-DD | --expires-in Nd]',
             '       [--contact NAME] [--email ADDR] [--role TITLE] [--notes TEXT]',
+            '       [--type contract|full-time]',
             '                                        Hash and insert a new code.',
             '  rotate "RAW CODE" "Label" [--expires YYYY-MM-DD | --expires-in Nd]',
             '       [--contact NAME] [--email ADDR] [--role TITLE] [--notes TEXT]',
+            '       [--type contract|full-time]',
             '                                        Replace any existing code(s) with this label by',
             '                                        a freshly-hashed entry (used to drop bcrypt cost).',
             '  disable <id|label>                    Mark an access code inactive.',
@@ -116,7 +121,7 @@ async function cmdList(sql) {
     const rows = await sql`
         SELECT id, label, active, expires_at, last_used_at, created_at,
                code_lookup_hash, access_code, contact_name, contact_email,
-               role_title, notes
+               role_title, notes, employment_type
         FROM portfolio_gate_access_codes
         ORDER BY active DESC, created_at DESC, id DESC
     `;
@@ -136,6 +141,7 @@ async function cmdList(sql) {
             contact: r.contact_name || '',
             email: r.contact_email || '',
             role: r.role_title || '',
+            type: r.employment_type || EMPLOYMENT_TYPE_FULL_TIME,
             expires_at: r.expires_at ? toIso(r.expires_at) : '',
             last_used_at: r.last_used_at ? toIso(r.last_used_at) : '',
             created_at: toIso(r.created_at),
@@ -152,10 +158,11 @@ async function cmdAdd(sql, args) {
     const inserted = await sql`
         INSERT INTO portfolio_gate_access_codes
             (label, bcrypt_hash, active, expires_at, code_lookup_hash, access_code,
-             contact_name, contact_email, role_title, notes)
+             contact_name, contact_email, role_title, notes, employment_type)
         VALUES
             (${parsed.label}, ${hash}, true, ${parsed.expiresIso}, ${lookupHash}, ${normalized},
-             ${parsed.contactName}, ${parsed.contactEmail}, ${parsed.roleTitle}, ${parsed.notes})
+             ${parsed.contactName}, ${parsed.contactEmail}, ${parsed.roleTitle}, ${parsed.notes},
+             ${parsed.employmentType})
         ON CONFLICT (bcrypt_hash) DO NOTHING
         RETURNING id, label, active, expires_at, created_at
     `;
@@ -187,6 +194,7 @@ function parseAddArgs(args, cmdName) {
     let contactEmail = null;
     let roleTitle = null;
     let notes = null;
+    let employmentType = EMPLOYMENT_TYPE_FULL_TIME;
     for (let i = 0; i < args.length; i++) {
         const a = args[i];
         if (a === '--expires' || a === '-e') {
@@ -213,6 +221,10 @@ function parseAddArgs(args, cmdName) {
             notes = args[++i] || null;
         } else if (a.startsWith('--notes=')) {
             notes = a.slice('--notes='.length);
+        } else if (a === '--type') {
+            employmentType = parseEmploymentTypeArg(args[++i]);
+        } else if (a.startsWith('--type=')) {
+            employmentType = parseEmploymentTypeArg(a.slice('--type='.length));
         } else {
             positional.push(a);
         }
@@ -255,7 +267,23 @@ function parseAddArgs(args, cmdName) {
         contactEmail: contactEmail,
         roleTitle: roleTitle,
         notes: notes,
+        employmentType: employmentType,
     };
+}
+
+function parseEmploymentTypeArg(raw) {
+    const value = String(raw || '')
+        .trim()
+        .toLowerCase()
+        .replace(/[\s-]+/g, '_');
+    if (value === 'contract') {
+        return EMPLOYMENT_TYPE_CONTRACT;
+    }
+    if (value === 'full_time' || value === 'fulltime') {
+        return EMPLOYMENT_TYPE_FULL_TIME;
+    }
+    console.error('Invalid --type (use contract or full-time).');
+    process.exit(1);
 }
 
 /** @returns {string|null} ISO timestamp or null if invalid */
@@ -304,10 +332,11 @@ async function cmdRotate(sql, args) {
     const inserted = await sql`
         INSERT INTO portfolio_gate_access_codes
             (label, bcrypt_hash, active, expires_at, code_lookup_hash, access_code,
-             contact_name, contact_email, role_title, notes)
+             contact_name, contact_email, role_title, notes, employment_type)
         VALUES
             (${parsed.label}, ${newHash}, true, ${parsed.expiresIso}, ${lookupHash}, ${normalized},
-             ${parsed.contactName}, ${parsed.contactEmail}, ${parsed.roleTitle}, ${parsed.notes})
+             ${parsed.contactName}, ${parsed.contactEmail}, ${parsed.roleTitle}, ${parsed.notes},
+             ${parsed.employmentType})
         ON CONFLICT (bcrypt_hash) DO NOTHING
         RETURNING id, label, active, expires_at, created_at
     `;

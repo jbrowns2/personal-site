@@ -3,6 +3,9 @@
 // ============================================
 (function initAccessGateAndPreloader() {
     const STORAGE_KEY = 'portfolio_unlocked';
+    const EMPLOYMENT_TYPE_KEY = 'portfolio_employment_type';
+    const EMPLOYMENT_FULL_TIME = 'full_time';
+    const EMPLOYMENT_CONTRACT = 'contract';
     /** Deployed API used when /api is missing on localhost (static preview). */
     const GATE_PRODUCTION_API_BASE = 'https://www.jonathansbrownstein.com/api';
     const gateApiBaseMetaEl = document.querySelector('meta[name="gate-api-base"]');
@@ -18,6 +21,33 @@
     let gateActiveApiBase = API_BASE;
     /** Must match lib/gate-backend.js MIN_CODE_LEN */
     const MIN_GATE_CODE_LEN = 3;
+    function normalizeEmploymentType(value) {
+        return value === EMPLOYMENT_CONTRACT ? EMPLOYMENT_CONTRACT : EMPLOYMENT_FULL_TIME;
+    }
+
+    function persistEmploymentType(type) {
+        try {
+            sessionStorage.setItem(EMPLOYMENT_TYPE_KEY, normalizeEmploymentType(type));
+        } catch (e) {}
+    }
+
+    function readStoredEmploymentType() {
+        try {
+            return normalizeEmploymentType(sessionStorage.getItem(EMPLOYMENT_TYPE_KEY));
+        } catch (e) {
+            return EMPLOYMENT_FULL_TIME;
+        }
+    }
+
+    function applyEmploymentVariant(type) {
+        const normalized = normalizeEmploymentType(type);
+        document.documentElement.setAttribute('data-employment-type', normalized);
+        persistEmploymentType(normalized);
+        document.dispatchEvent(
+            new CustomEvent('portfolio:employment-type', { detail: { type: normalized } }),
+        );
+    }
+
     /** JPMC Quant Analytics interview access code — minimal demo launcher for interviewers. */
     const DEMO_INVITE_ACCESS_CODE = 'JPMC210741105';
 
@@ -407,6 +437,9 @@
             return {
                 ready: gateApiReady,
                 unlocked: !!res.body.unlocked,
+                employmentType: res.body.employmentType
+                    ? normalizeEmploymentType(res.body.employmentType)
+                    : null,
             };
         } catch (e) {
             gateActiveApiBase = API_BASE;
@@ -457,7 +490,12 @@
         }
         if (res.status === 200 && res.body && res.body.ok) {
             gateClearServerBlock();
-            return { ok: true };
+            return {
+                ok: true,
+                employmentType: res.body.employmentType
+                    ? normalizeEmploymentType(res.body.employmentType)
+                    : EMPLOYMENT_FULL_TIME,
+            };
         }
         if (res.status === 400 && res.body && res.body.error === 'challenge_failed') {
             return { ok: false, challengeFailed: true };
@@ -771,6 +809,7 @@
                     history.replaceState(null, '', window.location.pathname + window.location.search);
                 }
                 applyUnlockedDom({ clearLoading: true });
+                applyEmploymentVariant(result.employmentType || EMPLOYMENT_FULL_TIME);
                 if (isDemoInviteAccessCode(code)) {
                     markDemoAccess();
                     scheduleDemoInvitePopup();
@@ -1125,12 +1164,19 @@
     (async function runBootstrap() {
         const session = await gateLoadSession();
         let stored = false;
+        let employmentType = EMPLOYMENT_FULL_TIME;
         if (session.ready) {
             stored = !!session.unlocked;
+            if (session.employmentType) {
+                employmentType = session.employmentType;
+            }
         } else {
             try {
                 stored = localStorage.getItem(STORAGE_KEY) === '1';
             } catch (e) {}
+            if (stored) {
+                employmentType = readStoredEmploymentType();
+            }
         }
 
         if (!stored && session.ready) {
@@ -1142,6 +1188,7 @@
                     const r = await gateVerifyCode(normalizeGateCode(phrase));
                     if (r.ok) {
                         stored = true;
+                        employmentType = r.employmentType || EMPLOYMENT_FULL_TIME;
                         if (isDemoInviteAccessCode(phrase)) {
                             markDemoAccess();
                             scheduleDemoInvitePopup();
@@ -1156,6 +1203,7 @@
         const preloader = document.getElementById('preloader');
 
         if (stored) {
+            applyEmploymentVariant(employmentType);
             applyUnlockedDom();
             if (hasDemoAccess()) {
                 injectDemoAccessButton();
@@ -1506,17 +1554,30 @@ document.querySelectorAll('.stat[data-scroll-to]').forEach((stat) => {
 // TYPING EFFECT
 // ============================================
 (function initTyping() {
-    const el = document.getElementById('typing-text');
-    if (!el) return;
+    const fullTimeEl = document.getElementById('typing-text');
+    const contractEl = document.getElementById('typing-text-contract');
+    if (!fullTimeEl && !contractEl) return;
 
-    const phrases = [
-        'Enterprise Data Scientist',
-        'Data & AI Architect',
-        'ML Solutions Engineer',
-        'Insurance Analytics Expert',
-        'MSE, FLMI',
-    ];
+    const phrasesByType = {
+        full_time: [
+            'Enterprise Data Scientist',
+            'Data & AI Architect',
+            'ML Solutions Engineer',
+            'Insurance Analytics Expert',
+            'MSE, FLMI',
+        ],
+        contract: [
+            'Contract Data Scientist',
+            'Analytics Consultant',
+            'Scoped ML Engagements',
+            'Insurance Analytics Expert',
+            'MSE, FLMI',
+        ],
+    };
 
+    let activeType = 'full_time';
+    let activeEl = fullTimeEl || contractEl;
+    let phrases = phrasesByType.full_time;
     let phraseIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
@@ -1525,21 +1586,59 @@ document.querySelectorAll('.stat[data-scroll-to]').forEach((stat) => {
     const deleteSpeed = 35;
     const pauseEnd = 2000;
     const pauseStart = 500;
+    let startTimer = null;
+
+    function resolveTypingTarget(type) {
+        activeType = type === 'contract' ? 'contract' : 'full_time';
+        phrases = phrasesByType[activeType];
+        activeEl =
+            activeType === 'contract' && contractEl ? contractEl : fullTimeEl || contractEl;
+    }
+
+    function resetTypingState() {
+        phraseIndex = 0;
+        charIndex = 0;
+        isDeleting = false;
+        initialized = false;
+        if (activeEl) {
+            activeEl.textContent = '';
+        }
+    }
+
+    function scheduleStart(delayMs) {
+        if (startTimer) {
+            clearTimeout(startTimer);
+        }
+        startTimer = setTimeout(type, delayMs);
+    }
+
+    document.addEventListener('portfolio:employment-type', function (ev) {
+        const nextType =
+            ev && ev.detail && ev.detail.type === 'contract' ? 'contract' : 'full_time';
+        resolveTypingTarget(nextType);
+        resetTypingState();
+        scheduleStart(250);
+    });
+
+    resolveTypingTarget(
+        document.documentElement.getAttribute('data-employment-type') || 'full_time',
+    );
 
     function type() {
+        if (!activeEl) return;
         if (!initialized) {
             initialized = true;
-            el.textContent = '';
+            activeEl.textContent = '';
         }
 
         const currentPhrase = phrases[phraseIndex];
 
         if (isDeleting) {
             charIndex--;
-            el.textContent = currentPhrase.substring(0, charIndex);
+            activeEl.textContent = currentPhrase.substring(0, charIndex);
         } else {
             charIndex++;
-            el.textContent = currentPhrase.substring(0, charIndex);
+            activeEl.textContent = currentPhrase.substring(0, charIndex);
         }
 
         let delay = isDeleting ? deleteSpeed : typeSpeed;
@@ -1553,10 +1652,10 @@ document.querySelectorAll('.stat[data-scroll-to]').forEach((stat) => {
             delay = pauseStart;
         }
 
-        setTimeout(type, delay);
+        startTimer = setTimeout(type, delay);
     }
 
-    setTimeout(type, 1000);
+    scheduleStart(1000);
 })();
 
 // ============================================

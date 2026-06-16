@@ -31,7 +31,8 @@ module.exports = async function accessStatus(req, res) {
             console.error('access-status rate-limit', err);
         }
 
-        const unlocked = gate.sessionUnlocked(req);
+        const session = gate.getSessionContext(req);
+        const unlocked = !!session;
         let blockedUntilSec = 0;
         try {
             const lockedUntilMs = await gate.getLockoutUntil(sql, ip);
@@ -56,6 +57,7 @@ module.exports = async function accessStatus(req, res) {
             ready: true,
             blockedUntilSec: blockedUntilSec,
             challenge: challenge,
+            employmentType: session ? session.employmentType : null,
         });
     } catch (fatal) {
         console.error('access-status:unhandled', fatal && fatal.message, fatal);

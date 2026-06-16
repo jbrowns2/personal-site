@@ -4180,3 +4180,13 @@ body,
     opacity: 1;
     visibility: visible;
 }
+
+/* Employment-type content variants (contract vs full-time access codes) */
+html[data-employment-type="full_time"] [data-show-for="contract"],
+html:not([data-employment-type]) [data-show-for="contract"] {
+    display: none !important;
+}
+
+html[data-employment-type="contract"] [data-show-for="full_time"] {
+    display: none !important;
+}
