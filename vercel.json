@@ -3,6 +3,11 @@
   "outputDirectory": "dist",
   "installCommand": "npm install",
   "devCommand": "npx serve -l $PORT .",
+  "functions": {
+    "api/**/*.js": {
+      "includeFiles": "site-profiles/**"
+    }
+  },
   "redirects": [
     {
       "source": "/favicon.ico",

@@ -1404,8 +1404,6 @@
         }
 
         refreshGateReadyUi = refreshReadyState;
-
-        refreshReadyState();
         syncGateThrottleUi();
         if (!codeInput.disabled) {
             codeInput.focus();
@@ -1715,7 +1713,7 @@
             }
         }
 
-        if (!stored && session.ready) {
+        if (session.ready) {
             const hash = window.location.hash;
             const m = /^#access=([^&#]+)/.exec(hash);
             if (m) {
@@ -1756,6 +1754,9 @@
             if (typeof window.__portfolioPreloaderStart === 'function') {
                 window.__portfolioPreloaderStart();
                 window.__portfolioPreloaderStart = undefined;
+            }
+            if (refreshGateReadyUi) {
+                refreshGateReadyUi();
             }
             return;
         }

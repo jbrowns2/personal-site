@@ -202,7 +202,7 @@ module.exports = async function verifyAccess(req, res) {
             profileSlug = gate.normalizeProfileSlug(codeRow.profile_slug);
         }
         var contactEmail = profileSlug ? gate.getProfileContactEmail(profileSlug) : null;
-        var token = gate.signSession(secrets.secret, employmentType, profileSlug);
+        var token = gate.signSession(secrets.secret, employmentType, profileSlug, codeRow ? codeRow.id : null);
         res.setHeader('Set-Cookie', gate.buildSessionCookie(token, req));
         gate.maybePruneOldRecords(sql).catch(function () {});
         return res.status(200).json({

@@ -14,12 +14,22 @@ module.exports = async function siteProfile(req, res) {
 
         res.setHeader('Cache-Control', 'private, no-store');
 
+        const sql = gate.getSql();
         const session = gate.getSessionContext(req);
         if (!session) {
             return res.status(401).json({ error: 'unauthorized' });
         }
 
-        const slug = gate.normalizeProfileSlug(session.profileSlug);
+        let resolvedSession = session;
+        if (sql) {
+            try {
+                resolvedSession = await gate.resolveSessionFromDb(sql, session);
+            } catch (err) {
+                console.error('site-profile:resolveSession', err);
+            }
+        }
+
+        const slug = gate.normalizeProfileSlug(resolvedSession.profileSlug);
         if (!slug) {
             return res.status(404).json({ error: 'no_profile' });
         }

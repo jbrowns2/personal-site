@@ -33,6 +33,15 @@ module.exports = async function accessStatus(req, res) {
 
         const session = gate.getSessionContext(req);
         const unlocked = !!session;
+        let resolvedSession = session;
+        if (session) {
+            try {
+                resolvedSession = await gate.resolveSessionFromDb(sql, session);
+            } catch (err) {
+                console.error('access-status:resolveSession', err);
+                resolvedSession = session;
+            }
+        }
         let blockedUntilSec = 0;
         try {
             const lockedUntilMs = await gate.getLockoutUntil(sql, ip);
@@ -52,7 +61,7 @@ module.exports = async function accessStatus(req, res) {
             }
         }
 
-        const profileSlug = session ? session.profileSlug : null;
+        const profileSlug = resolvedSession ? resolvedSession.profileSlug : null;
         const contactEmail = profileSlug ? gate.getProfileContactEmail(profileSlug) : null;
 
         return res.status(200).json({
@@ -60,7 +69,7 @@ module.exports = async function accessStatus(req, res) {
             ready: true,
             blockedUntilSec: blockedUntilSec,
             challenge: challenge,
-            employmentType: session ? session.employmentType : null,
+            employmentType: resolvedSession ? resolvedSession.employmentType : null,
             profileSlug: profileSlug,
             contactEmail: contactEmail,
         });
