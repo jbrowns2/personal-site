@@ -497,6 +497,13 @@
         }
 
         dedupeHeroButtons();
+        document
+            .querySelectorAll(
+                '#profile-highlights .reveal, #profile-experience .reveal, #profile-skills .reveal',
+            )
+            .forEach(function (el) {
+                el.classList.add('visible');
+            });
         document.dispatchEvent(new CustomEvent('portfolio:profile-applied'));
     }
 
