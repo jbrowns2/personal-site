@@ -105,8 +105,8 @@
         const normalized = normalizeEmploymentType(type);
         document.documentElement.setAttribute('data-employment-type', normalized);
         persistEmploymentType(normalized);
-        updateEmploymentMeta(normalized);
         if (document.documentElement.getAttribute('data-profile-mode') !== 'tailored') {
+            updateEmploymentMeta(normalized);
             const ctas = EMPLOYMENT_CTAS[normalized] || EMPLOYMENT_CTAS.full_time;
             setHeroCtas(ctas.primary, ctas.secondary);
             setNavCta(ctas.nav);
@@ -497,6 +497,7 @@
         }
 
         dedupeHeroButtons();
+        document.dispatchEvent(new CustomEvent('portfolio:profile-applied'));
     }
 
     async function fetchSiteProfile(slug) {
@@ -2288,29 +2289,46 @@ document.querySelectorAll('.stat[data-scroll-to]').forEach((stat) => {
 // SCROLL REVEAL ANIMATIONS
 // ============================================
 (function initReveal() {
-    const reveals = document.querySelectorAll('.reveal');
-    if (!reveals.length) return;
+    let revealObserver = null;
 
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)');
-    if (prefersReduced.matches) {
-        reveals.forEach((el) => el.classList.add('visible'));
-        return;
+    function observeRevealElements(root) {
+        const scope = root && root.querySelectorAll ? root : document;
+        const elements = scope.querySelectorAll('.reveal:not(.visible)');
+        if (!elements.length) return;
+
+        const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+        if (prefersReduced.matches) {
+            elements.forEach(function (el) {
+                el.classList.add('visible');
+            });
+            return;
+        }
+
+        if (!revealObserver) {
+            revealObserver = new IntersectionObserver(
+                function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            revealObserver.unobserve(entry.target);
+                        }
+                    });
+                },
+                {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -40px 0px',
+                },
+            );
+        }
+
+        elements.forEach(function (el) {
+            revealObserver.observe(el);
+        });
     }
 
-    const observer = new IntersectionObserver(
-        (entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        },
-        {
-            threshold: 0.1,
-            rootMargin: '0px 0px -40px 0px',
-        }
-    );
+    document.addEventListener('portfolio:profile-applied', function () {
+        observeRevealElements(document);
+    });
 
-    reveals.forEach((el) => observer.observe(el));
+    observeRevealElements(document);
 })();
