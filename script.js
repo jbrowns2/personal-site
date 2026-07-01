@@ -1717,6 +1717,12 @@
             const hash = window.location.hash;
             const m = /^#access=([^&#]+)/.exec(hash);
             if (m) {
+                if (!currentChallenge) {
+                    const chRes = await gateFetchJson('/access-status', { method: 'GET' }, gateActiveApiBase);
+                    if (chRes.body && chRes.body.challenge) {
+                        startPowSolver(chRes.body.challenge);
+                    }
+                }
                 const phrase = decodeURIComponent(m[1].replace(/\+/g, ' '));
                 if (gateIsPlausibleGuess(phrase)) {
                     const r = await gateVerifyCode(normalizeGateCode(phrase));

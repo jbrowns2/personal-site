@@ -53,12 +53,10 @@ module.exports = async function accessStatus(req, res) {
         }
 
         let challenge = null;
-        if (!unlocked) {
-            try {
-                challenge = await gate.issueChallenge(sql, ip);
-            } catch (err) {
-                console.error('access-status challenge', err);
-            }
+        try {
+            challenge = await gate.issueChallenge(sql, ip);
+        } catch (err) {
+            console.error('access-status challenge', err);
         }
 
         const profileSlug = resolvedSession ? resolvedSession.profileSlug : null;
