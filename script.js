@@ -43,9 +43,52 @@
         const normalized = normalizeEmploymentType(type);
         document.documentElement.setAttribute('data-employment-type', normalized);
         persistEmploymentType(normalized);
+        updateEmploymentMeta(normalized);
         document.dispatchEvent(
             new CustomEvent('portfolio:employment-type', { detail: { type: normalized } }),
         );
+    }
+
+    const EMPLOYMENT_META = {
+        full_time: {
+            title: 'Jonathan Brownstein — Senior Data & Analytics Leader',
+            description:
+                'Senior data & analytics leader with 15+ years building enterprise-scale, audit-ready analytics in regulated industries.',
+        },
+        contract: {
+            title: 'Jonathan Brownstein — Senior Contract Data & Analytics Specialist',
+            description:
+                'Senior contract data & analytics specialist for regulated industries. Fast ramp, defined deliverables, production handoffs.',
+        },
+    };
+
+    function updateEmploymentMeta(type) {
+        const meta = EMPLOYMENT_META[type] || EMPLOYMENT_META.full_time;
+        document.title = meta.title;
+        const descEl = document.querySelector('meta[name="description"]');
+        if (descEl) {
+            descEl.setAttribute('content', meta.description);
+        }
+        const titleEl = document.querySelector('meta[name="title"]');
+        if (titleEl) {
+            titleEl.setAttribute('content', meta.title);
+        }
+        const ogTitle = document.querySelector('meta[property="og:title"]');
+        if (ogTitle) {
+            ogTitle.setAttribute('content', meta.title);
+        }
+        const ogDesc = document.querySelector('meta[property="og:description"]');
+        if (ogDesc) {
+            ogDesc.setAttribute('content', meta.description);
+        }
+        const twTitle = document.querySelector('meta[name="twitter:title"]');
+        if (twTitle) {
+            twTitle.setAttribute('content', meta.title);
+        }
+        const twDesc = document.querySelector('meta[name="twitter:description"]');
+        if (twDesc) {
+            twDesc.setAttribute('content', meta.description);
+        }
     }
 
     /** JPMC Quant Analytics interview access code — minimal demo launcher for interviewers. */
@@ -307,9 +350,18 @@
         return normalizeGateCode(phrase).length >= MIN_GATE_CODE_LEN;
     }
 
-    async function gateFetchJson(path, options, baseOverride) {
+    async function gateFetchJson(path, options, baseOverride, timeoutMs) {
         const baseUrl = baseOverride != null ? baseOverride : API_BASE;
         const opts = Object.assign({ method: 'GET', credentials: 'include' }, options);
+        const waitMs = typeof timeoutMs === 'number' && timeoutMs > 0 ? timeoutMs : 20000;
+        const controller = typeof AbortController !== 'undefined' ? new AbortController() : null;
+        let timer = null;
+        if (controller) {
+            opts.signal = controller.signal;
+            timer = setTimeout(function () {
+                controller.abort();
+            }, waitMs);
+        }
         let r;
         try {
             r = await fetch(baseUrl + path, opts);
@@ -321,7 +373,12 @@
                 retryAfter: 0,
                 isJson: false,
                 fetchError: true,
+                timedOut: !!(controller && e && e.name === 'AbortError'),
             };
+        } finally {
+            if (timer) {
+                clearTimeout(timer);
+            }
         }
         const ct = r.headers.get('content-type') || '';
         const isJson = ct.indexOf('application/json') !== -1;
@@ -572,6 +629,7 @@
     }
 
     const gateEl = document.getElementById('access-gate');
+    let refreshGateReadyUi = null;
 
     function initGateForm() {
         const gate = gateEl;
@@ -605,6 +663,9 @@
             form.setAttribute('aria-busy', busy ? 'true' : 'false');
             submitTextTarget.textContent = busy ? 'Checking…' : submitBtnDefaultText;
             gate.classList.toggle('access-gate--verifying', !!busy);
+            if (busy) {
+                setGateHint('Checking your code…');
+            }
         }
 
         function getGateFocusableEls() {
@@ -870,15 +931,28 @@
                 });
         });
 
-        if (!gateApiReady) {
-            showGateError(
-                'Can\u2019t load right now',
-                'Refresh the page or try again in a minute.',
-            );
-            setGateHint('');
-        } else if (!gateGetBlocking()) {
+        function refreshReadyState() {
+            if (gateGetBlocking()) {
+                syncGateThrottleUi();
+                return;
+            }
+            if (!gateApiReady) {
+                showGateError(
+                    'Can\u2019t load right now',
+                    'Refresh the page or try again in a minute.',
+                );
+                setGateHint('');
+                return;
+            }
+            if (!gate.dataset.gateThrottle) {
+                clearGateMessage();
+            }
             setGateHint('');
         }
+
+        refreshGateReadyUi = refreshReadyState;
+
+        refreshReadyState();
         syncGateThrottleUi();
         if (!codeInput.disabled) {
             codeInput.focus();
@@ -1222,11 +1296,15 @@
         document.body.style.overflow = 'hidden';
         window.__portfolioPreloaderStart = undefined;
 
-        if (gateEl) {
-            initGateForm();
-            initRequestForm();
+        if (refreshGateReadyUi) {
+            refreshGateReadyUi();
         }
     })();
+
+    if (gateEl) {
+        initGateForm();
+        initRequestForm();
+    }
 })();
 
 // ============================================
@@ -1568,9 +1646,9 @@ document.querySelectorAll('.stat[data-scroll-to]').forEach((stat) => {
         ],
         contract: [
             'Contract Data Scientist',
-            'Analytics Consultant',
-            'Scoped ML Engagements',
-            'Insurance Analytics Expert',
+            'Production ML Delivery',
+            'Executive Dashboards',
+            'Insurance & Reinsurance',
             'MSE, FLMI',
         ],
     };

@@ -107,6 +107,17 @@
                     </button>
                 </form>
             </div>
+            <div class="access-gate-divider" aria-hidden="true"><span>or</span></div>
+            <div class="access-gate-actions">
+                <button type="button" class="access-gate-action-btn" data-gate-action="show-request">
+                    <span>Don&rsquo;t have a code? Request access</span>
+                    <svg class="access-gate-action-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                        <path d="M5 12h14"></path>
+                        <path d="M13 6l6 6-6 6"></path>
+                    </svg>
+                </button>
+                <p class="access-gate-actions-hint">Prefer to reach out directly? <a href="mailto:JonathanBrownstein12@icloud.com">Email Jonathan</a></p>
+            </div>
             </section>
 
             <section class="access-gate-view access-gate-view--request" data-view="request" hidden>
@@ -191,7 +202,7 @@
                 <li><a href="#skills" data-section="skills">Skills</a></li>
                 <li><a href="#projects" data-section="projects">Projects</a></li>
                 <li><a href="#education" data-section="education">Education</a></li>
-                <li><a href="#contact" data-section="contact" class="nav-cta">Contact</a></li>
+                <li><a href="#contact" data-section="contact" class="nav-cta"><span data-show-for="full_time">Contact</span><span data-show-for="contract">Hire</span></a></li>
             </ul>
             <button class="theme-toggle" aria-label="Switch to light mode" title="Toggle theme">
                 <svg class="theme-icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -228,10 +239,11 @@
                         <span class="line">Jonathan</span>
                         <span class="line gradient-text">Brownstein</span>
                     </h1>
+                    <p class="hero-positioning-badge" data-show-for="contract">Senior Contract &middot; Data &amp; Analytics</p>
                     <p class="hero-subtitle">
                         <span class="typing-wrapper">
                             <span class="typing-text" id="typing-text" data-show-for="full_time">Senior Data &amp; Analytics Leader &middot; Predictive Modeling &amp; ML &middot; Executive KPI Dashboards</span>
-                            <span class="typing-text typing-text--variant" id="typing-text-contract" data-show-for="contract">Senior Data &amp; Analytics Consultant &middot; Contract Engagements &middot; Rapid Delivery</span>
+                            <span class="typing-text typing-text--variant" id="typing-text-contract" data-show-for="contract">Contract Data Scientist &middot; Defined Deliverables &middot; Production Handoffs</span>
                             <span class="typing-cursor">|</span>
                         </span>
                     </p>
@@ -240,10 +252,7 @@
                         analytics in highly regulated industries. I translate complex datasets&mdash;including platforms 
                         processing 1T+ records&mdash;into KPIs, dashboards, predictive models, and executive narratives 
                         that drive operational decisions.</span>
-                        <span data-show-for="contract">Contract data &amp; analytics leader with 15+ years delivering scoped, audit-ready 
-                        analytics in highly regulated industries. I partner with teams to translate complex datasets&mdash;including 
-                        platforms processing 1T+ records&mdash;into KPIs, dashboards, predictive models, and executive narratives 
-                        on clear timelines and measurable outcomes.</span>
+                        <span data-show-for="contract">Senior contract data &amp; analytics specialist with 15+ years shipping production outcomes in regulated insurance and reinsurance. I ramp quickly on scoped assignments&mdash;predictive models, executive dashboards, and audit-ready analytics&mdash;integrate with matrix teams with minimal management overhead, and deliver documented handoffs your staff can sustain.</span>
                     </p>
                     <div class="hero-stats">
                         <div class="stat">
@@ -296,15 +305,29 @@
                         </div>
                     </div>
                     <div class="hero-buttons">
-                        <a href="#contact" class="btn btn-primary">
+                        <a href="#contact" class="btn btn-primary" data-show-for="full_time">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                                 <polyline points="22,6 12,13 2,6"></polyline>
                             </svg>
                             Get In Touch
                         </a>
-                        <a href="#experience" class="btn btn-secondary">
+                        <a href="#contact" class="btn btn-primary" data-show-for="contract">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            Discuss a Contract Role
+                        </a>
+                        <a href="#experience" class="btn btn-secondary" data-show-for="full_time">
                             View Experience
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </a>
+                        <a href="#experience" class="btn btn-secondary" data-show-for="contract">
+                            View Delivery Record
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                                 <line x1="5" y1="12" x2="19" y2="12"></line>
                                 <polyline points="12 5 19 12 12 19"></polyline>
@@ -345,8 +368,10 @@
                         </svg>
                     </div>
                     <div class="highlight-item-text">
-                        <span class="highlight-item-value">C-Suite Recognized</span>
-                        <span class="highlight-item-label">Impact &amp; leadership acknowledged at the executive level</span>
+                        <span class="highlight-item-value" data-show-for="full_time">C-Suite Recognized</span>
+                        <span class="highlight-item-label" data-show-for="full_time">Impact &amp; leadership acknowledged at the executive level</span>
+                        <span class="highlight-item-value" data-show-for="contract">Fast Ramp</span>
+                        <span class="highlight-item-label" data-show-for="contract">15+ years in insurance &amp; reinsurance&mdash;productive on scoped assignments from week one</span>
                     </div>
                 </div>
                 <div class="highlight-item reveal">
@@ -358,8 +383,10 @@
                         </svg>
                     </div>
                     <div class="highlight-item-text">
-                        <span class="highlight-item-value">1 Trillion+ Records</span>
-                        <span class="highlight-item-label">Automation and analytics at massive enterprise scale</span>
+                        <span class="highlight-item-value" data-show-for="full_time">1 Trillion+ Records</span>
+                        <span class="highlight-item-label" data-show-for="full_time">Automation and analytics at massive enterprise scale</span>
+                        <span class="highlight-item-value" data-show-for="contract">Production Deliverables</span>
+                        <span class="highlight-item-label" data-show-for="contract">ML platforms, dashboards, and pipelines shipped&mdash;not strategy decks</span>
                     </div>
                 </div>
                 <div class="highlight-item reveal">
@@ -370,8 +397,10 @@
                         </svg>
                     </div>
                     <div class="highlight-item-text">
-                        <span class="highlight-item-value">Audit-Ready Analytics</span>
-                        <span class="highlight-item-label">Production-grade ML &amp; reporting in regulated industries</span>
+                        <span class="highlight-item-value" data-show-for="full_time">Audit-Ready Analytics</span>
+                        <span class="highlight-item-label" data-show-for="full_time">Production-grade ML &amp; reporting in regulated industries</span>
+                        <span class="highlight-item-value" data-show-for="contract">Audit-Ready Handoffs</span>
+                        <span class="highlight-item-label" data-show-for="contract">Documented, governance-aligned delivery your internal teams can sustain</span>
                     </div>
                 </div>
                 <div class="highlight-item reveal">
@@ -382,8 +411,10 @@
                         </svg>
                     </div>
                     <div class="highlight-item-text">
-                        <span class="highlight-item-value">7 Years at Hannover Re</span>
-                        <span class="highlight-item-label">Deep domain expertise in reinsurance &amp; actuarial data</span>
+                        <span class="highlight-item-value" data-show-for="full_time">7 Years at Hannover Re</span>
+                        <span class="highlight-item-label" data-show-for="full_time">Deep domain expertise in reinsurance &amp; actuarial data</span>
+                        <span class="highlight-item-value" data-show-for="contract">Independent Execution</span>
+                        <span class="highlight-item-label" data-show-for="contract">Self-directed within matrix teams&mdash;actuarial, finance, BI, compliance, vendors</span>
                     </div>
                 </div>
             </div>
@@ -395,7 +426,7 @@
         <div class="container">
             <div class="section-header">
                 <span class="section-label">01 / About</span>
-                <h2 class="section-title">About Jonathan Brownstein</h2>
+                <h2 class="section-title"><span data-show-for="full_time">About Jonathan Brownstein</span><span data-show-for="contract">Contract Profile</span></h2>
             </div>
             <div class="about-content">
                 <div class="about-grid">
@@ -404,9 +435,7 @@
                             <span data-show-for="full_time">I am a Senior Data &amp; Analytics Leader specializing in regulated industries&mdash;building 
                             enterprise-scale, audit-ready analytics that turn complex datasets into the KPIs, 
                             dashboards, and executive narratives leadership actually decides on.</span>
-                            <span data-show-for="contract">I am a Senior Data &amp; Analytics Consultant specializing in regulated industries&mdash;delivering 
-                            scoped, audit-ready analytics engagements that turn complex datasets into KPIs, 
-                            dashboards, and executive narratives teams can act on quickly.</span>
+                            <span data-show-for="contract">I am a senior contract data &amp; analytics specialist for regulated insurance and reinsurance environments. Hiring managers bring me in when they need defined deliverables shipped&mdash;production ML, executive reporting, or analytics architecture&mdash;not permanent headcount, and a practitioner who integrates with existing matrix teams from day one.</span>
                         </p>
                         <p class="about-body">
                             <span data-show-for="full_time">With 15+ years of experience, I design and operationalize predictive models, 
@@ -414,15 +443,12 @@
                             Tableau, and SSRS reporting platforms. I manage external vendors and consultants on 
                             scope, quality, and delivery, and partner across actuarial, finance, BI, compliance, 
                             and governance to land production-ready, results-driven solutions.</span>
-                            <span data-show-for="contract">With 15+ years of experience, I design and operationalize predictive models, 
-                            classification machine learning, and statistical outlier detection alongside Power BI, 
-                            Tableau, and SSRS reporting platforms. I am experienced managing vendors and consultants 
-                            on scope, quality, and delivery, and partner across actuarial, finance, BI, compliance, 
-                            and governance to land production-ready outcomes within defined engagement windows.</span>
+                            <span data-show-for="contract">I execute scoped mandates independently: predictive modeling, classification ML, statistical outlier detection, and Power BI, Tableau, and SSRS reporting. I communicate progress against milestones, keep deliverables audit-ready, and hand off production systems with documentation and context so internal teams can operate without dependency on the contractor.</span>
                         </p>
                         <p class="about-body">
-                            My work has earned C-suite recognition, driven data democratization initiatives, and 
-                            delivered automation at massive scale across 1T+ records.
+                            <span data-show-for="full_time">My work has earned C-suite recognition, driven data democratization initiatives, and 
+                            delivered automation at massive scale across 1T+ records.</span>
+                            <span data-show-for="contract">My delivery record includes CEO-recognized ML systems, automation at 1T+ record scale, and contract dashboard reporting assignments during graduate school at Wells Fargo and Mecklenburg County Office of the Tax Collector&mdash;the combination contract hiring managers look for when the assignment has a hard deadline and a production bar.</span>
                         </p>
                     </div>
                     <div class="about-highlights reveal">
@@ -457,8 +483,8 @@
                             </div>
                             <h3 data-show-for="full_time">Vendor &amp; Stakeholder Leadership</h3>
                             <p data-show-for="full_time">Manage external vendors and consultants on scope, quality, and delivery while partnering across actuarial, finance, BI, compliance, and governance</p>
-                            <h3 data-show-for="contract">Contract Delivery &amp; Stakeholder Alignment</h3>
-                            <p data-show-for="contract">Lead scoped analytics engagements, align stakeholders on outcomes, and manage vendors and consultants on quality, timelines, and delivery</p>
+                            <h3 data-show-for="contract">Independent Delivery &amp; Handoffs</h3>
+                            <p data-show-for="contract">Scoped execution with clear status communication, production documentation, and knowledge transfer at engagement close</p>
                         </div>
                     </div>
                 </div>
@@ -471,7 +497,7 @@
         <div class="container">
             <div class="section-header">
                 <span class="section-label">02 / Experience</span>
-                <h2 class="section-title">Professional Experience</h2>
+                <h2 class="section-title"><span data-show-for="full_time">Professional Experience</span><span data-show-for="contract">Delivery Record</span></h2>
             </div>
             <div class="experience-timeline">
                 <!-- Current Position -->
@@ -482,8 +508,10 @@
                     <div class="timeline-content glass-card">
                         <div class="timeline-header">
                             <div class="timeline-title-group">
-                                <h3>Senior Data Analyst III</h3>
-                                <span class="role-focus">Enterprise Data Scientist &amp; Analytics Architect (de facto)</span>
+                                <h3 data-show-for="full_time">Senior Data Analyst III</h3>
+                                <h3 data-show-for="contract">Senior Analytics &amp; ML Delivery</h3>
+                                <span class="role-focus" data-show-for="full_time">Enterprise Data Scientist &amp; Analytics Architect (de facto)</span>
+                                <span class="role-focus" data-show-for="contract">Production deliverables · Regulated reinsurance · Matrix stakeholder delivery</span>
                             </div>
                             <div class="timeline-meta">
                                 <span class="company">
@@ -505,57 +533,179 @@
                             </div>
                         </div>
                         <p class="timeline-intro">
-                            Operate as the de facto Data Scientist and Analytics Architect within the Chief Data Office of a 
+                            <span data-show-for="full_time">Operate as the de facto Data Scientist and Analytics Architect within the Chief Data Office of a 
                             heavily regulated reinsurance organization. Partner with actuarial, finance, BI, compliance, and 
                             governance leadership to design and operationalize production-grade analytics, predictive models, 
                             and reporting across enterprise platforms&mdash;serving as technical lead, architecture owner, and 
-                            quality reviewer.
+                            quality reviewer.</span>
+                            <span data-show-for="contract">Long-form delivery record in regulated reinsurance&mdash;the same production ML, executive reporting, and governance outcomes I bring to contract assignments. Shipped scoped deliverables end-to-end: predictive models, classification systems, dashboards, and audit-ready documentation across actuarial, finance, compliance, and governance stakeholders.</span>
                         </p>
                         <ul class="achievements">
-                            <li>
+                            <li data-show-for="full_time">
                                 <strong>ARIMA Forecasting Platform</strong> &mdash; Designed and deployed an automated 
                                 time-series forecasting system to predict Net Amount at Risk (NAR), enabling early anomaly 
                                 detection and proactive actuarial decision-making that directly informed executive strategy.
                             </li>
-                            <li>
+                            <li data-show-for="contract">
+                                <strong>ARIMA Forecasting Platform</strong> &mdash; Delivered an automated forecasting system on a defined mandate&mdash;predict Net Amount at Risk (NAR), enable anomaly detection, and replace manual actuarial review with repeatable production analytics.
+                            </li>
+                            <li data-show-for="full_time">
                                 <strong>ML Classification for SAL</strong> &mdash; Led design of classification-based machine 
                                 learning solutions to modernize the Same-As-Link process, materially improving accuracy, 
                                 consistency, and auditability of regulatory reporting. Recognized formally by the former CEO.
                             </li>
-                            <li>
+                            <li data-show-for="contract">
+                                <strong>ML Classification for SAL</strong> &mdash; Scoped ML delivery to modernize the Same-As-Link process&mdash;improved matching accuracy, regulatory consistency, and auditability; recognized by executive leadership.
+                            </li>
+                            <li data-show-for="full_time">
                                 <strong>Statistical Outlier Detection</strong> &mdash; Built enterprise-grade frameworks using 
                                 Probability Density Function (PDF) theory and advanced data mining techniques to identify 
                                 large-scale attribute shifts, protecting data integrity and preventing downstream escalations.
                             </li>
-                            <li>
+                            <li data-show-for="contract">
+                                <strong>Statistical Outlier Detection</strong> &mdash; Built production outlier-detection frameworks (PDF theory, enterprise-scale data mining) with documented methodology and handoff for ongoing operational use.
+                            </li>
+                            <li data-show-for="full_time">
                                 <strong>Valuation Extract Comparison Architecture</strong> &mdash; Developed the organization's 
                                 first valuation extract comparison architecture, enabling repeatable deep-dive analysis of 
                                 valuation movements across time periods and data sources and accelerating finance review cycles.
                             </li>
-                            <li>
+                            <li data-show-for="contract">
+                                <strong>Valuation Extract Comparison Architecture</strong> &mdash; Delivered a reusable valuation comparison platform replacing ad-hoc reconciliations&mdash;repeatable analysis, audit-ready outputs, faster finance review cycles.
+                            </li>
+                            <li data-show-for="full_time">
                                 <strong>Field Inventory Report</strong> &mdash; Architected a comprehensive metadata and 
                                 data-lineage reference asset that became the authoritative enterprise reporting standard for 
                                 the Seriatim Data Warehouse (SDW).
                             </li>
-                            <li>
+                            <li data-show-for="contract">
+                                <strong>Field Inventory Report</strong> &mdash; Produced the authoritative metadata and lineage reference for the enterprise data warehouse&mdash;documented asset adopted as the enterprise reporting standard.
+                            </li>
+                            <li data-show-for="full_time">
                                 <strong>Executive &amp; Operational Dashboards</strong> &mdash; Designed and delivered Power BI, 
                                 Tableau, and SSRS dashboards, visualizations, and reports that translate complex datasets into 
                                 actionable Key Performance Indicators (KPIs) for executive and operational stakeholders.
                             </li>
-                            <li>
+                            <li data-show-for="contract">
+                                <strong>Executive &amp; Operational Dashboards</strong> &mdash; Delivered Power BI, Tableau, and SSRS reporting packages with KPIs for executive and operational stakeholders&mdash;clear handoffs and sustained use after delivery.
+                            </li>
+                            <li data-show-for="full_time">
                                 <strong>Process Improvement</strong> &mdash; Drove data-driven process improvement initiatives 
                                 that reduced manual review cycles and strengthened reporting accuracy across enterprise pipelines.
                             </li>
-                            <li>
+                            <li data-show-for="contract">
+                                <strong>Process Improvement</strong> &mdash; Reduced manual review cycles and strengthened reporting accuracy through scoped analytics improvements with measurable operational impact.
+                            </li>
+                            <li data-show-for="full_time">
                                 <strong>Vendor &amp; Consultant Management</strong> &mdash; Manage external vendors and consultants 
                                 supporting analytics, BI, and reporting initiatives&mdash;selecting partners, setting performance 
                                 and quality expectations, and overseeing scope, timelines, and delivery against business goals.
                             </li>
-                            <li>
+                            <li data-show-for="contract">
+                                <strong>Vendor &amp; Partner Governance</strong> &mdash; Directed external analytics and BI partners on scope, quality, and delivery&mdash;experience that translates directly to contractor coordination within client matrix teams
+                            </li>
+                            <li data-show-for="full_time">
                                 <strong>Trusted Technical Partner &amp; Audit-Ready Delivery</strong> &mdash; Serve as a trusted 
                                 technical partner to actuarial, finance, and C-suite leadership, translating complex analytical 
                                 findings into clear business narratives while partnering with data engineering, BI, compliance, 
                                 and governance to ensure solutions are scalable, audit-ready, and compliant.
+                            </li>
+                            <li data-show-for="contract">
+                                <strong>Executive-Ready Delivery</strong> &mdash; Translated complex analytical findings into decision-ready narratives for actuarial, finance, and C-suite stakeholders, with audit-ready documentation and handoffs aligned to governance requirements
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Contract: Wells Fargo (graduate school) -->
+                <div class="timeline-item reveal" data-show-for="contract">
+                    <div class="timeline-marker">
+                        <span class="marker-ring"></span>
+                    </div>
+                    <div class="timeline-content glass-card">
+                        <div class="timeline-header">
+                            <div class="timeline-title-group">
+                                <h3>Contract Dashboard Reporting Analyst</h3>
+                                <span class="role-focus">Contract assignment · Graduate school · Dashboard &amp; KPI reporting</span>
+                            </div>
+                            <div class="timeline-meta">
+                                <span class="company">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                                    </svg>
+                                    Wells Fargo
+                                </span>
+                                <span class="date">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                                    </svg>
+                                    2018 &ndash; 2019
+                                </span>
+                            </div>
+                        </div>
+                        <p class="timeline-intro">
+                            Contract dashboard reporting assignment during graduate studies at UNC Charlotte. Built and maintained reporting dashboards for business stakeholders in a regulated banking environment&mdash;translating requirements into visual KPIs, validated data outputs, and documented handoffs.
+                        </p>
+                        <ul class="achievements">
+                            <li>
+                                <strong>Dashboard Development</strong> &mdash; Designed and delivered reporting dashboards for business stakeholders, turning SQL-sourced data into visual KPIs and operational views.
+                            </li>
+                            <li>
+                                <strong>Data Validation for Reporting</strong> &mdash; Validated and reconciled source data to ensure dashboard metrics were accurate and reliable for financial reporting use.
+                            </li>
+                            <li>
+                                <strong>Stakeholder-Ready Delivery</strong> &mdash; Partnered with internal teams on scoped reporting needs, iterating on dashboard layouts and handing off documented reporting assets at engagement milestones.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Contract: Mecklenburg County Tax Collector (graduate school) -->
+                <div class="timeline-item reveal" data-show-for="contract">
+                    <div class="timeline-marker">
+                        <span class="marker-ring"></span>
+                    </div>
+                    <div class="timeline-content glass-card">
+                        <div class="timeline-header">
+                            <div class="timeline-title-group">
+                                <h3>Contract Dashboard Reporting Analyst</h3>
+                                <span class="role-focus">Contract assignment · Graduate school · Dashboard &amp; operational reporting</span>
+                            </div>
+                            <div class="timeline-meta">
+                                <span class="company">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                                    </svg>
+                                    Mecklenburg County Office of the Tax Collector
+                                </span>
+                                <span class="date">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                                    </svg>
+                                    2019 &ndash; 2020
+                                </span>
+                            </div>
+                        </div>
+                        <p class="timeline-intro">
+                            Contract dashboard reporting assignment with Mecklenburg County during graduate school. Built reporting dashboards to support tax administration operations&mdash;delivering visual KPIs, improving data accessibility for management review, and producing documented reporting outputs for a public-sector client.
+                        </p>
+                        <ul class="achievements">
+                            <li>
+                                <strong>Operational Dashboards</strong> &mdash; Developed reporting dashboards to support tax administration operations and management review with clear visual KPIs.
+                            </li>
+                            <li>
+                                <strong>Reporting Data Pipeline</strong> &mdash; Extracted, validated, and modeled source data to feed accurate, consistent dashboard metrics for county reporting workflows.
+                            </li>
+                            <li>
+                                <strong>Public-Sector Handoff</strong> &mdash; Delivered scoped dashboard reporting on defined timelines with documentation county staff could maintain after the assignment.
                             </li>
                         </ul>
                     </div>
@@ -569,7 +719,9 @@
                     <div class="timeline-content glass-card">
                         <div class="timeline-header">
                             <div class="timeline-title-group">
-                                <h3>Assistant Business Controller</h3>
+                                <h3 data-show-for="full_time">Assistant Business Controller</h3>
+                                <h3 data-show-for="contract">Analytics &amp; Reporting Delivery</h3>
+                                <span class="role-focus" data-show-for="contract">Cross-functional reporting · Vendor coordination · KPI automation</span>
                             </div>
                             <div class="timeline-meta">
                                 <span class="company">
@@ -590,27 +742,42 @@
                                 </span>
                             </div>
                         </div>
+                        <p class="timeline-intro" data-show-for="contract">
+                            Prior analytics delivery experience with cross-functional stakeholders and external vendors&mdash;automated reporting, KPI dashboards, and the stakeholder translation skills that carry directly into contract assignments.
+                        </p>
                         <ul class="achievements">
-                            <li>
+                            <li data-show-for="full_time">
                                 <strong>Vendor &amp; Consultant Management</strong> &mdash; Managed external vendors and 
                                 consultants on analytics, reporting, and systems initiatives&mdash;selecting partners, setting 
                                 performance expectations, and overseeing delivery quality, scope, and timelines to keep 
                                 outcomes aligned with business goals.
                             </li>
-                            <li>
+                            <li data-show-for="contract">
+                                <strong>Vendor &amp; Partner Coordination</strong> &mdash; Coordinated external vendors on analytics and reporting deliverables&mdash;scope, quality, timelines, and outcomes aligned to business mandates.
+                            </li>
+                            <li data-show-for="full_time">
                                 <strong>Cross-Functional Analytics Modernization</strong> &mdash; Led analytics and reporting 
                                 modernization initiatives in partnership with HR, Sales, Marketing, and Executive Leadership 
                                 teams, delivering data-driven insights that informed operational strategy.
                             </li>
-                            <li>
+                            <li data-show-for="contract">
+                                <strong>Cross-Functional Reporting Delivery</strong> &mdash; Delivered analytics and reporting improvements across HR, Sales, Marketing, and executive stakeholders on defined operational needs.
+                            </li>
+                            <li data-show-for="full_time">
                                 <strong>Automated Reporting &amp; KPI Dashboards</strong> &mdash; Designed automated reporting 
                                 frameworks and KPI dashboards that improved data accessibility, consistency, and operational 
                                 efficiency, establishing foundational data governance and quality assurance practices.
                             </li>
-                            <li>
+                            <li data-show-for="contract">
+                                <strong>Automated Reporting &amp; KPI Dashboards</strong> &mdash; Built automated reporting and KPI packages that improved data accessibility and operational efficiency with documented, repeatable outputs.
+                            </li>
+                            <li data-show-for="full_time">
                                 <strong>Stakeholder Translation</strong> &mdash; Served as the primary bridge between business 
                                 stakeholders, vendors, and technical teams, translating complex data findings into clear, 
                                 actionable business outcomes.
+                            </li>
+                            <li data-show-for="contract">
+                                <strong>Stakeholder Translation</strong> &mdash; Translated complex data findings into actionable business outcomes for non-technical stakeholders&mdash;a core contract delivery skill.
                             </li>
                         </ul>
                     </div>
@@ -625,6 +792,7 @@
             <div class="section-header">
                 <span class="section-label">03 / Expertise</span>
                 <h2 class="section-title">Architecture &amp; Technical Expertise</h2>
+                <p class="section-intro" data-show-for="contract">Core technical capabilities I bring to contract assignments&mdash;ready to deploy on scoped deliverables from day one.</p>
             </div>
             <div class="skills-grid">
                 <div class="skill-category glass-card reveal">
@@ -714,12 +882,19 @@
                             <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
                         </svg>
                     </div>
-                    <h3>Leadership &amp; Delivery</h3>
-                    <ul class="skill-list">
+                    <h3 data-show-for="full_time">Leadership &amp; Delivery</h3>
+                    <ul class="skill-list" data-show-for="full_time">
                         <li>External vendor &amp; consultant management</li>
                         <li>Cross-functional collaboration with actuarial, finance, BI, compliance &amp; governance</li>
                         <li>Regulated-industry analytics delivery</li>
                         <li>Process improvement &amp; operational efficiency</li>
+                    </ul>
+                    <h3 data-show-for="contract">Contractor Strengths</h3>
+                    <ul class="skill-list" data-show-for="contract">
+                        <li>Independent execution with minimal management overhead</li>
+                        <li>Milestone-driven progress and status communication</li>
+                        <li>Production handoffs with documentation and audit trails</li>
+                        <li>Matrix collaboration across actuarial, finance, BI, compliance &amp; vendors</li>
                     </ul>
                 </div>
             </div>
@@ -731,7 +906,8 @@
         <div class="container">
             <div class="section-header">
                 <span class="section-label">04 / Projects</span>
-                <h2 class="section-title">Featured Projects &amp; Research</h2>
+                <h2 class="section-title"><span data-show-for="full_time">Featured Projects &amp; Research</span><span data-show-for="contract">Deliverables &amp; Work Samples</span></h2>
+                <p class="section-intro" data-show-for="contract">Production systems and portfolio samples that demonstrate the caliber of work I deliver on contract assignments.</p>
             </div>
             <div class="projects-grid">
                 <div class="project-card glass-card reveal">
@@ -751,11 +927,12 @@
                     </div>
                     <div class="project-content">
                         <p class="project-description">
-                            Statistical capacity planning and workforce staffing models for a ~7,000 headcount
+                            <span data-show-for="full_time">Statistical capacity planning and workforce staffing models for a ~7,000 headcount
                             organization with $900M activity-based expense allocation. ARIMA demand forecasting,
                             Erlang-C queueing, Monte Carlo headcount projections, and multi-level drilldowns from
                             executive KPIs to model specifications — built to help leaders take informed staffing
-                            and allocation decisions.
+                            and allocation decisions.</span>
+                            <span data-show-for="contract">Portfolio work sample for contract hiring managers: end-to-end statistical modeling&mdash;capacity planning and workforce staffing for a ~7,000 headcount organization with $900M activity-based expense allocation. Demonstrates ARIMA forecasting, Erlang-C queueing, Monte Carlo projections, and executive KPI drilldowns in a production-quality interactive format.</span>
                         </p>
                         <div class="project-details">
                             <div class="project-meta">
@@ -850,10 +1027,14 @@
                     </div>
                     <div class="project-content">
                         <p class="project-description">
-                            Architected an automated time-series forecasting system to predict Net Amount at Risk (NAR) 
+                            <span data-show-for="full_time">Architected an automated time-series forecasting system to predict Net Amount at Risk (NAR) 
                             across the enterprise reinsurance portfolio. The platform enables early anomaly detection and 
                             proactive actuarial decision-making, replacing manual review processes with scalable, 
-                            repeatable analytics.
+                            repeatable analytics.</span>
+                            <span data-show-for="contract">Delivered an automated time-series forecasting platform to predict Net Amount at Risk (NAR) 
+                            across the enterprise reinsurance portfolio. The system enables early anomaly detection and 
+                            executive actuarial decision-making at portfolio scale, replacing manual review with scalable, 
+                            repeatable analytics.</span>
                         </p>
                         <div class="project-details">
                             <div class="project-meta">
@@ -893,9 +1074,12 @@
                             Received formal recognition from the CEO
                         </div>
                         <p class="project-description">
-                            Designed and operationalized classification-based machine learning solutions to modernize the 
+                            <span data-show-for="full_time">Designed and operationalized classification-based machine learning solutions to modernize the 
                             Same-As-Link (SAL) process, materially improving matching accuracy, consistency, and data governance 
-                            across the enterprise data warehouse.
+                            across the enterprise data warehouse.</span>
+                            <span data-show-for="contract">Designed and operationalized classification-based machine learning to modernize the 
+                            Same-As-Link (SAL) process, materially improving matching accuracy, consistency, and data governance 
+                            across the enterprise data warehouse — recognized by executive leadership.</span>
                         </p>
                         <div class="project-details">
                             <div class="project-meta">
@@ -928,10 +1112,14 @@
                     </div>
                     <div class="project-content">
                         <p class="project-description">
-                            Built enterprise-grade statistical outlier detection frameworks leveraging Probability Density 
+                            <span data-show-for="full_time">Built enterprise-grade statistical outlier detection frameworks leveraging Probability Density 
                             Function (PDF) theory to identify large-scale attribute shifts across the data warehouse. The 
                             system prevents downstream actuarial escalations by catching anomalies before they propagate 
-                            through reporting pipelines.
+                            through reporting pipelines.</span>
+                            <span data-show-for="contract">Built enterprise-grade statistical outlier detection leveraging Probability Density 
+                            Function (PDF) theory to identify large-scale attribute shifts across the data warehouse. The 
+                            framework prevents downstream actuarial escalations by catching anomalies before they propagate 
+                            through reporting pipelines — protecting data integrity at production scale.</span>
                         </p>
                         <div class="project-details">
                             <div class="project-meta">
@@ -966,10 +1154,14 @@
                     </div>
                     <div class="project-content">
                         <p class="project-description">
-                            Developed the organization's first valuation extract comparison architecture, enabling repeatable 
+                            <span data-show-for="full_time">Developed the organization's first valuation extract comparison architecture, enabling repeatable 
                             deep-dive analysis of valuation movements across time periods and data sources. The platform 
                             replaced ad-hoc spreadsheet reconciliations with a scalable, audit-ready review process that 
-                            accelerated finance team review cycles.
+                            accelerated finance team review cycles.</span>
+                            <span data-show-for="contract">Developed the organization's first valuation extract comparison architecture, enabling repeatable 
+                            deep-dive analysis of valuation movements across time periods and data sources. Replaced ad-hoc 
+                            spreadsheet reconciliations with a scalable, audit-ready review process that accelerated finance 
+                            review cycles and strengthened regulatory confidence.</span>
                         </p>
                         <div class="project-details">
                             <div class="project-meta">
@@ -1050,10 +1242,60 @@
     <section id="contact" class="section section-alt">
         <div class="container">
             <div class="section-header">
-                <span class="section-label">06 / Contact</span>
-                <h2 class="section-title">Let's Connect</h2>
+                <span class="section-label"><span data-show-for="full_time">06 / Contact</span><span data-show-for="contract">06 / Hire</span></span>
+                <h2 class="section-title"><span data-show-for="full_time">Let's Connect</span><span data-show-for="contract">Available for Contract Engagements</span></h2>
+                <p class="section-intro">
+                    <span data-show-for="full_time">Open to senior leadership roles in data, analytics, and AI.</span>
+                    <span data-show-for="contract">Open to senior contract roles through agencies and direct clients. Based in Illinois; available for remote and hybrid engagements.</span>
+                </p>
             </div>
             <div class="contact-content">
+                <div class="contact-advisory-block" data-show-for="contract">
+                    <p class="contact-intro">For recruiters and hiring managers: I take contract assignments where the need is clear production deliverables&mdash;not permanent headcount. You get a senior practitioner who ramps fast in regulated insurance and reinsurance, executes independently within your matrix structure, and leaves audit-ready systems with documentation your team can run.</p>
+                    <div class="contractor-value-grid" aria-label="What hiring managers get">
+                        <div class="contractor-value-item glass-card">
+                            <span class="contractor-value-label">Fast ramp</span>
+                            <p>15+ years in insurance &amp; reinsurance domain&mdash;less onboarding, more output early</p>
+                        </div>
+                        <div class="contractor-value-item glass-card">
+                            <span class="contractor-value-label">Defined deliverables</span>
+                            <p>Scoped ML, dashboards, and pipelines with milestones&mdash;not open-ended consulting</p>
+                        </div>
+                        <div class="contractor-value-item glass-card">
+                            <span class="contractor-value-label">Production handoffs</span>
+                            <p>Documented, audit-ready systems with knowledge transfer at engagement close</p>
+                        </div>
+                        <div class="contractor-value-item glass-card">
+                            <span class="contractor-value-label">Low management overhead</span>
+                            <p>Self-directed execution across actuarial, finance, BI, compliance, and vendor teams</p>
+                        </div>
+                    </div>
+                    <div class="engagement-types" aria-label="Engagement types">
+                        <span class="engagement-type-pill">Project-Based</span>
+                        <span class="engagement-type-pill">Staff Augmentation</span>
+                        <span class="engagement-type-pill">Interim Specialist</span>
+                    </div>
+                    <div class="contact-topics" aria-label="Typical contract scopes">
+                        <span class="contact-topic">Predictive Modeling &amp; ML</span>
+                        <span class="contact-topic">Executive KPI Dashboards</span>
+                        <span class="contact-topic">Analytics Architecture</span>
+                        <span class="contact-topic">Regulated-Industry Reporting</span>
+                    </div>
+                    <div class="engagement-focus-grid">
+                        <div class="engagement-focus-card glass-card">
+                            <h3>ML &amp; Predictive Analytics</h3>
+                            <p>ARIMA forecasting, classification ML, outlier detection&mdash;scoped from design through production deployment</p>
+                        </div>
+                        <div class="engagement-focus-card glass-card">
+                            <h3>Executive Reporting</h3>
+                            <p>Power BI, Tableau, and SSRS dashboards with KPIs leadership uses for operational decisions</p>
+                        </div>
+                        <div class="engagement-focus-card glass-card">
+                            <h3>Architecture &amp; Governance</h3>
+                            <p>Metadata, lineage, audit-ready assets, and vendor coordination on defined mandates</p>
+                        </div>
+                    </div>
+                </div>
                 <div class="contact-cards">
                     <a href="mailto:JonathanBrownstein12@icloud.com" class="contact-card glass-card" aria-label="Email Jonathan Brownstein">
                         <div class="contact-icon">

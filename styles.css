@@ -2360,6 +2360,23 @@ body,
     50% { background-position: 100% 50%; }
 }
 
+.hero-positioning-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.85rem;
+    padding: 0.35rem 0.85rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent-light);
+    background: rgba(99, 102, 241, 0.1);
+    border: 1px solid rgba(99, 102, 241, 0.22);
+    border-radius: 999px;
+}
+
 .hero-subtitle {
     font-size: 1.1rem;
     margin-bottom: 1.25rem;
@@ -2742,6 +2759,14 @@ body,
     font-weight: 800;
     color: var(--text-primary);
     letter-spacing: -0.02em;
+}
+
+.section-intro {
+    max-width: 36rem;
+    margin: 1rem auto 0;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
 }
 
 /* ============================================
@@ -3363,6 +3388,90 @@ body,
     text-align: center;
 }
 
+html[data-employment-type="contract"] .contact-content {
+    max-width: 960px;
+}
+
+.contact-advisory-block {
+    margin-bottom: 2.5rem;
+}
+
+.contractor-value-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.75rem;
+    text-align: left;
+}
+
+.contractor-value-item {
+    padding: 1.15rem 1.2rem;
+}
+
+.contractor-value-label {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent-light);
+    margin-bottom: 0.4rem;
+}
+
+.contractor-value-item p {
+    margin: 0;
+    font-size: 0.88rem;
+    line-height: 1.55;
+    color: var(--text-secondary);
+}
+
+.engagement-types {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.65rem;
+    margin-bottom: 1.75rem;
+}
+
+.engagement-type-pill {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    padding: 0.45rem 0.9rem;
+    background: rgba(99, 102, 241, 0.12);
+    border: 1px solid rgba(99, 102, 241, 0.25);
+    border-radius: 999px;
+}
+
+.engagement-focus-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+    text-align: left;
+}
+
+.engagement-focus-card {
+    padding: 1.35rem 1.25rem;
+}
+
+.engagement-focus-card h3 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.engagement-focus-card p {
+    font-size: 0.85rem;
+    line-height: 1.55;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
 .contact-intro {
     font-size: 1.1rem;
     color: var(--text-secondary);
@@ -3873,6 +3982,14 @@ body,
 
     .contact-cards {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .engagement-focus-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contractor-value-grid {
+        grid-template-columns: 1fr;
     }
 
     .contact-value {
