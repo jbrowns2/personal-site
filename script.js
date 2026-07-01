@@ -215,6 +215,61 @@
             .trim();
     }
 
+    function splitKeywordHighlightLabel(label) {
+        return String(label || '')
+            .split(',')
+            .map(function (part) {
+                return part.trim();
+            })
+            .filter(Boolean);
+    }
+
+    function isKeywordHighlightLabel(label) {
+        return splitKeywordHighlightLabel(label).length >= 4;
+    }
+
+    function renderProfileHighlightItem(item, solo) {
+        const label = item.label || item.value || '';
+        const value =
+            item.value && item.label && item.label.indexOf(item.value.replace(/…$/, '')) !== 0
+                ? item.value
+                : '';
+
+        if (solo && isKeywordHighlightLabel(label)) {
+            const keywords = splitKeywordHighlightLabel(label);
+            return (
+                '<div class="highlight-item highlight-item--keywords reveal">' +
+                '<div class="highlight-keywords" aria-label="Core capabilities">' +
+                keywords
+                    .map(function (keyword) {
+                        return (
+                            '<span class="highlight-keyword">' + profileEscapeHtml(keyword) + '</span>'
+                        );
+                    })
+                    .join('') +
+                '</div></div>'
+            );
+        }
+
+        return (
+            '<div class="highlight-item reveal">' +
+            '<div class="highlight-item-icon">' +
+            '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">' +
+            '<path d="M9 12l2 2 4-4"></path>' +
+            '<path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9c2.39 0 4.68.94 6.36 2.64"></path>' +
+            '</svg></div>' +
+            '<div class="highlight-item-text">' +
+            (value
+                ? '<span class="highlight-item-value">' + profileEscapeHtml(value) + '</span>'
+                : '') +
+            '<span class="highlight-item-label' +
+            (value ? '' : ' highlight-item-label--solo') +
+            '">' +
+            profileEscapeHtml(label) +
+            '</span></div></div>'
+        );
+    }
+
     function renderProfileExperienceItem(item, hideDates) {
         const contextText = item.context ? stripEngagementDates(item.context) : '';
         const context = contextText
@@ -340,32 +395,11 @@
         if (profile.highlights && profile.highlights.length) {
             const grid = document.getElementById('profile-highlights');
             if (grid) {
+                const soloHighlight = profile.highlights.length === 1;
+                grid.classList.toggle('highlights-grid--full', soloHighlight);
                 grid.innerHTML = profile.highlights
                     .map(function (item) {
-                        const label = item.label || item.value || '';
-                        const value =
-                            item.value && item.label && item.label.indexOf(item.value.replace(/…$/, '')) !== 0
-                                ? item.value
-                                : '';
-                        return (
-                            '<div class="highlight-item reveal">' +
-                            '<div class="highlight-item-icon">' +
-                            '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">' +
-                            '<path d="M9 12l2 2 4-4"></path>' +
-                            '<path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9c2.39 0 4.68.94 6.36 2.64"></path>' +
-                            '</svg></div>' +
-                            '<div class="highlight-item-text">' +
-                            (value
-                                ? '<span class="highlight-item-value">' +
-                                  profileEscapeHtml(value) +
-                                  '</span>'
-                                : '') +
-                            '<span class="highlight-item-label' +
-                            (value ? '' : ' highlight-item-label--solo') +
-                            '">' +
-                            profileEscapeHtml(label) +
-                            '</span></div></div>'
-                        );
+                        return renderProfileHighlightItem(item, soloHighlight);
                     })
                     .join('');
                 grid.hidden = false;

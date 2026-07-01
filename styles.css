@@ -2844,6 +2844,41 @@ body,
     color: var(--text-primary);
 }
 
+.highlights-grid--full {
+    grid-template-columns: 1fr;
+}
+
+.highlight-item--keywords {
+    display: block;
+    width: 100%;
+    padding: 1.5rem;
+}
+
+.highlight-keywords {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    gap: 0.55rem 0.65rem;
+    width: 100%;
+}
+
+.highlight-keyword {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.85rem;
+    line-height: 1.35;
+    padding: 0.45rem 0.85rem;
+    border-radius: 999px;
+    background: rgba(99, 102, 241, 0.12);
+    border: 1px solid rgba(99, 102, 241, 0.22);
+    color: var(--text-primary);
+}
+
+[data-theme="light"] .highlight-keyword {
+    background: rgba(79, 70, 229, 0.08);
+    border-color: rgba(79, 70, 229, 0.18);
+}
+
 /* Stagger highlight items */
 .highlight-item:nth-child(1) { transition-delay: 0.05s; }
 .highlight-item:nth-child(2) { transition-delay: 0.1s; }
