@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-01T18:30:43.098Z",
+  "generatedAt": "2026-07-01T20:34:31.205Z",
   "profiles": [
     {
       "slug": "beacon-hill-uat",
@@ -84,6 +84,13 @@
       "folder": "Motorola-PM-BI-Analytics-R62892",
       "employmentType": "full_time",
       "role": "Jonathan Brownstein — Product Manager - Business Intelligence & Ana…"
+    },
+    {
+      "slug": "novovu-frontend-developer-html-css-js",
+      "accessCode": "NOVO2026",
+      "folder": "Novovu-Frontend-Developer-HTML-CSS-JS",
+      "employmentType": "contract",
+      "role": "Jonathan Brownstein — Frontend Developer , Remote"
     },
     {
       "slug": "pacemate-senior-saas-web-designer",

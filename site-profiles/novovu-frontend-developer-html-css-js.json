@@ -1,0 +1,113 @@
+{
+  "profileVersion": 1,
+  "slug": "novovu-frontend-developer-html-css-js",
+  "accessCode": "NOVO2026",
+  "employmentType": "contract",
+  "meta": {
+    "title": "Jonathan Brownstein — Frontend Developer , Remote",
+    "description": "Contract frontend web developer with more than ten years shipping client facing pages in HTML, CSS, and client side JavaScript for B2B sites and interactive web properties. I write semantic markup, responsive layouts, an"
+  },
+  "hero": {
+    "badge": "Frontend Developer , Remote · Contract",
+    "typingPhrases": [
+      "Frontend Web Developer",
+      "HTML, CSS, and JavaScript"
+    ],
+    "description": "Contract frontend web developer with more than ten years shipping client facing pages in HTML, CSS, and client side JavaScript for B2B sites and interactive web properties. I write semantic markup, responsive layouts, and maintainable vanilla JavaScript that coordinates with backend teams and external APIs. Remote collaboration through Discord, shared boards, and Git workflows. Principal, Your Website In 7 Days LLC. Available immediately for remote contract work with direct billing to the LLC.",
+    "primaryCta": "Discuss This Role",
+    "secondaryCta": "View Delivery Record"
+  },
+  "highlights": [
+    {
+      "label": "HTML, CSS, client side JavaScript, semantic markup, responsive web design, DOM manipulation, fetch API, CSS custom properties, flexbox, grid, Git, Discord, Trello, GitLab, backend coordination, static site delivery, UI implementation, B2B web properties, remote contract delivery"
+    }
+  ],
+  "experience": {
+    "title": "Delivery Record",
+    "items": [
+      {
+        "title": "Frontend Developer and Principal",
+        "organization": "Your Website In 7 Days LLC, remote contract",
+        "context": "",
+        "bullets": [
+          "Built and maintain a production portfolio platform in semantic HTML, CSS, and vanilla JavaScript with responsive layout, theme switching, and a gated access flow tied to serverless backend endpoints.",
+          "Implemented profile loading, session aware navigation, form validation, and async fetch patterns that keep the UI stable while API calls resolve.",
+          "Own the frontend build pipeline including HTML, CSS, and JavaScript minification and deployment packaging for production."
+        ]
+      },
+      {
+        "title": "Contract Frontend Web Developer",
+        "organization": "B2B and enterprise clients, remote",
+        "context": "",
+        "bullets": [
+          "Coded homepage, interior page, and landing templates in HTML and CSS with JavaScript for navigation, modals, and interactive sections.",
+          "Delivered responsive breakpoints and component CSS so pages hold up on desktop and mobile without rework from backend teams.",
+          "Coordinated scope, reviews, and handoffs through Discord and Trello with client stakeholders and development partners."
+        ]
+      },
+      {
+        "title": "Frontend and Web Experience Specialist",
+        "organization": "Regulated life and health reinsurance, remote contract",
+        "context": "",
+        "bullets": [
+          "Implemented frontend portions of web and dashboard experiences for actuarial, finance, and executive audiences with readable hierarchy and consistent UI patterns.",
+          "Partnered with developers on HTML structure, CSS standards, and client side behavior for reporting views released to production."
+        ]
+      }
+    ]
+  },
+  "skills": {
+    "title": "Skills & Expertise",
+    "groups": [
+      {
+        "title": "Frontend",
+        "items": [
+          "HTML, CSS, client side JavaScript, responsive web design, DOM APIs, fetch and async UI, CSS variables, flexbox, grid"
+        ]
+      },
+      {
+        "title": "Tools",
+        "items": [
+          "Git, Discord, Trello, GitLab, VS Code, browser devtools, static site build scripts"
+        ]
+      }
+    ]
+  },
+  "sections": {
+    "projects": {
+      "visible": true
+    },
+    "education": {
+      "visible": true
+    }
+  },
+  "contact": {
+    "label": "06 / Hire",
+    "title": "Available for Contract Engagements",
+    "intro": "Open to contract roles through agencies and direct clients. Based in Illinois; available for remote and hybrid engagements.",
+    "engagementPills": [
+      "Contract",
+      "Remote",
+      "Defined Deliverables"
+    ],
+    "valueItems": [
+      {
+        "label": "Fast ramp",
+        "body": "Deep domain experience in regulated financial services"
+      },
+      {
+        "label": "Scoped delivery",
+        "body": "Milestone-driven work with documented handoffs"
+      },
+      {
+        "label": "Independent execution",
+        "body": "Self-directed within matrix teams across finance, IT, and compliance"
+      },
+      {
+        "label": "Audit-ready",
+        "body": "Governance-aligned documentation and knowledge transfer"
+      }
+    ],
+    "email": "jonathan@yourwebsitein7days.com"
+  }
+}
