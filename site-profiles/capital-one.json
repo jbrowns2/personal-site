@@ -21,40 +21,20 @@
   },
   "highlights": [
     {
-      "value": "Business strategy develop…",
       "label": "Business strategy development and decision support"
     },
     {
-      "value": "Payments and financial",
       "label": "Payments and financial services analytics"
     },
     {
-      "value": "Predictive modeling (clas…",
       "label": "Predictive modeling (classification ML, ARIMA time-series forecasting, anomaly and outlier detection)"
     },
     {
-      "value": "Credit-risk-adjacent anal…",
       "label": "Credit-risk-adjacent analytics and hypothesis testing"
     }
   ],
-  "about": {
-    "title": "About Jonathan Brownstein",
-    "lead": "Senior business analytics leader with 15+ years driving strategic decisions through quantitative analysis in regulated financial services.",
-    "body": "Senior business analytics leader with 15+ years driving strategic decisions through quantitative analysis in regulated financial services. Seven years inside the Data Analytics Office at Hannover Reinsurance Company leading the analytics, predictive models, and executive reporting the C-suite uses to make decisions. Comfortable running multiple concurrent initiatives end to end, leading teams of analysts and engineers, and partnering across finance, IT, risk, compliance, and outside vendors to ship audit-ready work on a deadline. Quantitative degree path (MS Economics, Applied Econometrics certificate), FLMI from LOMA, and a track record that includes the classification ML rebuild of a regulated reporting workflow recognized by the company's former CEO and the automated ARIMA forecasting platform for Net Amount at Risk.",
-    "cards": [
-      {
-        "title": "Senior Data Analyst III",
-        "body": "Technical lead and senior analytics owner inside the Data Analytics Office"
-      },
-      {
-        "title": "Assistant Business Controller",
-        "body": "Led cross-functional analytics and reporting modernization with HR, Sales, Marketing, Finance, and executive leadership, feeding operational and financial strategy at the regional leadership level."
-      }
-    ]
-  },
   "experience": {
     "title": "Professional Experience",
-    "intro": "Experience tailored for the Business Analysis Manager, Global Payment Net… opportunity.",
     "items": [
       {
         "title": "Senior Data Analyst III",
@@ -106,7 +86,6 @@
   },
   "skills": {
     "title": "Skills & Expertise",
-    "intro": "Capabilities highlighted for this application.",
     "groups": [
       {
         "title": "Analytics and Modeling: classification machine learning, ARIMA and time-series forecasting, statistical outlier and anomaly detection, data mining, applied econometrics, Python ML stack (pandas, NumPy, scikit-learn, statsmodels), Databricks ML",

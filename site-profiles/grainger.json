@@ -21,40 +21,20 @@
   },
   "highlights": [
     {
-      "value": "Enterprise reporting and",
       "label": "Enterprise reporting and KPI dashboard ownership"
     },
     {
-      "value": "Data visualization (Power",
       "label": "Data visualization (Power BI, Tableau, SSRS)"
     },
     {
-      "value": "Sales, operational, and",
       "label": "Sales, operational, and financial performance reporting"
     },
     {
-      "value": "Trend, variance, and",
       "label": "Trend, variance, and anomaly analysis"
     }
   ],
-  "about": {
-    "title": "About Jonathan Brownstein",
-    "lead": "Reporting and analytics leader with 15 years of experience across global, multidivisional industrial manufacturing and financial-services organizations.",
-    "body": "Reporting and analytics leader with 15 years of experience across global, multidivisional industrial manufacturing and financial-services organizations. Six-year FP&A and reporting foundation inside a global industrial manufacturer, followed by seven years inside the Data Analytics Office of a global reinsurer where I own the KPI dashboards, predictive models, and executive reporting that finance, actuarial, and the C-suite use to make decisions. Comfortable owning multiple concurrent reporting workstreams end to end, mentoring analysts and engineers, and partnering across the business to land governed, audit-ready deliverables on a deadline. Hands-on across Power BI, Tableau, SSRS, SQL, Python, R, advanced Excel and VBA, Databricks lakehouse, Delta Lake, and ELT pipelines, with a track record of replacing manual reconciliation cycles with automated, production-grade reporting and forecasting platforms. MS in Economics with an Applied Econometrics certificate, BS in Economics, and FLMI from LOMA.",
-    "cards": [
-      {
-        "title": "Senior Data Analyst III",
-        "body": "Senior reporting and analytics owner inside the Data Analytics Office"
-      },
-      {
-        "title": "Assistant Business Controller",
-        "body": "Owned FP&A and business-partnering support for finance, sales, operations, marketing, HR, and regional leadership inside a global multidivisional industrial manufacturer, feeding annual planning, monthly forecasting, and the executive reporting that drove the next round of decisions."
-      }
-    ]
-  },
   "experience": {
     "title": "Professional Experience",
-    "intro": "Experience tailored for the Reporting & Analytics Manager opportunity.",
     "items": [
       {
         "title": "Senior Data Analyst III",
@@ -107,7 +87,6 @@
   },
   "skills": {
     "title": "Skills & Expertise",
-    "intro": "Capabilities highlighted for this application.",
     "groups": [
       {
         "title": "Reporting and Visualization: Power BI, Tableau, SSRS, advanced Excel and VBA",

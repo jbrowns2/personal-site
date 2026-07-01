@@ -21,40 +21,20 @@
   },
   "highlights": [
     {
-      "value": "Finance data &",
       "label": "Finance data & analytics and FP&A decision support"
     },
     {
-      "value": "KPI governance, business",
       "label": "KPI governance, business rules, and metric definitions"
     },
     {
-      "value": "Finance data requirements",
       "label": "Finance data requirements and data warehouse partnership"
     },
     {
-      "value": "Assets, portfolio growth,",
       "label": "Assets, portfolio growth, and production-oriented performance analytics"
     }
   ],
-  "about": {
-    "title": "About Jonathan Brownstein",
-    "lead": "Finance data and analytics professional with 15 years of experience across regulated financial services and global industrial manufacturing.",
-    "body": "Finance data and analytics professional with 15 years of experience across regulated financial services and global industrial manufacturing. Six-year FP&A and controllership foundation inside a multidivisional manufacturer, followed by seven years as the finance-facing analytics lead inside the Data Analytics Office of a global reinsurer. Own finance data requirements, KPI definitions, and the reporting pipelines that finance and senior leadership use for performance review, growth analysis, and planning. Built an automated Net Amount at Risk (NAR) forecasting platform, enterprise metadata and lineage standards tied to the Strategic Data Warehouse, and repeatable valuation movement frameworks that replaced manual reconciliations. MS in Economics with an Applied Econometrics certificate, BS in Economics, and FLMI from LOMA.",
-    "cards": [
-      {
-        "title": "Senior Data Analyst III",
-        "body": "Finance data and analytics lead inside the Data Analytics Office"
-      },
-      {
-        "title": "Assistant Business Controller",
-        "body": "Supported annual planning, monthly forecasting, and budgeting for finance, sales, operations, marketing, HR, and regional leadership, including P&L and variance analysis and executive reporting used in performance review."
-      }
-    ]
-  },
   "experience": {
     "title": "Professional Experience",
-    "intro": "Experience tailored for the Manager, Finance Data & Analytics opportunity.",
     "items": [
       {
         "title": "Senior Data Analyst III",
@@ -105,7 +85,6 @@
   },
   "skills": {
     "title": "Skills & Expertise",
-    "intro": "Capabilities highlighted for this application.",
     "groups": [
       {
         "title": "Finance data & analytics: KPI governance, finance data requirements, performance and driver analysis, NNA and portfolio analytics, executive reporting, forecast support, advanced Excel and VBA",

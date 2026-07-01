@@ -21,40 +21,20 @@
   },
   "highlights": [
     {
-      "value": "Insurance and financial-s…",
       "label": "Insurance and financial-services analytics"
     },
     {
-      "value": "Producer and sales-perfor…",
       "label": "Producer and sales-performance reporting"
     },
     {
-      "value": "KPI dashboard design",
       "label": "KPI dashboard design and delivery (Power BI, Tableau, SSRS)"
     },
     {
-      "value": "Sales trend, variance,",
       "label": "Sales trend, variance, and anomaly analysis"
     }
   ],
-  "about": {
-    "title": "About Jonathan Brownstein",
-    "lead": "Senior insurance and financial-services analytics leader with 15+ years of regulated-industry experience and seven years inside the Data Analytics Office at Hannover Reinsurance Company, where I run the predictive models, KPI dashboards, and executive reporting that actuarial, valuation, finance, and risk leaders use to make decisions.",
-    "body": "Senior insurance and financial-services analytics leader with 15+ years of regulated-industry experience and seven years inside the Data Analytics Office at Hannover Reinsurance Company, where I run the predictive models, KPI dashboards, and executive reporting that actuarial, valuation, finance, and risk leaders use to make decisions. Comfortable owning multiple concurrent reporting and analytics initiatives end to end, leading analysts and engineers on delivery, and managing outside vendors and consultants. Quantitative degree path (MS Economics, Applied Econometrics certificate), FLMI from LOMA, and a hands-on toolkit across Python, SQL, advanced Excel and VBA, Databricks, Power BI, Tableau, and SSRS. Track record includes the classification machine-learning rebuild of a regulated reporting workflow recognized by the company's former CEO and the automated ARIMA forecasting platform for Net Amount at Risk that surfaces anomalies before period close.",
-    "cards": [
-      {
-        "title": "Senior Data Analyst III",
-        "body": "Technical lead and senior analytics owner inside the Data Analytics Office"
-      },
-      {
-        "title": "Assistant Business Controller",
-        "body": "Led cross-functional analytics and reporting modernization with HR, Sales, Marketing, Finance, and executive leadership, feeding operational and financial strategy at the regional leadership level."
-      }
-    ]
-  },
   "experience": {
     "title": "Professional Experience",
-    "intro": "Experience tailored for the Manager, Sales Reporting & Analytics opportunity.",
     "items": [
       {
         "title": "Senior Data Analyst III",
@@ -106,7 +86,6 @@
   },
   "skills": {
     "title": "Skills & Expertise",
-    "intro": "Capabilities highlighted for this application.",
     "groups": [
       {
         "title": "Reporting and Dashboards: Power BI, Tableau, SSRS, advanced Excel and VBA, executive-level written and oral briefing",

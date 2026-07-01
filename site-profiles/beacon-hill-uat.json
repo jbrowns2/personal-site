@@ -20,44 +20,11 @@
   },
   "highlights": [
     {
-      "value": "User acceptance testing,",
       "label": "User acceptance testing, UAT script development and execution, defect logging triage and retest, Jira, Confluence, Agile and hybrid delivery, commercial banking, treasury payments and cash management validation, vendor and third party platform testing, SQL reconciliation, regulated financial services, regression testing, acceptance sign off documentation"
-    },
-    {
-      "value": "15+ Years",
-      "label": "Regulated industries and enterprise-scale analytics delivery"
-    },
-    {
-      "value": "MS Economics",
-      "label": "Applied econometrics certificate and FLMI credential"
-    },
-    {
-      "value": "Production ML",
-      "label": "Forecasting, classification, and executive reporting platforms"
     }
   ],
-  "about": {
-    "title": "Contract Profile",
-    "lead": "UAT analyst with seven years validating digital platforms in regulated financial services.",
-    "body": "UAT analyst with seven years validating digital platforms in regulated financial services. I write and execute user acceptance test scripts, manage defects in Jira and Confluence, and complete sign off in Agile and hybrid release cycles. Contract work includes commercial banking and treasury adjacent reporting, public sector finance systems, and enterprise reinsurance platforms. I report test status clearly to business owners, developers, compliance partners, and vendor teams. CEO, Your Website In 7 Days LLC. Available immediately for remote temp work from northern Illinois on PST business hours with direct billing to the LLC.",
-    "cards": [
-      {
-        "title": "Senior UAT and Platform Validation Specialist",
-        "body": "Wrote and ran UAT scripts for reporting pipelines, Power BI and Tableau dashboards, and finance platforms, including regression and edge case cycles tied to business acceptance criteria before production release."
-      },
-      {
-        "title": "Contract UAT and Reconciliation Analyst",
-        "body": "Validated SQL reporting dashboards and treasury adjacent operational metrics in a regulated commercial banking environment before internal distribution."
-      },
-      {
-        "title": "Contract UAT and Dashboard Validation Analyst",
-        "body": "Tested transactional records against source systems and created repeatable validation checklists and discrepancy logs for developer and business resolution."
-      }
-    ]
-  },
   "experience": {
     "title": "Delivery Record",
-    "intro": "Selected assignments aligned with this role.",
     "items": [
       {
         "title": "Senior UAT and Platform Validation Specialist",
@@ -94,7 +61,6 @@
   },
   "skills": {
     "title": "Skills & Expertise",
-    "intro": "Capabilities highlighted for this application.",
     "groups": [
       {
         "title": "UAT and QA",
@@ -128,9 +94,6 @@
     "label": "06 / Hire",
     "title": "Available for Contract Engagements",
     "intro": "Open to contract roles through agencies and direct clients. Based in Illinois; available for remote and hybrid engagements.",
-    "topics": [
-      "User acceptance testing, UAT script development and execution, defect logging triage and retest, Jira, Confluence, Agile and hybrid delivery, commercial banking, treasury payments and cash management validation, vendor and third party platform testing, SQL reconciliation, regulated financial services, regression testing, acceptance sign off documentation"
-    ],
     "engagementPills": [
       "Contract",
       "Remote",

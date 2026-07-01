@@ -191,7 +191,7 @@
                 <li><a href="#skills" data-section="skills">Skills</a></li>
                 <li><a href="#projects" data-section="projects">Projects</a></li>
                 <li><a href="#education" data-section="education">Education</a></li>
-                <li><a href="#contact" data-section="contact" class="nav-cta"><span data-show-for="full_time" data-site-fallback>Contact</span><span data-show-for="contract" data-site-fallback>Hire</span><span class="profile-nav-cta" hidden>Hire</span></a></li>
+                <li><a href="#contact" data-section="contact" class="nav-cta"><span id="nav-cta-label">Contact</span></a></li>
             </ul>
             <button class="theme-toggle" aria-label="Switch to light mode" title="Toggle theme">
                 <svg class="theme-icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -297,43 +297,15 @@
                         </div>
                     </div>
                     <div class="hero-buttons">
-                        <a href="#contact" class="btn btn-primary" id="profile-hero-primary-cta" hidden>
+                        <a href="#contact" class="btn btn-primary" id="hero-primary-cta">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                                 <polyline points="22,6 12,13 2,6"></polyline>
                             </svg>
-                            <span class="profile-cta-label">Discuss a Contract Role</span>
+                            <span id="hero-primary-cta-label">Get In Touch</span>
                         </a>
-                        <a href="#experience" class="btn btn-secondary" id="profile-hero-secondary-cta" hidden>
-                            <span class="profile-cta-label">View Delivery Record</span>
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                                <line x1="5" y1="12" x2="19" y2="12"></line>
-                                <polyline points="12 5 19 12 12 19"></polyline>
-                            </svg>
-                        </a>
-                        <a href="#contact" class="btn btn-primary" data-show-for="full_time" data-site-fallback>
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                                <polyline points="22,6 12,13 2,6"></polyline>
-                            </svg>
-                            Get In Touch
-                        </a>
-                        <a href="#contact" class="btn btn-primary" data-show-for="contract" data-site-fallback>
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                                <polyline points="22,6 12,13 2,6"></polyline>
-                            </svg>
-                            Discuss a Contract Role
-                        </a>
-                        <a href="#experience" class="btn btn-secondary" data-show-for="full_time" data-site-fallback>
-                            View Experience
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                                <line x1="5" y1="12" x2="19" y2="12"></line>
-                                <polyline points="12 5 19 12 12 19"></polyline>
-                            </svg>
-                        </a>
-                        <a href="#experience" class="btn btn-secondary" data-show-for="contract" data-site-fallback>
-                            View Delivery Record
+                        <a href="#experience" class="btn btn-secondary" id="hero-secondary-cta">
+                            <span id="hero-secondary-cta-label">View Experience</span>
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                                 <line x1="5" y1="12" x2="19" y2="12"></line>
                                 <polyline points="12 5 19 12 12 19"></polyline>

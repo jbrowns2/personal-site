@@ -21,40 +21,20 @@
   },
   "highlights": [
     {
-      "value": "Business intelligence str…",
       "label": "Business intelligence strategy and KPI roadmap ownership"
     },
     {
-      "value": "Dashboard product design",
       "label": "Dashboard product design and maintenance (Power BI, Tableau, SSRS)"
     },
     {
-      "value": "Adoption, utilization, and",
       "label": "Adoption, utilization, and operational health reporting"
     },
     {
-      "value": "Cost and efficiency",
       "label": "Cost and efficiency analytics"
     }
   ],
-  "about": {
-    "title": "About Jonathan Brownstein",
-    "lead": "BI and analytics leader with 15 years of experience across global industrial manufacturing and financial-services organizations.",
-    "body": "BI and analytics leader with 15 years of experience across global industrial manufacturing and financial-services organizations. Six-year business operations and FP&A foundation inside a global industrial manufacturer, followed by seven years inside the Data Analytics Office of a global reinsurer where I own the KPI platforms, executive dashboards, and operational analytics that finance, actuarial, and the C-suite rely on to monitor performance, spot bottlenecks, and act on cost and efficiency signals. Track record of defining what to measure, building the governed data layers underneath, and delivering adoption-ready dashboard products internal leaders actually use. Hands-on across Power BI, Tableau, SSRS, SQL, Python, R, Databricks lakehouse, Delta Lake, and ELT pipelines, with enterprise metadata and lineage work that turned fragmented multi-source data into a single reference standard. MS in Economics with an Applied Econometrics certificate, BS in Economics, and FLMI from LOMA.",
-    "cards": [
-      {
-        "title": "Senior Data Analyst III",
-        "body": "BI and analytics platform owner inside the Data Analytics Office"
-      },
-      {
-        "title": "Assistant Business Controller",
-        "body": "Owned FP&A and business-partnering support for finance, sales, operations, marketing, HR, and regional leadership inside a global multidivisional industrial manufacturer, feeding annual planning, monthly forecasting, and the executive reporting that drove operational and cost decisions."
-      }
-    ]
-  },
   "experience": {
     "title": "Professional Experience",
-    "intro": "Experience tailored for the Product Manager - Business Intelligence & Ana… opportunity.",
     "items": [
       {
         "title": "Senior Data Analyst III",
@@ -106,7 +86,6 @@
   },
   "skills": {
     "title": "Skills & Expertise",
-    "intro": "Capabilities highlighted for this application.",
     "groups": [
       {
         "title": "Business Intelligence and Visualization: Power BI, Tableau, SSRS, advanced Excel and VBA",

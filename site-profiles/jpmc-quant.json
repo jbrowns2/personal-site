@@ -21,40 +21,20 @@
   },
   "highlights": [
     {
-      "value": "Quantitative analytics and",
       "label": "Quantitative analytics and financial modeling"
     },
     {
-      "value": "Activity-based and driver…",
       "label": "Activity-based and driver-based cost attribution"
     },
     {
-      "value": "Forecasting, budgeting, and",
       "label": "Forecasting, budgeting, and capacity planning support"
     },
     {
-      "value": "Workforce and portfolio",
       "label": "Workforce and portfolio driver analysis"
     }
   ],
-  "about": {
-    "title": "About Jonathan Brownstein",
-    "lead": "Quantitative analytics and finance leader with 15 years of experience across regulated financial services and global industrial manufacturing.",
-    "body": "Quantitative analytics and finance leader with 15 years of experience across regulated financial services and global industrial manufacturing. Six years in corporate FP&A and controllership inside a multidivisional manufacturer, followed by seven years as a senior analytics lead inside the Data Analytics Office of a global reinsurer. Builds the models, allocation logic, and executive dashboards that finance and business leaders use for planning, cost attribution, and performance review. Track record includes an automated ARIMA forecasting platform, a valuation movement architecture that replaced one-off reconciliations, and Tableau and Power BI reporting consumed by senior leadership. MS in Economics with an Applied Econometrics certificate, BS in Economics, and FLMI from LOMA.",
-    "cards": [
-      {
-        "title": "Senior Data Analyst III",
-        "body": "Senior quantitative analytics lead inside the Data Analytics Office"
-      },
-      {
-        "title": "Assistant Business Controller",
-        "body": "Supported annual planning, monthly forecasting, and budgeting for finance, sales, operations, marketing, HR, and regional leadership inside a global multidivisional manufacturer, including P&L and variance analysis with segment and cost-center views used in leadership decisions."
-      }
-    ]
-  },
   "experience": {
     "title": "Professional Experience",
-    "intro": "Experience tailored for the Quant Analytics Manager, Vice President opportunity.",
     "items": [
       {
         "title": "Senior Data Analyst III",
@@ -104,7 +84,6 @@
   },
   "skills": {
     "title": "Skills & Expertise",
-    "intro": "Capabilities highlighted for this application.",
     "groups": [
       {
         "title": "Quant and finance: Quantitative analytics, financial modeling, forecasting and budgeting, activity-based and driver-based analysis, P&L and variance analysis, scenario and trend analysis, executive briefing, advanced Excel and VBA",

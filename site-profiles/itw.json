@@ -21,40 +21,20 @@
   },
   "highlights": [
     {
-      "value": "Manufacturing FP&A and",
       "label": "Manufacturing FP&A and divisional business partnering"
     },
     {
-      "value": "Monthly, quarterly, and",
       "label": "Monthly, quarterly, and year-end close support"
     },
     {
-      "value": "Revenue and operating-income",
       "label": "Revenue and operating-income forecasting"
     },
     {
-      "value": "Cost analysis, manufacturing",
       "label": "Cost analysis, manufacturing variance, and gross-margin reporting"
     }
   ],
-  "about": {
-    "title": "About Jonathan Brownstein",
-    "lead": "Finance and business analytics leader with 15 years of progressive experience across global, multidivisional manufacturing and financial-services organizations.",
-    "body": "Finance and business analytics leader with 15 years of progressive experience across global, multidivisional manufacturing and financial-services organizations. Six-year FP&A and controllership foundation inside a global industrial manufacturer (Atlas Copco group), with day-to-day ownership of monthly forecasting, cost and variance analysis, KPI reporting, internal-control support, and business-partnering across finance, sales, operations, marketing, and HR. Seven additional years inside the Data Analytics Office of a global regulated reinsurer, leading the forecasting platforms, executive financial reporting, and audit-ready engineering and analytics standards that finance, actuarial, and the C-suite rely on. Track record includes an automated ARIMA-based forecasting platform that surfaces anomalies before period close, a classification machine learning rebuild of a regulated reporting workflow recognized by the company's former CEO, and the executive dashboards leadership acts on. BS in Economics, MS in Economics with an Applied Econometrics certificate, and FLMI from LOMA.",
-    "cards": [
-      {
-        "title": "Senior Data Analyst III",
-        "body": "Senior analytics lead and forecasting / executive-reporting owner inside the Data Analytics Office"
-      },
-      {
-        "title": "Assistant Business Controller",
-        "body": "Owned the day-to-day FP&A, monthly forecasting, and business-partnering work for finance, sales, operations, marketing, HR, and regional leadership inside a global multidivisional industrial manufacturer with a decentralized divisional operating model."
-      }
-    ]
-  },
   "experience": {
     "title": "Professional Experience",
-    "intro": "Experience tailored for the Controller opportunity.",
     "items": [
       {
         "title": "Senior Data Analyst III",
@@ -109,7 +89,6 @@
   },
   "skills": {
     "title": "Skills & Expertise",
-    "intro": "Capabilities highlighted for this application.",
     "groups": [
       {
         "title": "Finance and Accounting: Monthly, quarterly, and year-end close support, revenue and operating-income forecasting, annual budgeting and rolling forecasts, cost analysis (manufacturing variance, standard cost, gross margin, inventory), P&L, balance sheet, and cash flow driver analysis, internal control discipline, audit coordination, capital project and contract evaluation, advanced Excel and VBA",

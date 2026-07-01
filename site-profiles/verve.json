@@ -21,44 +21,20 @@
   },
   "highlights": [
     {
-      "value": "SQL development, schema",
       "label": "SQL development, schema design, and query optimization across large structured and semi-structured datasets"
     },
     {
-      "value": "Batch ELT pipelines",
       "label": "Batch ELT pipelines and scheduled analytical workflows (Databricks; patterns transferable to Airflow, Dagster, Temporal)"
     },
     {
-      "value": "Customer-facing dashboard…",
       "label": "Customer-facing dashboards and custom reporting (Tableau, Power BI, SSRS)"
     },
     {
-      "value": "Multi-source data integra…",
       "label": "Multi-source data integration and API-fed reporting layers"
     }
   ],
-  "about": {
-    "title": "About Jonathan Brownstein",
-    "lead": "Data engineer and analytics builder with a master's in economics and 15 years turning messy, multi-source data into reliable pipelines, governed warehouse assets, and dashboards stakeholders actually use.",
-    "body": "Data engineer and analytics builder with a master's in economics and 15 years turning messy, multi-source data into reliable pipelines, governed warehouse assets, and dashboards stakeholders actually use. Spent seven years inside a global reinsurer's Chief Data Office designing SQL-heavy ELT workflows on Databricks, optimizing queries across a trillion-record warehouse, and shipping Tableau and Power BI reporting for demanding internal clients. Earlier, I modernized executive reporting at a global manufacturer and, during graduate school, delivered on a contract basis at Wells Fargo — the same flexible, outcomes-first model I am returning to now. I wrapped my full-time role in March 2026 and am available immediately for remote contract work, comfortable collaborating across US time zones and iterating fast in Kanban-style delivery.",
-    "cards": [
-      {
-        "title": "Senior Data Analyst III",
-        "body": "Data engineering, reporting, and pipeline owner for enterprise analytics programs"
-      },
-      {
-        "title": "Assistant Business Controller",
-        "body": "Partnered with Sales, Marketing, HR, Finance, and executive leadership to modernize KPI reporting and automate recurring operational dashboards."
-      },
-      {
-        "title": "Contract Data & Reporting Analyst",
-        "body": "Delivered analytics and reporting on a contract basis while completing my MS in Economics at UNC Charlotte — scoping work, meeting deadlines, and communicating progress without the overhead of a full-time hire."
-      }
-    ]
-  },
   "experience": {
     "title": "Professional Experience",
-    "intro": "Experience tailored for the Data Engineer  — Job 8474867002 opportunity.",
     "items": [
       {
         "title": "Senior Data Analyst III",
@@ -122,7 +98,6 @@
   },
   "skills": {
     "title": "Skills & Expertise",
-    "intro": "Capabilities highlighted for this application.",
     "groups": [
       {
         "title": "Data Engineering",

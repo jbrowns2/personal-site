@@ -21,40 +21,20 @@
   },
   "highlights": [
     {
-      "value": "Reserve-adjacent forecast…",
       "label": "Reserve-adjacent forecasting (ARIMA, time-series)"
     },
     {
-      "value": "Period-over-period valuat…",
       "label": "Period-over-period valuation movement analysis"
     },
     {
-      "value": "Predictive analytics and",
       "label": "Predictive analytics and classification machine learning"
     },
     {
-      "value": "Statistical outlier and",
       "label": "Statistical outlier and anomaly detection"
     }
   ],
-  "about": {
-    "title": "About Jonathan Brownstein",
-    "lead": "Senior analytics professional with 15 years of experience inside regulated financial-services and global industrial organizations, the last seven inside the Data Analytics Office of a global reinsurer where I work directly with actuarial leadership, finance, and the C-suite.",
-    "body": "Senior analytics professional with 15 years of experience inside regulated financial-services and global industrial organizations, the last seven inside the Data Analytics Office of a global reinsurer where I work directly with actuarial leadership, finance, and the C-suite. I build the predictive models, forecasting platforms, KPI dashboards, and executive reporting that drive period-close reviews and the next round of decisions. Day-to-day work covers ARIMA-based reserve-adjacent forecasting, classification machine learning rebuilds of regulated reporting, period-over-period valuation movement analysis, and outlier-detection frameworks across platforms processing more than a trillion records. Hands-on across SQL, R, Python, advanced Excel and VBA, Power BI, Tableau, SSRS, Databricks lakehouse, and Delta Lake. MS in Economics with an Applied Econometrics certificate, BS in Economics, and FLMI from LOMA.",
-    "cards": [
-      {
-        "title": "Senior Data Analyst III",
-        "body": "Senior reinsurance analytics owner inside the Data Analytics Office"
-      },
-      {
-        "title": "Assistant Business Controller",
-        "body": "Owned FP&A and business-partnering support for finance, sales, operations, marketing, HR, and regional leadership inside a global industrial manufacturer, feeding annual planning, monthly forecasting, and the executive reporting that drove the next round of decisions."
-      }
-    ]
-  },
   "experience": {
     "title": "Professional Experience",
-    "intro": "Experience tailored for the Senior Actuarial Analyst / Actuary opportunity.",
     "items": [
       {
         "title": "Senior Data Analyst III",
@@ -107,7 +87,6 @@
   },
   "skills": {
     "title": "Skills & Expertise",
-    "intro": "Capabilities highlighted for this application.",
     "groups": [
       {
         "title": "Languages and Tools: SQL, R, Python (pandas, NumPy, scikit-learn, statsmodels), advanced Excel and VBA",

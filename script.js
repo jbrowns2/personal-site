@@ -40,11 +40,41 @@
         }
     }
 
+    const EMPLOYMENT_CTAS = {
+        full_time: {
+            primary: 'Get In Touch',
+            secondary: 'View Experience',
+            nav: 'Contact',
+        },
+        contract: {
+            primary: 'Discuss a Contract Role',
+            secondary: 'View Delivery Record',
+            nav: 'Hire',
+        },
+    };
+
+    function setHeroCtas(primaryLabel, secondaryLabel) {
+        const primary = document.getElementById('hero-primary-cta-label');
+        const secondary = document.getElementById('hero-secondary-cta-label');
+        if (primary && primaryLabel) primary.textContent = primaryLabel;
+        if (secondary && secondaryLabel) secondary.textContent = secondaryLabel;
+    }
+
+    function setNavCta(label) {
+        const nav = document.getElementById('nav-cta-label');
+        if (nav && label) nav.textContent = label;
+    }
+
     function applyEmploymentVariant(type) {
         const normalized = normalizeEmploymentType(type);
         document.documentElement.setAttribute('data-employment-type', normalized);
         persistEmploymentType(normalized);
         updateEmploymentMeta(normalized);
+        if (document.documentElement.getAttribute('data-profile-mode') !== 'tailored') {
+            const ctas = EMPLOYMENT_CTAS[normalized] || EMPLOYMENT_CTAS.full_time;
+            setHeroCtas(ctas.primary, ctas.secondary);
+            setNavCta(ctas.nav);
+        }
         document.dispatchEvent(
             new CustomEvent('portfolio:employment-type', { detail: { type: normalized } }),
         );
@@ -238,22 +268,14 @@
                 desc.textContent = profile.hero.description;
                 desc.hidden = false;
             }
-            if (profile.hero.primaryCta) {
-                const primary = document.getElementById('profile-hero-primary-cta');
-                if (primary) {
-                    const label = primary.querySelector('.profile-cta-label');
-                    if (label) label.textContent = profile.hero.primaryCta;
-                    primary.hidden = false;
-                }
+            if (profile.hero.primaryCta || profile.hero.secondaryCta) {
+                setHeroCtas(profile.hero.primaryCta, profile.hero.secondaryCta);
             }
-            if (profile.hero.secondaryCta) {
-                const secondary = document.getElementById('profile-hero-secondary-cta');
-                if (secondary) {
-                    const label = secondary.querySelector('.profile-cta-label');
-                    if (label) label.textContent = profile.hero.secondaryCta;
-                    secondary.hidden = false;
-                }
-            }
+            const navLabel =
+                profile.employmentType === 'contract' || profile.hero.primaryCta === 'Discuss This Role'
+                    ? 'Hire'
+                    : 'Contact';
+            setNavCta(navLabel);
             if (profile.hero.typingPhrases && profile.hero.typingPhrases.length) {
                 document.dispatchEvent(
                     new CustomEvent('portfolio:profile-typing', {
@@ -268,6 +290,11 @@
             if (grid) {
                 grid.innerHTML = profile.highlights
                     .map(function (item) {
+                        const label = item.label || item.value || '';
+                        const value =
+                            item.value && item.label && item.label.indexOf(item.value.replace(/…$/, '')) !== 0
+                                ? item.value
+                                : '';
                         return (
                             '<div class="highlight-item reveal">' +
                             '<div class="highlight-item-icon">' +
@@ -276,11 +303,15 @@
                             '<path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9c2.39 0 4.68.94 6.36 2.64"></path>' +
                             '</svg></div>' +
                             '<div class="highlight-item-text">' +
-                            '<span class="highlight-item-value">' +
-                            profileEscapeHtml(item.value) +
-                            '</span>' +
-                            '<span class="highlight-item-label">' +
-                            profileEscapeHtml(item.label) +
+                            (value
+                                ? '<span class="highlight-item-value">' +
+                                  profileEscapeHtml(value) +
+                                  '</span>'
+                                : '') +
+                            '<span class="highlight-item-label' +
+                            (value ? '' : ' highlight-item-label--solo') +
+                            '">' +
+                            profileEscapeHtml(label) +
                             '</span></div></div>'
                         );
                     })
@@ -289,38 +320,10 @@
             }
         }
 
-        if (profile.about) {
-            const title = document.getElementById('profile-about-title');
-            if (title && profile.about.title) {
-                title.textContent = profile.about.title;
-                title.hidden = false;
-            }
-            const lead = document.getElementById('profile-about-lead');
-            if (lead && profile.about.lead) {
-                lead.textContent = profile.about.lead;
-            }
-            const body = document.getElementById('profile-about-body');
-            if (body && profile.about.body) {
-                body.textContent = profile.about.body;
-            }
-            const cards = document.getElementById('profile-about-cards');
-            if (cards && profile.about.cards && profile.about.cards.length) {
-                cards.innerHTML = profile.about.cards
-                    .map(function (card) {
-                        return (
-                            '<div class="highlight-card">' +
-                            '<h3>' +
-                            profileEscapeHtml(card.title) +
-                            '</h3><p>' +
-                            profileEscapeHtml(card.body) +
-                            '</p></div>'
-                        );
-                    })
-                    .join('');
-            }
-            const aboutBlock = document.getElementById('profile-about-block');
-            if (aboutBlock) aboutBlock.hidden = false;
-        }
+        const aboutSection = document.getElementById('about');
+        const aboutNav = document.querySelector('.nav-links a[data-section="about"]');
+        if (aboutSection) aboutSection.hidden = true;
+        if (aboutNav && aboutNav.parentElement) aboutNav.parentElement.hidden = true;
 
         if (profile.experience) {
             const expTitle = document.getElementById('profile-experience-title');
@@ -330,12 +333,7 @@
             }
             const expIntro = document.getElementById('profile-experience-intro');
             if (expIntro) {
-                if (profile.experience.intro) {
-                    expIntro.textContent = profile.experience.intro;
-                    expIntro.hidden = false;
-                } else {
-                    expIntro.hidden = true;
-                }
+                expIntro.hidden = true;
             }
             const timeline = document.getElementById('profile-experience');
             if (timeline && profile.experience.items) {
@@ -354,12 +352,7 @@
             }
             const skillsIntro = document.getElementById('profile-skills-intro');
             if (skillsIntro) {
-                if (profile.skills.intro) {
-                    skillsIntro.textContent = profile.skills.intro;
-                    skillsIntro.hidden = false;
-                } else {
-                    skillsIntro.hidden = true;
-                }
+                skillsIntro.hidden = true;
             }
             const grid = document.getElementById('profile-skills');
             if (grid && profile.skills.groups) {
@@ -412,23 +405,21 @@
             const advisory = document.getElementById('profile-contact-advisory');
             if (advisory && profile.contact.valueItems && profile.contact.valueItems.length) {
                 let html = '';
-                if (profile.contact.valueItems && profile.contact.valueItems.length) {
-                    html +=
-                        '<div class="contractor-value-grid" aria-label="What hiring managers get">' +
-                        profile.contact.valueItems
-                            .map(function (item) {
-                                return (
-                                    '<div class="contractor-value-item glass-card">' +
-                                    '<span class="contractor-value-label">' +
-                                    profileEscapeHtml(item.label) +
-                                    '</span><p>' +
-                                    profileEscapeHtml(item.body) +
-                                    '</p></div>'
-                                );
-                            })
-                            .join('') +
-                        '</div>';
-                }
+                html +=
+                    '<div class="contractor-value-grid" aria-label="What hiring managers get">' +
+                    profile.contact.valueItems
+                        .map(function (item) {
+                            return (
+                                '<div class="contractor-value-item glass-card">' +
+                                '<span class="contractor-value-label">' +
+                                profileEscapeHtml(item.label) +
+                                '</span><p>' +
+                                profileEscapeHtml(item.body) +
+                                '</p></div>'
+                            );
+                        })
+                        .join('') +
+                    '</div>';
                 if (profile.contact.engagementPills && profile.contact.engagementPills.length) {
                     html +=
                         '<div class="engagement-types" aria-label="Engagement types">' +
@@ -438,18 +429,6 @@
                                     '<span class="engagement-type-pill">' +
                                     profileEscapeHtml(pill) +
                                     '</span>'
-                                );
-                            })
-                            .join('') +
-                        '</div>';
-                }
-                if (profile.contact.topics && profile.contact.topics.length) {
-                    html +=
-                        '<div class="contact-topics" aria-label="Typical contract scopes">' +
-                        profile.contact.topics
-                            .map(function (topic) {
-                                return (
-                                    '<span class="contact-topic">' + profileEscapeHtml(topic) + '</span>'
                                 );
                             })
                             .join('') +
@@ -468,11 +447,6 @@
                     if (valueEl) valueEl.textContent = profile.contact.email;
                 }
             }
-        }
-
-        const navCta = document.querySelector('.nav-cta .profile-nav-cta');
-        if (navCta) {
-            navCta.hidden = false;
         }
     }
 
@@ -498,8 +472,8 @@
         if (!profileSlug) return;
         const profile = await fetchSiteProfile(profileSlug);
         if (profile) {
-            applyEmploymentVariant(profile.employmentType || employmentType || EMPLOYMENT_CONTRACT);
             applySiteProfile(profile);
+            applyEmploymentVariant(profile.employmentType || employmentType || EMPLOYMENT_CONTRACT);
         }
     }
 
@@ -1243,7 +1217,7 @@
             }
             submitBtn.disabled = true;
             setFormVerifyBusy(true);
-            gateVerifyCode(code).then(function (result) {
+            gateVerifyCode(code).then(async function (result) {
                 setFormVerifyBusy(false);
                 submitBtn.disabled = false;
                 setGateHint('');
@@ -1284,10 +1258,11 @@
                     history.replaceState(null, '', window.location.pathname + window.location.search);
                 }
                 applyUnlockedDom({ clearLoading: true });
-                applyEmploymentVariant(result.employmentType || EMPLOYMENT_FULL_TIME);
                 if (result.profileSlug) {
                     persistProfileSlug(result.profileSlug);
-                    hydrateSiteProfile(result.profileSlug, result.employmentType);
+                    await hydrateSiteProfile(result.profileSlug, result.employmentType);
+                } else {
+                    applyEmploymentVariant(result.employmentType || EMPLOYMENT_FULL_TIME);
                 }
                 if (isDemoInviteAccessCode(code)) {
                     markDemoAccess();
@@ -1701,9 +1676,10 @@
         const preloader = document.getElementById('preloader');
 
         if (stored) {
-            applyEmploymentVariant(employmentType);
             if (profileSlug) {
                 await hydrateSiteProfile(profileSlug, employmentType);
+            } else {
+                applyEmploymentVariant(employmentType);
             }
             applyUnlockedDom();
             if (hasDemoAccess()) {

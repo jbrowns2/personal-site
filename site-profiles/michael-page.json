@@ -21,40 +21,20 @@
   },
   "highlights": [
     {
-      "value": "Enterprise data science",
       "label": "Enterprise data science and machine learning"
     },
     {
-      "value": "Predictive modeling (ARIMA,",
       "label": "Predictive modeling (ARIMA, classification)"
     },
     {
-      "value": "Financial modeling, forec…",
       "label": "Financial modeling, forecasting, and budgeting"
     },
     {
-      "value": "Executive dashboards (Tab…",
       "label": "Executive dashboards (Tableau, Power BI, SSRS)"
     }
   ],
-  "about": {
-    "title": "About Jonathan Brownstein",
-    "lead": "Data, analytics, and finance leader with 15+ years across regulated financial services and global industrial manufacturing.",
-    "body": "Data, analytics, and finance leader with 15+ years across regulated financial services and global industrial manufacturing. Seven years as a senior analytics and machine learning lead inside the Data Analytics Office of a global reinsurer; six prior years in corporate FP&A and controllership inside a multidivisional manufacturer. Designs production forecasting models, governed analytics architectures, and executive dashboards that finance, actuarial, and business leaders use for planning, risk review, and performance management. MS in Economics with an Applied Econometrics certificate, BS in Economics, and FLMI from LOMA. Open to senior individual contributor, manager, and director-level roles in the greater Chicago area (northwest suburbs preferred) and remote-eligible US opportunities.",
-    "cards": [
-      {
-        "title": "Senior Data Analyst III",
-        "body": "Enterprise data scientist and ML architecture lead inside the Data Analytics Office"
-      },
-      {
-        "title": "Assistant Business Controller",
-        "body": "Supported annual planning, monthly forecasting, and budgeting for finance, sales, operations, marketing, HR, and regional leadership, including P&L and variance analysis with segment and cost-center views."
-      }
-    ]
-  },
   "experience": {
     "title": "Professional Experience",
-    "intro": "Experience tailored for the Data & Analytics Leader opportunity.",
     "items": [
       {
         "title": "Senior Data Analyst III",
@@ -98,7 +78,6 @@
   },
   "skills": {
     "title": "Skills & Expertise",
-    "intro": "Capabilities highlighted for this application.",
     "groups": [
       {
         "title": "Data science and engineering: Python, R, SQL, Databricks, ARIMA forecasting, classification ML, statistical outlier detection, applied econometrics, ELT pipelines, lakehouse and data warehouse design",

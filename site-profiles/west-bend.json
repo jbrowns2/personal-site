@@ -21,40 +21,20 @@
   },
   "highlights": [
     {
-      "value": "Predictive modeling and",
       "label": "Predictive modeling and machine learning"
     },
     {
-      "value": "Advanced analytics and",
       "label": "Advanced analytics and statistical modeling"
     },
     {
-      "value": "Insurance pricing and",
       "label": "Insurance pricing and underwriting analytics"
     },
     {
-      "value": "Risk selection and",
       "label": "Risk selection and risk-tiering support"
     }
   ],
-  "about": {
-    "title": "About Jonathan Brownstein",
-    "lead": "Analytics leader pursuing a data science role aligned with my machine learning background and interest in using advanced analytics to improve business processes.",
-    "body": "Analytics leader pursuing a data science role aligned with my machine learning background and interest in using advanced analytics to improve business processes. Fifteen years of experience in regulated insurance and global industrial organizations, the last seven inside the Data Analytics Office of a global reinsurer where I design, build, and maintain production predictive models, forecasting platforms, and machine learning solutions that actuarial leadership, finance, and underwriting partners rely on for risk selection, valuation, and portfolio review. Work spans ARIMA-based forecasting, classification machine learning, statistical outlier detection, and governed model documentation suitable for audit and regulatory review. Hands-on across SQL, Python, R, and SAS, with Spark workloads on Databricks lakehouse platforms processing more than a trillion records. MS in Economics with an Applied Econometrics certificate, BS in Economics, and FLMI from LOMA.",
-    "cards": [
-      {
-        "title": "Senior Data Analyst III",
-        "body": "Senior data scientist and ML architecture lead inside the Data Analytics Office"
-      },
-      {
-        "title": "Assistant Business Controller",
-        "body": "Owned FP&A and business-partnering support for finance, sales, operations, marketing, HR, and regional leadership, feeding annual planning, monthly forecasting, and executive reporting used in operating decisions."
-      }
-    ]
-  },
   "experience": {
     "title": "Professional Experience",
-    "intro": "Experience tailored for the Senior Data Scientist opportunity.",
     "items": [
       {
         "title": "Senior Data Analyst III",
@@ -106,7 +86,6 @@
   },
   "skills": {
     "title": "Skills & Expertise",
-    "intro": "Capabilities highlighted for this application.",
     "groups": [
       {
         "title": "Languages and Statistical Programming: SQL, Python (pandas, NumPy, scikit-learn, statsmodels), R, SAS, advanced Excel and VBA",

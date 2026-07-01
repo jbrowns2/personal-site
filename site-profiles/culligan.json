@@ -21,40 +21,20 @@
   },
   "highlights": [
     {
-      "value": "Corporate FP&A and",
       "label": "Corporate FP&A and financial analytics"
     },
     {
-      "value": "Financial and operational",
       "label": "Financial and operational metric tracking"
     },
     {
-      "value": "P&L, variance, and",
       "label": "P&L, variance, and driver analysis"
     },
     {
-      "value": "Financial modeling, trend",
       "label": "Financial modeling, trend analysis, and scenario planning"
     }
   ],
-  "about": {
-    "title": "About Jonathan Brownstein",
-    "lead": "Financial analytics leader with 15 years of experience across global industrial manufacturing and financial-services organizations.",
-    "body": "Financial analytics leader with 15 years of experience across global industrial manufacturing and financial-services organizations. Six-year FP&A and controllership foundation inside a global multidivisional manufacturer, followed by seven years inside the Data Analytics Office of a global reinsurer where I own the forecasting models, KPI reporting, and executive financial insight that finance leadership and the C-suite use for planning, variance review, and risk assessment. Track record includes an automated ARIMA-based forecasting platform that surfaces anomalies before period close, a valuation movement architecture that replaced one-off reconciliations with repeatable P&L and driver analysis, and the governed KPI dashboards and narratives senior leaders act on. MS in Economics with an Applied Econometrics certificate, BS in Economics, and FLMI from LOMA.",
-    "cards": [
-      {
-        "title": "Senior Data Analyst III",
-        "body": "Senior financial analytics lead inside the Data Analytics Office"
-      },
-      {
-        "title": "Assistant Business Controller",
-        "body": "Owned FP&A and business-partnering support for finance, sales, operations, marketing, HR, and regional leadership inside a global multidivisional industrial manufacturer, feeding annual planning, monthly forecasting, P&L and variance analysis, and the executive reporting that drove the next round of decisions."
-      }
-    ]
-  },
   "experience": {
     "title": "Professional Experience",
-    "intro": "Experience tailored for the Manager of Financial Analytics, Corporate FP&A opportunity.",
     "items": [
       {
         "title": "Senior Data Analyst III",
@@ -105,7 +85,6 @@
   },
   "skills": {
     "title": "Skills & Expertise",
-    "intro": "Capabilities highlighted for this application.",
     "groups": [
       {
         "title": "Finance and FP&A: Financial modeling, P&L and variance analysis, forecast process design, scenario and trend analysis, KPI tracking and reporting, executive briefing, advanced Excel and VBA",

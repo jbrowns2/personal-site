@@ -20,44 +20,20 @@
   },
   "highlights": [
     {
-      "value": "Survey design, administra…",
       "label": "Survey design, administration, and analysis (Qualtrics, Microsoft Forms)"
     },
     {
-      "value": "Multi-source reporting from",
       "label": "Multi-source reporting from learning management system exports, assessments, surveys, and employee records"
     },
     {
-      "value": "Dashboard and KPI",
       "label": "Dashboard and KPI development (Power BI, Tableau, SSRS, advanced Excel)"
     },
     {
-      "value": "Auditing, validation, and",
       "label": "Auditing, validation, and reconciliation"
     }
   ],
-  "about": {
-    "title": "Contract Profile",
-    "lead": "Analytics contractor with an MS in Economics and fifteen years of experience delivering survey programs, reporting dashboards, and multi-source insights on a project basis.",
-    "body": "Analytics contractor with an MS in Economics and fifteen years of experience delivering survey programs, reporting dashboards, and multi-source insights on a project basis. I have used Qualtrics to build surveys for economic research during my graduate program, as well as in subsequent client assignments. Most of my work has been short-term or part-time contract assignments across financial services, public sector, manufacturing, and reinsurance. I focus on what Human Resources and Learning and Development teams need most: sound survey design, validated data, and reporting that holds up in a leadership review. My most recent contract ended in March 2026. I am available for part-time contract work with defined scope, regular progress updates, and clear documentation at handoff.",
-    "cards": [
-      {
-        "title": "Executive KPI Dashboard Refresh",
-        "body": "Maintained Power BI and Tableau dashboards on a weekly cadence for executive stakeholders (KPIs, variances, and program trends), replacing manual Excel reconciliation cycles."
-      },
-      {
-        "title": "Qualtrics & Survey Reporting Build",
-        "body": "Designed Qualtrics and Microsoft Forms collection flows with branching logic, dynamic paths, and dashboard views aligned to downstream reporting requirements."
-      },
-      {
-        "title": "Multi-Source Insights & Validation",
-        "body": "Validated and reconciled structured response and operational datasets before results were shared with leadership."
-      }
-    ]
-  },
   "experience": {
     "title": "Delivery Record",
-    "intro": "Selected assignments aligned with this role.",
     "items": [
       {
         "title": "Executive KPI Dashboard Refresh",
@@ -143,7 +119,6 @@
   },
   "skills": {
     "title": "Skills & Expertise",
-    "intro": "Capabilities highlighted for this application.",
     "groups": [
       {
         "title": "Survey & Insights",
@@ -183,12 +158,6 @@
     "label": "06 / Hire",
     "title": "Available for Contract Engagements",
     "intro": "Open to contract roles through agencies and direct clients. Based in Illinois; available for remote and hybrid engagements.",
-    "topics": [
-      "Survey design, administration, and analysis (Qualtrics, Microsoft Forms)",
-      "Multi-source reporting from learning management system exports, assessments, surveys, and employee records",
-      "Dashboard and KPI development (Power BI, Tableau, SSRS, advanced Excel)",
-      "Auditing, validation, and reconciliation"
-    ],
     "engagementPills": [
       "Contract",
       "Remote",

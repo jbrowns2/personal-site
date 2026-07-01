@@ -21,40 +21,20 @@
   },
   "highlights": [
     {
-      "value": "Enterprise FP&A and",
       "label": "Enterprise FP&A and business partnering"
     },
     {
-      "value": "Annual and monthly",
       "label": "Annual and monthly financial planning"
     },
     {
-      "value": "Forecast process design",
       "label": "Forecast process design and ownership"
     },
     {
-      "value": "Cost analysis and",
       "label": "Cost analysis and variance reporting by division and COE"
     }
   ],
-  "about": {
-    "title": "About Jonathan Brownstein",
-    "lead": "Finance and business analytics leader with 15 years of progressive experience across global, multidivisional manufacturing and financial-services organizations.",
-    "body": "Finance and business analytics leader with 15 years of progressive experience across global, multidivisional manufacturing and financial-services organizations. Background combines a six-year FP&A and controllership foundation inside a global industrial manufacturer with seven years inside the Data Analytics Office of a global reinsurer, where I lead the forecasting, cost analytics, and executive reporting that finance, actuarial, and the C-suite use to make decisions. Track record includes an automated ARIMA-based forecasting platform that surfaces anomalies before period close, a classification machine learning rebuild of a regulated reporting workflow recognized by the company's former CEO, and the executive dashboards and narratives leadership and Board audiences act on. MS in Economics with an Applied Econometrics certificate, BS in Economics, and FLMI from LOMA.",
-    "cards": [
-      {
-        "title": "Senior Data Analyst III",
-        "body": "Senior analytics lead and forecasting / executive-reporting owner inside the Data Analytics Office"
-      },
-      {
-        "title": "Assistant Business Controller",
-        "body": "Owned FP&A and business-partnering support for finance, sales, operations, marketing, HR, and regional leadership inside a global multidivisional industrial manufacturer, feeding the annual planning, monthly forecast, and executive reporting cycles."
-      }
-    ]
-  },
   "experience": {
     "title": "Professional Experience",
-    "intro": "Experience tailored for the Manager / Sr. Manager, Enterprise Finance opportunity.",
     "items": [
       {
         "title": "Senior Data Analyst III",
@@ -107,7 +87,6 @@
   },
   "skills": {
     "title": "Skills & Expertise",
-    "intro": "Capabilities highlighted for this application.",
     "groups": [
       {
         "title": "Finance and FP&A: Annual and monthly financial planning, forecast process design, variance and cost-driver analysis, executive reporting, capital project and contract evaluation, P&L, balance sheet, and cash flow driver analysis, advanced Excel and VBA",

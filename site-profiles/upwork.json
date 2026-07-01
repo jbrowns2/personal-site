@@ -21,40 +21,20 @@
   },
   "highlights": [
     {
-      "value": "Enterprise FP&A and",
       "label": "Enterprise FP&A and business partnering"
     },
     {
-      "value": "Annual and monthly",
       "label": "Annual and monthly planning"
     },
     {
-      "value": "Forecast process design",
       "label": "Forecast process design and automation"
     },
     {
-      "value": "Variance and cost-driver",
       "label": "Variance and cost-driver analysis"
     }
   ],
-  "about": {
-    "title": "About Jonathan Brownstein",
-    "lead": "Independent consultant with 15 years of FP&A, analytics, and process-automation work inside global manufacturing and financial-services environments.",
-    "body": "Independent consultant with 15 years of FP&A, analytics, and process-automation work inside global manufacturing and financial-services environments. Through Your Website In 7 Days, LLC I take on fractional, project-based, and advisory engagements for clients that need a senior practitioner on forecasting, financial reporting, dashboard build-out, and AI or automation work without standing up a full internal team. Comfortable owning the technical build, and equally comfortable in the room with the finance lead or executive who needs the answer. All work is contracted and invoiced B2B through the LLC, with a standard MSA and W-9 on file.",
-    "cards": [
-      {
-        "title": "Principal Consultant",
-        "body": "Independent advisory and delivery practice serving mid-market and enterprise clients across financial services, insurance and reinsurance, and industrial manufacturing"
-      },
-      {
-        "title": "Assistant Business Controller",
-        "body": "Owned FP&A and business-partnering support for finance, sales, operations, marketing, HR, and regional leadership inside a global multidivisional industrial manufacturer, feeding the annual planning, monthly forecast, and executive reporting cycles."
-      }
-    ]
-  },
   "experience": {
     "title": "Professional Experience",
-    "intro": "Experience tailored for the Data & Analytics Leader opportunity.",
     "items": [
       {
         "title": "Principal Consultant",
@@ -107,7 +87,6 @@
   },
   "skills": {
     "title": "Skills & Expertise",
-    "intro": "Capabilities highlighted for this application.",
     "groups": [
       {
         "title": "Finance and FP&A: Annual and monthly planning, forecast process design, variance and cost-driver analysis, executive reporting, capital project and contract evaluation, P&L, balance sheet, and cash flow driver analysis, advanced Excel and VBA",

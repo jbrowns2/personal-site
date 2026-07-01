@@ -7,6 +7,10 @@
     box-sizing: border-box;
 }
 
+[hidden] {
+    display: none !important;
+}
+
 @font-face {
     font-family: 'Inter-fallback';
     src: local('Arial');
@@ -2832,6 +2836,12 @@ body,
     font-size: 0.75rem;
     color: var(--text-muted);
     line-height: 1.4;
+}
+
+.highlight-item-label--solo {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--text-primary);
 }
 
 /* Stagger highlight items */
