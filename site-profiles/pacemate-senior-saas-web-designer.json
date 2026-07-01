@@ -1,0 +1,110 @@
+{
+  "profileVersion": 1,
+  "slug": "pacemate-senior-saas-web-designer",
+  "accessCode": "PACE2026",
+  "employmentType": "contract",
+  "meta": {
+    "title": "Jonathan Brownstein — Freelance Senior SaaS Web Designer, Fully Remote",
+    "description": "Freelance senior web and digital designer with more than ten years on B2B websites, product UI, and executive facing digital experiences for SaaS, healthcare adjacent, and regulated enterprise clients. I deliver homepage"
+  },
+  "hero": {
+    "badge": "Freelance Senior SaaS Web Designer, Fully Remote · Contract",
+    "typingPhrases": [
+      "Senior Web and Digital Designer",
+      "B2B SaaS and Healthcare Technology"
+    ],
+    "description": "Freelance senior web and digital designer with more than ten years on B2B websites, product UI, and executive facing digital experiences for SaaS, healthcare adjacent, and regulated enterprise clients. I deliver homepage concepts, interior page templates, component libraries, responsive guidance, and annotated handoff files development partners can build from. Contract work spans life and health reinsurance platforms, professional services marketing sites, and complex analytics products. Principal, Your Website In 7 Days LLC. Available immediately for remote contract work with direct billing to the LLC.",
+    "primaryCta": "Discuss This Role",
+    "secondaryCta": "View Delivery Record"
+  },
+  "highlights": [
+    {
+      "label": "B2B website design, SaaS web design, healthcare technology web design, homepage design, interior page templates, design systems, component libraries, responsive web design, website UX, information hierarchy, conversion oriented landing pages, executive presentation design, developer handoff, annotated design files, PDF design reviews, Adobe Creative Suite, agency collaboration, modern UI, premium brand presentation"
+    }
+  ],
+  "experience": {
+    "title": "Delivery Record",
+    "items": [
+      {
+        "title": "Senior Web Design and Digital Experience Specialist",
+        "organization": "Regulated life and health reinsurance, remote contract",
+        "context": "",
+        "bullets": [
+          "Designed web and dashboard experiences for actuarial, finance, and executive stakeholders with clear hierarchy and scannable narrative layouts.",
+          "Built reusable visual standards for reporting components and dashboard patterns adopted as the enterprise reference across analytics platforms.",
+          "Prepared presentation ready design summaries for senior sponsors and collaborated with developers and vendors on annotated specs for production releases."
+        ]
+      },
+      {
+        "title": "Contract B2B Website and Design System Consultant",
+        "organization": "Professional services and financial services clients, remote",
+        "context": "",
+        "bullets": [
+          "Led homepage and interior page design for gated B2B portfolio properties serving executive and technical buyer personas under standard NDAs.",
+          "Created a token based design system covering typography, color, spacing, UI components, and responsive breakpoints for desktop and mobile.",
+          "Designed a multi section B2B product sample with solution views, governance screens, and component library patterns plus PDF review decks for stakeholder sign off."
+        ]
+      }
+    ]
+  },
+  "skills": {
+    "title": "Skills & Expertise",
+    "groups": [
+      {
+        "title": "Design",
+        "items": [
+          "B2B website design, SaaS web design, design systems, homepage and landing page design, responsive layout, executive presentation design"
+        ]
+      },
+      {
+        "title": "Tools",
+        "items": [
+          "Adobe Creative Suite, annotated layout files, PDF design reviews, HTML and CSS design prototyping, Power BI, Tableau"
+        ]
+      },
+      {
+        "title": "Domain",
+        "items": [
+          "healthcare technology adjacent, life and health insurance, enterprise B2B SaaS, clinical and executive buyer personas"
+        ]
+      }
+    ]
+  },
+  "sections": {
+    "projects": {
+      "visible": true
+    },
+    "education": {
+      "visible": true
+    }
+  },
+  "contact": {
+    "label": "06 / Hire",
+    "title": "Available for Contract Engagements",
+    "intro": "Open to contract roles through agencies and direct clients. Based in Illinois; available for remote and hybrid engagements.",
+    "engagementPills": [
+      "Contract",
+      "Remote",
+      "Defined Deliverables"
+    ],
+    "valueItems": [
+      {
+        "label": "Fast ramp",
+        "body": "Deep domain experience in regulated financial services"
+      },
+      {
+        "label": "Scoped delivery",
+        "body": "Milestone-driven work with documented handoffs"
+      },
+      {
+        "label": "Independent execution",
+        "body": "Self-directed within matrix teams across finance, IT, and compliance"
+      },
+      {
+        "label": "Audit-ready",
+        "body": "Governance-aligned documentation and knowledge transfer"
+      }
+    ],
+    "email": "jonathan@yourwebsitein7days.com"
+  }
+}

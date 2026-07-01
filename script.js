@@ -523,6 +523,11 @@
         if (profile) {
             applySiteProfile(profile);
             applyEmploymentVariant(profile.employmentType || employmentType || EMPLOYMENT_CONTRACT);
+        } else {
+            // Profile JSON may be missing on the server until deploy catches up; still
+            // honor the gate session's employment type so contract codes don't fall
+            // back to the default full-time layout.
+            applyEmploymentVariant(employmentType || EMPLOYMENT_CONTRACT);
         }
     }
 
