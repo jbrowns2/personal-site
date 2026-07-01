@@ -58,6 +58,7 @@ module.exports = async function accessStatus(req, res) {
             blockedUntilSec: blockedUntilSec,
             challenge: challenge,
             employmentType: session ? session.employmentType : null,
+            profileSlug: session ? session.profileSlug : null,
         });
     } catch (fatal) {
         console.error('access-status:unhandled', fatal && fatal.message, fatal);

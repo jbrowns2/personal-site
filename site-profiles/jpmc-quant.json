@@ -1,0 +1,132 @@
+{
+  "profileVersion": 1,
+  "slug": "jpmc-quant",
+  "accessCode": "JPMC210741105",
+  "employmentType": "full_time",
+  "meta": {
+    "title": "Jonathan Brownstein — Quant Analytics Manager, Vice President",
+    "description": "Quantitative analytics and finance leader with 15 years of experience across regulated financial services and global industrial manufacturing. Six years in corporate FP&A and controllership inside a multidivisional manuf"
+  },
+  "hero": {
+    "badge": "Quant Analytics Manager, Vice President",
+    "typingPhrases": [
+      "Quantitative Analytics and Finance Analytics Leader",
+      "Expense Allocation and Driver Modeling",
+      "Workforce Planning and Forecasting",
+      "SQL, Python, and Executive Dashboards"
+    ],
+    "description": "Quantitative analytics and finance leader with 15 years of experience across regulated financial services and global industrial manufacturing. Six years in corporate FP&A and controllership inside a multidivisional manufacturer, followed by seven years as a senior analytics lead inside the Data Analytics Office of a global reinsurer. Builds the models, allocation logic, and executive dashboards that finance and business leaders use for planning, cost attribution, and performance review. Track record includes an automated ARIMA forecasting platform, a valuation movement architecture that replaced one-off reconciliations, and Tableau and Power BI reporting consumed by senior leadership. MS in Economics with an Applied Econometrics certificate, BS in Economics, and FLMI from LOMA.",
+    "primaryCta": "Get In Touch",
+    "secondaryCta": "View Experience"
+  },
+  "highlights": [
+    {
+      "value": "Quantitative analytics and",
+      "label": "Quantitative analytics and financial modeling"
+    },
+    {
+      "value": "Activity-based and driver…",
+      "label": "Activity-based and driver-based cost attribution"
+    },
+    {
+      "value": "Forecasting, budgeting, and",
+      "label": "Forecasting, budgeting, and capacity planning support"
+    },
+    {
+      "value": "Workforce and portfolio",
+      "label": "Workforce and portfolio driver analysis"
+    }
+  ],
+  "about": {
+    "title": "About Jonathan Brownstein",
+    "lead": "Quantitative analytics and finance leader with 15 years of experience across regulated financial services and global industrial manufacturing.",
+    "body": "Quantitative analytics and finance leader with 15 years of experience across regulated financial services and global industrial manufacturing. Six years in corporate FP&A and controllership inside a multidivisional manufacturer, followed by seven years as a senior analytics lead inside the Data Analytics Office of a global reinsurer. Builds the models, allocation logic, and executive dashboards that finance and business leaders use for planning, cost attribution, and performance review. Track record includes an automated ARIMA forecasting platform, a valuation movement architecture that replaced one-off reconciliations, and Tableau and Power BI reporting consumed by senior leadership. MS in Economics with an Applied Econometrics certificate, BS in Economics, and FLMI from LOMA.",
+    "cards": [
+      {
+        "title": "Senior Data Analyst III",
+        "body": "Senior quantitative analytics lead inside the Data Analytics Office"
+      },
+      {
+        "title": "Assistant Business Controller",
+        "body": "Supported annual planning, monthly forecasting, and budgeting for finance, sales, operations, marketing, HR, and regional leadership inside a global multidivisional manufacturer, including P&L and variance analysis with segment and cost-center views used in leadership decisions."
+      }
+    ]
+  },
+  "experience": {
+    "title": "Professional Experience",
+    "intro": "Experience tailored for the Quant Analytics Manager, Vice President opportunity.",
+    "items": [
+      {
+        "title": "Senior Data Analyst III",
+        "organization": "Hannover Reinsurance Company LLC",
+        "context": "Senior quantitative analytics lead inside the Data Analytics Office",
+        "dates": "2019 – Present",
+        "bullets": [],
+        "intro": "Senior individual contributor and technical lead inside the Data Analytics Office of a global financial services organization. Partners with finance, actuarial, valuation, and risk leadership on forecasting, driver analysis, and executive reporting used in planning cycles and senior management review.",
+        "subsections": [
+          {
+            "title": "Quantitative Modeling, Forecasting, and Driver Analysis",
+            "bullets": [
+              "Designed and deployed an automated ARIMA-based forecasting platform on a scheduled production pipeline. Surfaces anomalies and trend movement before period close and gives finance leaders forward visibility into portfolio drivers.",
+              "Built statistical outlier and anomaly detection using probability density function methods across large financial data platforms, supporting early identification of shifts that affect reported performance and resource planning conversations.",
+              "Developed the organization's first valuation extract comparison architecture for repeatable period-over-period movement analysis across reporting segments and source systems, replacing brittle one-off reconciliations."
+            ]
+          },
+          {
+            "title": "Executive Dashboards, Stakeholder Management, and Delivery Leadership",
+            "bullets": [
+              "Build and maintain Tableau, Power BI, and SSRS reporting that finance leadership uses for KPI review, variance analysis, and financial movement commentary. Package multi-source results into clear, presentation-ready insight for executive audiences.",
+              "Serve as technical lead across data engineering, BI, IT, actuarial, and governance partners: inform prioritization and feasibility, align scope to team capacity, and land compliant production releases with audit-suitable documentation.",
+              "Mentor junior analysts on governed analytics and machine learning patterns reused across programs; former CEO recognition on a classification rebuild that improved accuracy and audit readiness on a regulated workflow."
+            ]
+          },
+          {
+            "title": "Process Improvement and Automation",
+            "bullets": [
+              "Architected the Field Inventory Report metadata and lineage framework, now the enterprise reference for governed financial reporting consumption.",
+              "Led automation of a regulated classification workflow using machine learning, materially improving accuracy, consistency, and audit readiness."
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Assistant Business Controller",
+        "organization": "Chicago Pneumatic Company LLC (Atlas Copco Group)",
+        "context": "FP&A and corporate finance partner inside a global industrial manufacturer",
+        "dates": "2012 – 2018",
+        "bullets": [
+          "Supported annual planning, monthly forecasting, and budgeting for finance, sales, operations, marketing, HR, and regional leadership inside a global multidivisional manufacturer, including P&L and variance analysis with segment and cost-center views used in leadership decisions.",
+          "Built financial models and automated KPI dashboards for sales, operations, and finance leadership, shortening month-end analysis cycles and standardizing how operating units reported performance against plan.",
+          "Served as the working bridge between business stakeholders and technical teams on executive priorities, including vendor evaluation on finance systems and analytics programs."
+        ]
+      }
+    ]
+  },
+  "skills": {
+    "title": "Skills & Expertise",
+    "intro": "Capabilities highlighted for this application.",
+    "groups": [
+      {
+        "title": "Quant and finance: Quantitative analytics, financial modeling, forecasting and budgeting, activity-based and driver-based analysis, P&L and variance analysis, scenario and trend analysis, executive briefing, advanced Excel and VBA",
+        "items": [
+          "Engineering: SQL, Python, R, ARIMA forecasting, statistical outlier detection, applied econometrics, Databricks",
+          "Reporting: Tableau, Power BI, SSRS, enterprise data warehousing, multi-system financial data integration"
+        ]
+      }
+    ]
+  },
+  "sections": {
+    "projects": {
+      "visible": false
+    },
+    "education": {
+      "visible": true
+    }
+  },
+  "contact": {
+    "label": "06 / Contact",
+    "title": "Let's Connect",
+    "intro": "Interested in the Quant Analytics Manager, Vice President opportunity with JPMorgan Chase & Co..",
+    "email": "JonathanBrownstein12@icloud.com"
+  }
+}

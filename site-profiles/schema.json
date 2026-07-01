@@ -1,0 +1,61 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SiteProfile",
+  "type": "object",
+  "required": ["profileVersion", "slug", "employmentType", "meta", "hero", "experience", "contact"],
+  "properties": {
+    "profileVersion": { "const": 1 },
+    "slug": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+    "accessCode": { "type": "string" },
+    "employmentType": { "enum": ["contract", "full_time"] },
+    "meta": {
+      "type": "object",
+      "required": ["title", "description"],
+      "properties": {
+        "title": { "type": "string" },
+        "description": { "type": "string" }
+      }
+    },
+    "hero": { "type": "object" },
+    "highlights": { "type": "array" },
+    "about": { "type": "object" },
+    "experience": {
+      "type": "object",
+      "required": ["items"],
+      "properties": {
+        "title": { "type": "string" },
+        "intro": { "type": "string" },
+        "items": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["title", "organization", "bullets"],
+            "properties": {
+              "title": { "type": "string" },
+              "organization": { "type": "string" },
+              "context": { "type": "string" },
+              "dates": { "type": "string" },
+              "intro": { "type": "string" },
+              "bullets": { "type": "array", "items": { "type": "string" } },
+              "subsections": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": ["title", "bullets"],
+                  "properties": {
+                    "title": { "type": "string" },
+                    "bullets": { "type": "array", "items": { "type": "string" } }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "skills": { "type": "object" },
+    "sections": { "type": "object" },
+    "contact": { "type": "object" }
+  }
+}

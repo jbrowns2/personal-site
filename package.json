@@ -15,7 +15,10 @@
     "gate:enable": "node scripts/manage-gate-codes.js enable",
     "gate:remove": "node scripts/manage-gate-codes.js remove",
     "gate:report": "node scripts/gate-report.js",
-    "gate:report:reset": "node scripts/reset-gate-report.js"
+    "gate:report:reset": "node scripts/reset-gate-report.js",
+    "profile:build": "node scripts/build-site-profile.js",
+    "profile:generate-all": "node scripts/generate-all-profiles.js",
+    "profile:link-codes": "node scripts/link-profile-codes.js"
   },
   "dependencies": {
     "@neondatabase/serverless": "^0.10.4",

@@ -1,0 +1,135 @@
+{
+  "profileVersion": 1,
+  "slug": "west-bend",
+  "accessCode": "WESTBEND3518",
+  "employmentType": "full_time",
+  "meta": {
+    "title": "Jonathan Brownstein — Senior Data Scientist",
+    "description": "Analytics leader pursuing a data science role aligned with my machine learning background and interest in using advanced analytics to improve business processes. Fifteen years of experience in regulated insurance and glo"
+  },
+  "hero": {
+    "badge": "Senior Data Scientist",
+    "typingPhrases": [
+      "Senior Data Scientist",
+      "Insurance Predictive Modeling and Machine Learning",
+      "Underwriting and Risk Analytics",
+      "SQL, Python, R, and SAS"
+    ],
+    "description": "Analytics leader pursuing a data science role aligned with my machine learning background and interest in using advanced analytics to improve business processes. Fifteen years of experience in regulated insurance and global industrial organizations, the last seven inside the Data Analytics Office of a global reinsurer where I design, build, and maintain production predictive models, forecasting platforms, and machine learning solutions that actuarial leadership, finance, and underwriting partners rely on for risk selection, valuation, and portfolio review. Work spans ARIMA-based forecasting, classification machine learning, statistical outlier detection, and governed model documentation suitable for audit and regulatory review. Hands-on across SQL, Python, R, and SAS, with Spark workloads on Databricks lakehouse platforms processing more than a trillion records. MS in Economics with an Applied Econometrics certificate, BS in Economics, and FLMI from LOMA.",
+    "primaryCta": "Get In Touch",
+    "secondaryCta": "View Experience"
+  },
+  "highlights": [
+    {
+      "value": "Predictive modeling and",
+      "label": "Predictive modeling and machine learning"
+    },
+    {
+      "value": "Advanced analytics and",
+      "label": "Advanced analytics and statistical modeling"
+    },
+    {
+      "value": "Insurance pricing and",
+      "label": "Insurance pricing and underwriting analytics"
+    },
+    {
+      "value": "Risk selection and",
+      "label": "Risk selection and risk-tiering support"
+    }
+  ],
+  "about": {
+    "title": "About Jonathan Brownstein",
+    "lead": "Analytics leader pursuing a data science role aligned with my machine learning background and interest in using advanced analytics to improve business processes.",
+    "body": "Analytics leader pursuing a data science role aligned with my machine learning background and interest in using advanced analytics to improve business processes. Fifteen years of experience in regulated insurance and global industrial organizations, the last seven inside the Data Analytics Office of a global reinsurer where I design, build, and maintain production predictive models, forecasting platforms, and machine learning solutions that actuarial leadership, finance, and underwriting partners rely on for risk selection, valuation, and portfolio review. Work spans ARIMA-based forecasting, classification machine learning, statistical outlier detection, and governed model documentation suitable for audit and regulatory review. Hands-on across SQL, Python, R, and SAS, with Spark workloads on Databricks lakehouse platforms processing more than a trillion records. MS in Economics with an Applied Econometrics certificate, BS in Economics, and FLMI from LOMA.",
+    "cards": [
+      {
+        "title": "Senior Data Analyst III",
+        "body": "Senior data scientist and ML architecture lead inside the Data Analytics Office"
+      },
+      {
+        "title": "Assistant Business Controller",
+        "body": "Owned FP&A and business-partnering support for finance, sales, operations, marketing, HR, and regional leadership, feeding annual planning, monthly forecasting, and executive reporting used in operating decisions."
+      }
+    ]
+  },
+  "experience": {
+    "title": "Professional Experience",
+    "intro": "Experience tailored for the Senior Data Scientist opportunity.",
+    "items": [
+      {
+        "title": "Senior Data Analyst III",
+        "organization": "Hannover Reinsurance Company LLC",
+        "context": "Senior data scientist and ML architecture lead inside the Data Analytics Office",
+        "dates": "2019 – Present",
+        "bullets": [],
+        "intro": "Senior individual contributor and technical lead inside the Data Analytics Office of a global reinsurer. Owns predictive models, forecasting platforms, and machine learning solutions spanning actuarial valuation, risk selection, and underwriting workflow quality, with accountable delivery across data engineering, BI, IT, actuarial, and governance partners.",
+        "subsections": [
+          {
+            "title": "Predictive Modeling, Machine Learning, and Advanced Analytics",
+            "bullets": [
+              "Designed and deployed an automated ARIMA-based forecasting platform for Net Amount at Risk on a scheduled production pipeline in Databricks. Surfaces anomalies and trend movement before period close, giving actuarial and finance leaders forward visibility into portfolio risk drivers.",
+              "Led the classification machine learning rebuild of a regulated underwriting-adjacent reporting workflow, materially improving accuracy, consistency, and audit readiness. The company's former CEO recognized the result.",
+              "Built statistical outlier and anomaly detection frameworks using probability density function methods across platforms processing more than a trillion records, catching attribute drift before it reaches downstream actuarial, finance, and reporting consumers.",
+              "Develop and maintain SAS routines for ad hoc statistical analysis and model prototyping, alongside Python and R used in governed production pipelines."
+            ]
+          },
+          {
+            "title": "Data Platforms, Documentation, and Production Delivery",
+            "bullets": [
+              "Built the organization's first valuation extract comparison architecture for repeatable period-over-period movement analysis across time periods and source systems, with audit-friendly documentation other teams extended for variance and trend work.",
+              "Architected the Field Inventory Report metadata and lineage framework, now the enterprise reference for governed reporting and downstream analytics consumption across the Strategic Data Warehouse.",
+              "Serve as technical lead on analytics initiatives: inform prioritization and feasibility, align scope to capacity, and land compliant production releases with model lifecycle documentation suitable for business and regulatory review."
+            ]
+          },
+          {
+            "title": "Third-Party Data, Vendor Evaluation, and Cross-Functional Partnership",
+            "bullets": [
+              "Evaluate external vendors and analytical tools on analytics and BI programs, setting performance expectations and overseeing delivery quality, scope, and timelines.",
+              "Partner with actuarial, valuation, finance, risk, IT, BI, and compliance to translate business questions into production-ready analytical solutions and explain modeling results in plain language to mixed technical and non-technical audiences."
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Assistant Business Controller",
+        "organization": "Chicago Pneumatic Company LLC (Atlas Copco Group)",
+        "context": "FP&A, reporting, and analytics partner inside a global industrial manufacturer",
+        "dates": "2012 – 2018",
+        "bullets": [
+          "Owned FP&A and business-partnering support for finance, sales, operations, marketing, HR, and regional leadership, feeding annual planning, monthly forecasting, and executive reporting used in operating decisions.",
+          "Designed automated KPI dashboards and reporting frameworks for sales, operations, and finance leadership, replacing manual reconciliation work and shortening month-end analysis cycles.",
+          "Led cross-functional reporting modernization that improved data accessibility, consistency, and operational efficiency across finance and operations.",
+          "Served as the working bridge between business stakeholders and technical teams on executive priorities, and managed outside vendors and consultants on analytics, reporting, and finance-systems projects."
+        ]
+      }
+    ]
+  },
+  "skills": {
+    "title": "Skills & Expertise",
+    "intro": "Capabilities highlighted for this application.",
+    "groups": [
+      {
+        "title": "Languages and Statistical Programming: SQL, Python (pandas, NumPy, scikit-learn, statsmodels), R, SAS, advanced Excel and VBA",
+        "items": [
+          "Analytics and Modeling: Predictive modeling, machine learning, ARIMA and time-series forecasting, classification models, statistical outlier and anomaly detection, applied econometrics, data mining",
+          "Data Platforms: Databricks lakehouse, Delta Lake, Spark, cloud data warehousing (Snowflake-equivalent pattern), relational databases, ELT and ETL pipelines, MLOps and model lifecycle governance",
+          "Reporting: Power BI, Tableau, SSRS"
+        ]
+      }
+    ]
+  },
+  "sections": {
+    "projects": {
+      "visible": false
+    },
+    "education": {
+      "visible": true
+    }
+  },
+  "contact": {
+    "label": "06 / Contact",
+    "title": "Let's Connect",
+    "intro": "Interested in the Senior Data Scientist opportunity with West Bend Mutual Insurance / The Silver Lining.",
+    "email": "JonathanBrownstein12@icloud.com"
+  }
+}

@@ -1,0 +1,133 @@
+{
+  "profileVersion": 1,
+  "slug": "culligan",
+  "accessCode": "CULLIGAN2026",
+  "employmentType": "full_time",
+  "meta": {
+    "title": "Jonathan Brownstein — Manager of Financial Analytics, Corporate FP&A",
+    "description": "Financial analytics leader with 15 years of experience across global industrial manufacturing and financial-services organizations. Six-year FP&A and controllership foundation inside a global multidivisional manufacturer"
+  },
+  "hero": {
+    "badge": "Manager of Financial Analytics, Corporate FP&A",
+    "typingPhrases": [
+      "Financial Analytics and FP&A Leader",
+      "Enterprise KPI, Forecasting, and Financial Modeling",
+      "Executive and Board-Ready Reporting",
+      "Cross-Functional Business Partnership"
+    ],
+    "description": "Financial analytics leader with 15 years of experience across global industrial manufacturing and financial-services organizations. Six-year FP&A and controllership foundation inside a global multidivisional manufacturer, followed by seven years inside the Data Analytics Office of a global reinsurer where I own the forecasting models, KPI reporting, and executive financial insight that finance leadership and the C-suite use for planning, variance review, and risk assessment. Track record includes an automated ARIMA-based forecasting platform that surfaces anomalies before period close, a valuation movement architecture that replaced one-off reconciliations with repeatable P&L and driver analysis, and the governed KPI dashboards and narratives senior leaders act on. MS in Economics with an Applied Econometrics certificate, BS in Economics, and FLMI from LOMA.",
+    "primaryCta": "Get In Touch",
+    "secondaryCta": "View Experience"
+  },
+  "highlights": [
+    {
+      "value": "Corporate FP&A and",
+      "label": "Corporate FP&A and financial analytics"
+    },
+    {
+      "value": "Financial and operational",
+      "label": "Financial and operational metric tracking"
+    },
+    {
+      "value": "P&L, variance, and",
+      "label": "P&L, variance, and driver analysis"
+    },
+    {
+      "value": "Financial modeling, trend",
+      "label": "Financial modeling, trend analysis, and scenario planning"
+    }
+  ],
+  "about": {
+    "title": "About Jonathan Brownstein",
+    "lead": "Financial analytics leader with 15 years of experience across global industrial manufacturing and financial-services organizations.",
+    "body": "Financial analytics leader with 15 years of experience across global industrial manufacturing and financial-services organizations. Six-year FP&A and controllership foundation inside a global multidivisional manufacturer, followed by seven years inside the Data Analytics Office of a global reinsurer where I own the forecasting models, KPI reporting, and executive financial insight that finance leadership and the C-suite use for planning, variance review, and risk assessment. Track record includes an automated ARIMA-based forecasting platform that surfaces anomalies before period close, a valuation movement architecture that replaced one-off reconciliations with repeatable P&L and driver analysis, and the governed KPI dashboards and narratives senior leaders act on. MS in Economics with an Applied Econometrics certificate, BS in Economics, and FLMI from LOMA.",
+    "cards": [
+      {
+        "title": "Senior Data Analyst III",
+        "body": "Senior financial analytics lead inside the Data Analytics Office"
+      },
+      {
+        "title": "Assistant Business Controller",
+        "body": "Owned FP&A and business-partnering support for finance, sales, operations, marketing, HR, and regional leadership inside a global multidivisional industrial manufacturer, feeding annual planning, monthly forecasting, P&L and variance analysis, and the executive reporting that drove the next round of decisions."
+      }
+    ]
+  },
+  "experience": {
+    "title": "Professional Experience",
+    "intro": "Experience tailored for the Manager of Financial Analytics, Corporate FP&A opportunity.",
+    "items": [
+      {
+        "title": "Senior Data Analyst III",
+        "organization": "Hannover Reinsurance Company LLC",
+        "context": "Senior financial analytics lead inside the Data Analytics Office",
+        "dates": "2019 – Present",
+        "bullets": [],
+        "intro": "Senior individual contributor and technical lead inside the Data Analytics Office of a global multidivisional reinsurer. Own the forecasting platforms, financial and operational KPI reporting, and executive analytics that finance, actuarial, valuation, and risk leadership rely on, and lead analysts and engineers on multiple concurrent enterprise initiatives.",
+        "subsections": [
+          {
+            "title": "Enterprise Analytics, Financial Modeling, and Forecasting",
+            "bullets": [
+              "Designed and deployed an automated ARIMA-based forecasting platform on a scheduled production pipeline. Surfaces anomalies and trend movement before period close, strengthening forecast accuracy and giving finance and actuarial leaders forward-looking visibility into portfolio drivers.",
+              "Built statistical outlier and anomaly-detection frameworks using probability density function (PDF) methods across platforms processing more than a trillion records, supporting risk assessment and early identification of attribute shifts that affect financial performance.",
+              "Designed the firm's first valuation extract comparison architecture, a repeatable framework for period-over-period P&L and movement analysis across reporting segments and source systems that other teams have extended for their own variance and trend work."
+            ]
+          },
+          {
+            "title": "KPI Discipline, Executive Reporting, and Business Partnership",
+            "bullets": [
+              "Build and maintain the Power BI, Tableau, and SSRS dashboards finance, actuarial leadership, and the C-suite use to read KPIs, variances, and financial movements. Translating complex multi-source data into actionable, timely insight for executive audiences is the part of the role leadership leans on most.",
+              "Led the classification machine learning rebuild of a regulated reporting workflow, materially improving accuracy, consistency, and audit readiness. The company's former CEO recognized the result.",
+              "Partner across finance, actuarial, valuation, risk, IT, BI, and compliance in a matrix operating model to scope ad-hoc analyses, deliver special projects on deadline, and walk senior leaders through recommendations in plain language."
+            ]
+          },
+          {
+            "title": "Financial Systems, Process Improvement, and Team Leadership",
+            "bullets": [
+              "Set engineering and analytics standards on metadata, lineage, data quality, and audit controls across the Data Analytics Office, and architected the Field Inventory Report that became the enterprise reference standard for the Strategic Data Warehouse.",
+              "Work with data engineering and financial-systems stakeholders to improve data structures, reporting tools, and analytics platforms in a multi-system environment, replacing manual reconciliation cycles with governed, scalable processes.",
+              "Lead project teams of analysts and engineers across concurrent initiatives with architecture review, delivery checkpoints, and recurring mentorship on SQL, Python, and Databricks. Comfortable stepping into formal one-to-two direct-report people management."
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Assistant Business Controller",
+        "organization": "Chicago Pneumatic Company LLC (Atlas Copco Group)",
+        "context": "FP&A and financial analytics partner inside a global industrial manufacturer",
+        "dates": "2012 – 2018",
+        "bullets": [
+          "Owned FP&A and business-partnering support for finance, sales, operations, marketing, HR, and regional leadership inside a global multidivisional industrial manufacturer, feeding annual planning, monthly forecasting, P&L and variance analysis, and the executive reporting that drove the next round of decisions.",
+          "Designed automated KPI dashboards and reporting frameworks for sales, operations, and finance leadership, institutionalizing a consistent reporting cadence and shortening month-end close cycles.",
+          "Evaluated and managed outside vendors and consultants on analytics, reporting, and finance-systems projects, serving as the working bridge between business stakeholders and technical teams on executive priorities."
+        ]
+      }
+    ]
+  },
+  "skills": {
+    "title": "Skills & Expertise",
+    "intro": "Capabilities highlighted for this application.",
+    "groups": [
+      {
+        "title": "Finance and FP&A: Financial modeling, P&L and variance analysis, forecast process design, scenario and trend analysis, KPI tracking and reporting, executive briefing, advanced Excel and VBA",
+        "items": [
+          "Analytics and Modeling: ARIMA forecasting, classification machine learning, statistical outlier detection, applied econometrics",
+          "Reporting and Platforms: Power BI, Tableau, SSRS, Python, SQL, R, Databricks, enterprise data warehousing, ETL and ELT pipelines, financial-systems integration"
+        ]
+      }
+    ]
+  },
+  "sections": {
+    "projects": {
+      "visible": false
+    },
+    "education": {
+      "visible": true
+    }
+  },
+  "contact": {
+    "label": "06 / Contact",
+    "title": "Let's Connect",
+    "intro": "Interested in the Manager of Financial Analytics, Corporate FP&A opportunity with Culligan International Company.",
+    "email": "JonathanBrownstein12@icloud.com"
+  }
+}

@@ -1,0 +1,133 @@
+{
+  "profileVersion": 1,
+  "slug": "steward",
+  "accessCode": "STEWARD2026",
+  "employmentType": "full_time",
+  "meta": {
+    "title": "Jonathan Brownstein — Manager, Finance Data & Analytics",
+    "description": "Finance data and analytics professional with 15 years of experience across regulated financial services and global industrial manufacturing. Six-year FP&A and controllership foundation inside a multidivisional manufactur"
+  },
+  "hero": {
+    "badge": "Manager, Finance Data & Analytics",
+    "typingPhrases": [
+      "Finance Data & Analytics Leader",
+      "KPI Governance and Finance Data Warehouse",
+      "BI and Executive Performance Reporting",
+      "Regulated Financial Services"
+    ],
+    "description": "Finance data and analytics professional with 15 years of experience across regulated financial services and global industrial manufacturing. Six-year FP&A and controllership foundation inside a multidivisional manufacturer, followed by seven years as the finance-facing analytics lead inside the Data Analytics Office of a global reinsurer. Own finance data requirements, KPI definitions, and the reporting pipelines that finance and senior leadership use for performance review, growth analysis, and planning. Built an automated Net Amount at Risk (NAR) forecasting platform, enterprise metadata and lineage standards tied to the Strategic Data Warehouse, and repeatable valuation movement frameworks that replaced manual reconciliations. MS in Economics with an Applied Econometrics certificate, BS in Economics, and FLMI from LOMA.",
+    "primaryCta": "Get In Touch",
+    "secondaryCta": "View Experience"
+  },
+  "highlights": [
+    {
+      "value": "Finance data &",
+      "label": "Finance data & analytics and FP&A decision support"
+    },
+    {
+      "value": "KPI governance, business",
+      "label": "KPI governance, business rules, and metric definitions"
+    },
+    {
+      "value": "Finance data requirements",
+      "label": "Finance data requirements and data warehouse partnership"
+    },
+    {
+      "value": "Assets, portfolio growth,",
+      "label": "Assets, portfolio growth, and production-oriented performance analytics"
+    }
+  ],
+  "about": {
+    "title": "About Jonathan Brownstein",
+    "lead": "Finance data and analytics professional with 15 years of experience across regulated financial services and global industrial manufacturing.",
+    "body": "Finance data and analytics professional with 15 years of experience across regulated financial services and global industrial manufacturing. Six-year FP&A and controllership foundation inside a multidivisional manufacturer, followed by seven years as the finance-facing analytics lead inside the Data Analytics Office of a global reinsurer. Own finance data requirements, KPI definitions, and the reporting pipelines that finance and senior leadership use for performance review, growth analysis, and planning. Built an automated Net Amount at Risk (NAR) forecasting platform, enterprise metadata and lineage standards tied to the Strategic Data Warehouse, and repeatable valuation movement frameworks that replaced manual reconciliations. MS in Economics with an Applied Econometrics certificate, BS in Economics, and FLMI from LOMA.",
+    "cards": [
+      {
+        "title": "Senior Data Analyst III",
+        "body": "Finance data and analytics lead inside the Data Analytics Office"
+      },
+      {
+        "title": "Assistant Business Controller",
+        "body": "Supported annual planning, monthly forecasting, and budgeting for finance, sales, operations, marketing, HR, and regional leadership, including P&L and variance analysis and executive reporting used in performance review."
+      }
+    ]
+  },
+  "experience": {
+    "title": "Professional Experience",
+    "intro": "Experience tailored for the Manager, Finance Data & Analytics opportunity.",
+    "items": [
+      {
+        "title": "Senior Data Analyst III",
+        "organization": "Hannover Reinsurance Company LLC",
+        "context": "Finance data and analytics lead inside the Data Analytics Office",
+        "dates": "2019 – Present",
+        "bullets": [],
+        "intro": "Senior individual contributor and technical lead inside the Data Analytics Office of a global financial services organization. Serve as the finance-side owner for data requirements, KPI reporting, and governed analytics that finance, actuarial, valuation, and risk leadership rely on in planning cycles and executive review.",
+        "subsections": [
+          {
+            "title": "Finance Data Requirements, KPI Governance, and Data Warehouse Partnership",
+            "bullets": [
+              "Translate finance and business questions into data requirements, logic, attributes, and output specifications for recurring and ad-hoc analytics used in management reporting and strategic finance.",
+              "Set analytics standards on metadata, lineage, business rules, and data quality across the Data Analytics Office, and architected the Field Inventory Report that became the enterprise reference for governed consumption from the Strategic Data Warehouse.",
+              "Partner with IT, data engineering, and BI teams on warehouse-related requirements, testing, validation, and acceptance of finance analytics outputs in a multi-source, regulated environment."
+            ]
+          },
+          {
+            "title": "Performance Analytics, NNA, and Executive Insights",
+            "bullets": [
+              "Designed and deployed an automated ARIMA-based forecasting platform on a scheduled production pipeline to predict Net Amount at Risk (NAR), giving finance and actuarial leaders forward-looking visibility into portfolio assets and growth drivers before period close.",
+              "Designed the firm's first valuation extract comparison architecture — a repeatable framework for period-over-period movement analysis across reporting segments and source systems that teams use for driver analysis, reconciliation, and performance commentary.",
+              "Build and maintain Power BI, Tableau, and SSRS reporting that finance leadership and the C-suite use for KPI review, variance analysis, and financial movement insight. Package multi-source results into clear, decision-useful formats for executive audiences."
+            ]
+          },
+          {
+            "title": "Analytics Operationalization and Process Improvement",
+            "bullets": [
+              "Built statistical outlier and anomaly-detection frameworks using probability density function (PDF) methods across large-scale financial data platforms, supporting data quality and early identification of shifts that affect reported performance.",
+              "Led the classification machine learning rebuild of a regulated reporting workflow, materially improving accuracy, consistency, and audit readiness. The company's former CEO recognized the result.",
+              "Replaced manual reconciliation and one-off extract cycles with governed, scalable reporting processes that finance and actuarial partners can run on a recurring basis."
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Assistant Business Controller",
+        "organization": "Chicago Pneumatic Company LLC (Atlas Copco Group)",
+        "context": "FP&A and finance analytics partner inside a global industrial manufacturer",
+        "dates": "2012 – 2018",
+        "bullets": [
+          "Supported annual planning, monthly forecasting, and budgeting for finance, sales, operations, marketing, HR, and regional leadership, including P&L and variance analysis and executive reporting used in performance review.",
+          "Built financial models and automated KPI dashboards for sales, operations, and finance leadership, institutionalizing a consistent reporting cadence and shortening month-end analysis cycles.",
+          "Served as the working bridge between business stakeholders and technical teams on finance-systems and analytics priorities, including vendor evaluation on reporting and data projects."
+        ]
+      }
+    ]
+  },
+  "skills": {
+    "title": "Skills & Expertise",
+    "intro": "Capabilities highlighted for this application.",
+    "groups": [
+      {
+        "title": "Finance data & analytics: KPI governance, finance data requirements, performance and driver analysis, NNA and portfolio analytics, executive reporting, forecast support, advanced Excel and VBA",
+        "items": [
+          "Data platforms: SQL, Python, R, Databricks, enterprise data warehousing, ETL and ELT pipelines, metadata and lineage, reconciliation and data quality",
+          "BI and reporting: Power BI, Tableau, SSRS, financial-systems integration, self-service reporting enablement"
+        ]
+      }
+    ]
+  },
+  "sections": {
+    "projects": {
+      "visible": false
+    },
+    "education": {
+      "visible": true
+    }
+  },
+  "contact": {
+    "label": "06 / Contact",
+    "title": "Let's Connect",
+    "intro": "Interested in the Manager, Finance Data & Analytics opportunity with Steward Partners Global Advisory.",
+    "email": "JonathanBrownstein12@icloud.com"
+  }
+}

@@ -4,6 +4,7 @@
 (function initAccessGateAndPreloader() {
     const STORAGE_KEY = 'portfolio_unlocked';
     const EMPLOYMENT_TYPE_KEY = 'portfolio_employment_type';
+    const PROFILE_SLUG_KEY = 'portfolio_profile_slug';
     const EMPLOYMENT_FULL_TIME = 'full_time';
     const EMPLOYMENT_CONTRACT = 'contract';
     /** Deployed API used when /api is missing on localhost (static preview). */
@@ -88,6 +89,417 @@
         const twDesc = document.querySelector('meta[name="twitter:description"]');
         if (twDesc) {
             twDesc.setAttribute('content', meta.description);
+        }
+    }
+
+    function persistProfileSlug(slug) {
+        try {
+            if (slug) {
+                sessionStorage.setItem(PROFILE_SLUG_KEY, slug);
+            } else {
+                sessionStorage.removeItem(PROFILE_SLUG_KEY);
+            }
+        } catch (e) {}
+    }
+
+    function readStoredProfileSlug() {
+        try {
+            return sessionStorage.getItem(PROFILE_SLUG_KEY) || null;
+        } catch (e) {
+            return null;
+        }
+    }
+
+    function updateProfileMeta(meta) {
+        if (!meta) return;
+        if (meta.title) {
+            document.title = meta.title;
+        }
+        const pairs = [
+            ['meta[name="description"]', meta.description],
+            ['meta[name="title"]', meta.title],
+            ['meta[property="og:title"]', meta.title],
+            ['meta[property="og:description"]', meta.description],
+            ['meta[name="twitter:title"]', meta.title],
+            ['meta[name="twitter:description"]', meta.description],
+        ];
+        pairs.forEach(function (pair) {
+            const el = document.querySelector(pair[0]);
+            if (el && pair[1]) {
+                el.setAttribute('content', pair[1]);
+            }
+        });
+    }
+
+    function profileEscapeHtml(s) {
+        return String(s)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;');
+    }
+
+    function renderProfileExperienceItem(item) {
+        const context = item.context
+            ? '<span class="role-focus">' + profileEscapeHtml(item.context) + '</span>'
+            : '';
+        const dates = item.dates
+            ? '<span class="date">' +
+              '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">' +
+              '<rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>' +
+              '<line x1="16" y1="2" x2="16" y2="6"></line>' +
+              '<line x1="8" y1="2" x2="8" y2="6"></line>' +
+              '<line x1="3" y1="10" x2="21" y2="10"></line></svg> ' +
+              profileEscapeHtml(item.dates) +
+              '</span>'
+            : '';
+        const org = item.organization
+            ? '<span class="company">' +
+              '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">' +
+              '<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>' +
+              '<polyline points="9 22 9 12 15 12 15 22"></polyline></svg> ' +
+              profileEscapeHtml(item.organization) +
+              '</span>'
+            : '';
+        const intro = item.intro
+            ? '<p class="timeline-intro">' + profileEscapeHtml(item.intro) + '</p>'
+            : '';
+
+        function renderBullets(bullets) {
+            return (bullets || [])
+                .map(function (b) {
+                    return '<li>' + profileEscapeHtml(b) + '</li>';
+                })
+                .join('');
+        }
+
+        let achievements = '';
+        if (item.subsections && item.subsections.length) {
+            achievements = item.subsections
+                .map(function (section) {
+                    return (
+                        '<p class="timeline-subsection-title">' +
+                        profileEscapeHtml(section.title) +
+                        '</p>' +
+                        '<ul class="achievements">' +
+                        renderBullets(section.bullets) +
+                        '</ul>'
+                    );
+                })
+                .join('');
+        } else if (item.bullets && item.bullets.length) {
+            achievements = '<ul class="achievements">' + renderBullets(item.bullets) + '</ul>';
+        }
+
+        return (
+            '<div class="timeline-item reveal">' +
+            '<div class="timeline-marker"><span class="marker-ring"></span></div>' +
+            '<div class="timeline-content glass-card">' +
+            '<div class="timeline-header">' +
+            '<div class="timeline-title-group">' +
+            '<h3>' +
+            profileEscapeHtml(item.title) +
+            '</h3>' +
+            context +
+            '</div>' +
+            '<div class="timeline-meta">' +
+            org +
+            dates +
+            '</div></div>' +
+            intro +
+            achievements +
+            '</div></div>'
+        );
+    }
+
+    function applySiteProfile(profile) {
+        if (!profile || !profile.slug) return;
+
+        document.documentElement.setAttribute('data-profile-mode', 'tailored');
+        document.documentElement.setAttribute('data-site-profile', profile.slug);
+        persistProfileSlug(profile.slug);
+
+        if (profile.meta) {
+            updateProfileMeta(profile.meta);
+        }
+
+        document.querySelectorAll('[data-site-fallback]').forEach(function (el) {
+            el.hidden = true;
+        });
+
+        if (profile.hero) {
+            const badge = document.getElementById('profile-hero-badge');
+            if (badge && profile.hero.badge) {
+                badge.textContent = profile.hero.badge;
+                badge.hidden = false;
+            }
+            const desc = document.getElementById('profile-hero-description');
+            if (desc && profile.hero.description) {
+                desc.textContent = profile.hero.description;
+                desc.hidden = false;
+            }
+            if (profile.hero.primaryCta) {
+                const primary = document.getElementById('profile-hero-primary-cta');
+                if (primary) {
+                    const label = primary.querySelector('.profile-cta-label');
+                    if (label) label.textContent = profile.hero.primaryCta;
+                    primary.hidden = false;
+                }
+            }
+            if (profile.hero.secondaryCta) {
+                const secondary = document.getElementById('profile-hero-secondary-cta');
+                if (secondary) {
+                    const label = secondary.querySelector('.profile-cta-label');
+                    if (label) label.textContent = profile.hero.secondaryCta;
+                    secondary.hidden = false;
+                }
+            }
+            if (profile.hero.typingPhrases && profile.hero.typingPhrases.length) {
+                document.dispatchEvent(
+                    new CustomEvent('portfolio:profile-typing', {
+                        detail: { phrases: profile.hero.typingPhrases },
+                    }),
+                );
+            }
+        }
+
+        if (profile.highlights && profile.highlights.length) {
+            const grid = document.getElementById('profile-highlights');
+            if (grid) {
+                grid.innerHTML = profile.highlights
+                    .map(function (item) {
+                        return (
+                            '<div class="highlight-item reveal">' +
+                            '<div class="highlight-item-icon">' +
+                            '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">' +
+                            '<path d="M9 12l2 2 4-4"></path>' +
+                            '<path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9c2.39 0 4.68.94 6.36 2.64"></path>' +
+                            '</svg></div>' +
+                            '<div class="highlight-item-text">' +
+                            '<span class="highlight-item-value">' +
+                            profileEscapeHtml(item.value) +
+                            '</span>' +
+                            '<span class="highlight-item-label">' +
+                            profileEscapeHtml(item.label) +
+                            '</span></div></div>'
+                        );
+                    })
+                    .join('');
+                grid.hidden = false;
+            }
+        }
+
+        if (profile.about) {
+            const title = document.getElementById('profile-about-title');
+            if (title && profile.about.title) {
+                title.textContent = profile.about.title;
+                title.hidden = false;
+            }
+            const lead = document.getElementById('profile-about-lead');
+            if (lead && profile.about.lead) {
+                lead.textContent = profile.about.lead;
+            }
+            const body = document.getElementById('profile-about-body');
+            if (body && profile.about.body) {
+                body.textContent = profile.about.body;
+            }
+            const cards = document.getElementById('profile-about-cards');
+            if (cards && profile.about.cards && profile.about.cards.length) {
+                cards.innerHTML = profile.about.cards
+                    .map(function (card) {
+                        return (
+                            '<div class="highlight-card">' +
+                            '<h3>' +
+                            profileEscapeHtml(card.title) +
+                            '</h3><p>' +
+                            profileEscapeHtml(card.body) +
+                            '</p></div>'
+                        );
+                    })
+                    .join('');
+            }
+            const aboutBlock = document.getElementById('profile-about-block');
+            if (aboutBlock) aboutBlock.hidden = false;
+        }
+
+        if (profile.experience) {
+            const expTitle = document.getElementById('profile-experience-title');
+            if (expTitle && profile.experience.title) {
+                expTitle.textContent = profile.experience.title;
+                expTitle.hidden = false;
+            }
+            const expIntro = document.getElementById('profile-experience-intro');
+            if (expIntro) {
+                if (profile.experience.intro) {
+                    expIntro.textContent = profile.experience.intro;
+                    expIntro.hidden = false;
+                } else {
+                    expIntro.hidden = true;
+                }
+            }
+            const timeline = document.getElementById('profile-experience');
+            if (timeline && profile.experience.items) {
+                timeline.innerHTML = profile.experience.items
+                    .map(renderProfileExperienceItem)
+                    .join('');
+                timeline.hidden = false;
+            }
+        }
+
+        if (profile.skills) {
+            const skillsTitle = document.getElementById('profile-skills-title');
+            if (skillsTitle && profile.skills.title) {
+                skillsTitle.textContent = profile.skills.title;
+                skillsTitle.hidden = false;
+            }
+            const skillsIntro = document.getElementById('profile-skills-intro');
+            if (skillsIntro) {
+                if (profile.skills.intro) {
+                    skillsIntro.textContent = profile.skills.intro;
+                    skillsIntro.hidden = false;
+                } else {
+                    skillsIntro.hidden = true;
+                }
+            }
+            const grid = document.getElementById('profile-skills');
+            if (grid && profile.skills.groups) {
+                grid.innerHTML = profile.skills.groups
+                    .map(function (group) {
+                        const items = (group.items || [])
+                            .map(function (item) {
+                                return '<li>' + profileEscapeHtml(item) + '</li>';
+                            })
+                            .join('');
+                        return (
+                            '<div class="skill-category glass-card reveal">' +
+                            '<h3>' +
+                            profileEscapeHtml(group.title) +
+                            '</h3>' +
+                            '<ul class="skill-list">' +
+                            items +
+                            '</ul></div>'
+                        );
+                    })
+                    .join('');
+                grid.hidden = false;
+            }
+        }
+
+        if (profile.sections) {
+            if (profile.sections.projects && profile.sections.projects.visible === false) {
+                const projects = document.getElementById('projects');
+                if (projects) projects.hidden = true;
+            }
+            if (profile.sections.education && profile.sections.education.visible === false) {
+                const education = document.getElementById('education');
+                if (education) education.hidden = true;
+            }
+        }
+
+        if (profile.contact) {
+            const contactLabel = document.getElementById('profile-contact-label');
+            if (contactLabel && profile.contact.label) {
+                contactLabel.textContent = profile.contact.label;
+            }
+            const contactTitle = document.getElementById('profile-contact-title');
+            if (contactTitle && profile.contact.title) {
+                contactTitle.textContent = profile.contact.title;
+            }
+            const contactIntro = document.getElementById('profile-contact-intro');
+            if (contactIntro && profile.contact.intro) {
+                contactIntro.textContent = profile.contact.intro;
+            }
+            const advisory = document.getElementById('profile-contact-advisory');
+            if (advisory && profile.contact.valueItems && profile.contact.valueItems.length) {
+                let html = '';
+                if (profile.contact.valueItems && profile.contact.valueItems.length) {
+                    html +=
+                        '<div class="contractor-value-grid" aria-label="What hiring managers get">' +
+                        profile.contact.valueItems
+                            .map(function (item) {
+                                return (
+                                    '<div class="contractor-value-item glass-card">' +
+                                    '<span class="contractor-value-label">' +
+                                    profileEscapeHtml(item.label) +
+                                    '</span><p>' +
+                                    profileEscapeHtml(item.body) +
+                                    '</p></div>'
+                                );
+                            })
+                            .join('') +
+                        '</div>';
+                }
+                if (profile.contact.engagementPills && profile.contact.engagementPills.length) {
+                    html +=
+                        '<div class="engagement-types" aria-label="Engagement types">' +
+                        profile.contact.engagementPills
+                            .map(function (pill) {
+                                return (
+                                    '<span class="engagement-type-pill">' +
+                                    profileEscapeHtml(pill) +
+                                    '</span>'
+                                );
+                            })
+                            .join('') +
+                        '</div>';
+                }
+                if (profile.contact.topics && profile.contact.topics.length) {
+                    html +=
+                        '<div class="contact-topics" aria-label="Typical contract scopes">' +
+                        profile.contact.topics
+                            .map(function (topic) {
+                                return (
+                                    '<span class="contact-topic">' + profileEscapeHtml(topic) + '</span>'
+                                );
+                            })
+                            .join('') +
+                        '</div>';
+                }
+                advisory.innerHTML = html;
+                advisory.hidden = false;
+            }
+            const contactBlock = document.getElementById('profile-contact-block');
+            if (contactBlock) contactBlock.hidden = false;
+            if (profile.contact.email) {
+                const emailCard = document.querySelector('#contact .contact-card[href^="mailto:"]');
+                if (emailCard) {
+                    emailCard.href = 'mailto:' + profile.contact.email;
+                    const valueEl = emailCard.querySelector('.contact-value');
+                    if (valueEl) valueEl.textContent = profile.contact.email;
+                }
+            }
+        }
+
+        const navCta = document.querySelector('.nav-cta .profile-nav-cta');
+        if (navCta) {
+            navCta.hidden = false;
+        }
+    }
+
+    async function fetchSiteProfile(slug) {
+        if (!slug) return null;
+        try {
+            var res = await gateFetchJson('/site-profile', { method: 'GET' }, gateActiveApiBase);
+            if (
+                shouldFallbackToProductionApi() &&
+                gateActiveApiBase !== GATE_PRODUCTION_API_BASE &&
+                (res.status === 404 || res.status === 502 || res.status === 503)
+            ) {
+                res = await gateFetchJson('/site-profile', { method: 'GET' }, GATE_PRODUCTION_API_BASE);
+            }
+            if (res.status === 200 && res.body && res.body.ok && res.body.profile) {
+                return res.body.profile;
+            }
+        } catch (e) {}
+        return null;
+    }
+
+    async function hydrateSiteProfile(profileSlug, employmentType) {
+        if (!profileSlug) return;
+        const profile = await fetchSiteProfile(profileSlug);
+        if (profile) {
+            applyEmploymentVariant(profile.employmentType || employmentType || EMPLOYMENT_CONTRACT);
+            applySiteProfile(profile);
         }
     }
 
@@ -497,6 +909,7 @@
                 employmentType: res.body.employmentType
                     ? normalizeEmploymentType(res.body.employmentType)
                     : null,
+                profileSlug: res.body.profileSlug || null,
             };
         } catch (e) {
             gateActiveApiBase = API_BASE;
@@ -552,6 +965,7 @@
                 employmentType: res.body.employmentType
                     ? normalizeEmploymentType(res.body.employmentType)
                     : EMPLOYMENT_FULL_TIME,
+                profileSlug: res.body.profileSlug || null,
             };
         }
         if (res.status === 400 && res.body && res.body.error === 'challenge_failed') {
@@ -871,6 +1285,10 @@
                 }
                 applyUnlockedDom({ clearLoading: true });
                 applyEmploymentVariant(result.employmentType || EMPLOYMENT_FULL_TIME);
+                if (result.profileSlug) {
+                    persistProfileSlug(result.profileSlug);
+                    hydrateSiteProfile(result.profileSlug, result.employmentType);
+                }
                 if (isDemoInviteAccessCode(code)) {
                     markDemoAccess();
                     scheduleDemoInvitePopup();
@@ -1239,10 +1657,14 @@
         const session = await gateLoadSession();
         let stored = false;
         let employmentType = EMPLOYMENT_FULL_TIME;
+        let profileSlug = null;
         if (session.ready) {
             stored = !!session.unlocked;
             if (session.employmentType) {
                 employmentType = session.employmentType;
+            }
+            if (session.profileSlug) {
+                profileSlug = session.profileSlug;
             }
         } else {
             try {
@@ -1250,6 +1672,7 @@
             } catch (e) {}
             if (stored) {
                 employmentType = readStoredEmploymentType();
+                profileSlug = readStoredProfileSlug();
             }
         }
 
@@ -1263,6 +1686,7 @@
                     if (r.ok) {
                         stored = true;
                         employmentType = r.employmentType || EMPLOYMENT_FULL_TIME;
+                        profileSlug = r.profileSlug || null;
                         if (isDemoInviteAccessCode(phrase)) {
                             markDemoAccess();
                             scheduleDemoInvitePopup();
@@ -1278,6 +1702,9 @@
 
         if (stored) {
             applyEmploymentVariant(employmentType);
+            if (profileSlug) {
+                await hydrateSiteProfile(profileSlug, employmentType);
+            }
             applyUnlockedDom();
             if (hasDemoAccess()) {
                 injectDemoAccessButton();
@@ -1634,7 +2061,8 @@ document.querySelectorAll('.stat[data-scroll-to]').forEach((stat) => {
 (function initTyping() {
     const fullTimeEl = document.getElementById('typing-text');
     const contractEl = document.getElementById('typing-text-contract');
-    if (!fullTimeEl && !contractEl) return;
+    const profileEl = document.getElementById('typing-text-profile');
+    if (!fullTimeEl && !contractEl && !profileEl) return;
 
     const phrasesByType = {
         full_time: [
@@ -1691,10 +2119,31 @@ document.querySelectorAll('.stat[data-scroll-to]').forEach((stat) => {
     }
 
     document.addEventListener('portfolio:employment-type', function (ev) {
+        if (document.documentElement.getAttribute('data-profile-mode') === 'tailored') {
+            return;
+        }
         const nextType =
             ev && ev.detail && ev.detail.type === 'contract' ? 'contract' : 'full_time';
         resolveTypingTarget(nextType);
         resetTypingState();
+        scheduleStart(250);
+    });
+
+    document.addEventListener('portfolio:profile-typing', function (ev) {
+        const customPhrases =
+            ev && ev.detail && ev.detail.phrases && ev.detail.phrases.length
+                ? ev.detail.phrases
+                : null;
+        if (!customPhrases || !profileEl) return;
+        if (fullTimeEl) fullTimeEl.hidden = true;
+        if (contractEl) contractEl.hidden = true;
+        profileEl.hidden = false;
+        activeEl = profileEl;
+        phrases = customPhrases;
+        phraseIndex = 0;
+        charIndex = 0;
+        isDeleting = false;
+        initialized = false;
         scheduleStart(250);
     });
 

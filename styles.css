@@ -3038,6 +3038,18 @@ body,
     border-bottom: 1px solid var(--border);
 }
 
+.timeline-subsection-title {
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    margin: 1.25rem 0 0.65rem;
+}
+
+.timeline-subsection-title:first-of-type {
+    margin-top: 0;
+}
+
 .achievements {
     list-style: none;
     padding-left: 0;
@@ -4299,6 +4311,14 @@ html[data-employment-type="contract"] .contact-content {
 }
 
 /* Employment-type content variants (contract vs full-time access codes) */
+html[data-profile-mode="tailored"] [data-site-fallback] {
+    display: none !important;
+}
+
+html[data-profile-mode="tailored"] [data-show-for] {
+    display: none !important;
+}
+
 html[data-employment-type="full_time"] [data-show-for="contract"],
 html:not([data-employment-type]) [data-show-for="contract"] {
     display: none !important;

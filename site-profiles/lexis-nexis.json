@@ -1,0 +1,136 @@
+{
+  "profileVersion": 1,
+  "slug": "lexis-nexis",
+  "accessCode": "LEXISR111919",
+  "employmentType": "full_time",
+  "meta": {
+    "title": "Jonathan Brownstein — Data Scientist",
+    "description": "Analytics leader with fifteen years in regulated financial services and global manufacturing. The last seven years inside the Data Analytics Office of a global reinsurer, where I scope analytical work with business partn"
+  },
+  "hero": {
+    "badge": "Data Scientist",
+    "typingPhrases": [
+      "Senior Analytics Lead",
+      "Risk Analytics and Anomaly Detection",
+      "Client Consulting and Model Optimization",
+      "SQL, Python, and Excel"
+    ],
+    "description": "Analytics leader with fifteen years in regulated financial services and global manufacturing. The last seven years inside the Data Analytics Office of a global reinsurer, where I scope analytical work with business partners, build production models, and explain results to audiences who are not modelers. Work includes classification machine learning, time series forecasting, statistical anomaly detection across very large datasets, and governed model documentation suitable for audit review. Earlier career in corporate FP&A included executive reporting, KPI dashboarding, and vendor led project delivery. MS in Economics with an Applied Econometrics certificate, BS in Economics, and FLMI from LOMA. Based in Illinois and set up for fully remote work nationwide.",
+    "primaryCta": "Get In Touch",
+    "secondaryCta": "View Experience"
+  },
+  "highlights": [
+    {
+      "value": "Client consulting and",
+      "label": "Client consulting and stakeholder delivery"
+    },
+    {
+      "value": "Predictive modeling and",
+      "label": "Predictive modeling and machine learning"
+    },
+    {
+      "value": "Model and policy",
+      "label": "Model and policy optimization"
+    },
+    {
+      "value": "Statistical anomaly and",
+      "label": "Statistical anomaly and outlier detection"
+    }
+  ],
+  "about": {
+    "title": "About Jonathan Brownstein",
+    "lead": "Analytics leader with fifteen years in regulated financial services and global manufacturing.",
+    "body": "Analytics leader with fifteen years in regulated financial services and global manufacturing. The last seven years inside the Data Analytics Office of a global reinsurer, where I scope analytical work with business partners, build production models, and explain results to audiences who are not modelers. Work includes classification machine learning, time series forecasting, statistical anomaly detection across very large datasets, and governed model documentation suitable for audit review. Earlier career in corporate FP&A included executive reporting, KPI dashboarding, and vendor led project delivery. MS in Economics with an Applied Econometrics certificate, BS in Economics, and FLMI from LOMA. Based in Illinois and set up for fully remote work nationwide.",
+    "cards": [
+      {
+        "title": "Senior Data Analyst III",
+        "body": "Senior analytics and ML architecture lead inside the Data Analytics Office"
+      },
+      {
+        "title": "Assistant Business Controller",
+        "body": "Owned FP&A and business partnering support for finance, sales, operations, marketing, HR, and regional leadership, feeding annual planning, monthly forecasting, and executive reporting used in operating decisions."
+      }
+    ]
+  },
+  "experience": {
+    "title": "Professional Experience",
+    "intro": "Experience tailored for the Data Scientist opportunity.",
+    "items": [
+      {
+        "title": "Senior Data Analyst III",
+        "organization": "Hannover Reinsurance Company LLC",
+        "context": "Senior analytics and ML architecture lead inside the Data Analytics Office",
+        "dates": "2019 – Present",
+        "bullets": [],
+        "intro": "Senior individual contributor and technical lead inside the Data Analytics Office of a global financial services organization. Scopes analytical requests with actuarial, finance, and risk partners, delivers production models and surveillance frameworks, and presents findings in language leadership can use for decisions.",
+        "subsections": [
+          {
+            "title": "Analytics, Machine Learning, and Risk Behavior Detection",
+            "bullets": [
+              "Designed and deployed an automated ARIMA based forecasting platform on a scheduled production pipeline in Databricks. Surfaces anomalies and trend movement before period close, giving finance and actuarial leaders early visibility into shifting portfolio behavior.",
+              "Led the classification machine learning rebuild of a regulated underwriting adjacent workflow, materially improving accuracy, consistency, and audit readiness. The company's former CEO recognized the result.",
+              "Built statistical outlier and anomaly detection frameworks using probability density function methods across platforms processing more than a trillion records, catching attribute drift before it reaches downstream reporting and decision consumers.",
+              "Integrate prescription, motor vehicle, lab, and medical claims feeds into governed analytics layers supporting risk selection models, with repeatable feature engineering patterns other teams reuse."
+            ]
+          },
+          {
+            "title": "Consulting Delivery, Documentation, and Client Ready Presentation",
+            "bullets": [
+              "Serve as technical lead on analytics initiatives: scope work with stakeholders, inform prioritization and feasibility, align delivery to capacity, and land compliant production releases with model lifecycle documentation suitable for business and regulatory review.",
+              "Package multi source analytical results into Power BI, Tableau, and SSRS reporting and presentation ready summaries for executive and non technical audiences.",
+              "Evaluate external vendors and analytical tools on analytics programs, setting performance expectations and overseeing delivery quality, scope, and timelines."
+            ]
+          },
+          {
+            "title": "Platform Architecture, Innovation, and Best Practices",
+            "bullets": [
+              "Architected the Field Inventory Report metadata and lineage framework, now the enterprise reference for governed reporting and downstream analytics consumption across the Strategic Data Warehouse.",
+              "Built the organization's first valuation extract comparison architecture for repeatable period over period movement analysis across time periods and source systems, with audit friendly documentation extended by other teams.",
+              "Mentor junior analysts on governed analytics and machine learning patterns; contribute reusable code and delivery standards through Git based workflows tracked in Jira with data engineering, BI, IT, and governance partners."
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Assistant Business Controller",
+        "organization": "Chicago Pneumatic Company LLC (Atlas Copco Group)",
+        "context": "FP&A, reporting, and analytics partner inside a global industrial manufacturer",
+        "dates": "2012 – 2018",
+        "bullets": [
+          "Owned FP&A and business partnering support for finance, sales, operations, marketing, HR, and regional leadership, feeding annual planning, monthly forecasting, and executive reporting used in operating decisions.",
+          "Designed automated KPI dashboards and reporting frameworks for sales, operations, and finance leadership, replacing manual reconciliation work and shortening month end analysis cycles.",
+          "Led cross functional reporting modernization that improved data accessibility, consistency, and operational efficiency across finance and operations.",
+          "Served as the working bridge between business stakeholders and technical teams on executive priorities, and managed outside vendors and consultants on analytics, reporting, and finance systems projects."
+        ]
+      }
+    ]
+  },
+  "skills": {
+    "title": "Skills & Expertise",
+    "intro": "Capabilities highlighted for this application.",
+    "groups": [
+      {
+        "title": "Languages and Statistical Programming: SQL, Python (pandas, NumPy, scikit learn, statsmodels, Jupyter), R, SAS, advanced Excel and VBA",
+        "items": [
+          "Analytics and Modeling: Predictive modeling, machine learning, classification models, ARIMA and time series forecasting, statistical outlier and anomaly detection, feature engineering, applied econometrics",
+          "Data Platforms: Databricks lakehouse, Delta Lake, Spark, cloud data warehousing (Snowflake equivalent pattern), relational databases, ELT and ETL pipelines, MLOps and model lifecycle governance",
+          "Collaboration and Delivery: Git, Jira, Power BI, Tableau, SSRS"
+        ]
+      }
+    ]
+  },
+  "sections": {
+    "projects": {
+      "visible": true
+    },
+    "education": {
+      "visible": true
+    }
+  },
+  "contact": {
+    "label": "06 / Contact",
+    "title": "Let's Connect",
+    "intro": "Interested in the Data Scientist opportunity with LexisNexis Risk Solutions Group.",
+    "email": "JonathanBrownstein12@icloud.com"
+  }
+}

@@ -1,0 +1,159 @@
+{
+  "profileVersion": 1,
+  "slug": "beacon-hill-uat",
+  "accessCode": "BEACON2026",
+  "employmentType": "contract",
+  "meta": {
+    "title": "Jonathan Brownstein — User Acceptance Testing  Analyst — Job 146184…",
+    "description": "UAT analyst with seven years validating digital platforms in regulated financial services. I write and execute user acceptance test scripts, manage defects in Jira and Confluence, and complete sign off in Agile and hybri"
+  },
+  "hero": {
+    "badge": "User Acceptance Testing  Analyst — Job 146184… · Contract",
+    "typingPhrases": [
+      "UAT Analyst",
+      "Digital Platform Validation",
+      "Banking and Regulated Financial Services"
+    ],
+    "description": "UAT analyst with seven years validating digital platforms in regulated financial services. I write and execute user acceptance test scripts, manage defects in Jira and Confluence, and complete sign off in Agile and hybrid release cycles. Contract work includes commercial banking and treasury adjacent reporting, public sector finance systems, and enterprise reinsurance platforms. I report test status clearly to business owners, developers, compliance partners, and vendor teams. CEO, Your Website In 7 Days LLC. Available immediately for remote temp work from northern Illinois on PST business hours with direct billing to the LLC.",
+    "primaryCta": "Discuss This Role",
+    "secondaryCta": "View Delivery Record"
+  },
+  "highlights": [
+    {
+      "value": "User acceptance testing,",
+      "label": "User acceptance testing, UAT script development and execution, defect logging triage and retest, Jira, Confluence, Agile and hybrid delivery, commercial banking, treasury payments and cash management validation, vendor and third party platform testing, SQL reconciliation, regulated financial services, regression testing, acceptance sign off documentation"
+    },
+    {
+      "value": "15+ Years",
+      "label": "Regulated industries and enterprise-scale analytics delivery"
+    },
+    {
+      "value": "MS Economics",
+      "label": "Applied econometrics certificate and FLMI credential"
+    },
+    {
+      "value": "Production ML",
+      "label": "Forecasting, classification, and executive reporting platforms"
+    }
+  ],
+  "about": {
+    "title": "Contract Profile",
+    "lead": "UAT analyst with seven years validating digital platforms in regulated financial services.",
+    "body": "UAT analyst with seven years validating digital platforms in regulated financial services. I write and execute user acceptance test scripts, manage defects in Jira and Confluence, and complete sign off in Agile and hybrid release cycles. Contract work includes commercial banking and treasury adjacent reporting, public sector finance systems, and enterprise reinsurance platforms. I report test status clearly to business owners, developers, compliance partners, and vendor teams. CEO, Your Website In 7 Days LLC. Available immediately for remote temp work from northern Illinois on PST business hours with direct billing to the LLC.",
+    "cards": [
+      {
+        "title": "Senior UAT and Platform Validation Specialist",
+        "body": "Wrote and ran UAT scripts for reporting pipelines, Power BI and Tableau dashboards, and finance platforms, including regression and edge case cycles tied to business acceptance criteria before production release."
+      },
+      {
+        "title": "Contract UAT and Reconciliation Analyst",
+        "body": "Validated SQL reporting dashboards and treasury adjacent operational metrics in a regulated commercial banking environment before internal distribution."
+      },
+      {
+        "title": "Contract UAT and Dashboard Validation Analyst",
+        "body": "Tested transactional records against source systems and created repeatable validation checklists and discrepancy logs for developer and business resolution."
+      }
+    ]
+  },
+  "experience": {
+    "title": "Delivery Record",
+    "intro": "Selected assignments aligned with this role.",
+    "items": [
+      {
+        "title": "Senior UAT and Platform Validation Specialist",
+        "organization": "Regulated reinsurance, remote hybrid, Chief Data Office ecosystem",
+        "context": "",
+        "dates": "",
+        "bullets": [
+          "Wrote and ran UAT scripts for reporting pipelines, Power BI and Tableau dashboards, and finance platforms, including regression and edge case cycles tied to business acceptance criteria before production release.",
+          "Logged, prioritized, and retested defects in Jira through closure; documented test results and release status in Confluence for sprint teams and audit partners.",
+          "Validated third party data feeds and vendor hosted components against source systems in a regulated environment requiring audit ready sign off.",
+          "Prepared sign off summaries with test evidence and wrote status updates for finance, actuarial, and executive sponsors when results did not pass."
+        ]
+      },
+      {
+        "title": "Contract UAT and Reconciliation Analyst",
+        "organization": "Commercial banking, part time contract",
+        "context": "",
+        "dates": "",
+        "bullets": [
+          "Validated SQL reporting dashboards and treasury adjacent operational metrics in a regulated commercial banking environment before internal distribution.",
+          "Built reconciliation checks, confirmed outputs against source extracts, and documented variances for developer follow up under strict confidentiality requirements."
+        ]
+      },
+      {
+        "title": "Contract UAT and Dashboard Validation Analyst",
+        "organization": "Public sector financial systems, part time contract",
+        "context": "",
+        "dates": "",
+        "bullets": [
+          "Tested transactional records against source systems and created repeatable validation checklists and discrepancy logs for developer and business resolution."
+        ]
+      }
+    ]
+  },
+  "skills": {
+    "title": "Skills & Expertise",
+    "intro": "Capabilities highlighted for this application.",
+    "groups": [
+      {
+        "title": "UAT and QA",
+        "items": [
+          "user acceptance testing, test script authoring, regression testing, defect management, acceptance sign off documentation"
+        ]
+      },
+      {
+        "title": "Tools",
+        "items": [
+          "Jira, Confluence, SQL, Excel, Power BI, Tableau, SSRS, Databricks"
+        ]
+      },
+      {
+        "title": "Domain",
+        "items": [
+          "commercial banking, treasury and cash management reporting, payments adjacent analytics, vendor hosted platform validation, regulated financial services"
+        ]
+      }
+    ]
+  },
+  "sections": {
+    "projects": {
+      "visible": false
+    },
+    "education": {
+      "visible": true
+    }
+  },
+  "contact": {
+    "label": "06 / Hire",
+    "title": "Available for Contract Engagements",
+    "intro": "Open to contract roles through agencies and direct clients. Based in Illinois; available for remote and hybrid engagements.",
+    "topics": [
+      "User acceptance testing, UAT script development and execution, defect logging triage and retest, Jira, Confluence, Agile and hybrid delivery, commercial banking, treasury payments and cash management validation, vendor and third party platform testing, SQL reconciliation, regulated financial services, regression testing, acceptance sign off documentation"
+    ],
+    "engagementPills": [
+      "Contract",
+      "Remote",
+      "Defined Deliverables"
+    ],
+    "valueItems": [
+      {
+        "label": "Fast ramp",
+        "body": "Deep domain experience in regulated financial services"
+      },
+      {
+        "label": "Scoped delivery",
+        "body": "Milestone-driven work with documented handoffs"
+      },
+      {
+        "label": "Independent execution",
+        "body": "Self-directed within matrix teams across finance, IT, and compliance"
+      },
+      {
+        "label": "Audit-ready",
+        "body": "Governance-aligned documentation and knowledge transfer"
+      }
+    ],
+    "email": "jonathan@yourwebsitein7days.com"
+  }
+}

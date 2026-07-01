@@ -1,0 +1,138 @@
+{
+  "profileVersion": 1,
+  "slug": "itw",
+  "accessCode": "ITW2026",
+  "employmentType": "full_time",
+  "meta": {
+    "title": "Jonathan Brownstein — Controller",
+    "description": "Finance and business analytics leader with 15 years of progressive experience across global, multidivisional manufacturing and financial-services organizations. Six-year FP&A and controllership foundation inside a global"
+  },
+  "hero": {
+    "badge": "Controller",
+    "typingPhrases": [
+      "Senior Finance and Business Analytics Leader",
+      "Manufacturing Controllership and FP&A",
+      "Forecasting, Cost Analysis, and Executive Reporting",
+      "AI-Enabled Process Simplification"
+    ],
+    "description": "Finance and business analytics leader with 15 years of progressive experience across global, multidivisional manufacturing and financial-services organizations. Six-year FP&A and controllership foundation inside a global industrial manufacturer (Atlas Copco group), with day-to-day ownership of monthly forecasting, cost and variance analysis, KPI reporting, internal-control support, and business-partnering across finance, sales, operations, marketing, and HR. Seven additional years inside the Data Analytics Office of a global regulated reinsurer, leading the forecasting platforms, executive financial reporting, and audit-ready engineering and analytics standards that finance, actuarial, and the C-suite rely on. Track record includes an automated ARIMA-based forecasting platform that surfaces anomalies before period close, a classification machine learning rebuild of a regulated reporting workflow recognized by the company's former CEO, and the executive dashboards leadership acts on. BS in Economics, MS in Economics with an Applied Econometrics certificate, and FLMI from LOMA.",
+    "primaryCta": "Get In Touch",
+    "secondaryCta": "View Experience"
+  },
+  "highlights": [
+    {
+      "value": "Manufacturing FP&A and",
+      "label": "Manufacturing FP&A and divisional business partnering"
+    },
+    {
+      "value": "Monthly, quarterly, and",
+      "label": "Monthly, quarterly, and year-end close support"
+    },
+    {
+      "value": "Revenue and operating-income",
+      "label": "Revenue and operating-income forecasting"
+    },
+    {
+      "value": "Cost analysis, manufacturing",
+      "label": "Cost analysis, manufacturing variance, and gross-margin reporting"
+    }
+  ],
+  "about": {
+    "title": "About Jonathan Brownstein",
+    "lead": "Finance and business analytics leader with 15 years of progressive experience across global, multidivisional manufacturing and financial-services organizations.",
+    "body": "Finance and business analytics leader with 15 years of progressive experience across global, multidivisional manufacturing and financial-services organizations. Six-year FP&A and controllership foundation inside a global industrial manufacturer (Atlas Copco group), with day-to-day ownership of monthly forecasting, cost and variance analysis, KPI reporting, internal-control support, and business-partnering across finance, sales, operations, marketing, and HR. Seven additional years inside the Data Analytics Office of a global regulated reinsurer, leading the forecasting platforms, executive financial reporting, and audit-ready engineering and analytics standards that finance, actuarial, and the C-suite rely on. Track record includes an automated ARIMA-based forecasting platform that surfaces anomalies before period close, a classification machine learning rebuild of a regulated reporting workflow recognized by the company's former CEO, and the executive dashboards leadership acts on. BS in Economics, MS in Economics with an Applied Econometrics certificate, and FLMI from LOMA.",
+    "cards": [
+      {
+        "title": "Senior Data Analyst III",
+        "body": "Senior analytics lead and forecasting / executive-reporting owner inside the Data Analytics Office"
+      },
+      {
+        "title": "Assistant Business Controller",
+        "body": "Owned the day-to-day FP&A, monthly forecasting, and business-partnering work for finance, sales, operations, marketing, HR, and regional leadership inside a global multidivisional industrial manufacturer with a decentralized divisional operating model."
+      }
+    ]
+  },
+  "experience": {
+    "title": "Professional Experience",
+    "intro": "Experience tailored for the Controller opportunity.",
+    "items": [
+      {
+        "title": "Senior Data Analyst III",
+        "organization": "Hannover Reinsurance Company LLC",
+        "context": "Senior analytics lead and forecasting / executive-reporting owner inside the Data Analytics Office",
+        "dates": "2019 – Present",
+        "bullets": [],
+        "intro": "Senior individual contributor and technical lead inside the Data Analytics Office of a global, regulated, multidivisional reinsurer. Own the forecasting platforms, cost and variance analytics, executive financial reporting, and audit-ready engineering and analytics standards that finance, actuarial, valuation, and risk leadership rely on, and lead analysts and engineers on multiple concurrent enterprise initiatives.",
+        "subsections": [
+          {
+            "title": "Forecasting, Variance Analysis, and Process Simplification",
+            "bullets": [
+              "Designed and deployed an automated ARIMA-based forecasting platform on a scheduled production pipeline that surfaces anomalies and trend movement before period close, so finance and actuarial leaders can react in time and replace manual reconciliation cycles with a governed, automated forecast view.",
+              "Built statistical outlier and anomaly-detection frameworks using probability density function (PDF) methods across platforms processing more than a trillion records. Same approach is the backbone of variance-driver analysis and early warning for cost and revenue drift.",
+              "Designed the firm's first valuation extract comparison architecture, a repeatable framework for period-over-period movement analysis across time periods and source systems that other teams have since extended for their own variance and trend work."
+            ]
+          },
+          {
+            "title": "Executive Reporting, Audit-Ready Controls, and Special Projects",
+            "bullets": [
+              "Build and maintain the Power BI, Tableau, and SSRS dashboards finance, actuarial leadership, and the C-suite use to read KPIs, variances, and financial movements. Translating model output and complex multi-source data into a clean executive narrative is the part of the role leadership leans on most.",
+              "Led the classification machine learning rebuild of a regulated reporting workflow, materially improving accuracy, consistency, and audit readiness. The company's former CEO recognized the result.",
+              "Set engineering and analytics standards on metadata, lineage, data quality, and audit controls across the Data Analytics Office, and architected the Field Inventory Report that became the data-lineage reference standard for the Strategic Data Warehouse — the same discipline that supports clean GAAP reporting and external-audit response cycles.",
+              "Lead special projects and ad-hoc analyses on a recurring cadence, scoping the work with finance and business sponsors and walking senior leaders through the recommendation in plain language."
+            ]
+          },
+          {
+            "title": "Cross-Functional Leadership, AI Enablement, and Team Development",
+            "bullets": [
+              "Lead teams of analysts and engineers across concurrent initiatives with architecture review, code review, and delivery checkpoints, and mentor on Databricks, Spark, SQL, and Python. Ready to step into formal one-to-two direct-report people management.",
+              "Partner across finance, actuarial, valuation, risk, IT, BI, and compliance to turn business questions into governed analytics, forecasting, and reporting deliverables on a deadline.",
+              "Evaluate and bring in AI and machine learning tools where they earn their place, scoping pilots against real production workloads and making clean in-or-out recommendations. Own scope, timelines, contract terms, and quality on outside vendors and consultants."
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Assistant Business Controller",
+        "organization": "Chicago Pneumatic Company LLC (Atlas Copco Group)",
+        "context": "FP&A, monthly forecasting, cost analysis, and reporting partner inside a global industrial manufacturer",
+        "dates": "2012 – 2018",
+        "bullets": [
+          "Owned the day-to-day FP&A, monthly forecasting, and business-partnering work for finance, sales, operations, marketing, HR, and regional leadership inside a global multidivisional industrial manufacturer with a decentralized divisional operating model.",
+          "Supported the monthly close cycle with variance analysis, cost-driver explanations, and divisional financial reporting that fed the next round of management-team decisions, with a steady focus on P&L, balance sheet, and operating-income movement.",
+          "Owned cost analysis and KPI reporting for sales, operations, and finance leadership — gross margin, manufacturing variance, inventory movement, and operating-expense trends — and translated the numbers into recommendations the leadership team could act on.",
+          "Designed automated KPI dashboards and reporting frameworks that replaced manual reconciliation work, shortened month-end commentary cycles, and built the data-governance and QA practices the finance team continued to extend after I left.",
+          "Coordinated with internal audit and corporate finance on reporting integrity, documentation, and the control checkpoints that supported clean divisional reviews and external audit cycles.",
+          "Evaluated and managed outside vendors and consultants on analytics, reporting, and finance-systems projects, with ownership of scope, contract terms, timelines, and delivery quality — the same discipline that translates to capital-project and enterprise-contract review inside a divisional Controller seat."
+        ]
+      }
+    ]
+  },
+  "skills": {
+    "title": "Skills & Expertise",
+    "intro": "Capabilities highlighted for this application.",
+    "groups": [
+      {
+        "title": "Finance and Accounting: Monthly, quarterly, and year-end close support, revenue and operating-income forecasting, annual budgeting and rolling forecasts, cost analysis (manufacturing variance, standard cost, gross margin, inventory), P&L, balance sheet, and cash flow driver analysis, internal control discipline, audit coordination, capital project and contract evaluation, advanced Excel and VBA",
+        "items": [
+          "Analytics and Modeling: classification machine learning, ARIMA and time-series forecasting, statistical outlier and anomaly detection, data mining, applied econometrics, Python ML stack (pandas, NumPy, scikit-learn, statsmodels)",
+          "Reporting and Visualization: Power BI, Tableau, SSRS, executive-level written and oral briefing",
+          "Languages and Platforms: Python, SQL, R, Databricks, Delta Lake, Spark, enterprise data warehousing, cloud data platforms, ETL and ELT pipelines"
+        ]
+      }
+    ]
+  },
+  "sections": {
+    "projects": {
+      "visible": true
+    },
+    "education": {
+      "visible": true
+    }
+  },
+  "contact": {
+    "label": "06 / Contact",
+    "title": "Let's Connect",
+    "intro": "Interested in the Controller opportunity with Illinois Tool Works (ITW).",
+    "email": "JonathanBrownstein12@icloud.com"
+  }
+}

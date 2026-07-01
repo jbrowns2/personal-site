@@ -191,7 +191,7 @@
                 <li><a href="#skills" data-section="skills">Skills</a></li>
                 <li><a href="#projects" data-section="projects">Projects</a></li>
                 <li><a href="#education" data-section="education">Education</a></li>
-                <li><a href="#contact" data-section="contact" class="nav-cta"><span data-show-for="full_time">Contact</span><span data-show-for="contract">Hire</span></a></li>
+                <li><a href="#contact" data-section="contact" class="nav-cta"><span data-show-for="full_time" data-site-fallback>Contact</span><span data-show-for="contract" data-site-fallback>Hire</span><span class="profile-nav-cta" hidden>Hire</span></a></li>
             </ul>
             <button class="theme-toggle" aria-label="Switch to light mode" title="Toggle theme">
                 <svg class="theme-icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -228,15 +228,18 @@
                         <span class="line">Jonathan</span>
                         <span class="line gradient-text">Brownstein</span>
                     </h1>
-                    <p class="hero-positioning-badge" data-show-for="contract">Senior Contract &middot; Data &amp; Analytics</p>
+                    <p class="hero-positioning-badge" id="profile-hero-badge" hidden></p>
+                    <p class="hero-positioning-badge" data-show-for="contract" data-site-fallback>Senior Contract &middot; Data &amp; Analytics</p>
                     <p class="hero-subtitle">
                         <span class="typing-wrapper">
-                            <span class="typing-text" id="typing-text" data-show-for="full_time">Senior Data &amp; Analytics Leader &middot; Predictive Modeling &amp; ML &middot; Executive KPI Dashboards</span>
-                            <span class="typing-text typing-text--variant" id="typing-text-contract" data-show-for="contract">Contract Data Scientist &middot; Defined Deliverables &middot; Production Handoffs</span>
+                            <span class="typing-text" id="typing-text" data-show-for="full_time" data-site-fallback>Senior Data &amp; Analytics Leader &middot; Predictive Modeling &amp; ML &middot; Executive KPI Dashboards</span>
+                            <span class="typing-text typing-text--variant" id="typing-text-contract" data-show-for="contract" data-site-fallback>Contract Data Scientist &middot; Defined Deliverables &middot; Production Handoffs</span>
+                            <span class="typing-text typing-text--variant" id="typing-text-profile" hidden></span>
                             <span class="typing-cursor">|</span>
                         </span>
                     </p>
-                    <p class="hero-description">
+                    <p class="hero-description" id="profile-hero-description" hidden></p>
+                    <p class="hero-description" data-site-fallback>
                         <span data-show-for="full_time">Senior data &amp; analytics leader with 15+ years building enterprise-scale, audit-ready 
                         analytics in highly regulated industries. I translate complex datasets&mdash;including platforms 
                         processing 1T+ records&mdash;into KPIs, dashboards, predictive models, and executive narratives 
@@ -294,28 +297,42 @@
                         </div>
                     </div>
                     <div class="hero-buttons">
-                        <a href="#contact" class="btn btn-primary" data-show-for="full_time">
+                        <a href="#contact" class="btn btn-primary" id="profile-hero-primary-cta" hidden>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            <span class="profile-cta-label">Discuss a Contract Role</span>
+                        </a>
+                        <a href="#experience" class="btn btn-secondary" id="profile-hero-secondary-cta" hidden>
+                            <span class="profile-cta-label">View Delivery Record</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </a>
+                        <a href="#contact" class="btn btn-primary" data-show-for="full_time" data-site-fallback>
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                                 <polyline points="22,6 12,13 2,6"></polyline>
                             </svg>
                             Get In Touch
                         </a>
-                        <a href="#contact" class="btn btn-primary" data-show-for="contract">
+                        <a href="#contact" class="btn btn-primary" data-show-for="contract" data-site-fallback>
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                                 <polyline points="22,6 12,13 2,6"></polyline>
                             </svg>
                             Discuss a Contract Role
                         </a>
-                        <a href="#experience" class="btn btn-secondary" data-show-for="full_time">
+                        <a href="#experience" class="btn btn-secondary" data-show-for="full_time" data-site-fallback>
                             View Experience
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                                 <line x1="5" y1="12" x2="19" y2="12"></line>
                                 <polyline points="12 5 19 12 12 19"></polyline>
                             </svg>
                         </a>
-                        <a href="#experience" class="btn btn-secondary" data-show-for="contract">
+                        <a href="#experience" class="btn btn-secondary" data-show-for="contract" data-site-fallback>
                             View Delivery Record
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                                 <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -348,7 +365,8 @@
     <!-- Impact Highlights Ribbon -->
     <section class="highlights-strip" aria-label="Key accomplishments">
         <div class="container">
-            <div class="highlights-grid">
+            <div class="highlights-grid" id="profile-highlights" hidden></div>
+            <div class="highlights-grid" data-site-fallback>
                 <div class="highlight-item reveal">
                     <div class="highlight-item-icon">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
@@ -415,9 +433,18 @@
         <div class="container">
             <div class="section-header">
                 <span class="section-label">01 / About</span>
-                <h2 class="section-title"><span data-show-for="full_time">About Jonathan Brownstein</span><span data-show-for="contract">Contract Profile</span></h2>
+                <h2 class="section-title"><span id="profile-about-title" hidden></span><span data-show-for="full_time" data-site-fallback>About Jonathan Brownstein</span><span data-show-for="contract" data-site-fallback>Contract Profile</span></h2>
             </div>
-            <div class="about-content">
+            <div class="about-content" id="profile-about-block" hidden>
+                <div class="about-grid">
+                    <div class="about-text-block reveal">
+                        <p class="about-lead" id="profile-about-lead"></p>
+                        <p class="about-body" id="profile-about-body"></p>
+                    </div>
+                    <div class="about-highlights reveal" id="profile-about-cards"></div>
+                </div>
+            </div>
+            <div class="about-content" data-site-fallback>
                 <div class="about-grid">
                     <div class="about-text-block reveal">
                         <p class="about-lead">
@@ -437,7 +464,7 @@
                         <p class="about-body">
                             <span data-show-for="full_time">My work has earned C-suite recognition, driven data democratization initiatives, and 
                             delivered automation at massive scale across 1T+ records.</span>
-                            <span data-show-for="contract">My delivery record includes CEO-recognized ML systems, automation at 1T+ record scale, and contract dashboard reporting assignments during graduate school at Wells Fargo and Mecklenburg County Office of the Tax Collector&mdash;the combination contract hiring managers look for when the assignment has a hard deadline and a production bar.</span>
+                            <span data-show-for="contract">My delivery record includes CEO-recognized ML systems, automation at 1T+ record scale, and contract dashboard reporting assignments during graduate school with regulated commercial banking and public sector financial systems clients&mdash;the combination contract hiring managers look for when the assignment has a hard deadline and a production bar.</span>
                         </p>
                     </div>
                     <div class="about-highlights reveal">
@@ -486,9 +513,11 @@
         <div class="container">
             <div class="section-header">
                 <span class="section-label">02 / Experience</span>
-                <h2 class="section-title"><span data-show-for="full_time">Professional Experience</span><span data-show-for="contract">Delivery Record</span></h2>
+                <h2 class="section-title"><span id="profile-experience-title" hidden></span><span data-show-for="full_time" data-site-fallback>Professional Experience</span><span data-show-for="contract" data-site-fallback>Delivery Record</span></h2>
+                <p class="section-intro" id="profile-experience-intro" hidden></p>
             </div>
-            <div class="experience-timeline">
+            <div class="experience-timeline" id="profile-experience" hidden></div>
+            <div class="experience-timeline" data-site-fallback>
                 <!-- Current Position -->
                 <div class="timeline-item reveal">
                     <div class="timeline-marker">
@@ -508,7 +537,8 @@
                                         <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                                         <polyline points="9 22 9 12 15 12 15 22"></polyline>
                                     </svg>
-                                    Hannover Reinsurance Company LLC
+                                    <span data-show-for="full_time">Hannover Reinsurance Company LLC</span>
+                                    <span data-show-for="contract">Global reinsurance organization</span>
                                 </span>
                                 <span class="date">
                                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -623,7 +653,7 @@
                                         <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                                         <polyline points="9 22 9 12 15 12 15 22"></polyline>
                                     </svg>
-                                    Wells Fargo
+                                    Regulated commercial banking client
                                 </span>
                                 <span class="date">
                                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -670,7 +700,7 @@
                                         <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                                         <polyline points="9 22 9 12 15 12 15 22"></polyline>
                                     </svg>
-                                    Mecklenburg County Office of the Tax Collector
+                                    Public sector financial systems client
                                 </span>
                                 <span class="date">
                                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -684,7 +714,7 @@
                             </div>
                         </div>
                         <p class="timeline-intro">
-                            Contract dashboard reporting assignment with Mecklenburg County during graduate school. Built reporting dashboards to support tax administration operations&mdash;delivering visual KPIs, improving data accessibility for management review, and producing documented reporting outputs for a public-sector client.
+                            Contract dashboard reporting assignment during graduate school. Built reporting dashboards to support tax administration operations&mdash;delivering visual KPIs, improving data accessibility for management review, and producing documented reporting outputs for a public-sector client.
                         </p>
                         <ul class="achievements">
                             <li>
@@ -718,7 +748,8 @@
                                         <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                                         <polyline points="9 22 9 12 15 12 15 22"></polyline>
                                     </svg>
-                                    Chicago Pneumatic Company LLC
+                                    <span data-show-for="full_time">Chicago Pneumatic Company LLC</span>
+                                    <span data-show-for="contract">Global industrial manufacturer</span>
                                 </span>
                                 <span class="date">
                                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -780,10 +811,13 @@
         <div class="container">
             <div class="section-header">
                 <span class="section-label">03 / Expertise</span>
-                <h2 class="section-title">Architecture &amp; Technical Expertise</h2>
-                <p class="section-intro" data-show-for="contract">Core technical capabilities I bring to contract assignments&mdash;ready to deploy on scoped deliverables from day one.</p>
+                <h2 class="section-title" id="profile-skills-title" hidden></h2>
+                <h2 class="section-title" data-site-fallback>Architecture &amp; Technical Expertise</h2>
+                <p class="section-intro" id="profile-skills-intro" hidden></p>
+                <p class="section-intro" data-show-for="contract" data-site-fallback>Core technical capabilities I bring to contract assignments&mdash;ready to deploy on scoped deliverables from day one.</p>
             </div>
-            <div class="skills-grid">
+            <div class="skills-grid" id="profile-skills" hidden></div>
+            <div class="skills-grid" data-site-fallback>
                 <div class="skill-category glass-card reveal">
                     <div class="skill-icon">
                         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
@@ -1230,7 +1264,12 @@
     <!-- Contact Section -->
     <section id="contact" class="section section-alt">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header" id="profile-contact-block" hidden>
+                <span class="section-label" id="profile-contact-label"></span>
+                <h2 class="section-title" id="profile-contact-title"></h2>
+                <p class="section-intro" id="profile-contact-intro"></p>
+            </div>
+            <div class="section-header" data-site-fallback>
                 <span class="section-label"><span data-show-for="full_time">06 / Contact</span><span data-show-for="contract">06 / Hire</span></span>
                 <h2 class="section-title"><span data-show-for="full_time">Let's Connect</span><span data-show-for="contract">Available for Contract Engagements</span></h2>
                 <p class="section-intro">
@@ -1239,7 +1278,8 @@
                 </p>
             </div>
             <div class="contact-content">
-                <div class="contact-advisory-block" data-show-for="contract">
+                <div class="contact-advisory-block" id="profile-contact-advisory" hidden></div>
+                <div class="contact-advisory-block" data-show-for="contract" data-site-fallback>
                     <p class="contact-intro">For recruiters and hiring managers: I take contract assignments where the need is clear production deliverables&mdash;not permanent headcount. You get a senior practitioner who ramps fast in regulated insurance and reinsurance, executes independently within your matrix structure, and leaves audit-ready systems with documentation your team can run.</p>
                     <div class="contractor-value-grid" aria-label="What hiring managers get">
                         <div class="contractor-value-item glass-card">

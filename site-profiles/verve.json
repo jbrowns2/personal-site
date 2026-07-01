@@ -1,0 +1,167 @@
+{
+  "profileVersion": 1,
+  "slug": "verve",
+  "accessCode": "VERVE2026",
+  "employmentType": "full_time",
+  "meta": {
+    "title": "Jonathan Brownstein — Data Engineer  — Job 8474867002",
+    "description": "Data engineer and analytics builder with a master's in economics and 15 years turning messy, multi-source data into reliable pipelines, governed warehouse assets, and dashboards stakeholders actually use. Spent seven yea"
+  },
+  "hero": {
+    "badge": "Data Engineer  — Job 8474867002",
+    "typingPhrases": [
+      "Data Engineer",
+      "SQL & ELT Pipelines",
+      "Client Dashboards (Tableau, Power BI)",
+      "Warehouse Design & Data Integrity"
+    ],
+    "description": "Data engineer and analytics builder with a master's in economics and 15 years turning messy, multi-source data into reliable pipelines, governed warehouse assets, and dashboards stakeholders actually use. Spent seven years inside a global reinsurer's Chief Data Office designing SQL-heavy ELT workflows on Databricks, optimizing queries across a trillion-record warehouse, and shipping Tableau and Power BI reporting for demanding internal clients. Earlier, I modernized executive reporting at a global manufacturer and, during graduate school, delivered on a contract basis at Wells Fargo — the same flexible, outcomes-first model I am returning to now. I wrapped my full-time role in March 2026 and am available immediately for remote contract work, comfortable collaborating across US time zones and iterating fast in Kanban-style delivery.",
+    "primaryCta": "Get In Touch",
+    "secondaryCta": "View Experience"
+  },
+  "highlights": [
+    {
+      "value": "SQL development, schema",
+      "label": "SQL development, schema design, and query optimization across large structured and semi-structured datasets"
+    },
+    {
+      "value": "Batch ELT pipelines",
+      "label": "Batch ELT pipelines and scheduled analytical workflows (Databricks; patterns transferable to Airflow, Dagster, Temporal)"
+    },
+    {
+      "value": "Customer-facing dashboard…",
+      "label": "Customer-facing dashboards and custom reporting (Tableau, Power BI, SSRS)"
+    },
+    {
+      "value": "Multi-source data integra…",
+      "label": "Multi-source data integration and API-fed reporting layers"
+    }
+  ],
+  "about": {
+    "title": "About Jonathan Brownstein",
+    "lead": "Data engineer and analytics builder with a master's in economics and 15 years turning messy, multi-source data into reliable pipelines, governed warehouse assets, and dashboards stakeholders actually use.",
+    "body": "Data engineer and analytics builder with a master's in economics and 15 years turning messy, multi-source data into reliable pipelines, governed warehouse assets, and dashboards stakeholders actually use. Spent seven years inside a global reinsurer's Chief Data Office designing SQL-heavy ELT workflows on Databricks, optimizing queries across a trillion-record warehouse, and shipping Tableau and Power BI reporting for demanding internal clients. Earlier, I modernized executive reporting at a global manufacturer and, during graduate school, delivered on a contract basis at Wells Fargo — the same flexible, outcomes-first model I am returning to now. I wrapped my full-time role in March 2026 and am available immediately for remote contract work, comfortable collaborating across US time zones and iterating fast in Kanban-style delivery.",
+    "cards": [
+      {
+        "title": "Senior Data Analyst III",
+        "body": "Data engineering, reporting, and pipeline owner for enterprise analytics programs"
+      },
+      {
+        "title": "Assistant Business Controller",
+        "body": "Partnered with Sales, Marketing, HR, Finance, and executive leadership to modernize KPI reporting and automate recurring operational dashboards."
+      },
+      {
+        "title": "Contract Data & Reporting Analyst",
+        "body": "Delivered analytics and reporting on a contract basis while completing my MS in Economics at UNC Charlotte — scoping work, meeting deadlines, and communicating progress without the overhead of a full-time hire."
+      }
+    ]
+  },
+  "experience": {
+    "title": "Professional Experience",
+    "intro": "Experience tailored for the Data Engineer  — Job 8474867002 opportunity.",
+    "items": [
+      {
+        "title": "Senior Data Analyst III",
+        "organization": "Hannover Reinsurance Company LLC",
+        "context": "Data engineering, reporting, and pipeline owner for enterprise analytics programs",
+        "dates": "2019 – March 2026",
+        "bullets": [],
+        "intro": "Owned the analytical layer on top of a governed enterprise data warehouse processing 1T+ records — partnering with data engineering and platform teams to ingest sources, validate outputs, and deliver client-style reporting packages for actuarial, finance, and executive audiences under weekly release cadences.",
+        "subsections": [
+          {
+            "title": "Pipelines, SQL, and Warehouse Work",
+            "bullets": [
+              "Designed and maintained batch and near-real-time ELT workflows on Databricks, transforming high-volume actuarial, finance, and operational sources into governed analytical datasets.",
+              "Wrote and tuned SQL across relational and lakehouse environments to support recurring reporting, ad hoc client requests, and performance-sensitive valuation extracts.",
+              "Architected the Field Inventory Report — a metadata and lineage reference that became the authoritative schema map for the enterprise Seriatim Data Warehouse (SDW), accelerating onboarding for new reporting initiatives.",
+              "Built the organization's first valuation extract comparison architecture, enabling repeatable deep-dive analysis across time periods and source systems without rebuilding logic for each request."
+            ]
+          },
+          {
+            "title": "Client-Facing Dashboards and Custom Reporting",
+            "bullets": [
+              "Delivered interactive Tableau, Power BI, and SSRS dashboards and KPI packs tailored to specific stakeholder groups, replacing manual spreadsheet cycles with self-serve reporting.",
+              "Translated ambiguous business questions into scoped data models and visual outputs on tight timelines — the same rapid-prototyping muscle required when a new advertising client needs a bespoke view by end of week.",
+              "Partnered with product-adjacent and strategy-facing teams to shape reporting requirements before engineering committed pipeline work."
+            ]
+          },
+          {
+            "title": "Data Integrity and Monitoring",
+            "bullets": [
+              "Built statistical outlier detection frameworks (PDF-based anomaly detection) that flagged large-scale attribute shifts before they reached downstream consumers.",
+              "Designed action-monitor reporting that surfaced metrics outside tolerance and routed exceptions to accountable owners — a pattern directly applicable to platform-level data-quality monitoring.",
+              "Served as technical reviewer for analytics deliverables, enforcing code quality, documentation, and audit-ready standards across releases."
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Assistant Business Controller",
+        "organization": "Chicago Pneumatic Company LLC (Atlas Copco Group)",
+        "context": "Reporting modernization and executive analytics partner",
+        "dates": "2012 – 2018",
+        "bullets": [
+          "Partnered with Sales, Marketing, HR, Finance, and executive leadership to modernize KPI reporting and automate recurring operational dashboards.",
+          "Designed reporting frameworks that improved data consistency, shortened month-end cycles, and gave leaders a single trusted view across functions.",
+          "Bridged business stakeholders and technical teams — scoping data needs, validating outputs, and managing external vendors on analytics projects end to end."
+        ]
+      },
+      {
+        "title": "Contract Data & Reporting Analyst",
+        "organization": "Wells Fargo",
+        "context": "Part-time contract engagement during graduate school",
+        "dates": "2010 – 2012",
+        "bullets": [
+          "Delivered analytics and reporting on a contract basis while completing my MS in Economics at UNC Charlotte — scoping work, meeting deadlines, and communicating progress without the overhead of a full-time hire.",
+          "Produced recurring operational dashboards, Excel and SQL-driven analyses, and summary reports from structured and semi-structured source data for internal stakeholders.",
+          "Cleaned, validated, and reconciled reporting inputs in a regulated financial-services environment where accuracy and turnaround time were non-negotiable.",
+          "Collaborated with full-time analysts and managers in a fast-paced team that valued reliable contractors who could ship independently."
+        ]
+      }
+    ]
+  },
+  "skills": {
+    "title": "Skills & Expertise",
+    "intro": "Capabilities highlighted for this application.",
+    "groups": [
+      {
+        "title": "Data Engineering",
+        "items": [
+          "SQL (advanced querying, optimization, schema design), Python, R, batch ELT/ELT on Databricks, data validation and reconciliation, metadata and lineage documentation"
+        ]
+      },
+      {
+        "title": "Visualization & Reporting",
+        "items": [
+          "Tableau, Power BI, SSRS, advanced Excel (Power Query, pivot models, VBA), executive and operational KPI reporting; quick to adopt Holistics or Looker"
+        ]
+      },
+      {
+        "title": "Platforms",
+        "items": [
+          "Databricks lakehouse, relational databases, cloud-hosted enterprise data warehouse (SDW), GCP/AWS-adjacent analytics environments"
+        ]
+      },
+      {
+        "title": "Delivery",
+        "items": [
+          "Kanban-friendly iterative releases, code review discipline, automated QA checks, cross-functional collaboration with product, platform, and QA partners"
+        ]
+      }
+    ]
+  },
+  "sections": {
+    "projects": {
+      "visible": false
+    },
+    "education": {
+      "visible": true
+    }
+  },
+  "contact": {
+    "label": "06 / Contact",
+    "title": "Let's Connect",
+    "intro": "Interested in the Data Engineer  — Job 8474867002 opportunity with Verve.",
+    "email": "JonathanBrownstein12@icloud.com"
+  }
+}

@@ -1,0 +1,136 @@
+{
+  "profileVersion": 1,
+  "slug": "brunswick-finance",
+  "accessCode": "BRUNSWICK2026",
+  "employmentType": "full_time",
+  "meta": {
+    "title": "Jonathan Brownstein — Manager / Sr. Manager, Enterprise Finance",
+    "description": "Finance and business analytics leader with 15 years of progressive experience across global, multidivisional manufacturing and financial-services organizations. Background combines a six-year FP&A and controllership foun"
+  },
+  "hero": {
+    "badge": "Manager / Sr. Manager, Enterprise Finance",
+    "typingPhrases": [
+      "Senior Finance and Business Analytics Leader",
+      "Enterprise FP&A, Forecasting, and Cost Analytics",
+      "Executive and Board Reporting",
+      "AI-Enabled Process Automation"
+    ],
+    "description": "Finance and business analytics leader with 15 years of progressive experience across global, multidivisional manufacturing and financial-services organizations. Background combines a six-year FP&A and controllership foundation inside a global industrial manufacturer with seven years inside the Data Analytics Office of a global reinsurer, where I lead the forecasting, cost analytics, and executive reporting that finance, actuarial, and the C-suite use to make decisions. Track record includes an automated ARIMA-based forecasting platform that surfaces anomalies before period close, a classification machine learning rebuild of a regulated reporting workflow recognized by the company's former CEO, and the executive dashboards and narratives leadership and Board audiences act on. MS in Economics with an Applied Econometrics certificate, BS in Economics, and FLMI from LOMA.",
+    "primaryCta": "Get In Touch",
+    "secondaryCta": "View Experience"
+  },
+  "highlights": [
+    {
+      "value": "Enterprise FP&A and",
+      "label": "Enterprise FP&A and business partnering"
+    },
+    {
+      "value": "Annual and monthly",
+      "label": "Annual and monthly financial planning"
+    },
+    {
+      "value": "Forecast process design",
+      "label": "Forecast process design and ownership"
+    },
+    {
+      "value": "Cost analysis and",
+      "label": "Cost analysis and variance reporting by division and COE"
+    }
+  ],
+  "about": {
+    "title": "About Jonathan Brownstein",
+    "lead": "Finance and business analytics leader with 15 years of progressive experience across global, multidivisional manufacturing and financial-services organizations.",
+    "body": "Finance and business analytics leader with 15 years of progressive experience across global, multidivisional manufacturing and financial-services organizations. Background combines a six-year FP&A and controllership foundation inside a global industrial manufacturer with seven years inside the Data Analytics Office of a global reinsurer, where I lead the forecasting, cost analytics, and executive reporting that finance, actuarial, and the C-suite use to make decisions. Track record includes an automated ARIMA-based forecasting platform that surfaces anomalies before period close, a classification machine learning rebuild of a regulated reporting workflow recognized by the company's former CEO, and the executive dashboards and narratives leadership and Board audiences act on. MS in Economics with an Applied Econometrics certificate, BS in Economics, and FLMI from LOMA.",
+    "cards": [
+      {
+        "title": "Senior Data Analyst III",
+        "body": "Senior analytics lead and forecasting / executive-reporting owner inside the Data Analytics Office"
+      },
+      {
+        "title": "Assistant Business Controller",
+        "body": "Owned FP&A and business-partnering support for finance, sales, operations, marketing, HR, and regional leadership inside a global multidivisional industrial manufacturer, feeding the annual planning, monthly forecast, and executive reporting cycles."
+      }
+    ]
+  },
+  "experience": {
+    "title": "Professional Experience",
+    "intro": "Experience tailored for the Manager / Sr. Manager, Enterprise Finance opportunity.",
+    "items": [
+      {
+        "title": "Senior Data Analyst III",
+        "organization": "Hannover Reinsurance Company LLC",
+        "context": "Senior analytics lead and forecasting / executive-reporting owner inside the Data Analytics Office",
+        "dates": "2019 – Present",
+        "bullets": [],
+        "intro": "Senior individual contributor and technical lead inside the Data Analytics Office of a global multidivisional reinsurer. Own the forecasting platforms, cost and variance analytics, and executive reporting that finance, actuarial, valuation, and risk leadership rely on, and lead analysts and engineers on multiple concurrent enterprise initiatives.",
+        "subsections": [
+          {
+            "title": "Forecasting, Planning, and Process Automation",
+            "bullets": [
+              "Designed and deployed an automated ARIMA-based forecasting platform on a scheduled production pipeline. Surfaces anomalies and trend movement before period close so finance and actuarial leaders can react in time, replacing manual reconciliation cycles with an automated, governed forecast view.",
+              "Built statistical outlier and anomaly-detection frameworks using probability density function (PDF) methods across platforms processing more than a trillion records. The same approach is the backbone of variance-driver analysis and early warning for cost and revenue drift.",
+              "Designed the firm's first valuation extract comparison architecture, a repeatable framework for period-over-period movement analysis across time periods and source systems that other teams have since extended for their own variance and trend work."
+            ]
+          },
+          {
+            "title": "Executive Reporting, Cost Analytics, and Special Projects",
+            "bullets": [
+              "Build and maintain the Power BI, Tableau, and SSRS dashboards finance, actuarial leadership, and the C-suite use to read KPIs, variances, and financial movements. Translating model output and complex multi-source data into a clean executive narrative is the part of the role leadership leans on most.",
+              "Led the classification machine learning rebuild of a regulated reporting workflow, materially improving accuracy, consistency, and audit readiness. The company's former CEO recognized the result.",
+              "Set engineering and analytics standards on metadata, lineage, data quality, and audit controls across the Data Analytics Office, and architected the Field Inventory Report that became the data-lineage reference standard for the Strategic Data Warehouse.",
+              "Lead special projects and ad-hoc analyses on a recurring cadence, scoping the work with finance and business sponsors and walking senior leaders through the recommendation in plain language."
+            ]
+          },
+          {
+            "title": "Cross-Functional Leadership, AI Enablement, and Team Development",
+            "bullets": [
+              "Lead teams of analysts and engineers across concurrent initiatives with architecture review, code review, and delivery checkpoints, and mentor on Databricks, Spark, SQL, and Python. Comfortable stepping into formal one-to-two team-member people management.",
+              "Partner across finance, actuarial, valuation, risk, IT, BI, and compliance in a matrix operating model to turn business questions into governed analytics, forecasting, and reporting deliverables on a deadline.",
+              "Evaluate and bring in AI and machine learning tools where they earn their place, scoping pilots against real production workloads, reading vendor claims with a practitioner's eye, and making clean in-or-out recommendations. Own scope, timelines, contract terms, and quality on outside vendors and consultants."
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Assistant Business Controller",
+        "organization": "Chicago Pneumatic Company LLC (Atlas Copco Group)",
+        "context": "",
+        "dates": "2012 – 2018",
+        "bullets": [
+          "Owned FP&A and business-partnering support for finance, sales, operations, marketing, HR, and regional leadership inside a global multidivisional industrial manufacturer, feeding the annual planning, monthly forecast, and executive reporting cycles.",
+          "Led cross-functional reporting modernization that improved data accessibility, consistency, and operational efficiency across finance and operations, and established the data-governance and QA practices the team continued to build on.",
+          "Designed automated KPI dashboards and reporting frameworks for sales, operations, and finance leadership, replacing manual reconciliation work and shortening month-end close commentary cycles.",
+          "Evaluated and managed outside vendors and consultants on analytics, reporting, and finance-systems projects, with ownership of scope, contract terms, timelines, and delivery quality, and served as the working bridge between business stakeholders and technical teams on executive priorities."
+        ]
+      }
+    ]
+  },
+  "skills": {
+    "title": "Skills & Expertise",
+    "intro": "Capabilities highlighted for this application.",
+    "groups": [
+      {
+        "title": "Finance and FP&A: Annual and monthly financial planning, forecast process design, variance and cost-driver analysis, executive reporting, capital project and contract evaluation, P&L, balance sheet, and cash flow driver analysis, advanced Excel and VBA",
+        "items": [
+          "Analytics and Modeling: classification machine learning, ARIMA and time-series forecasting, statistical outlier and anomaly detection, data mining, applied econometrics, Python ML stack (pandas, NumPy, scikit-learn, statsmodels)",
+          "Reporting and Visualization: Power BI, Tableau, SSRS, executive-level written and oral briefing",
+          "Languages and Platforms: Python, SQL, R, Databricks, Delta Lake, Spark, enterprise data warehousing, cloud data platforms, ETL and ELT pipelines"
+        ]
+      }
+    ]
+  },
+  "sections": {
+    "projects": {
+      "visible": true
+    },
+    "education": {
+      "visible": true
+    }
+  },
+  "contact": {
+    "label": "06 / Contact",
+    "title": "Let's Connect",
+    "intro": "Interested in the Manager / Sr. Manager, Enterprise Finance opportunity with Brunswick Corporation.",
+    "email": "JonathanBrownstein12@icloud.com"
+  }
+}

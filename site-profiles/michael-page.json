@@ -1,0 +1,126 @@
+{
+  "profileVersion": 1,
+  "slug": "michael-page",
+  "accessCode": "MICHAELPAGE2026",
+  "employmentType": "full_time",
+  "meta": {
+    "title": "Jonathan Brownstein — Data & Analytics Leader",
+    "description": "Data, analytics, and finance leader with 15+ years across regulated financial services and global industrial manufacturing. Seven years as a senior analytics and machine learning lead inside the Data Analytics Office of "
+  },
+  "hero": {
+    "badge": "Data & Analytics Leader",
+    "typingPhrases": [
+      "Data, Analytics & Finance Leader",
+      "Data Science & Machine Learning",
+      "FP&A & Executive Reporting",
+      "Insurance & Financial Services"
+    ],
+    "description": "Data, analytics, and finance leader with 15+ years across regulated financial services and global industrial manufacturing. Seven years as a senior analytics and machine learning lead inside the Data Analytics Office of a global reinsurer; six prior years in corporate FP&A and controllership inside a multidivisional manufacturer. Designs production forecasting models, governed analytics architectures, and executive dashboards that finance, actuarial, and business leaders use for planning, risk review, and performance management. MS in Economics with an Applied Econometrics certificate, BS in Economics, and FLMI from LOMA. Open to senior individual contributor, manager, and director-level roles in the greater Chicago area (northwest suburbs preferred) and remote-eligible US opportunities.",
+    "primaryCta": "Get In Touch",
+    "secondaryCta": "View Experience"
+  },
+  "highlights": [
+    {
+      "value": "Enterprise data science",
+      "label": "Enterprise data science and machine learning"
+    },
+    {
+      "value": "Predictive modeling (ARIMA,",
+      "label": "Predictive modeling (ARIMA, classification)"
+    },
+    {
+      "value": "Financial modeling, forec…",
+      "label": "Financial modeling, forecasting, and budgeting"
+    },
+    {
+      "value": "Executive dashboards (Tab…",
+      "label": "Executive dashboards (Tableau, Power BI, SSRS)"
+    }
+  ],
+  "about": {
+    "title": "About Jonathan Brownstein",
+    "lead": "Data, analytics, and finance leader with 15+ years across regulated financial services and global industrial manufacturing.",
+    "body": "Data, analytics, and finance leader with 15+ years across regulated financial services and global industrial manufacturing. Seven years as a senior analytics and machine learning lead inside the Data Analytics Office of a global reinsurer; six prior years in corporate FP&A and controllership inside a multidivisional manufacturer. Designs production forecasting models, governed analytics architectures, and executive dashboards that finance, actuarial, and business leaders use for planning, risk review, and performance management. MS in Economics with an Applied Econometrics certificate, BS in Economics, and FLMI from LOMA. Open to senior individual contributor, manager, and director-level roles in the greater Chicago area (northwest suburbs preferred) and remote-eligible US opportunities.",
+    "cards": [
+      {
+        "title": "Senior Data Analyst III",
+        "body": "Enterprise data scientist and ML architecture lead inside the Data Analytics Office"
+      },
+      {
+        "title": "Assistant Business Controller",
+        "body": "Supported annual planning, monthly forecasting, and budgeting for finance, sales, operations, marketing, HR, and regional leadership, including P&L and variance analysis with segment and cost-center views."
+      }
+    ]
+  },
+  "experience": {
+    "title": "Professional Experience",
+    "intro": "Experience tailored for the Data & Analytics Leader opportunity.",
+    "items": [
+      {
+        "title": "Senior Data Analyst III",
+        "organization": "Hannover Reinsurance Company LLC",
+        "context": "Enterprise data scientist and ML architecture lead inside the Data Analytics Office",
+        "dates": "2019 – Present",
+        "bullets": [],
+        "intro": "Senior individual contributor and technical lead inside the Data Analytics Office of a global financial services organization. Partners with finance, actuarial, valuation, underwriting-aligned, and governance teams on forecasting, machine learning, metadata architecture, and executive reporting across enterprise data platforms (1T+ records).",
+        "subsections": [
+          {
+            "title": "Machine Learning, Forecasting, and Advanced Analytics",
+            "bullets": [
+              "Architected and deployed an automated ARIMA-based forecasting platform on a scheduled production pipeline to predict Net Amount at Risk (NAR), enabling early anomaly detection and proactive actuarial decision-making.",
+              "Designed and operationalized classification-based machine learning solutions to modernize the Same-As-Link (SAL) process, materially improving accuracy, consistency, and data governance; work received formal recognition from the former CEO.",
+              "Built enterprise-grade statistical outlier detection frameworks using probability density function methods to identify large-scale attribute shifts and prevent downstream actuarial escalations."
+            ]
+          },
+          {
+            "title": "Data Architecture, Governance, and Delivery Leadership",
+            "bullets": [
+              "Led design of the Field Inventory Report, a comprehensive metadata and data-lineage architecture that became the authoritative reference for the enterprise data warehouse.",
+              "Developed the organization's first valuation extract comparison architecture for repeatable period-over-period movement analysis across reporting segments and source systems.",
+              "Serve as technical lead across data engineering, BI, IT, actuarial, and governance partners: inform prioritization and feasibility, align scope to team capacity, and land compliant production releases with audit-suitable documentation.",
+              "Build and maintain Tableau, Power BI, and SSRS reporting used by senior leadership for KPI review, variance analysis, and financial movement commentary."
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Assistant Business Controller",
+        "organization": "Chicago Pneumatic Company LLC (Atlas Copco Group)",
+        "context": "FP&A and corporate finance partner inside a global industrial manufacturer",
+        "dates": "2012 – 2018",
+        "bullets": [
+          "Supported annual planning, monthly forecasting, and budgeting for finance, sales, operations, marketing, HR, and regional leadership, including P&L and variance analysis with segment and cost-center views.",
+          "Built financial models and automated KPI dashboards for sales, operations, and finance leadership, shortening month-end analysis cycles and standardizing performance reporting against plan.",
+          "Served as the working bridge between business stakeholders and technical teams on executive priorities, including vendor evaluation on finance systems and analytics programs."
+        ]
+      }
+    ]
+  },
+  "skills": {
+    "title": "Skills & Expertise",
+    "intro": "Capabilities highlighted for this application.",
+    "groups": [
+      {
+        "title": "Data science and engineering: Python, R, SQL, Databricks, ARIMA forecasting, classification ML, statistical outlier detection, applied econometrics, ELT pipelines, lakehouse and data warehouse design",
+        "items": [
+          "Finance and reporting: Financial modeling, forecasting and budgeting, P&L and variance analysis, activity-based and driver-based analysis, Tableau, Power BI, SSRS, advanced Excel and VBA",
+          "Governance: Metadata management, data lineage, audit-ready documentation, model deployment and lifecycle governance"
+        ]
+      }
+    ]
+  },
+  "sections": {
+    "projects": {
+      "visible": true
+    },
+    "education": {
+      "visible": true
+    }
+  },
+  "contact": {
+    "label": "06 / Contact",
+    "title": "Let's Connect",
+    "intro": "Interested in the Data & Analytics Leader opportunity with Michael Page recruiters (general placement).",
+    "email": "JonathanBrownstein12@icloud.com"
+  }
+}

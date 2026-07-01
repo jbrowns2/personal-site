@@ -2,6 +2,7 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "installCommand": "npm install",
+  "devCommand": "npx serve -l $PORT .",
   "redirects": [
     {
       "source": "/favicon.ico",

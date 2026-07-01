@@ -1,0 +1,135 @@
+{
+  "profileVersion": 1,
+  "slug": "motorola-bi",
+  "accessCode": "MOTOROLA2026",
+  "employmentType": "full_time",
+  "meta": {
+    "title": "Jonathan Brownstein — Product Manager - Business Intelligence & Ana…",
+    "description": "BI and analytics leader with 15 years of experience across global industrial manufacturing and financial-services organizations. Six-year business operations and FP&A foundation inside a global industrial manufacturer, f"
+  },
+  "hero": {
+    "badge": "Product Manager - Business Intelligence & Ana…",
+    "typingPhrases": [
+      "BI & Analytics Product Leader",
+      "Internal KPI Platforms & Executive Dashboards",
+      "Operational Analytics & Cost Visibility",
+      "Cross-Functional Delivery"
+    ],
+    "description": "BI and analytics leader with 15 years of experience across global industrial manufacturing and financial-services organizations. Six-year business operations and FP&A foundation inside a global industrial manufacturer, followed by seven years inside the Data Analytics Office of a global reinsurer where I own the KPI platforms, executive dashboards, and operational analytics that finance, actuarial, and the C-suite rely on to monitor performance, spot bottlenecks, and act on cost and efficiency signals. Track record of defining what to measure, building the governed data layers underneath, and delivering adoption-ready dashboard products internal leaders actually use. Hands-on across Power BI, Tableau, SSRS, SQL, Python, R, Databricks lakehouse, Delta Lake, and ELT pipelines, with enterprise metadata and lineage work that turned fragmented multi-source data into a single reference standard. MS in Economics with an Applied Econometrics certificate, BS in Economics, and FLMI from LOMA.",
+    "primaryCta": "Get In Touch",
+    "secondaryCta": "View Experience"
+  },
+  "highlights": [
+    {
+      "value": "Business intelligence str…",
+      "label": "Business intelligence strategy and KPI roadmap ownership"
+    },
+    {
+      "value": "Dashboard product design",
+      "label": "Dashboard product design and maintenance (Power BI, Tableau, SSRS)"
+    },
+    {
+      "value": "Adoption, utilization, and",
+      "label": "Adoption, utilization, and operational health reporting"
+    },
+    {
+      "value": "Cost and efficiency",
+      "label": "Cost and efficiency analytics"
+    }
+  ],
+  "about": {
+    "title": "About Jonathan Brownstein",
+    "lead": "BI and analytics leader with 15 years of experience across global industrial manufacturing and financial-services organizations.",
+    "body": "BI and analytics leader with 15 years of experience across global industrial manufacturing and financial-services organizations. Six-year business operations and FP&A foundation inside a global industrial manufacturer, followed by seven years inside the Data Analytics Office of a global reinsurer where I own the KPI platforms, executive dashboards, and operational analytics that finance, actuarial, and the C-suite rely on to monitor performance, spot bottlenecks, and act on cost and efficiency signals. Track record of defining what to measure, building the governed data layers underneath, and delivering adoption-ready dashboard products internal leaders actually use. Hands-on across Power BI, Tableau, SSRS, SQL, Python, R, Databricks lakehouse, Delta Lake, and ELT pipelines, with enterprise metadata and lineage work that turned fragmented multi-source data into a single reference standard. MS in Economics with an Applied Econometrics certificate, BS in Economics, and FLMI from LOMA.",
+    "cards": [
+      {
+        "title": "Senior Data Analyst III",
+        "body": "BI and analytics platform owner inside the Data Analytics Office"
+      },
+      {
+        "title": "Assistant Business Controller",
+        "body": "Owned FP&A and business-partnering support for finance, sales, operations, marketing, HR, and regional leadership inside a global multidivisional industrial manufacturer, feeding annual planning, monthly forecasting, and the executive reporting that drove operational and cost decisions."
+      }
+    ]
+  },
+  "experience": {
+    "title": "Professional Experience",
+    "intro": "Experience tailored for the Product Manager - Business Intelligence & Ana… opportunity.",
+    "items": [
+      {
+        "title": "Senior Data Analyst III",
+        "organization": "Hannover Reinsurance Company LLC",
+        "context": "BI and analytics platform owner inside the Data Analytics Office",
+        "dates": "2019 – Present",
+        "bullets": [],
+        "intro": "Senior individual contributor and technical lead inside the Data Analytics Office of a global multidivisional reinsurer. Own the KPI dashboards, forecasting platforms, and executive reporting finance, actuarial, valuation, and risk leadership rely on, and lead analysts and engineers on multiple concurrent enterprise initiatives.",
+        "subsections": [
+          {
+            "title": "BI Strategy, KPI Platforms, and Dashboard Products",
+            "bullets": [
+              "Build and maintain the Power BI, Tableau, and SSRS dashboards actuarial leadership, finance, and the C-suite use to read KPIs, variances, and operational health. Defining the metrics leadership needs and keeping the underlying data trustworthy is the core of the role.",
+              "Architected the Field Inventory Report that became the enterprise lineage and source-of-truth reference standard for the Strategic Data Warehouse, unifying disparate field definitions and integration points across teams that had been working from conflicting sources.",
+              "Designed the firm's first valuation extract comparison architecture, a repeatable framework for period-over-period movement analysis across reporting segments and source systems that other teams have extended for their own operational and variance work."
+            ]
+          },
+          {
+            "title": "Operational Analytics, Cost Signals, and Data Unification",
+            "bullets": [
+              "Designed and deployed an automated ARIMA-based forecasting platform on a scheduled production pipeline. Surfaces anomalies and trend movement before period close, giving finance and actuarial leaders early visibility into portfolio drivers and operational drift.",
+              "Built statistical outlier and anomaly-detection frameworks using probability density function (PDF) methods across platforms processing more than a trillion records, identifying bottlenecks and attribute shifts before they reach downstream reports and executive dashboards.",
+              "Set engineering and analytics standards on metadata, lineage, data quality, and audit controls across the Data Analytics Office, ensuring data integrity across multi-source enterprise integrations feeding BI and operational analytics."
+            ]
+          },
+          {
+            "title": "Executive Partnership, Roadmap Influence, and Delivery",
+            "bullets": [
+              "Translate model output, platform telemetry, and complex multi-source data into business narratives for C-suite, actuarial, and finance leaders — the briefing cadence leadership uses to make prioritization and investment decisions.",
+              "Inform prioritization and feasibility for concurrent analytics initiatives; run architecture and design reviews, code reviews, and delivery checkpoints while mentoring analysts and engineers on Databricks, Spark, SQL, and Python.",
+              "Led the classification machine learning rebuild of a regulated reporting workflow, materially improving accuracy, consistency, and user adoption. The company's former CEO recognized the result."
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Assistant Business Controller",
+        "organization": "Chicago Pneumatic Company LLC (Atlas Copco Group)",
+        "context": "Business operations analytics and FP&A partner inside a global industrial manufacturer",
+        "dates": "2012 – 2018",
+        "bullets": [
+          "Owned FP&A and business-partnering support for finance, sales, operations, marketing, HR, and regional leadership inside a global multidivisional industrial manufacturer, feeding annual planning, monthly forecasting, and the executive reporting that drove operational and cost decisions.",
+          "Designed automated KPI dashboards and reporting frameworks for sales, operations, and finance leadership, replacing manual reconciliation work and giving internal stakeholders real-time visibility into utilization, performance, and spend drivers.",
+          "Led cross-functional reporting modernization that improved data accessibility, consistency, and operational efficiency across finance and operations, and established the data-governance and QA practices the team continued to build on.",
+          "Evaluated and managed outside vendors and consultants on analytics, reporting, and finance-systems projects, with ownership of scope, contract terms, timelines, and delivery quality, and served as the working bridge between business stakeholders and technical teams on executive priorities."
+        ]
+      }
+    ]
+  },
+  "skills": {
+    "title": "Skills & Expertise",
+    "intro": "Capabilities highlighted for this application.",
+    "groups": [
+      {
+        "title": "Business Intelligence and Visualization: Power BI, Tableau, SSRS, advanced Excel and VBA",
+        "items": [
+          "Data Platforms: Python, SQL, R, Databricks lakehouse, Delta Lake, Spark, cloud data warehousing, database management, ELT and ETL pipelines",
+          "Analytics and Modeling: classification machine learning, ARIMA and time-series forecasting, statistical outlier and anomaly detection, applied econometrics, Python ML stack (pandas, NumPy, scikit-learn, statsmodels)",
+          "Governance: metadata, lineage, data quality, audit controls, enterprise integrations"
+        ]
+      }
+    ]
+  },
+  "sections": {
+    "projects": {
+      "visible": true
+    },
+    "education": {
+      "visible": true
+    }
+  },
+  "contact": {
+    "label": "06 / Contact",
+    "title": "Let's Connect",
+    "intro": "Interested in the Product Manager - Business Intelligence & Ana… opportunity with Motorola Solutions, Inc..",
+    "email": "JonathanBrownstein12@icloud.com"
+  }
+}

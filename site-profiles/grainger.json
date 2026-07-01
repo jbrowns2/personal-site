@@ -1,0 +1,136 @@
+{
+  "profileVersion": 1,
+  "slug": "grainger",
+  "accessCode": "GRAINGER2026",
+  "employmentType": "full_time",
+  "meta": {
+    "title": "Jonathan Brownstein — Reporting & Analytics Manager",
+    "description": "Reporting and analytics leader with 15 years of experience across global, multidivisional industrial manufacturing and financial-services organizations. Six-year FP&A and reporting foundation inside a global industrial m"
+  },
+  "hero": {
+    "badge": "Reporting & Analytics Manager",
+    "typingPhrases": [
+      "Senior Reporting & Analytics Leader",
+      "Enterprise KPI Dashboards and Data Visualization",
+      "Process Automation and Continuous Improvement",
+      "Team Development and Cross-Functional Delivery"
+    ],
+    "description": "Reporting and analytics leader with 15 years of experience across global, multidivisional industrial manufacturing and financial-services organizations. Six-year FP&A and reporting foundation inside a global industrial manufacturer, followed by seven years inside the Data Analytics Office of a global reinsurer where I own the KPI dashboards, predictive models, and executive reporting that finance, actuarial, and the C-suite use to make decisions. Comfortable owning multiple concurrent reporting workstreams end to end, mentoring analysts and engineers, and partnering across the business to land governed, audit-ready deliverables on a deadline. Hands-on across Power BI, Tableau, SSRS, SQL, Python, R, advanced Excel and VBA, Databricks lakehouse, Delta Lake, and ELT pipelines, with a track record of replacing manual reconciliation cycles with automated, production-grade reporting and forecasting platforms. MS in Economics with an Applied Econometrics certificate, BS in Economics, and FLMI from LOMA.",
+    "primaryCta": "Get In Touch",
+    "secondaryCta": "View Experience"
+  },
+  "highlights": [
+    {
+      "value": "Enterprise reporting and",
+      "label": "Enterprise reporting and KPI dashboard ownership"
+    },
+    {
+      "value": "Data visualization (Power",
+      "label": "Data visualization (Power BI, Tableau, SSRS)"
+    },
+    {
+      "value": "Sales, operational, and",
+      "label": "Sales, operational, and financial performance reporting"
+    },
+    {
+      "value": "Trend, variance, and",
+      "label": "Trend, variance, and anomaly analysis"
+    }
+  ],
+  "about": {
+    "title": "About Jonathan Brownstein",
+    "lead": "Reporting and analytics leader with 15 years of experience across global, multidivisional industrial manufacturing and financial-services organizations.",
+    "body": "Reporting and analytics leader with 15 years of experience across global, multidivisional industrial manufacturing and financial-services organizations. Six-year FP&A and reporting foundation inside a global industrial manufacturer, followed by seven years inside the Data Analytics Office of a global reinsurer where I own the KPI dashboards, predictive models, and executive reporting that finance, actuarial, and the C-suite use to make decisions. Comfortable owning multiple concurrent reporting workstreams end to end, mentoring analysts and engineers, and partnering across the business to land governed, audit-ready deliverables on a deadline. Hands-on across Power BI, Tableau, SSRS, SQL, Python, R, advanced Excel and VBA, Databricks lakehouse, Delta Lake, and ELT pipelines, with a track record of replacing manual reconciliation cycles with automated, production-grade reporting and forecasting platforms. MS in Economics with an Applied Econometrics certificate, BS in Economics, and FLMI from LOMA.",
+    "cards": [
+      {
+        "title": "Senior Data Analyst III",
+        "body": "Senior reporting and analytics owner inside the Data Analytics Office"
+      },
+      {
+        "title": "Assistant Business Controller",
+        "body": "Owned FP&A and business-partnering support for finance, sales, operations, marketing, HR, and regional leadership inside a global multidivisional industrial manufacturer, feeding annual planning, monthly forecasting, and the executive reporting that drove the next round of decisions."
+      }
+    ]
+  },
+  "experience": {
+    "title": "Professional Experience",
+    "intro": "Experience tailored for the Reporting & Analytics Manager opportunity.",
+    "items": [
+      {
+        "title": "Senior Data Analyst III",
+        "organization": "Hannover Reinsurance Company LLC",
+        "context": "Senior reporting and analytics owner inside the Data Analytics Office",
+        "dates": "2019 – Present",
+        "bullets": [],
+        "intro": "Senior individual contributor and technical lead inside the Data Analytics Office of a global multidivisional reinsurer. Own the KPI dashboards, forecasting platforms, and executive reporting finance, actuarial, valuation, and risk leadership rely on, and lead analysts and engineers on multiple concurrent enterprise initiatives.",
+        "subsections": [
+          {
+            "title": "Reporting, Dashboards, and Data Visualization",
+            "bullets": [
+              "Build and maintain the Power BI, Tableau, and SSRS dashboards actuarial leadership, finance, and the C-suite use to read KPIs, variances, and movements. Translating model output and complex multi-source data into a clean executive narrative is the part of the role leadership leans on most.",
+              "Designed the firm's first valuation extract comparison architecture, a repeatable framework for period-over-period movement analysis across time periods and source systems that other teams have since extended for their own variance and trend work.",
+              "Set engineering and analytics standards on metadata, lineage, data quality, and audit controls across the Data Analytics Office, and architected the Field Inventory Report that became the data-lineage reference standard for the Strategic Data Warehouse."
+            ]
+          },
+          {
+            "title": "Process Automation, Predictive Modeling, and AI",
+            "bullets": [
+              "Designed and deployed an automated ARIMA-based forecasting platform on a scheduled production pipeline. Surfaces anomalies and trend movement before period close, replacing manual reconciliation cycles with an automated, governed reporting view.",
+              "Led the classification machine learning rebuild of a regulated reporting workflow, materially improving accuracy, consistency, and audit readiness. The company's former CEO recognized the result.",
+              "Built statistical outlier and anomaly-detection frameworks using probability density function (PDF) methods across platforms processing more than a trillion records, catching attribute drift before it reaches downstream reports.",
+              "Evaluate and bring in AI and machine learning tools where they earn their place: scoping pilots against real production workloads, reading vendor claims with a practitioner's eye, and making clean in-or-out recommendations."
+            ]
+          },
+          {
+            "title": "Team Development, Cross-Functional Delivery, and Change Management",
+            "bullets": [
+              "Lead project teams of engineers, analysts, and internal employees across concurrent enterprise initiatives, running architecture and design reviews, code reviews, and delivery checkpoints, and mentoring on Databricks, Spark, SQL, and Python on a recurring cadence.",
+              "Partner across finance, actuarial, valuation, risk, IT, BI, and compliance in a matrix operating model to turn business questions into governed analytics, reporting, and forecasting deliverables on a deadline, and manage outside vendors and consultants on scope, contract terms, timelines, and quality.",
+              "Run continuous-improvement work on the reporting function itself: tightening lineage, raising data-quality bars, and replacing manual workarounds with governed, repeatable patterns the team can stand on."
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Assistant Business Controller",
+        "organization": "Chicago Pneumatic Company LLC (Atlas Copco Group)",
+        "context": "FP&A, reporting, and analytics partner inside a global industrial manufacturer",
+        "dates": "2012 – 2018",
+        "bullets": [
+          "Owned FP&A and business-partnering support for finance, sales, operations, marketing, HR, and regional leadership inside a global multidivisional industrial manufacturer, feeding annual planning, monthly forecasting, and the executive reporting that drove the next round of decisions.",
+          "Led cross-functional reporting modernization that improved data accessibility, consistency, and operational efficiency across finance and operations, and established the data-governance and QA practices the team continued to build on.",
+          "Designed automated KPI dashboards and reporting frameworks for sales, operations, and finance leadership, replacing manual reconciliation work and shortening month-end close commentary cycles.",
+          "Evaluated and managed outside vendors and consultants on analytics, reporting, and finance-systems projects, with ownership of scope, contract terms, timelines, and delivery quality, and served as the working bridge between business stakeholders and technical teams on executive priorities."
+        ]
+      }
+    ]
+  },
+  "skills": {
+    "title": "Skills & Expertise",
+    "intro": "Capabilities highlighted for this application.",
+    "groups": [
+      {
+        "title": "Reporting and Visualization: Power BI, Tableau, SSRS, advanced Excel and VBA",
+        "items": [
+          "Automation: Python automation, scheduled production pipelines, Power Automate-style orchestration, reporting process automation",
+          "Analytics and Modeling: classification machine learning, ARIMA and time-series forecasting, statistical outlier and anomaly detection, data mining, applied econometrics, Python ML stack (pandas, NumPy, scikit-learn, statsmodels)",
+          "Languages and Platforms: Python, SQL, R, Databricks lakehouse, Delta Lake, Spark, cloud data warehousing (Snowflake-equivalent pattern), database management, ELT and ETL pipelines"
+        ]
+      }
+    ]
+  },
+  "sections": {
+    "projects": {
+      "visible": true
+    },
+    "education": {
+      "visible": true
+    }
+  },
+  "contact": {
+    "label": "06 / Contact",
+    "title": "Let's Connect",
+    "intro": "Interested in the Reporting & Analytics Manager opportunity with W.W. Grainger, Inc..",
+    "email": "JonathanBrownstein12@icloud.com"
+  }
+}

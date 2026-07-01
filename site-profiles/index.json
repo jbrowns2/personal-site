@@ -1,0 +1,131 @@
+{
+  "generatedAt": "2026-07-01T16:36:43.799Z",
+  "profiles": [
+    {
+      "slug": "beacon-hill-uat",
+      "accessCode": "BEACON2026",
+      "folder": "Beacon-Hill-UAT-Analyst-1461840_1780948197",
+      "employmentType": "contract",
+      "role": "Jonathan Brownstein — User Acceptance Testing  Analyst — Job 146184…"
+    },
+    {
+      "slug": "brunswick-finance",
+      "accessCode": "BRUNSWICK2026",
+      "folder": "Brunswick-Mgr-Enterprise-Finance-JR-050065",
+      "employmentType": "full_time",
+      "role": "Jonathan Brownstein — Manager / Sr. Manager, Enterprise Finance"
+    },
+    {
+      "slug": "capital-one",
+      "accessCode": "CAPONE2026",
+      "folder": "CapitalOne-GPN-R239058",
+      "employmentType": "full_time",
+      "role": "Jonathan Brownstein — Business Analysis Manager, Global Payment Net…"
+    },
+    {
+      "slug": "culligan",
+      "accessCode": "CULLIGAN2026",
+      "folder": "Culligan-Mgr-Financial-Analytics-MANAG008156",
+      "employmentType": "full_time",
+      "role": "Jonathan Brownstein — Manager of Financial Analytics, Corporate FP&A"
+    },
+    {
+      "slug": "grainger",
+      "accessCode": "GRAINGER2026",
+      "folder": "Grainger-Reporting-Analytics-Mgr-330137",
+      "employmentType": "full_time",
+      "role": "Jonathan Brownstein — Reporting & Analytics Manager"
+    },
+    {
+      "slug": "hub-sales",
+      "accessCode": "HUB2026",
+      "folder": "HUB-Mgr-Sales-Reporting-R0036086",
+      "employmentType": "full_time",
+      "role": "Jonathan Brownstein — Manager, Sales Reporting & Analytics"
+    },
+    {
+      "slug": "itw",
+      "accessCode": "ITW2026",
+      "folder": "ITW-Controller-JR7846",
+      "employmentType": "full_time",
+      "role": "Jonathan Brownstein — Controller"
+    },
+    {
+      "slug": "jpmc-quant",
+      "accessCode": "JPMC210741105",
+      "folder": "JPMorganChase-Quant-Analytics-Manager-VP-210741105",
+      "employmentType": "full_time",
+      "role": "Jonathan Brownstein — Quant Analytics Manager, Vice President"
+    },
+    {
+      "slug": "lexis-nexis",
+      "accessCode": "LEXISR111919",
+      "folder": "LexisNexis-Risk-Data-Scientist-R111919",
+      "employmentType": "full_time",
+      "role": "Jonathan Brownstein — Data Scientist"
+    },
+    {
+      "slug": "markel",
+      "accessCode": "MARKEL2026",
+      "folder": "Markel-Sr-Actuarial-Analyst-R0023059",
+      "employmentType": "full_time",
+      "role": "Jonathan Brownstein — Senior Actuarial Analyst / Actuary"
+    },
+    {
+      "slug": "michael-page",
+      "accessCode": "MICHAELPAGE2026",
+      "folder": "Michael-Page",
+      "employmentType": "full_time",
+      "role": "Jonathan Brownstein — Data & Analytics Leader"
+    },
+    {
+      "slug": "motorola-bi",
+      "accessCode": "MOTOROLA2026",
+      "folder": "Motorola-PM-BI-Analytics-R62892",
+      "employmentType": "full_time",
+      "role": "Jonathan Brownstein — Product Manager - Business Intelligence & Ana…"
+    },
+    {
+      "slug": "steward",
+      "accessCode": "STEWARD2026",
+      "folder": "Steward-Partners-Mgr-Finance-Data-Analytics",
+      "employmentType": "full_time",
+      "role": "Jonathan Brownstein — Manager, Finance Data & Analytics"
+    },
+    {
+      "slug": "syneos-survey",
+      "accessCode": "SYNEOS2026",
+      "folder": "Syneos-Survey-Data-Insights-Analyst-16239",
+      "employmentType": "contract",
+      "role": "Jonathan Brownstein — Part-Time Survey and Data Insights Analyst - …"
+    },
+    {
+      "slug": "upwork",
+      "accessCode": "",
+      "folder": "Upwork-General-Consulting",
+      "employmentType": "full_time",
+      "role": "Jonathan Brownstein — Data & Analytics Leader"
+    },
+    {
+      "slug": "verve",
+      "accessCode": "VERVE2026",
+      "folder": "Verve-Data-Engineer-8474867002",
+      "employmentType": "full_time",
+      "role": "Jonathan Brownstein — Data Engineer  — Job 8474867002"
+    },
+    {
+      "slug": "west-bend",
+      "accessCode": "WESTBEND3518",
+      "folder": "West-Bend-Sr-Data-Scientist-2026-3518",
+      "employmentType": "full_time",
+      "role": "Jonathan Brownstein — Senior Data Scientist"
+    },
+    {
+      "slug": "wintrust-fpa",
+      "accessCode": "WINTRUST2026",
+      "folder": "Wintrust-AVP-Finance-FPA-26795",
+      "employmentType": "full_time",
+      "role": "Jonathan Brownstein — AVP Finance - FP&A"
+    }
+  ]
+}

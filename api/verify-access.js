@@ -194,13 +194,21 @@ module.exports = async function verifyAccess(req, res) {
             });
         }
         var employmentType = gate.EMPLOYMENT_TYPE_FULL_TIME;
+        var profileSlug = null;
         if (codeRow && codeRow.employment_type) {
             employmentType = gate.normalizeEmploymentType(codeRow.employment_type);
         }
-        var token = gate.signSession(secrets.secret, employmentType);
+        if (codeRow && codeRow.profile_slug) {
+            profileSlug = gate.normalizeProfileSlug(codeRow.profile_slug);
+        }
+        var token = gate.signSession(secrets.secret, employmentType, profileSlug);
         res.setHeader('Set-Cookie', gate.buildSessionCookie(token, req));
         gate.maybePruneOldRecords(sql).catch(function () {});
-        return res.status(200).json({ ok: true, employmentType: employmentType });
+        return res.status(200).json({
+            ok: true,
+            employmentType: employmentType,
+            profileSlug: profileSlug,
+        });
     } catch (err) {
         console.error('verify-access', err && err.message, err);
         var errBody = { ok: false, error: 'service_unavailable' };

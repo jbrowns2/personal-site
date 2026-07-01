@@ -31,6 +31,7 @@ const {
     computeCodeLookupHash,
     invalidateAccessCodeCache,
     normalizeEmploymentType,
+    normalizeProfileSlug,
     EMPLOYMENT_TYPE_FULL_TIME,
     EMPLOYMENT_TYPE_CONTRACT,
 } = require('../lib/gate-backend.js');
@@ -93,11 +94,11 @@ function printUsage() {
             '  list                                  Show every access code (active + disabled).',
             '  add    "RAW CODE" "Label" [--expires YYYY-MM-DD | --expires-in Nd]',
             '       [--contact NAME] [--email ADDR] [--role TITLE] [--notes TEXT]',
-            '       [--type contract|full-time]',
+            '       [--type contract|full-time] [--profile SLUG]',
             '                                        Hash and insert a new code.',
             '  rotate "RAW CODE" "Label" [--expires YYYY-MM-DD | --expires-in Nd]',
             '       [--contact NAME] [--email ADDR] [--role TITLE] [--notes TEXT]',
-            '       [--type contract|full-time]',
+            '       [--type contract|full-time] [--profile SLUG]',
             '                                        Replace any existing code(s) with this label by',
             '                                        a freshly-hashed entry (used to drop bcrypt cost).',
             '  disable <id|label>                    Mark an access code inactive.',
@@ -121,7 +122,7 @@ async function cmdList(sql) {
     const rows = await sql`
         SELECT id, label, active, expires_at, last_used_at, created_at,
                code_lookup_hash, access_code, contact_name, contact_email,
-               role_title, notes, employment_type
+               role_title, notes, employment_type, profile_slug
         FROM portfolio_gate_access_codes
         ORDER BY active DESC, created_at DESC, id DESC
     `;
@@ -142,6 +143,7 @@ async function cmdList(sql) {
             email: r.contact_email || '',
             role: r.role_title || '',
             type: r.employment_type || EMPLOYMENT_TYPE_FULL_TIME,
+            profile: r.profile_slug || '',
             expires_at: r.expires_at ? toIso(r.expires_at) : '',
             last_used_at: r.last_used_at ? toIso(r.last_used_at) : '',
             created_at: toIso(r.created_at),
@@ -158,11 +160,11 @@ async function cmdAdd(sql, args) {
     const inserted = await sql`
         INSERT INTO portfolio_gate_access_codes
             (label, bcrypt_hash, active, expires_at, code_lookup_hash, access_code,
-             contact_name, contact_email, role_title, notes, employment_type)
+             contact_name, contact_email, role_title, notes, employment_type, profile_slug)
         VALUES
             (${parsed.label}, ${hash}, true, ${parsed.expiresIso}, ${lookupHash}, ${normalized},
              ${parsed.contactName}, ${parsed.contactEmail}, ${parsed.roleTitle}, ${parsed.notes},
-             ${parsed.employmentType})
+             ${parsed.employmentType}, ${parsed.profileSlug})
         ON CONFLICT (bcrypt_hash) DO NOTHING
         RETURNING id, label, active, expires_at, created_at
     `;
@@ -195,6 +197,7 @@ function parseAddArgs(args, cmdName) {
     let roleTitle = null;
     let notes = null;
     let employmentType = EMPLOYMENT_TYPE_FULL_TIME;
+    let profileSlug = null;
     for (let i = 0; i < args.length; i++) {
         const a = args[i];
         if (a === '--expires' || a === '-e') {
@@ -225,6 +228,10 @@ function parseAddArgs(args, cmdName) {
             employmentType = parseEmploymentTypeArg(args[++i]);
         } else if (a.startsWith('--type=')) {
             employmentType = parseEmploymentTypeArg(a.slice('--type='.length));
+        } else if (a === '--profile') {
+            profileSlug = parseProfileSlugArg(args[++i]);
+        } else if (a.startsWith('--profile=')) {
+            profileSlug = parseProfileSlugArg(a.slice('--profile='.length));
         } else {
             positional.push(a);
         }
@@ -268,7 +275,17 @@ function parseAddArgs(args, cmdName) {
         roleTitle: roleTitle,
         notes: notes,
         employmentType: employmentType,
+        profileSlug: profileSlug,
     };
+}
+
+function parseProfileSlugArg(raw) {
+    const slug = normalizeProfileSlug(raw);
+    if (!slug) {
+        console.error('Invalid --profile slug (use lowercase letters, numbers, hyphens).');
+        process.exit(1);
+    }
+    return slug;
 }
 
 function parseEmploymentTypeArg(raw) {
@@ -332,11 +349,11 @@ async function cmdRotate(sql, args) {
     const inserted = await sql`
         INSERT INTO portfolio_gate_access_codes
             (label, bcrypt_hash, active, expires_at, code_lookup_hash, access_code,
-             contact_name, contact_email, role_title, notes, employment_type)
+             contact_name, contact_email, role_title, notes, employment_type, profile_slug)
         VALUES
             (${parsed.label}, ${newHash}, true, ${parsed.expiresIso}, ${lookupHash}, ${normalized},
              ${parsed.contactName}, ${parsed.contactEmail}, ${parsed.roleTitle}, ${parsed.notes},
-             ${parsed.employmentType})
+             ${parsed.employmentType}, ${parsed.profileSlug})
         ON CONFLICT (bcrypt_hash) DO NOTHING
         RETURNING id, label, active, expires_at, created_at
     `;
