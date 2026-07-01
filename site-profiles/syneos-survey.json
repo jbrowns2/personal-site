@@ -38,8 +38,7 @@
       {
         "title": "Executive KPI Dashboard Refresh",
         "organization": "Global reinsurance organization",
-        "context": "",
-        "dates": "2019 – March 2026",
+        "context": "Rolling contract",
         "bullets": [
           "Maintained Power BI and Tableau dashboards on a weekly cadence for executive stakeholders (KPIs, variances, and program trends), replacing manual Excel reconciliation cycles.",
           "Combined actuarial, finance, valuation, and operational data into a single reporting view with brief narrative notes; delivered SSRS and advanced Excel reports for ad hoc requests between release cycles."
@@ -49,7 +48,6 @@
         "title": "Qualtrics & Survey Reporting Build",
         "organization": "Global reinsurance organization",
         "context": "Scoped assignment within rolling contract",
-        "dates": "",
         "bullets": [
           "Designed Qualtrics and Microsoft Forms collection flows with branching logic, dynamic paths, and dashboard views aligned to downstream reporting requirements.",
           "Established consistent KPI definitions and period-over-period reporting, the same rigor required for pulse surveys and quarterly skills assessments."
@@ -59,7 +57,6 @@
         "title": "Multi-Source Insights & Validation",
         "organization": "Global reinsurance organization",
         "context": "Fixed-term analytics assignment",
-        "dates": "",
         "bullets": [
           "Validated and reconciled structured response and operational datasets before results were shared with leadership.",
           "Documented outliers and material trend changes in concise summaries managers could review without additional explanation."
@@ -68,8 +65,7 @@
       {
         "title": "Tax Administration Reporting & Audit",
         "organization": "Mecklenburg County Office of the Tax Collector",
-        "context": "",
-        "dates": "2019 – 2020",
+        "context": "Part-time contract",
         "bullets": [
           "Supported tax administration with auditing, automation, and reporting, validating transactional data, building repeatable pipelines, and producing dashboard KPIs for management review.",
           "Automated manual Excel and SQL-backed reporting steps and provided documentation county staff could use after the contract ended."
@@ -78,8 +74,7 @@
       {
         "title": "Banking Dashboard & Reconciliation",
         "organization": "Wells Fargo",
-        "context": "",
-        "dates": "2018 – 2019",
+        "context": "Part-time contract",
         "bullets": [
           "Built SQL-based reporting dashboards for business stakeholders in a regulated environment and confirmed metric accuracy before internal use.",
           "Automated recurring validation and reporting tasks; coordinated scope with internal teams and delivered documented reporting assets at agreed milestones."
@@ -89,7 +84,6 @@
         "title": "Qualtrics Surveys for Economic Research",
         "organization": "Graduate research",
         "context": "Academic research · During MS in Economics",
-        "dates": "",
         "bullets": [
           "Built Qualtrics surveys to support economic research projects, including instrument design, branching logic, and response collection aligned to study requirements.",
           "Analyzed survey response data using applied econometrics methods for research deliverables and faculty review."
@@ -98,8 +92,7 @@
       {
         "title": "Human Resources KPI Reporting",
         "organization": "Global industrial manufacturer",
-        "context": "",
-        "dates": "2012 – 2018",
+        "context": "Sequential contract assignments",
         "bullets": [
           "Completed reporting projects for Human Resources, Finance, Sales, Marketing, and executive leadership, including workforce planning views, leadership review packs, and automated KPI templates.",
           "Followed a consistent project rhythm: requirements discussion, scoped deliverable, review, and handoff, often while supporting parallel requests from other functions."
@@ -109,7 +102,6 @@
         "title": "Executive Review Pack Automation",
         "organization": "Global industrial manufacturer",
         "context": "Fixed-scope assignment",
-        "dates": "",
         "bullets": [
           "Automated recurring operational dashboards to shorten month-end reporting cycles and provide a consistent cross-functional view for leadership.",
           "Converted broad business questions into defined reporting requirements and returned charts with supporting commentary for staff meetings."

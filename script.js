@@ -191,20 +191,32 @@
             .replace(/"/g, '&quot;');
     }
 
-    function renderProfileExperienceItem(item) {
-        const context = item.context
-            ? '<span class="role-focus">' + profileEscapeHtml(item.context) + '</span>'
+    function stripEngagementDates(text) {
+        return String(text || '')
+            .replace(/\s*[·|]\s*(?:(?:19|20)\d{2}.+)$/i, '')
+            .replace(
+                /\s+(?:19|20)\d{2}\s*(?:to|–|-|—)\s*(?:(?:19|20)\d{2}|Present|(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\s+(?:19|20)\d{2})\s*$/i,
+                '',
+            )
+            .trim();
+    }
+
+    function renderProfileExperienceItem(item, hideDates) {
+        const contextText = item.context ? stripEngagementDates(item.context) : '';
+        const context = contextText
+            ? '<span class="role-focus">' + profileEscapeHtml(contextText) + '</span>'
             : '';
-        const dates = item.dates
-            ? '<span class="date">' +
-              '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">' +
-              '<rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>' +
-              '<line x1="16" y1="2" x2="16" y2="6"></line>' +
-              '<line x1="8" y1="2" x2="8" y2="6"></line>' +
-              '<line x1="3" y1="10" x2="21" y2="10"></line></svg> ' +
-              profileEscapeHtml(item.dates) +
-              '</span>'
-            : '';
+        const dates =
+            !hideDates && item.dates
+                ? '<span class="date">' +
+                  '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">' +
+                  '<rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>' +
+                  '<line x1="16" y1="2" x2="16" y2="6"></line>' +
+                  '<line x1="8" y1="2" x2="8" y2="6"></line>' +
+                  '<line x1="3" y1="10" x2="21" y2="10"></line></svg> ' +
+                  profileEscapeHtml(item.dates) +
+                  '</span>'
+                : '';
         const org = item.organization
             ? '<span class="company">' +
               '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">' +
@@ -359,8 +371,11 @@
             }
             const timeline = document.getElementById('profile-experience');
             if (timeline && profile.experience.items) {
+                const hideDates = profile.employmentType === EMPLOYMENT_CONTRACT;
                 timeline.innerHTML = profile.experience.items
-                    .map(renderProfileExperienceItem)
+                    .map(function (item) {
+                        return renderProfileExperienceItem(item, hideDates);
+                    })
                     .join('');
                 timeline.hidden = false;
             }

@@ -30,7 +30,6 @@
         "title": "Senior UAT and Platform Validation Specialist",
         "organization": "Regulated reinsurance, remote hybrid, Chief Data Office ecosystem",
         "context": "",
-        "dates": "",
         "bullets": [
           "Wrote and ran UAT scripts for reporting pipelines, Power BI and Tableau dashboards, and finance platforms, including regression and edge case cycles tied to business acceptance criteria before production release.",
           "Logged, prioritized, and retested defects in Jira through closure; documented test results and release status in Confluence for sprint teams and audit partners.",
@@ -42,7 +41,6 @@
         "title": "Contract UAT and Reconciliation Analyst",
         "organization": "Commercial banking, part time contract",
         "context": "",
-        "dates": "",
         "bullets": [
           "Validated SQL reporting dashboards and treasury adjacent operational metrics in a regulated commercial banking environment before internal distribution.",
           "Built reconciliation checks, confirmed outputs against source extracts, and documented variances for developer follow up under strict confidentiality requirements."
@@ -52,7 +50,6 @@
         "title": "Contract UAT and Dashboard Validation Analyst",
         "organization": "Public sector financial systems, part time contract",
         "context": "",
-        "dates": "",
         "bullets": [
           "Tested transactional records against source systems and created repeatable validation checklists and discrepancy logs for developer and business resolution."
         ]

@@ -4337,3 +4337,7 @@ html:not([data-employment-type]) [data-show-for="contract"] {
 html[data-employment-type="contract"] [data-show-for="full_time"] {
     display: none !important;
 }
+
+html[data-employment-type="contract"] .experience-timeline .date {
+    display: none !important;
+}
