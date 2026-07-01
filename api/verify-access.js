@@ -201,6 +201,7 @@ module.exports = async function verifyAccess(req, res) {
         if (codeRow && codeRow.profile_slug) {
             profileSlug = gate.normalizeProfileSlug(codeRow.profile_slug);
         }
+        var contactEmail = profileSlug ? gate.getProfileContactEmail(profileSlug) : null;
         var token = gate.signSession(secrets.secret, employmentType, profileSlug);
         res.setHeader('Set-Cookie', gate.buildSessionCookie(token, req));
         gate.maybePruneOldRecords(sql).catch(function () {});
@@ -208,6 +209,7 @@ module.exports = async function verifyAccess(req, res) {
             ok: true,
             employmentType: employmentType,
             profileSlug: profileSlug,
+            contactEmail: contactEmail,
         });
     } catch (err) {
         console.error('verify-access', err && err.message, err);

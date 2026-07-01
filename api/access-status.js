@@ -52,13 +52,17 @@ module.exports = async function accessStatus(req, res) {
             }
         }
 
+        const profileSlug = session ? session.profileSlug : null;
+        const contactEmail = profileSlug ? gate.getProfileContactEmail(profileSlug) : null;
+
         return res.status(200).json({
             unlocked: unlocked,
             ready: true,
             blockedUntilSec: blockedUntilSec,
             challenge: challenge,
             employmentType: session ? session.employmentType : null,
-            profileSlug: session ? session.profileSlug : null,
+            profileSlug: profileSlug,
+            contactEmail: contactEmail,
         });
     } catch (fatal) {
         console.error('access-status:unhandled', fatal && fatal.message, fatal);

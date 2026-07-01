@@ -87,6 +87,20 @@
         if (nav && label) nav.textContent = label;
     }
 
+    function setSiteContactEmail(email) {
+        if (!email || typeof email !== 'string') return;
+        const normalized = email.trim();
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(normalized)) return;
+        const emailCard = document.getElementById('site-contact-email');
+        if (emailCard) {
+            emailCard.href = 'mailto:' + normalized;
+        }
+        const valueEl = document.getElementById('site-contact-email-value');
+        if (valueEl) {
+            valueEl.textContent = normalized;
+        }
+    }
+
     function applyEmploymentVariant(type) {
         const normalized = normalizeEmploymentType(type);
         document.documentElement.setAttribute('data-employment-type', normalized);
@@ -278,6 +292,10 @@
 
     function applySiteProfile(profile) {
         if (!profile || !profile.slug) return;
+
+        if (profile.contact && profile.contact.email) {
+            setSiteContactEmail(profile.contact.email);
+        }
 
         document.documentElement.setAttribute('data-profile-mode', 'tailored');
         document.documentElement.setAttribute('data-site-profile', profile.slug);
@@ -476,14 +494,6 @@
             }
             const contactBlock = document.getElementById('profile-contact-block');
             if (contactBlock) contactBlock.hidden = false;
-            if (profile.contact.email) {
-                const emailCard = document.querySelector('#contact .contact-card[href^="mailto:"]');
-                if (emailCard) {
-                    emailCard.href = 'mailto:' + profile.contact.email;
-                    const valueEl = emailCard.querySelector('.contact-value');
-                    if (valueEl) valueEl.textContent = profile.contact.email;
-                }
-            }
         }
 
         dedupeHeroButtons();
@@ -923,6 +933,7 @@
                     ? normalizeEmploymentType(res.body.employmentType)
                     : null,
                 profileSlug: res.body.profileSlug || null,
+                contactEmail: res.body.contactEmail || null,
             };
         } catch (e) {
             gateActiveApiBase = API_BASE;
@@ -979,6 +990,7 @@
                     ? normalizeEmploymentType(res.body.employmentType)
                     : EMPLOYMENT_FULL_TIME,
                 profileSlug: res.body.profileSlug || null,
+                contactEmail: res.body.contactEmail || null,
             };
         }
         if (res.status === 400 && res.body && res.body.error === 'challenge_failed') {
@@ -1298,6 +1310,9 @@
                     history.replaceState(null, '', window.location.pathname + window.location.search);
                 }
                 applyUnlockedDom({ clearLoading: true });
+                if (result.contactEmail) {
+                    setSiteContactEmail(result.contactEmail);
+                }
                 if (result.profileSlug) {
                     persistProfileSlug(result.profileSlug);
                     await hydrateSiteProfile(result.profileSlug, result.employmentType);
@@ -1673,6 +1688,7 @@
         let stored = false;
         let employmentType = EMPLOYMENT_FULL_TIME;
         let profileSlug = null;
+        let contactEmail = null;
         if (session.ready) {
             stored = !!session.unlocked;
             if (session.employmentType) {
@@ -1680,6 +1696,9 @@
             }
             if (session.profileSlug) {
                 profileSlug = session.profileSlug;
+            }
+            if (session.contactEmail) {
+                contactEmail = session.contactEmail;
             }
         } else {
             try {
@@ -1702,6 +1721,7 @@
                         stored = true;
                         employmentType = r.employmentType || EMPLOYMENT_FULL_TIME;
                         profileSlug = r.profileSlug || null;
+                        contactEmail = r.contactEmail || contactEmail;
                         if (isDemoInviteAccessCode(phrase)) {
                             markDemoAccess();
                             scheduleDemoInvitePopup();
@@ -1716,6 +1736,9 @@
         const preloader = document.getElementById('preloader');
 
         if (stored) {
+            if (contactEmail) {
+                setSiteContactEmail(contactEmail);
+            }
             if (profileSlug) {
                 await hydrateSiteProfile(profileSlug, employmentType);
             } else {
