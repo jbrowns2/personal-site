@@ -531,13 +531,22 @@
         }
 
         dedupeHeroButtons();
-        document
-            .querySelectorAll(
-                '#profile-highlights .reveal, #profile-experience .reveal, #profile-skills .reveal',
-            )
-            .forEach(function (el) {
-                el.classList.add('visible');
-            });
+        const revealSelectors = [
+            '#profile-highlights .reveal',
+            '#profile-experience .reveal',
+            '#profile-skills .reveal',
+        ];
+        const projectsSection = document.getElementById('projects');
+        const educationSection = document.getElementById('education');
+        if (projectsSection && !projectsSection.hidden) {
+            revealSelectors.push('#projects .reveal');
+        }
+        if (educationSection && !educationSection.hidden) {
+            revealSelectors.push('#education .reveal');
+        }
+        document.querySelectorAll(revealSelectors.join(', ')).forEach(function (el) {
+            el.classList.add('visible');
+        });
         document.dispatchEvent(new CustomEvent('portfolio:profile-applied'));
     }
 

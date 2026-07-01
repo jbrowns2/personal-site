@@ -4360,10 +4360,6 @@ html[data-profile-mode="tailored"] [data-site-fallback] {
     display: none !important;
 }
 
-html[data-profile-mode="tailored"] [data-show-for] {
-    display: none !important;
-}
-
 html[data-employment-type="full_time"] [data-show-for="contract"],
 html:not([data-employment-type]) [data-show-for="contract"] {
     display: none !important;
