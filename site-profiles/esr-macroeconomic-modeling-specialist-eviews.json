@@ -5,7 +5,7 @@
   "employmentType": "contract",
   "meta": {
     "title": "Jonathan Brownstein — Macroeconomic Modeling Specialist",
-    "description": "Econometrician and forecasting specialist with fifteen years in regulated financial services and global industrial organizations, including seven years building production time series models, forecast validation workflow"
+    "description": "Contract econometrician and forecasting specialist with fifteen years in regulated financial services and global industrial organizations, including seven years building production time series models, forecast validation"
   },
   "hero": {
     "badge": "Macroeconomic Modeling Specialist · Contract",
@@ -13,7 +13,7 @@
       "Macroeconomic Modeling and Time Series Forecasting",
       "Applied Econometrics"
     ],
-    "description": "Econometrician and forecasting specialist with fifteen years in regulated financial services and global industrial organizations, including seven years building production time series models, forecast validation workflows, and executive reporting for actuarial and finance leadership. MS in Economics and a graduate certificate in Applied Econometrics with graduate training in time series forecasting, multivariate econometric methods, and model diagnostics. Designed and operated an automated ARIMA forecasting platform on a scheduled production pipeline, with governed documentation and accuracy review before results reach decision makers. Hands on in Python, R, SAS, and SQL. Available for remote part time contract work.",
+    "description": "Contract econometrician and forecasting specialist with fifteen years in regulated financial services and global industrial organizations, including seven years building production time series models, forecast validation workflows, and executive reporting for actuarial and finance leadership. MS in Economics and a graduate certificate in Applied Econometrics with graduate training in time series forecasting, multivariate econometric methods, and model diagnostics. Designed and operated an automated ARIMA forecasting platform on a scheduled production pipeline, with governed documentation and accuracy review before results reach decision makers. Hands on in Python, R, SAS, and SQL. Available immediately for remote part time contract work.",
     "primaryCta": "Discuss This Role",
     "secondaryCta": "View Delivery Record"
   },
@@ -26,23 +26,22 @@
     "title": "Delivery Record",
     "items": [
       {
-        "title": "Senior Data Analyst III",
-        "organization": "Hannover Reinsurance Company LLC",
-        "context": "Time series forecasting and econometric modeling lead, Data Analytics Office",
+        "title": "Time Series Forecasting and Econometric Modeling Specialist",
+        "organization": "Global life and health reinsurance, remote contract",
+        "context": "",
         "bullets": [
           "Designed and deployed an automated ARIMA based forecasting platform for Net Amount at Risk on a scheduled production pipeline, with model validation, anomaly review, and trend reporting used by actuarial and finance leadership before period close.",
           "Built repeatable period over period valuation movement analysis across time periods and source systems, with documented methodology and audit friendly outputs other teams extended for variance and trend work.",
           "Developed statistical outlier and anomaly detection frameworks using probability density function methods across platforms processing more than a trillion records, supporting forecast reliability and early warning on attribute drift.",
-          "Authored model lifecycle documentation and methodology summaries for business and governance reviewers, translating statistical output into plain language narratives for mixed technical and non technical audiences.",
-          "Prototype and validate econometric models in Python, R, and SAS before production release, partnering with data engineering on automated pipeline delivery."
+          "Authored model lifecycle documentation and methodology summaries for business and governance reviewers, translating statistical output into plain language narratives for mixed technical and non technical audiences."
         ]
       },
       {
-        "title": "Assistant Business Controller",
-        "organization": "Chicago Pneumatic Company LLC (Atlas Copco Group)",
-        "context": "FP&A, forecasting, and executive reporting partner",
+        "title": "FP&A and Forecasting Analytics Consultant",
+        "organization": "Global industrial manufacturer, remote contract",
+        "context": "",
         "bullets": [
-          "Owned annual planning, monthly forecasting, and executive reporting cycles for finance, sales, operations, and regional leadership inside a global multidivisional manufacturer.",
+          "Owned annual planning, monthly forecasting, and executive reporting cycles for finance, sales, operations, and regional leadership inside a global multidivisional organization.",
           "Designed automated KPI dashboards and reporting frameworks that replaced manual reconciliation work and shortened month end forecast commentary cycles.",
           "Led cross functional reporting modernization that improved data consistency and validation checkpoints before numbers reached executive sponsors."
         ]
