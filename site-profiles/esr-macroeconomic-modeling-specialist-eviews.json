@@ -1,0 +1,112 @@
+{
+  "profileVersion": 1,
+  "slug": "esr-macroeconomic-modeling-specialist-eviews",
+  "accessCode": "ESR2026",
+  "employmentType": "contract",
+  "meta": {
+    "title": "Jonathan Brownstein — Macroeconomic Modeling Specialist",
+    "description": "Econometrician and forecasting specialist with fifteen years in regulated financial services and global industrial organizations, including seven years building production time series models, forecast validation workflow"
+  },
+  "hero": {
+    "badge": "Macroeconomic Modeling Specialist · Contract",
+    "typingPhrases": [
+      "Macroeconomic Modeling and Time Series Forecasting",
+      "Applied Econometrics"
+    ],
+    "description": "Econometrician and forecasting specialist with fifteen years in regulated financial services and global industrial organizations, including seven years building production time series models, forecast validation workflows, and executive reporting for actuarial and finance leadership. MS in Economics and a graduate certificate in Applied Econometrics with graduate training in time series forecasting, multivariate econometric methods, and model diagnostics. Designed and operated an automated ARIMA forecasting platform on a scheduled production pipeline, with governed documentation and accuracy review before results reach decision makers. Hands on in Python, R, SAS, and SQL. Available for remote part time contract work.",
+    "primaryCta": "Discuss This Role",
+    "secondaryCta": "View Delivery Record"
+  },
+  "highlights": [
+    {
+      "label": "Macroeconomic modeling, time series forecasting, ARIMA, applied econometrics, model validation, model diagnostics, forecast accuracy review, cointegration and multivariate time series methods, statistical outlier detection, period over period movement analysis, automated forecasting workflows, econometric scripting in Python and R, financial sector analytics, executive ready written reporting, remote contract delivery"
+    }
+  ],
+  "experience": {
+    "title": "Delivery Record",
+    "items": [
+      {
+        "title": "Senior Data Analyst III",
+        "organization": "Hannover Reinsurance Company LLC",
+        "context": "Time series forecasting and econometric modeling lead, Data Analytics Office",
+        "bullets": [
+          "Designed and deployed an automated ARIMA based forecasting platform for Net Amount at Risk on a scheduled production pipeline, with model validation, anomaly review, and trend reporting used by actuarial and finance leadership before period close.",
+          "Built repeatable period over period valuation movement analysis across time periods and source systems, with documented methodology and audit friendly outputs other teams extended for variance and trend work.",
+          "Developed statistical outlier and anomaly detection frameworks using probability density function methods across platforms processing more than a trillion records, supporting forecast reliability and early warning on attribute drift.",
+          "Authored model lifecycle documentation and methodology summaries for business and governance reviewers, translating statistical output into plain language narratives for mixed technical and non technical audiences.",
+          "Prototype and validate econometric models in Python, R, and SAS before production release, partnering with data engineering on automated pipeline delivery."
+        ]
+      },
+      {
+        "title": "Assistant Business Controller",
+        "organization": "Chicago Pneumatic Company LLC (Atlas Copco Group)",
+        "context": "FP&A, forecasting, and executive reporting partner",
+        "bullets": [
+          "Owned annual planning, monthly forecasting, and executive reporting cycles for finance, sales, operations, and regional leadership inside a global multidivisional manufacturer.",
+          "Designed automated KPI dashboards and reporting frameworks that replaced manual reconciliation work and shortened month end forecast commentary cycles.",
+          "Led cross functional reporting modernization that improved data consistency and validation checkpoints before numbers reached executive sponsors."
+        ]
+      }
+    ]
+  },
+  "skills": {
+    "title": "Skills & Expertise",
+    "groups": [
+      {
+        "title": "Econometrics and forecasting",
+        "items": [
+          "ARIMA, time series forecasting, applied econometrics, model diagnostics, forecast validation, cointegration and multivariate time series methods, statistical modeling"
+        ]
+      },
+      {
+        "title": "Languages and tools",
+        "items": [
+          "Python (pandas, NumPy, statsmodels, scikit learn), R, SAS, SQL, advanced Excel and VBA"
+        ]
+      },
+      {
+        "title": "Delivery",
+        "items": [
+          "automated forecasting pipelines, governed model documentation, Power BI, Tableau, Databricks, remote part time contract availability"
+        ]
+      }
+    ]
+  },
+  "sections": {
+    "projects": {
+      "visible": false
+    },
+    "education": {
+      "visible": true
+    }
+  },
+  "contact": {
+    "label": "06 / Hire",
+    "title": "Available for Contract Engagements",
+    "intro": "Open to contract roles through agencies and direct clients. Based in Illinois; available for remote and hybrid engagements.",
+    "engagementPills": [
+      "Contract",
+      "Remote",
+      "Defined Deliverables"
+    ],
+    "valueItems": [
+      {
+        "label": "Fast ramp",
+        "body": "Deep domain experience in regulated financial services"
+      },
+      {
+        "label": "Scoped delivery",
+        "body": "Milestone-driven work with documented handoffs"
+      },
+      {
+        "label": "Independent execution",
+        "body": "Self-directed within matrix teams across finance, IT, and compliance"
+      },
+      {
+        "label": "Audit-ready",
+        "body": "Governance-aligned documentation and knowledge transfer"
+      }
+    ],
+    "email": "JonathanBrownstein12@icloud.com"
+  }
+}
