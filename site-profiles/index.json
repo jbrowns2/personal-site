@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-01T20:34:31.205Z",
+  "generatedAt": "2026-07-02T14:50:58.353Z",
   "profiles": [
     {
       "slug": "beacon-hill-uat",
@@ -114,6 +114,13 @@
       "role": "Jonathan Brownstein — Part-Time Survey and Data Insights Analyst - …"
     },
     {
+      "slug": "tsmg-ai-ml-data-contributor",
+      "accessCode": "TSMG2026",
+      "folder": "TSMG-AI-ML-Data-Contributor",
+      "employmentType": "contract",
+      "role": "Jonathan Brownstein — AI/ML Data Contributor"
+    },
+    {
       "slug": "upwork",
       "accessCode": "",
       "folder": "Upwork-General-Consulting",
@@ -124,7 +131,7 @@
       "slug": "verve",
       "accessCode": "VERVE2026",
       "folder": "Verve-Data-Engineer-8474867002",
-      "employmentType": "full_time",
+      "employmentType": "contract",
       "role": "Jonathan Brownstein — Data Engineer  — Job 8474867002"
     },
     {

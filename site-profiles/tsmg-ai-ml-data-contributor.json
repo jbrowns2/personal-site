@@ -1,0 +1,111 @@
+{
+  "profileVersion": 1,
+  "slug": "tsmg-ai-ml-data-contributor",
+  "accessCode": "TSMG2026",
+  "employmentType": "contract",
+  "meta": {
+    "title": "Jonathan Brownstein — AI/ML Data Contributor",
+    "description": "Chicago area professional with more than ten years supporting machine learning and analytics programs through data quality review, labeling standards, content evaluation, and governed testing in regulated enterprise envi"
+  },
+  "hero": {
+    "badge": "AI/ML Data Contributor · Contract",
+    "typingPhrases": [
+      "Data & Analytics",
+      "MSE, FLMI"
+    ],
+    "description": "Chicago area professional with more than ten years supporting machine learning and analytics programs through data quality review, labeling standards, content evaluation, and governed testing in regulated enterprise environments. I follow written project guidelines closely, document results clearly, and finish task based assignments on schedule. Comfortable with remote work, on site sessions when required, and flexible part time contract schedules. MS in Economics with applied econometrics training. Based in Wauconda, Illinois within the Chicago metro area.",
+    "primaryCta": "Discuss This Role",
+    "secondaryCta": "View Delivery Record"
+  },
+  "highlights": [
+    {
+      "label": "AI/ML data contributor, data labeling, data annotation, content evaluation, machine learning data quality, QA and testing, attention to detail, task based delivery, model validation support, anomaly review, metadata and lineage checks, Python and SQL for data review, Excel for structured QA, remote and on site participation, part time contract availability, Chicago Illinois"
+    }
+  ],
+  "experience": {
+    "title": "Delivery Record",
+    "items": [
+      {
+        "title": "Machine Learning Data Quality and Validation Specialist",
+        "organization": "Global life and health reinsurance, remote contract",
+        "context": "",
+        "bullets": [
+          "Reviewed and validated training data for classification machine learning workflows, applying consistent labeling rules and escalation criteria before models moved to production.",
+          "Performed content evaluation and quality checks on large structured datasets used in actuarial and finance reporting, catching attribute drift and inconsistencies before downstream consumers relied on the numbers.",
+          "Supported user acceptance style testing on analytics releases, logging defects, confirming fixes, and signing off when results matched project guidelines.",
+          "Partnered with data engineering and governance teams on metadata standards that made labeled fields easier to audit and reuse across projects."
+        ]
+      },
+      {
+        "title": "Analytics QA and Reporting Validation Lead",
+        "organization": "Global industrial manufacturer, remote contract",
+        "context": "",
+        "bullets": [
+          "Led quality review on cross functional reporting outputs used by finance, sales, and operations leadership, with checklist driven validation before numbers went to executives.",
+          "Built automated checks that flagged missing fields, out of range values, and broken joins in recurring KPI datasets.",
+          "Coordinated testing cycles with business sponsors, tracked issues to resolution, and documented handoffs so internal teams could maintain the reports."
+        ]
+      }
+    ]
+  },
+  "skills": {
+    "title": "Skills & Expertise",
+    "groups": [
+      {
+        "title": "AI/ML support",
+        "items": [
+          "data labeling, annotation, content evaluation, model validation, QA testing, anomaly review"
+        ]
+      },
+      {
+        "title": "Tools",
+        "items": [
+          "Python, SQL, Excel, Power BI, Tableau, browser based collaboration tools, standard office software"
+        ]
+      },
+      {
+        "title": "Work style",
+        "items": [
+          "task based delivery, written instructions, flexible part time schedule, Chicago area on site availability"
+        ]
+      }
+    ]
+  },
+  "sections": {
+    "projects": {
+      "visible": false
+    },
+    "education": {
+      "visible": true
+    }
+  },
+  "contact": {
+    "label": "06 / Hire",
+    "title": "Available for Contract Engagements",
+    "intro": "Open to contract roles through agencies and direct clients. Based in Illinois; available for remote and hybrid engagements.",
+    "engagementPills": [
+      "Contract",
+      "Remote",
+      "Defined Deliverables"
+    ],
+    "valueItems": [
+      {
+        "label": "Fast ramp",
+        "body": "Deep domain experience in regulated financial services"
+      },
+      {
+        "label": "Scoped delivery",
+        "body": "Milestone-driven work with documented handoffs"
+      },
+      {
+        "label": "Independent execution",
+        "body": "Self-directed within matrix teams across finance, IT, and compliance"
+      },
+      {
+        "label": "Audit-ready",
+        "body": "Governance-aligned documentation and knowledge transfer"
+      }
+    ],
+    "email": "JonathanBrownstein12@icloud.com"
+  }
+}
