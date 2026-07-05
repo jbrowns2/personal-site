@@ -1,0 +1,121 @@
+{
+  "profileVersion": 1,
+  "slug": "flock-full-stack-engineer-ml-tooling",
+  "accessCode": "FLOCK2026",
+  "employmentType": "contract",
+  "meta": {
+    "title": "Jonathan Brownstein — Full Stack Engineer, Machine Learning Tooling (Consultant)",
+    "description": "ML platform builder and full stack engineer with an MS in Economics and applied econometrics training, plus fifteen years shipping production forecasting, classification, and anomaly detection systems for data science partners."
+  },
+  "hero": {
+    "badge": "Full Stack Engineer, Machine Learning Tooling · Contract",
+    "typingPhrases": [
+      "Full Stack Engineer",
+      "MS Economics, Applied Econometrics",
+      "Time Series and ML Tooling",
+      "Internal Tools for ML Workflows"
+    ],
+    "description": "ML platform builder and full stack engineer with an MS in Economics and graduate training in applied econometrics, plus fifteen years shipping production forecasting, classification, and anomaly detection systems. Econometric grounding in time series modeling, statistical inference, and model validation shapes how I build ML tooling: clear specifications, interpretable outputs, and pipelines data science partners can audit. Python, SQL, and React delivery spans enterprise analytics programs and Your Website In 7 Days LLC, including econometric ARIMA platforms, classification workflows, PDF based outlier detection, and a home camera vision system pairing ML with LLMs. Based in northern Illinois. Available immediately for remote contract engagement with direct billing to the LLC.",
+    "primaryCta": "Discuss This Role",
+    "secondaryCta": "View Delivery Record"
+  },
+  "highlights": [
+    {
+      "label": "MS Economics and applied econometrics: time series modeling, statistical inference, and model validation applied to ML tooling"
+    },
+    {
+      "label": "Production ML systems: econometric ARIMA forecasting, classification pipelines, and PDF based anomaly detection"
+    },
+    {
+      "label": "Full stack delivery: serverless Node.js APIs, relational data, responsive UI, and home camera vision R&D with ML and LLMs"
+    },
+    {
+      "label": "Production ownership: metadata lineage tooling, code review discipline, and governed releases for data science partners"
+    }
+  ],
+  "experience": {
+    "title": "Delivery Record",
+    "items": [
+      {
+        "title": "Full Stack Web and API Engineering",
+        "organization": "Production platforms · serverless Node.js · React UI · computer vision and LLM integration · Remote contract",
+        "context": "",
+        "bullets": [
+          "Built and maintain a production web platform with serverless API endpoints, session authentication, and profile driven content loading on a relational database.",
+          "Ship responsive UI and Git based cloud releases; building a home camera vision system using ML and LLMs to interpret activity around a property."
+        ]
+      },
+      {
+        "title": "ML Tooling and Econometric Analytics Platforms",
+        "organization": "Time series forecasting · classification ML · statistical outlier detection · metadata lineage · Remote contract · governed production analytics releases",
+        "context": "",
+        "bullets": [
+          "Architected an econometric ARIMA forecasting platform on a scheduled pipeline, translating time series specification and residual analysis into early anomaly signals for ML and actuarial partners.",
+          "Operationalized classification ML that modernized a regulated entity linking workflow, improving accuracy and governance; recognized by senior leadership.",
+          "Built PDF based statistical outlier detection to flag large scale attribute shifts before they reached production consumers.",
+          "Led metadata and lineage tooling adopted as the enterprise reference for a trillion record warehouse; technical lead on governed production analytics releases."
+        ]
+      }
+    ]
+  },
+  "skills": {
+    "title": "Skills & Expertise",
+    "groups": [
+      {
+        "title": "Econometrics and ML",
+        "items": [
+          "Time series (ARIMA), regression and classification models, statistical inference, anomaly detection, model validation, Python, R, SQL, Databricks, LLM integration"
+        ]
+      },
+      {
+        "title": "Full Stack",
+        "items": [
+          "JavaScript, TypeScript, React, Node.js, REST APIs, HTML, CSS, relational databases, responsive layout"
+        ]
+      },
+      {
+        "title": "Infrastructure and Delivery",
+        "items": [
+          "Git, Vercel serverless, Docker, code review, ML workflow support, authentication, cross team collaboration"
+        ]
+      }
+    ]
+  },
+  "sections": {
+    "projects": {
+      "visible": true
+    },
+    "education": {
+      "visible": true
+    }
+  },
+  "contact": {
+    "label": "06 / Hire",
+    "title": "Available for Contract Engagements",
+    "intro": "Open to consulting on Flock's ML Tooling team through direct LLC billing or an established consulting partner. Based in northern Illinois; available for Chicago hub collaboration or fully remote delivery.",
+    "engagementPills": [
+      "Contract",
+      "Remote",
+      "Chicago Hub"
+    ],
+    "valueItems": [
+      {
+        "label": "Fast ramp",
+        "body": "Senior full stack and ML platform experience without FTE onboarding overhead"
+      },
+      {
+        "label": "Scoped delivery",
+        "body": "Milestone driven internal tooling work with documented handoffs"
+      },
+      {
+        "label": "Econometric depth",
+        "body": "MS Economics and applied econometrics applied to forecasting, classification, and model validation tooling"
+      },
+      {
+        "label": "Production ready",
+        "body": "Code review discipline, release ownership, and cross team collaboration"
+      }
+    ],
+    "email": "jonathan@yourwebsitein7days.com"
+  }
+}

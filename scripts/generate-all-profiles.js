@@ -38,6 +38,7 @@ const SLUG_OVERRIDES = {
     'HUB-Mgr-Sales-Reporting-R0036086': 'hub-sales',
     'ITW-Controller-JR7846': 'itw',
     'Verve-Data-Engineer-8474867002': 'verve',
+    'Flock-Full-Stack-Engineer-ML-Tooling': 'flock-full-stack-engineer-ml-tooling',
     'Upwork-General-Consulting': 'upwork',
 };
 

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-02T15:05:49.826Z",
+  "generatedAt": "2026-07-05T11:52:26.871Z",
   "profiles": [
     {
       "slug": "beacon-hill-uat",
@@ -35,6 +35,13 @@
       "folder": "ESR-Macroeconomic-Modeling-Specialist-EViews",
       "employmentType": "contract",
       "role": "Jonathan Brownstein — Macroeconomic Modeling Specialist"
+    },
+    {
+      "slug": "flock-full-stack-engineer-ml-tooling",
+      "accessCode": "FLOCK2026",
+      "folder": "Flock-Full-Stack-Engineer-ML-Tooling",
+      "employmentType": "contract",
+      "role": "Jonathan Brownstein — Full Stack Engineer, Machine Learning Tooling"
     },
     {
       "slug": "grainger",
