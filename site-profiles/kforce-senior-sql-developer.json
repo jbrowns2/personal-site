@@ -1,0 +1,119 @@
+{
+  "profileVersion": 1,
+  "slug": "kforce-senior-sql-developer",
+  "accessCode": "KFORCE2026",
+  "employmentType": "contract",
+  "meta": {
+    "title": "Jonathan Brownstein — Senior SQL Developer — ITWQG2176943",
+    "description": "Senior SQL developer with fifteen years building governed data models, production SQL, SSRS reports, and Power BI dashboards in regulated enterprise environments. Expert level SQL for complex joins, stored logic, perform"
+  },
+  "hero": {
+    "badge": "Remote Contract Senior SQL Developer — ITWQG2176943 · Contract",
+    "typingPhrases": [
+      "Senior SQL Developer",
+      "SSRS and Power BI Reporting",
+      "Python Scripting"
+    ],
+    "description": "Senior SQL developer with fifteen years building governed data models, production SQL, SSRS reports, and Power BI dashboards in regulated enterprise environments. Expert level SQL for complex joins, stored logic, performance tuning, and claims adjacent financial and insurance datasets. Python for validation scripts, automation, and reporting support routines. Contract delivery spans requirements through tested report releases with documented logic. Available immediately for remote contract work from northern Illinois on PST hours.",
+    "primaryCta": "Discuss This Role",
+    "secondaryCta": "View Delivery Record"
+  },
+  "highlights": [
+    {
+      "label": "SQL development, T SQL, data modeling, SSRS, Power BI, Python scripting, stored procedures, query optimization, reporting lifecycle, data validation, healthcare adjacent claims data, Medicare data familiarity, requirements gathering, UAT support, Agile delivery, remote contract delivery"
+    }
+  ],
+  "experience": {
+    "title": "Delivery Record",
+    "intro": "Contract consulting work.",
+    "items": [
+      {
+        "title": "Contract Senior SQL and SSRS Reporting Developer",
+        "organization": "",
+        "context": "",
+        "bullets": [
+          "Built and maintained SQL data models and reporting layers for high volume insurance and financial operational datasets used in recurring executive and compliance reporting.",
+          "Developed SSRS and Power BI reports with parameterized layouts, governed definitions, and reconciliation checks before production release.",
+          "Wrote Python scripts to automate extract validation, exception logging, and repeatable pre release QA on reporting outputs."
+        ]
+      },
+      {
+        "title": "Contract SQL Reporting and Analytics Engineer",
+        "organization": "",
+        "context": "",
+        "bullets": [
+          "Tuned complex SQL across relational sources for ad hoc analysis, recurring KPI packages, and performance sensitive operational extracts.",
+          "Translated business requirements into report specifications, field logic documentation, and acceptance test scenarios for stakeholder sign off."
+        ]
+      },
+      {
+        "title": "Contract Data Validation and SQL QA Analyst",
+        "organization": "",
+        "context": "",
+        "bullets": [
+          "Compared report outputs to source SQL extracts with documented test routines and defect tracking in regulated environments."
+        ]
+      }
+    ]
+  },
+  "skills": {
+    "title": "Contract Skills & Expertise",
+    "groups": [
+      {
+        "title": "SQL and reporting",
+        "items": [
+          "SQL development, T SQL, data modeling, SSRS, Power BI, stored procedures, query optimization, report parameterization, reconciliation, UAT support"
+        ]
+      },
+      {
+        "title": "Scripting",
+        "items": [
+          "Python, VBA, Excel, Power Query"
+        ]
+      },
+      {
+        "title": "Delivery",
+        "items": [
+          "requirements translation, documented report logic, remote contract collaboration, PST schedule availability"
+        ]
+      }
+    ]
+  },
+  "sections": {
+    "projects": {
+      "visible": false
+    },
+    "education": {
+      "visible": false
+    }
+  },
+  "contact": {
+    "label": "06 / Hire",
+    "title": "Available for Contract Engagements",
+    "intro": "Open to remote contract roles through Kforce and other agency partners. Based in northern Illinois; available for PST business hours.",
+    "engagementPills": [
+      "Contract",
+      "Remote",
+      "Defined Deliverables"
+    ],
+    "valueItems": [
+      {
+        "label": "Fast ramp",
+        "body": "Expert SQL, SSRS, and Python delivery without permanent headcount onboarding overhead"
+      },
+      {
+        "label": "Scoped delivery",
+        "body": "SQL data models, SSRS and Power BI reports, and documented handoffs"
+      },
+      {
+        "label": "Independent execution",
+        "body": "Self-directed within matrix teams across finance, IT, and compliance"
+      },
+      {
+        "label": "Audit-ready",
+        "body": "Governance-aligned documentation and knowledge transfer"
+      }
+    ],
+    "email": "jonathansbrownstein@icloud.com"
+  }
+}
