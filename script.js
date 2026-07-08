@@ -419,7 +419,12 @@
             }
             const expIntro = document.getElementById('profile-experience-intro');
             if (expIntro) {
-                expIntro.hidden = true;
+                if (profile.experience.intro) {
+                    expIntro.textContent = profile.experience.intro;
+                    expIntro.hidden = false;
+                } else {
+                    expIntro.hidden = true;
+                }
             }
             const timeline = document.getElementById('profile-experience');
             if (timeline && profile.experience.items) {
