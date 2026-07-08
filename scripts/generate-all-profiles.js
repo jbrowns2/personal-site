@@ -41,6 +41,7 @@ const SLUG_OVERRIDES = {
     'Flock-Full-Stack-Engineer-ML-Tooling': 'flock-full-stack-engineer-ml-tooling',
     'Upwork-General-Consulting': 'upwork',
     'Motion-Recruitment-AI-Tools-Automation-Specialist-6117': 'motion-ai-tools-automation-specialist',
+    'MMD-Remote-Data-Architect': 'mmd-remote-data-architect',
 };
 
 function findResumeFiles() {

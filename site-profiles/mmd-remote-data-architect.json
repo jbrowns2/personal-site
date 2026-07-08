@@ -1,0 +1,119 @@
+{
+  "profileVersion": 1,
+  "slug": "mmd-remote-data-architect",
+  "accessCode": "MMD2026",
+  "employmentType": "contract",
+  "meta": {
+    "title": "Jonathan Brownstein — Remote Data Architect",
+    "description": "Data architect with fifteen years designing enterprise lakehouse and warehouse solutions, governed analytical assets, and scalable ELT pipelines in regulated environments. I establish data standards, metadata and lineage"
+  },
+  "hero": {
+    "badge": "Remote Data Architect · Contract",
+    "typingPhrases": [
+      "Data Architect",
+      "Enterprise Lakehouse and Warehouse Design",
+      "Data Governance"
+    ],
+    "description": "Data architect with fifteen years designing enterprise lakehouse and warehouse solutions, governed analytical assets, and scalable ELT pipelines in regulated environments. I establish data standards, metadata and lineage frameworks, and architecture patterns supporting quality, security, and self service analytics. Contract work spans trillion record warehouse programs, Databricks lakehouse delivery, and Power BI and Tableau reporting layers. Available immediately for remote contract work from northern Illinois.",
+    "primaryCta": "Discuss This Role",
+    "secondaryCta": "View Delivery Record"
+  },
+  "highlights": [
+    {
+      "label": "Enterprise data architecture, data modeling, data warehouse design, lakehouse architecture, ELT pipelines, data governance, data standards, metadata management, data lineage, data quality, Python, SQL, Databricks, cloud data platforms, performance optimization, self service analytics, Power BI, Tableau, stakeholder partnership, remote contract delivery"
+    }
+  ],
+  "experience": {
+    "title": "Delivery Record",
+    "intro": "Contract consulting work. Client names withheld under standard NDAs.",
+    "items": [
+      {
+        "title": "Senior Enterprise Data Architect and Lakehouse Specialist",
+        "organization": "Regulated financial services enterprise, remote hybrid contract, Chief Data Office ecosystem",
+        "context": "",
+        "bullets": [
+          "Led lakehouse and warehouse architecture across actuarial, finance, and operational domains with governed analytical assets.",
+          "Established metadata, lineage, and data standards adopted as the authoritative reference for a trillion record warehouse program.",
+          "Architected ELT pipelines and reusable data models with governance, quality controls, and self service Power BI and Tableau reporting layers."
+        ]
+      },
+      {
+        "title": "Data Architecture and Analytics Modernization Consultant",
+        "organization": "Global manufacturing group, regional finance leadership",
+        "context": "",
+        "bullets": [
+          "Modernized reporting architecture and automated KPI frameworks for finance and operations leadership.",
+          "Translated business requirements into scoped data models and recurring analytical outputs on planning timelines."
+        ]
+      },
+      {
+        "title": "Contract Data Architecture Validation Analyst",
+        "organization": "Commercial banking and public sector financial systems, part time contract",
+        "context": "",
+        "bullets": [
+          "Validated warehouse reporting outputs against source systems with documented reconciliation and sign off routines."
+        ]
+      }
+    ]
+  },
+  "skills": {
+    "title": "Skills & Expertise",
+    "groups": [
+      {
+        "title": "Architecture",
+        "items": [
+          "enterprise data architecture, data modeling, warehouse and lakehouse design, metadata management, data lineage, data governance, data standards, distributed data processing, performance optimization"
+        ]
+      },
+      {
+        "title": "Platforms",
+        "items": [
+          "Python, SQL, Databricks, R, relational databases, cloud data platform patterns, Git, Power BI, Tableau, SSRS"
+        ]
+      },
+      {
+        "title": "Delivery",
+        "items": [
+          "ELT pipeline design, self service analytics enablement, cross functional stakeholder partnership, remote contract collaboration"
+        ]
+      }
+    ]
+  },
+  "sections": {
+    "projects": {
+      "visible": true
+    },
+    "education": {
+      "visible": true
+    }
+  },
+  "contact": {
+    "label": "06 / Hire",
+    "title": "Available for Contract Engagements",
+    "intro": "Open to contract roles through agencies and direct clients. Based in Illinois; available for remote and hybrid engagements.",
+    "engagementPills": [
+      "Contract",
+      "Remote",
+      "Defined Deliverables"
+    ],
+    "valueItems": [
+      {
+        "label": "Fast ramp",
+        "body": "Deep domain experience in regulated financial services"
+      },
+      {
+        "label": "Scoped delivery",
+        "body": "Milestone-driven work with documented handoffs"
+      },
+      {
+        "label": "Independent execution",
+        "body": "Self-directed within matrix teams across finance, IT, and compliance"
+      },
+      {
+        "label": "Audit-ready",
+        "body": "Governance-aligned documentation and knowledge transfer"
+      }
+    ],
+    "email": "jonathansbrownstein@icloud.com"
+  }
+}

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-08T16:38:44.483Z",
+  "generatedAt": "2026-07-08T17:01:48.283Z",
   "profiles": [
     {
       "slug": "actalent-hr-data-analyst-jp-006125903",
@@ -84,6 +84,13 @@
       "folder": "LexisNexis-Risk-Data-Scientist-R111919",
       "employmentType": "full_time",
       "role": "Jonathan Brownstein — Data Scientist"
+    },
+    {
+      "slug": "mmd-remote-data-architect",
+      "accessCode": "MMD2026",
+      "folder": "MMD-Remote-Data-Architect",
+      "employmentType": "contract",
+      "role": "Jonathan Brownstein — Remote Data Architect"
     },
     {
       "slug": "markel",
