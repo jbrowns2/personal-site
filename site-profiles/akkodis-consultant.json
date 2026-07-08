@@ -1,0 +1,120 @@
+{
+  "profileVersion": 1,
+  "slug": "akkodis-consultant",
+  "accessCode": "AKKODIS2026",
+  "employmentType": "contract",
+  "meta": {
+    "title": "Jonathan Brownstein — Consultant — Ref 1634792",
+    "description": "Data platform consultant with fifteen years organizing lakehouse assets, building governed ELT pipelines, and improving data quality in regulated enterprise environments. Hands-on Azure Data Lake and Databricks delivery "
+  },
+  "hero": {
+    "badge": "Remote Data Platform Consultant — Ref 1634792 · Contract",
+    "typingPhrases": [
+      "Data Platform Consultant",
+      "Azure Data Lake and Databricks",
+      "Data Governance"
+    ],
+    "description": "Data platform consultant with fifteen years organizing lakehouse assets, building governed ELT pipelines, and improving data quality in regulated enterprise environments. Hands-on Azure Data Lake and Databricks delivery spanning table inventory, feed onboarding, automated pipelines that replace manual uploads, and documented lineage, metadata, and PII-aware governance standards. Strong SQL and Python for transformation logic, performance tuning, and cross-functional enablement. Available immediately for remote contract work from northern Illinois.",
+    "primaryCta": "Discuss This Role",
+    "secondaryCta": "View Delivery Record"
+  },
+  "highlights": [
+    {
+      "label": "Data platform governance, Azure Data Lake, Azure Databricks, ETL and ELT pipelines, SQL, Python, data feed review, pipeline automation, data quality frameworks, lineage and metadata documentation, PII handling standards, table optimization, stakeholder collaboration, technical documentation, remote contract delivery"
+    }
+  ],
+  "experience": {
+    "title": "Delivery Record",
+    "intro": "Contract consulting work.",
+    "items": [
+      {
+        "title": "Contract Data Platform and Lakehouse Governance Specialist",
+        "organization": "",
+        "context": "",
+        "bullets": [
+          "Assessed and organized Databricks and Azure Data Lake tables into structured inventories with performance tuning and clearer partitioning for downstream analytics teams.",
+          "Led data feed reviews with business and engineering partners to onboard new marketing and operational sources with documented transformation logic and access patterns.",
+          "Documented lineage, field definitions, metadata standards, and PII handling expectations for governed datasets used across compliance-sensitive reporting."
+        ]
+      },
+      {
+        "title": "Contract Pipeline Automation and Data Quality Engineer",
+        "organization": "",
+        "context": "",
+        "bullets": [
+          "Replaced recurring manual file uploads with scheduled ELT workflows in Databricks using Python and SQL, improving reliability and reducing handoff errors.",
+          "Built data quality checks with exception reporting, root-cause analysis, and corrective actions before production consumers relied on refreshed tables.",
+          "Partnered across analytics, operations, and platform teams on access requests, enablement, and continuous improvement of shared data assets."
+        ]
+      },
+      {
+        "title": "Contract Data Validation and Metadata Documentation Analyst",
+        "organization": "",
+        "context": "",
+        "bullets": [
+          "Executed reconciliation routines comparing pipeline outputs to source extracts with defect tracking in regulated environments."
+        ]
+      }
+    ]
+  },
+  "skills": {
+    "title": "Contract Skills & Expertise",
+    "groups": [
+      {
+        "title": "Data platform",
+        "items": [
+          "data governance, lineage documentation, metadata standards, data quality monitoring, feed onboarding, pipeline troubleshooting, technical documentation"
+        ]
+      },
+      {
+        "title": "Platforms",
+        "items": [
+          "Azure Data Lake, Azure Databricks, Python, SQL, relational databases, Git, Azure cloud data platform patterns"
+        ]
+      },
+      {
+        "title": "Delivery",
+        "items": [
+          "cross-functional collaboration, access enablement, remote contract collaboration"
+        ]
+      }
+    ]
+  },
+  "sections": {
+    "projects": {
+      "visible": false
+    },
+    "education": {
+      "visible": false
+    }
+  },
+  "contact": {
+    "label": "06 / Hire",
+    "title": "Available for Contract Engagements",
+    "intro": "Open to remote contract roles through Akkodis and other agency partners. Based in northern Illinois.",
+    "engagementPills": [
+      "Contract",
+      "Remote",
+      "Defined Deliverables"
+    ],
+    "valueItems": [
+      {
+        "label": "Fast ramp",
+        "body": "Azure Data Lake, Databricks, and governance delivery from day one"
+      },
+      {
+        "label": "Scoped delivery",
+        "body": "Feed onboarding, pipeline automation, lineage, and documented handoffs"
+      },
+      {
+        "label": "Independent execution",
+        "body": "Self-directed within matrix teams across finance, IT, and compliance"
+      },
+      {
+        "label": "Audit-ready",
+        "body": "Governance-aligned documentation and knowledge transfer"
+      }
+    ],
+    "email": "jonathansbrownstein@icloud.com"
+  }
+}
