@@ -1,0 +1,120 @@
+{
+  "profileVersion": 1,
+  "slug": "actalent-hr-data-analyst-jp-006125903",
+  "accessCode": "ACTALENT2026",
+  "employmentType": "contract",
+  "meta": {
+    "title": "Jonathan Brownstein — HR Data Analyst — Job JP-006125903",
+    "description": "HR analytics and enterprise reporting specialist with fifteen years turning workforce and financial data into reports leadership can act on. I build governed reporting layers, document logic and lineage, and reconcile ou"
+  },
+  "hero": {
+    "badge": "HR Data Analyst — Job JP-006125903 · Contract",
+    "typingPhrases": [
+      "HR Data Analyst",
+      "HRIS Reporting and Workforce Analytics",
+      "Data Governance"
+    ],
+    "description": "HR analytics and enterprise reporting specialist with fifteen years turning workforce and financial data into reports leadership can act on. I build governed reporting layers, document logic and lineage, and reconcile outputs to source systems for HR, Payroll, Finance, and compliance partners. Contract work spans enterprise metadata architecture, Power BI and Tableau dashboards, FP&A workforce reporting, and audit ready validation workflows. Available immediately for remote or hybrid work from northern Illinois.",
+    "primaryCta": "Discuss This Role",
+    "secondaryCta": "View Delivery Record"
+  },
+  "highlights": [
+    {
+      "label": "HR analytics, workforce reporting, HRIS adjacent reporting, HCM process support, ad hoc and standard report development, data quality and integrity, reporting documentation, data governance, Microsoft Excel, SQL, Power BI, Tableau, user acceptance testing, cross functional stakeholder management"
+    }
+  ],
+  "experience": {
+    "title": "Delivery Record",
+    "items": [
+      {
+        "title": "Senior HR Analytics and Enterprise Reporting Specialist",
+        "organization": "Regulated financial services enterprise, remote hybrid contract, Chief Data Office ecosystem",
+        "context": "",
+        "bullets": [
+          "Built an enterprise metadata and lineage reference documenting field definitions, source systems, and business rules for report validation before distribution.",
+          "Designed extract comparison frameworks reconciling movement across periods and sources, with logic documented for audit review and stakeholder sign off.",
+          "Delivered Power BI, Tableau, and SSRS dashboards translating multi source data into workforce and financial narratives for executive planning.",
+          "Partnered with engineering, BI, governance, and business teams on data quality remediation, privacy aligned controls, and user acceptance testing before production release."
+        ]
+      },
+      {
+        "title": "FP&A and Workforce Reporting Consultant",
+        "organization": "Global manufacturing group, regional finance leadership",
+        "context": "",
+        "bullets": [
+          "Analytics partner to HR, Sales, Operations, and regional leadership on workforce and operational metrics tied to planning cycles.",
+          "Automated KPI dashboards improved data accessibility, consistency, and month end efficiency across multidivisional reporting.",
+          "Governance and quality checks on headcount reporting before numbers reached executive review."
+        ]
+      },
+      {
+        "title": "Contract Reporting Validation and UAT Analyst",
+        "organization": "Commercial banking and public sector financial systems, part time contract",
+        "context": "",
+        "bullets": [
+          "Validated SQL reporting outputs against source extracts and executed user acceptance test scripts with defect tracking and sign off documentation in regulated environments."
+        ]
+      }
+    ]
+  },
+  "skills": {
+    "title": "Skills & Expertise",
+    "groups": [
+      {
+        "title": "HR and reporting",
+        "items": [
+          "HR analytics, workforce reporting, HRIS adjacent enterprise reporting, HCM process familiarity, ad hoc reporting, standard report development, reporting documentation, business rules, data source mapping, reconciliations, data quality and integrity"
+        ]
+      },
+      {
+        "title": "Tools",
+        "items": [
+          "Microsoft Excel, SQL, Power BI, Tableau, SSRS, Databricks, Python, R, VBA"
+        ]
+      },
+      {
+        "title": "Delivery",
+        "items": [
+          "data governance, user acceptance testing, cross functional stakeholder communication, regulated and audit ready documentation"
+        ]
+      }
+    ]
+  },
+  "sections": {
+    "projects": {
+      "visible": true
+    },
+    "education": {
+      "visible": true
+    }
+  },
+  "contact": {
+    "label": "06 / Hire",
+    "title": "Available for Contract Engagements",
+    "intro": "Open to contract roles through agencies and direct clients. Based in Illinois; available for remote and hybrid engagements.",
+    "engagementPills": [
+      "Contract",
+      "Remote",
+      "Defined Deliverables"
+    ],
+    "valueItems": [
+      {
+        "label": "Fast ramp",
+        "body": "Deep domain experience in regulated financial services"
+      },
+      {
+        "label": "Scoped delivery",
+        "body": "Milestone-driven work with documented handoffs"
+      },
+      {
+        "label": "Independent execution",
+        "body": "Self-directed within matrix teams across finance, IT, and compliance"
+      },
+      {
+        "label": "Audit-ready",
+        "body": "Governance-aligned documentation and knowledge transfer"
+      }
+    ],
+    "email": "jonathan@yourwebsitein7days.com"
+  }
+}

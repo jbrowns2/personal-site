@@ -1,6 +1,13 @@
 {
-  "generatedAt": "2026-07-05T11:52:26.871Z",
+  "generatedAt": "2026-07-08T15:56:01.226Z",
   "profiles": [
+    {
+      "slug": "actalent-hr-data-analyst-jp-006125903",
+      "accessCode": "ACTALENT2026",
+      "folder": "Actalent-HR-Data-Analyst-JP-006125903",
+      "employmentType": "contract",
+      "role": "Jonathan Brownstein — HR Data Analyst — Job JP-006125903"
+    },
     {
       "slug": "beacon-hill-uat",
       "accessCode": "BEACON2026",
