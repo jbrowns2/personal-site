@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-08T17:33:53.509Z",
+  "generatedAt": "2026-07-08T17:45:43.853Z",
   "profiles": [
     {
       "slug": "actalent-hr-data-analyst-jp-006125903",
@@ -70,6 +70,13 @@
       "folder": "ITW-Controller-JR7846",
       "employmentType": "full_time",
       "role": "Jonathan Brownstein — Controller"
+    },
+    {
+      "slug": "insight-global-remote-junior-data-engineer",
+      "accessCode": "INSIGHTDE2026",
+      "folder": "Insight-Global-Remote-Junior-Data-Engineer-435519",
+      "employmentType": "contract",
+      "role": "Jonathan Brownstein — Remote Junior Data Engineer — Job 435519"
     },
     {
       "slug": "insight-global-senior-data-analyst-data-engineer",

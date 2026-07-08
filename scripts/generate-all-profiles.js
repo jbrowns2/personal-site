@@ -44,6 +44,8 @@ const SLUG_OVERRIDES = {
     'MMD-Remote-Data-Architect': 'mmd-remote-data-architect',
     'Insight-Global-Senior-Data-Analyst-Data-Engineer-549347':
         'insight-global-senior-data-analyst-data-engineer',
+    'Insight-Global-Remote-Junior-Data-Engineer-435519':
+        'insight-global-remote-junior-data-engineer',
 };
 
 function findResumeFiles() {

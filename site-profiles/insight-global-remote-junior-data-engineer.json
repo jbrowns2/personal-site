@@ -1,0 +1,121 @@
+{
+  "profileVersion": 1,
+  "slug": "insight-global-remote-junior-data-engineer",
+  "accessCode": "INSIGHTDE2026",
+  "employmentType": "contract",
+  "meta": {
+    "title": "Jonathan Brownstein — Remote Junior Data Engineer — Job 435519",
+    "description": "Data engineer with fifteen years supporting the full pipeline lifecycle from requirements through build, test, reporting, and maintenance in regulated enterprise and industrial operations environments. Strong SQL scripti"
+  },
+  "hero": {
+    "badge": "Remote Junior Data Engineer — Job 435519 · Contract",
+    "typingPhrases": [
+      "Data Engineer",
+      "SQL Pipelines and Azure Data Platforms",
+      "Lifecycle Delivery"
+    ],
+    "description": "Data engineer with fifteen years supporting the full pipeline lifecycle from requirements through build, test, reporting, and maintenance in regulated enterprise and industrial operations environments. Strong SQL scripting for transformation logic, Python for automation and code review, and batch orchestration on Azure-leaning lakehouse platforms. Contract work includes onboarding new data sources, translating internal customer requests into scoped pipeline deliverables, and producing clear status updates on in-flight engineering work. Available immediately for remote contract work from northern Illinois.",
+    "primaryCta": "Discuss This Role",
+    "secondaryCta": "View Delivery Record"
+  },
+  "highlights": [
+    {
+      "label": "Data engineering, SQL development, ELT pipelines, Azure cloud data platforms, Python scripting, Databricks, pipeline testing, data modeling support, requirements gathering, process automation, data quality monitoring, Power BI, Tableau, Agile delivery, critical thinking, stakeholder communication, remote contract delivery"
+    }
+  ],
+  "experience": {
+    "title": "Delivery Record",
+    "intro": "Contract consulting work. Client names withheld under standard NDAs.",
+    "items": [
+      {
+        "title": "Data Engineering and Analytics Pipeline Specialist",
+        "organization": "Regulated financial services enterprise, remote hybrid contract, Chief Data Office ecosystem",
+        "context": "",
+        "bullets": [
+          "Built and maintained batch ELT workflows on Databricks in Azure-leaning environments, implementing SQL transformation logic and Python support routines for governed analytical datasets.",
+          "Gathered requirements from internal analytics and finance customers, scoped pipeline work, and delivered tested outputs with documented assumptions before production release.",
+          "Tuned SQL across lakehouse sources for recurring reporting, ad hoc extracts, and performance sensitive operational loads.",
+          "Monitored pipeline quality with reconciliation checks and exception reporting before downstream teams relied on the data."
+        ]
+      },
+      {
+        "title": "Data Integration and Reporting Engineer",
+        "organization": "Global manufacturing group, regional finance and operations leadership",
+        "context": "",
+        "bullets": [
+          "Onboarded new operational reporting sources into recurring KPI dashboards with SQL driven data packages for finance and logistics adjacent teams.",
+          "Automated spreadsheet heavy reporting workflows and translated ambiguous business questions into maintainable data models.",
+          "Supported user acceptance style testing and sign off before executive reporting cycles."
+        ]
+      },
+      {
+        "title": "Contract Data Validation and Pipeline Testing Analyst",
+        "organization": "Commercial banking and public sector financial systems, part time contract",
+        "context": "",
+        "bullets": [
+          "Validated SQL reporting outputs against source extracts with documented test routines and defect tracking in regulated environments."
+        ]
+      }
+    ]
+  },
+  "skills": {
+    "title": "Skills & Expertise",
+    "groups": [
+      {
+        "title": "Data engineering",
+        "items": [
+          "SQL development, ELT pipelines, pipeline testing, data modeling support, query optimization, multi source integration, data quality monitoring, requirements translation"
+        ]
+      },
+      {
+        "title": "Platforms",
+        "items": [
+          "Azure cloud data platforms, Databricks, Python, SQL, R, Power BI, Tableau, relational databases, Git"
+        ]
+      },
+      {
+        "title": "Delivery",
+        "items": [
+          "full lifecycle data engineering, Agile collaboration, clear status updates, remote contract delivery"
+        ]
+      }
+    ]
+  },
+  "sections": {
+    "projects": {
+      "visible": true
+    },
+    "education": {
+      "visible": true
+    }
+  },
+  "contact": {
+    "label": "06 / Hire",
+    "title": "Available for Contract Engagements",
+    "intro": "Open to contract roles through agencies and direct clients. Based in Illinois; available for remote and hybrid engagements.",
+    "engagementPills": [
+      "Contract",
+      "Remote",
+      "Defined Deliverables"
+    ],
+    "valueItems": [
+      {
+        "label": "Fast ramp",
+        "body": "Deep domain experience in regulated financial services"
+      },
+      {
+        "label": "Scoped delivery",
+        "body": "Milestone-driven work with documented handoffs"
+      },
+      {
+        "label": "Independent execution",
+        "body": "Self-directed within matrix teams across finance, IT, and compliance"
+      },
+      {
+        "label": "Audit-ready",
+        "body": "Governance-aligned documentation and knowledge transfer"
+      }
+    ],
+    "email": "jonathansbrownstein@icloud.com"
+  }
+}
