@@ -25,7 +25,7 @@
   ],
   "experience": {
     "title": "Delivery Record",
-    "intro": "Contract consulting work. Client names withheld under standard NDAs.",
+    "intro": "Contract consulting work.",
     "items": [
       {
         "title": "Senior Data Engineering and Analytics Pipeline Specialist",
@@ -44,7 +44,8 @@
         "context": "",
         "bullets": [
           "Modernized executive reporting with automated KPI dashboards and SQL driven data packages for finance and operations leadership.",
-          "Translated ambiguous business questions into scoped data models and recurring reporting outputs on planning timelines."
+          "Translated ambiguous business questions into scoped data models and recurring reporting outputs on planning timelines.",
+          "Governance and quality checks on operational reporting before numbers reached executive review."
         ]
       },
       {
@@ -52,7 +53,8 @@
         "organization": "Commercial banking and public sector financial systems, part time contract",
         "context": "",
         "bullets": [
-          "Validated SQL reporting outputs against source extracts with documented reconciliation routines and sign off before internal distribution."
+          "Validated SQL reporting outputs against source extracts with documented reconciliation routines and sign off before internal distribution.",
+          "Executed user acceptance style test cycles with defect tracking and sign off documentation in regulated public sector financial environments."
         ]
       }
     ]
