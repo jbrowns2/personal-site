@@ -1,0 +1,120 @@
+{
+  "profileVersion": 1,
+  "slug": "insight-global-senior-data-analyst-data-engineer",
+  "accessCode": "INSIGHT2026",
+  "employmentType": "contract",
+  "meta": {
+    "title": "Jonathan Brownstein — Senior Data Analyst / Data Engineer — Job 549347",
+    "description": "Senior data analyst and engineer with fifteen years profiling, transforming, and reconciling large structured datasets from spreadsheets, CSV extracts, and warehouse sources. I execute repeatable transformation logic, do"
+  },
+  "hero": {
+    "badge": "Senior Data Analyst / Data Engineer — Job 549347 · Contract",
+    "typingPhrases": [
+      "Senior Data Analyst / Data Engineer",
+      "Data Wrangling and Transformation",
+      "Data Quality"
+    ],
+    "description": "Senior data analyst and engineer with fifteen years profiling, transforming, and reconciling large structured datasets from spreadsheets, CSV extracts, and warehouse sources. I execute repeatable transformation logic, document assumptions for audit review, and surface exceptions before outputs reach stakeholders. Contract work spans multi source file comparison, Python and SQL data handling, Excel based operational reporting, and governed quality control in regulated and industrial adjacent environments. Available immediately for remote contract work from northern Illinois.",
+    "primaryCta": "Discuss This Role",
+    "secondaryCta": "View Delivery Record"
+  },
+  "highlights": [
+    {
+      "label": "Data profiling, data wrangling, data transformation, file comparison, reconciliation, data cleansing, data quality analysis, exception identification, technical documentation, Python, SQL, Excel, Power Query, repeatable processing, auditability, structured problem solving, validation, remote contract delivery"
+    }
+  ],
+  "experience": {
+    "title": "Delivery Record",
+    "intro": "Contract consulting work. Client names withheld under standard NDAs.",
+    "items": [
+      {
+        "title": "Senior Data Analysis and Transformation Specialist",
+        "organization": "Regulated financial services enterprise, remote hybrid contract, Chief Data Office ecosystem",
+        "context": "",
+        "bullets": [
+          "Profiled large structured datasets from multiple source extracts and documented field definitions, assumptions, and transformation logic for audit ready reuse.",
+          "Built extract comparison frameworks reconciling movement across periods and sources with exception reporting for stakeholder review.",
+          "Executed repeatable ELT transformations on Databricks with Python and SQL for governed analytical outputs.",
+          "Identified attribute shifts through statistical outlier detection before downstream teams relied on the data."
+        ]
+      },
+      {
+        "title": "Data Integration and Reporting Analyst",
+        "organization": "Global manufacturing group, regional finance leadership",
+        "context": "",
+        "bullets": [
+          "Reconciled operational and financial datasets across spreadsheets and SQL sources for executive reporting cycles.",
+          "Automated KPI transformations with documented logic improving month end consistency and output quality review."
+        ]
+      },
+      {
+        "title": "Contract Data Reconciliation and Validation Analyst",
+        "organization": "Commercial banking and public sector financial systems, part time contract",
+        "context": "",
+        "bullets": [
+          "Compared reporting outputs to source extracts, logged exceptions, and produced sign off documentation in regulated environments."
+        ]
+      }
+    ]
+  },
+  "skills": {
+    "title": "Skills & Expertise",
+    "groups": [
+      {
+        "title": "Analysis",
+        "items": [
+          "data profiling, file comparison, reconciliation, data cleansing, exception handling, validation, quality control, technical documentation, repeatable transformation logic"
+        ]
+      },
+      {
+        "title": "Tools",
+        "items": [
+          "Python, SQL, Excel, Power Query, Databricks, R, VBA, Power BI, Tableau, relational databases"
+        ]
+      },
+      {
+        "title": "Delivery",
+        "items": [
+          "structured problem solving, partially defined discovery work, audit ready outputs, remote contract collaboration"
+        ]
+      }
+    ]
+  },
+  "sections": {
+    "projects": {
+      "visible": true
+    },
+    "education": {
+      "visible": true
+    }
+  },
+  "contact": {
+    "label": "06 / Hire",
+    "title": "Available for Contract Engagements",
+    "intro": "Open to contract roles through agencies and direct clients. Based in Illinois; available for remote and hybrid engagements.",
+    "engagementPills": [
+      "Contract",
+      "Remote",
+      "Defined Deliverables"
+    ],
+    "valueItems": [
+      {
+        "label": "Fast ramp",
+        "body": "Deep domain experience in regulated financial services"
+      },
+      {
+        "label": "Scoped delivery",
+        "body": "Milestone-driven work with documented handoffs"
+      },
+      {
+        "label": "Independent execution",
+        "body": "Self-directed within matrix teams across finance, IT, and compliance"
+      },
+      {
+        "label": "Audit-ready",
+        "body": "Governance-aligned documentation and knowledge transfer"
+      }
+    ],
+    "email": "jonathansbrownstein@icloud.com"
+  }
+}

@@ -42,6 +42,8 @@ const SLUG_OVERRIDES = {
     'Upwork-General-Consulting': 'upwork',
     'Motion-Recruitment-AI-Tools-Automation-Specialist-6117': 'motion-ai-tools-automation-specialist',
     'MMD-Remote-Data-Architect': 'mmd-remote-data-architect',
+    'Insight-Global-Senior-Data-Analyst-Data-Engineer-549347':
+        'insight-global-senior-data-analyst-data-engineer',
 };
 
 function findResumeFiles() {
