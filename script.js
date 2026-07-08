@@ -162,15 +162,17 @@
         try {
             if (slug) {
                 sessionStorage.setItem(PROFILE_SLUG_KEY, slug);
+                localStorage.setItem(PROFILE_SLUG_KEY, slug);
             } else {
                 sessionStorage.removeItem(PROFILE_SLUG_KEY);
+                localStorage.removeItem(PROFILE_SLUG_KEY);
             }
         } catch (e) {}
     }
 
     function readStoredProfileSlug() {
         try {
-            return sessionStorage.getItem(PROFILE_SLUG_KEY) || null;
+            return sessionStorage.getItem(PROFILE_SLUG_KEY) || localStorage.getItem(PROFILE_SLUG_KEY) || null;
         } catch (e) {
             return null;
         }
@@ -363,6 +365,10 @@
         document.querySelectorAll('[data-site-fallback]').forEach(function (el) {
             el.hidden = true;
         });
+        const fallbackExperience = document.getElementById('site-fallback-experience');
+        if (fallbackExperience) {
+            fallbackExperience.hidden = true;
+        }
 
         if (profile.hero) {
             const badge = document.getElementById('profile-hero-badge');
@@ -574,15 +580,36 @@
     }
 
     async function hydrateSiteProfile(profileSlug, employmentType) {
-        if (!profileSlug) return;
-        const profile = await fetchSiteProfile(profileSlug);
+        if (!profileSlug) {
+            applyEmploymentVariant(employmentType || EMPLOYMENT_CONTRACT);
+            return;
+        }
+        persistProfileSlug(profileSlug);
+        let profile = await fetchSiteProfile(profileSlug);
+        if (!profile) {
+            try {
+                var statusRes = await gateFetchJson('/access-status', { method: 'GET' }, gateActiveApiBase);
+                if (
+                    shouldFallbackToProductionApi() &&
+                    gateActiveApiBase !== GATE_PRODUCTION_API_BASE &&
+                    (statusRes.status === 404 || statusRes.status === 502 || statusRes.status === 503)
+                ) {
+                    statusRes = await gateFetchJson(
+                        '/access-status',
+                        { method: 'GET' },
+                        GATE_PRODUCTION_API_BASE,
+                    );
+                }
+                if (statusRes.body && statusRes.body.profileSlug) {
+                    persistProfileSlug(statusRes.body.profileSlug);
+                    profile = await fetchSiteProfile(statusRes.body.profileSlug);
+                }
+            } catch (e) {}
+        }
         if (profile) {
             applySiteProfile(profile);
             applyEmploymentVariant(profile.employmentType || employmentType || EMPLOYMENT_CONTRACT);
         } else {
-            // Profile JSON may be missing on the server until deploy catches up; still
-            // honor the gate session's employment type so contract codes don't fall
-            // back to the default full-time layout.
             applyEmploymentVariant(employmentType || EMPLOYMENT_CONTRACT);
         }
     }
@@ -1755,6 +1782,7 @@
             }
             if (session.profileSlug) {
                 profileSlug = session.profileSlug;
+                persistProfileSlug(profileSlug);
             }
             if (session.contactEmail) {
                 contactEmail = session.contactEmail;

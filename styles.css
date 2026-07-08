@@ -4369,6 +4369,10 @@ html[data-employment-type="contract"] [data-show-for="full_time"] {
     display: none !important;
 }
 
+html[data-employment-type="contract"] [data-site-fallback] .timeline-meta .company {
+    display: none !important;
+}
+
 html[data-employment-type="contract"] .experience-timeline .date {
     display: none !important;
 }
