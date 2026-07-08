@@ -40,6 +40,7 @@ const SLUG_OVERRIDES = {
     'Verve-Data-Engineer-8474867002': 'verve',
     'Flock-Full-Stack-Engineer-ML-Tooling': 'flock-full-stack-engineer-ml-tooling',
     'Upwork-General-Consulting': 'upwork',
+    'Motion-Recruitment-AI-Tools-Automation-Specialist-6117': 'motion-ai-tools-automation-specialist',
 };
 
 function findResumeFiles() {

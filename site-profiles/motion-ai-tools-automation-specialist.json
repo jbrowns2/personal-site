@@ -1,0 +1,122 @@
+{
+  "profileVersion": 1,
+  "slug": "motion-ai-tools-automation-specialist",
+  "accessCode": "MOTION2026",
+  "employmentType": "contract",
+  "meta": {
+    "title": "Jonathan Brownstein — AI Tools & Automation Specialist — Job 6117",
+    "description": "Builder with fifteen years at the intersection of operations analytics, production software, and applied machine learning. I design prompt driven tools, lightweight applications, and workflow automations using Claude, Ch"
+  },
+  "hero": {
+    "badge": "AI Tools & Automation Specialist — Job 6117 · Contract",
+    "typingPhrases": [
+      "AI Tools and Automation Specialist",
+      "LLM Workflows",
+      "AI Assisted Development"
+    ],
+    "description": "Builder with fifteen years at the intersection of operations analytics, production software, and applied machine learning. I design prompt driven tools, lightweight applications, and workflow automations using Claude, ChatGPT, Cursor, Python, and JavaScript, then train business teams to adopt them. Contract work spans AI assisted internal platforms, econometric ML tooling, reporting automation across Microsoft 365, and a computer vision system pairing ML with LLMs. Available immediately for full time remote work from northern Illinois.",
+    "primaryCta": "Discuss This Role",
+    "secondaryCta": "View Delivery Record"
+  },
+  "highlights": [
+    {
+      "label": "AI tools and automation, prompt engineering, context engineering, AI assisted coding, Cursor, Claude, ChatGPT, workflow automation, Python, JavaScript, Node.js, React, Power BI, Microsoft 365, document generators, data summarization, agentic workflow design, stakeholder training, prompt libraries, LLM integration, operations analytics, cross functional enablement"
+    }
+  ],
+  "experience": {
+    "title": "Delivery Record",
+    "intro": "Contract consulting work. Client names withheld under standard NDAs.",
+    "items": [
+      {
+        "title": "AI Tools and Automation Builder",
+        "organization": "Independent product and internal tooling, remote contract",
+        "context": "",
+        "bullets": [
+          "Production web platform with serverless APIs, gated profiles, and resume driven content generation built primarily through Cursor and Claude assisted development workflows.",
+          "Automated document build pipelines generating ATS resumes and cover letters from structured markdown sources.",
+          "Home camera vision prototype interpreting property activity with ML models and LLM summarization for practical alerting use cases."
+        ]
+      },
+      {
+        "title": "ML Tooling and Analytics Automation Specialist",
+        "organization": "Regulated financial services enterprise, remote hybrid contract",
+        "context": "",
+        "bullets": [
+          "Architected scheduled forecasting and classification platforms that replaced manual analyst steps with repeatable, documented automation.",
+          "Built enterprise metadata and lineage tooling adopted as the reference standard for field definitions and governed data assets.",
+          "Prepared walkthroughs and documentation so finance, actuarial, and executive sponsors could use new reporting tools without engineering support."
+        ]
+      },
+      {
+        "title": "Operations Analytics and Reporting Automation Consultant",
+        "organization": "Global manufacturing group, regional finance leadership",
+        "context": "",
+        "bullets": [
+          "Partnered with HR, Sales, Operations, and regional leadership on workforce and sales adjacent reporting workflows.",
+          "Automated KPI dashboards and Excel based reporting packages that reduced month end manual preparation.",
+          "Quality checks and validation routines before operational metrics reached leadership review."
+        ]
+      }
+    ]
+  },
+  "skills": {
+    "title": "Skills & Expertise",
+    "groups": [
+      {
+        "title": "AI and automation",
+        "items": [
+          "prompt engineering, Claude, ChatGPT, Gemini, Cursor, AI assisted application development, workflow automation, agentic multi step workflows, document generation, data summarization, prompt libraries"
+        ]
+      },
+      {
+        "title": "Build stack",
+        "items": [
+          "Python, JavaScript, Node.js, React, SQL, Git, Vercel serverless, REST APIs, VBA, Power BI, Microsoft Excel, Power Automate familiarity"
+        ]
+      },
+      {
+        "title": "Delivery",
+        "items": [
+          "stakeholder training, quick start guides, operations enablement, cross functional collaboration, iterative shipping"
+        ]
+      }
+    ]
+  },
+  "sections": {
+    "projects": {
+      "visible": true
+    },
+    "education": {
+      "visible": true
+    }
+  },
+  "contact": {
+    "label": "06 / Hire",
+    "title": "Available for Contract Engagements",
+    "intro": "Open to contract roles through agencies and direct clients. Based in Illinois; available for remote and hybrid engagements.",
+    "engagementPills": [
+      "Contract",
+      "Remote",
+      "Defined Deliverables"
+    ],
+    "valueItems": [
+      {
+        "label": "Fast ramp",
+        "body": "Deep domain experience in regulated financial services"
+      },
+      {
+        "label": "Scoped delivery",
+        "body": "Milestone-driven work with documented handoffs"
+      },
+      {
+        "label": "Independent execution",
+        "body": "Self-directed within matrix teams across finance, IT, and compliance"
+      },
+      {
+        "label": "Audit-ready",
+        "body": "Governance-aligned documentation and knowledge transfer"
+      }
+    ],
+    "email": "jonathan@yourwebsitein7days.com"
+  }
+}
