@@ -29,7 +29,7 @@
     "items": [
       {
         "title": "Data Engineering and Analytics Pipeline Specialist",
-        "organization": "Regulated financial services enterprise, remote hybrid contract, Chief Data Office ecosystem",
+        "organization": "",
         "context": "",
         "bullets": [
           "Built and maintained batch ELT workflows on Databricks in Azure-leaning environments, implementing SQL transformation logic and Python support routines for governed analytical datasets.",
@@ -40,7 +40,7 @@
       },
       {
         "title": "Data Integration and Reporting Engineer",
-        "organization": "Global manufacturing group, regional finance and operations leadership",
+        "organization": "",
         "context": "",
         "bullets": [
           "Onboarded new operational reporting sources into recurring KPI dashboards with SQL driven data packages for finance and logistics adjacent teams.",
@@ -50,7 +50,7 @@
       },
       {
         "title": "Contract Data Validation and Pipeline Testing Analyst",
-        "organization": "Commercial banking and public sector financial systems, part time contract",
+        "organization": "",
         "context": "",
         "bullets": [
           "Validated SQL reporting outputs against source extracts with documented test routines and defect tracking in regulated environments."
@@ -83,7 +83,7 @@
   },
   "sections": {
     "projects": {
-      "visible": true
+      "visible": false
     },
     "education": {
       "visible": true
@@ -101,7 +101,7 @@
     "valueItems": [
       {
         "label": "Fast ramp",
-        "body": "Deep domain experience in regulated financial services"
+        "body": "Deep domain experience across regulated enterprise data environments"
       },
       {
         "label": "Scoped delivery",
