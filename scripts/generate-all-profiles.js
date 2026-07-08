@@ -46,6 +46,8 @@ const SLUG_OVERRIDES = {
         'insight-global-senior-data-analyst-data-engineer',
     'Insight-Global-Remote-Junior-Data-Engineer-435519':
         'insight-global-remote-junior-data-engineer',
+    'Randstad-Senior-Application-Development-Engineer-1338422':
+        'randstad-senior-application-development-engineer',
 };
 
 function findResumeFiles() {

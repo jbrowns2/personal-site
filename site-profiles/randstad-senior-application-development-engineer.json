@@ -1,0 +1,119 @@
+{
+  "profileVersion": 1,
+  "slug": "randstad-senior-application-development-engineer",
+  "accessCode": "RANDSTAD2026",
+  "employmentType": "contract",
+  "meta": {
+    "title": "Jonathan Brownstein — Senior Application Development Engineer — Ref…",
+    "description": "Senior application development engineer with fifteen years gathering requirements, documenting functional specifications, and coordinating user acceptance testing in regulated enterprise environments. I validate scope wi"
+  },
+  "hero": {
+    "badge": "Senior Application Development Engineer — Ref… · Contract",
+    "typingPhrases": [
+      "Senior Application Development Engineer",
+      "Requirements and UAT",
+      "Enterprise Systems"
+    ],
+    "description": "Senior application development engineer with fifteen years gathering requirements, documenting functional specifications, and coordinating user acceptance testing in regulated enterprise environments. I validate scope with stakeholders, translate ambiguous needs into developer ready requirements, and track status through Agile delivery cycles with audit ready documentation. Available immediately for remote contract work from northern Illinois.",
+    "primaryCta": "Discuss This Role",
+    "secondaryCta": "View Delivery Record"
+  },
+  "highlights": [
+    {
+      "label": "Requirements gathering, requirements validation, functional specifications, business process modeling, user acceptance testing, UAT coordination, user stories, product backlogs, stakeholder communication, technical documentation, user training support, defect tracking, Agile delivery, SQL, Power BI, Tableau, Jira, Confluence, regulated enterprise systems, remote contract delivery"
+    }
+  ],
+  "experience": {
+    "title": "Delivery Record",
+    "intro": "Contract consulting work. Client names withheld under standard NDAs.",
+    "items": [
+      {
+        "title": "Senior Application Requirements and Validation Specialist",
+        "organization": "",
+        "context": "",
+        "bullets": [
+          "Gathered and validated business and technology requirements for reporting platforms and analytics applications, defining scope, acceptance criteria, and release metrics with internal sponsors.",
+          "Translated stakeholder requests into functional specifications and testable requirements for development and QA partners.",
+          "Planned and coordinated user acceptance testing with scripted scenarios, defect logging, retest cycles, and sign off documentation before production release."
+        ]
+      },
+      {
+        "title": "Application Integration and Reporting Analyst",
+        "organization": "",
+        "context": "",
+        "bullets": [
+          "Documented reporting workflows, KPI definitions, and data dependencies for stakeholders adopting new dashboard packages.",
+          "Interpreted business questions into feasible reporting options and supported acceptance testing handoffs for recurring operational reporting."
+        ]
+      },
+      {
+        "title": "Contract Systems Validation and Documentation Analyst",
+        "organization": "",
+        "context": "",
+        "bullets": [
+          "Executed user acceptance style test cycles with defect tracking, reconciliation procedures, and sign off summaries in regulated environments."
+        ]
+      }
+    ]
+  },
+  "skills": {
+    "title": "Skills & Expertise",
+    "groups": [
+      {
+        "title": "Requirements and delivery",
+        "items": [
+          "requirements gathering, functional specifications, business process documentation, UAT planning, user stories, backlog support, stakeholder communication, technical reporting, user documentation"
+        ]
+      },
+      {
+        "title": "Tools",
+        "items": [
+          "SQL, Excel, Power BI, Tableau, SSRS, Jira, Confluence, Python, Databricks, relational databases"
+        ]
+      },
+      {
+        "title": "Domain",
+        "items": [
+          "regulated enterprise applications, reporting and analytics platforms, audit ready documentation, remote contract collaboration"
+        ]
+      }
+    ]
+  },
+  "sections": {
+    "projects": {
+      "visible": false
+    },
+    "education": {
+      "visible": true
+    }
+  },
+  "contact": {
+    "label": "06 / Hire",
+    "title": "Available for Contract Engagements",
+    "intro": "Open to contract roles through agencies and direct clients. Based in Illinois; available for remote and hybrid engagements.",
+    "engagementPills": [
+      "Contract",
+      "Remote",
+      "Defined Deliverables"
+    ],
+    "valueItems": [
+      {
+        "label": "Fast ramp",
+        "body": "Deep domain experience across regulated enterprise application environments"
+      },
+      {
+        "label": "Scoped delivery",
+        "body": "Milestone-driven work with documented handoffs"
+      },
+      {
+        "label": "Independent execution",
+        "body": "Self-directed within matrix teams across finance, IT, and compliance"
+      },
+      {
+        "label": "Audit-ready",
+        "body": "Governance-aligned documentation and knowledge transfer"
+      }
+    ],
+    "email": "jonathansbrownstein@icloud.com"
+  }
+}

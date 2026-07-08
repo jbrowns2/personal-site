@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-08T17:45:43.853Z",
+  "generatedAt": "2026-07-08T18:12:23.787Z",
   "profiles": [
     {
       "slug": "actalent-hr-data-analyst-jp-006125903",
@@ -147,6 +147,13 @@
       "folder": "PaceMate-Senior-SaaS-Web-Designer",
       "employmentType": "contract",
       "role": "Jonathan Brownstein — Freelance Senior SaaS Web Designer, Fully Remote"
+    },
+    {
+      "slug": "randstad-senior-application-development-engineer",
+      "accessCode": "RANDSTAD2026",
+      "folder": "Randstad-Senior-Application-Development-Engineer-1338422",
+      "employmentType": "contract",
+      "role": "Jonathan Brownstein — Senior Application Development Engineer — Ref…"
     },
     {
       "slug": "steward",
