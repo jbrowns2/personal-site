@@ -49,6 +49,7 @@ const SLUG_OVERRIDES = {
     'Randstad-Senior-Application-Development-Engineer-1338422':
         'randstad-senior-application-development-engineer',
     'Kforce-Senior-SQL-Developer-2176943': 'kforce-senior-sql-developer',
+    'Brooksource-Jr-Data-Engineer-JN-062026-574854': 'brooksource-jr-data-engineer',
 };
 
 function findResumeFiles() {

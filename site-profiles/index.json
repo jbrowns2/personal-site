@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-08T19:33:40.962Z",
+  "generatedAt": "2026-07-08T19:52:00.703Z",
   "profiles": [
     {
       "slug": "actalent-hr-data-analyst-jp-006125903",
@@ -14,6 +14,13 @@
       "folder": "Beacon-Hill-UAT-Analyst-1461840_1780948197",
       "employmentType": "contract",
       "role": "Jonathan Brownstein — User Acceptance Testing  Analyst — Job 146184…"
+    },
+    {
+      "slug": "brooksource-jr-data-engineer",
+      "accessCode": "BROOK2026",
+      "folder": "Brooksource-Jr-Data-Engineer-JN-062026-574854",
+      "employmentType": "contract",
+      "role": "Jonathan Brownstein — Jr Data Engineer — JN-062026-574854"
     },
     {
       "slug": "brunswick-finance",

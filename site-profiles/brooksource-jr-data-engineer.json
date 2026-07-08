@@ -1,0 +1,119 @@
+{
+  "profileVersion": 1,
+  "slug": "brooksource-jr-data-engineer",
+  "accessCode": "BROOK2026",
+  "employmentType": "contract",
+  "meta": {
+    "title": "Jonathan Brownstein — Jr Data Engineer — JN-062026-574854",
+    "description": "Data engineer with fifteen years building ELT pipelines, governed SQL transformations, and analytics workflows in regulated enterprise and industrial operations environments. Expert Python and SQL for data processing, au"
+  },
+  "hero": {
+    "badge": "Remote Contract Data Engineer — JN-062026-574854 · Contract-to-Hire",
+    "typingPhrases": [
+      "Data Engineer",
+      "Python and SQL Pipelines",
+      "Azure Databricks"
+    ],
+    "description": "Data engineer with fifteen years building ELT pipelines, governed SQL transformations, and analytics workflows in regulated enterprise and industrial operations environments. Expert Python and SQL for data processing, automation, and pipeline support on Azure-leaning Databricks platforms. Contract delivery spans ingestion through tested production releases with documented logic, data quality monitoring, and Agile collaboration. Available immediately for remote contract-to-hire work from northern Illinois.",
+    "primaryCta": "Discuss This Role",
+    "secondaryCta": "View Delivery Record"
+  },
+  "highlights": [
+    {
+      "label": "Data engineering, ETL and ELT pipelines, Python, SQL, Azure Databricks, data modeling, query optimization, data quality monitoring, Power BI, PySpark familiarity, Git, Agile delivery, pipeline documentation, stakeholder communication, remote contract delivery"
+    }
+  ],
+  "experience": {
+    "title": "Delivery Record",
+    "intro": "Contract consulting work.",
+    "items": [
+      {
+        "title": "Contract Data Engineering and Pipeline Specialist",
+        "organization": "",
+        "context": "",
+        "bullets": [
+          "Built and maintained batch ELT workflows on Databricks in Azure-leaning environments with Python and SQL transformation logic for governed analytical datasets.",
+          "Supported ingestion and integration from multiple enterprise sources with reconciliation checks and exception reporting before downstream teams relied on the data.",
+          "Documented pipeline assumptions, field logic, and release notes for code review and handoff in Agile delivery cycles."
+        ]
+      },
+      {
+        "title": "Contract SQL and Analytics Workflow Engineer",
+        "organization": "",
+        "context": "",
+        "bullets": [
+          "Tuned SQL across lakehouse and relational sources for recurring reporting, ad hoc extracts, and performance sensitive operational loads.",
+          "Partnered with analytics and operations stakeholders to scope pipeline work and deliver tested outputs with clear status updates."
+        ]
+      },
+      {
+        "title": "Contract Data Validation and Pipeline QA Analyst",
+        "organization": "",
+        "context": "",
+        "bullets": [
+          "Executed validation routines comparing pipeline outputs to source extracts with defect tracking in regulated environments."
+        ]
+      }
+    ]
+  },
+  "skills": {
+    "title": "Contract Skills & Expertise",
+    "groups": [
+      {
+        "title": "Data engineering",
+        "items": [
+          "ETL and ELT pipelines, data modeling, query optimization, data quality monitoring, pipeline troubleshooting, technical documentation"
+        ]
+      },
+      {
+        "title": "Platforms",
+        "items": [
+          "Azure Databricks, Python, SQL, Power BI, relational databases, Git, Azure cloud data platform patterns"
+        ]
+      },
+      {
+        "title": "Delivery",
+        "items": [
+          "Agile collaboration, code review participation, remote contract collaboration"
+        ]
+      }
+    ]
+  },
+  "sections": {
+    "projects": {
+      "visible": false
+    },
+    "education": {
+      "visible": false
+    }
+  },
+  "contact": {
+    "label": "06 / Hire",
+    "title": "Available for Contract Engagements",
+    "intro": "Open to remote contract-to-hire roles through Brooksource and other agency partners. Based in northern Illinois.",
+    "engagementPills": [
+      "Contract",
+      "Remote",
+      "Defined Deliverables"
+    ],
+    "valueItems": [
+      {
+        "label": "Fast ramp",
+        "body": "Expert Python, SQL, and Databricks pipeline delivery from day one"
+      },
+      {
+        "label": "Scoped delivery",
+        "body": "ELT pipelines, data quality monitoring, and documented handoffs"
+      },
+      {
+        "label": "Independent execution",
+        "body": "Self-directed within matrix teams across finance, IT, and compliance"
+      },
+      {
+        "label": "Audit-ready",
+        "body": "Governance-aligned documentation and knowledge transfer"
+      }
+    ],
+    "email": "jonathansbrownstein@icloud.com"
+  }
+}
