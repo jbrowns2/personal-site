@@ -4,23 +4,23 @@
   "accessCode": "RANDSTAD2026",
   "employmentType": "contract",
   "meta": {
-    "title": "Jonathan Brownstein — Senior Application Development Engineer — Ref…",
-    "description": "Senior application development engineer with fifteen years gathering requirements, documenting functional specifications, and coordinating user acceptance testing in regulated enterprise environments. I validate scope wi"
+    "title": "Jonathan Brownstein — Remote Contract Senior Application Development Engineer — Ref 1338422",
+    "description": "Senior contract application development engineer with fifteen years gathering requirements, documenting functional specifications, and coordinating user acceptance testing in regulated enterprise environments. Scoped contract"
   },
   "hero": {
-    "badge": "Senior Application Development Engineer — Ref… · Contract",
+    "badge": "Remote Contract Senior Application Development Engineer — Ref 1338422 · Contract",
     "typingPhrases": [
-      "Senior Application Development Engineer",
+      "Contract Application Development Engineer",
       "Requirements and UAT",
-      "Enterprise Systems"
+      "Enterprise Systems Delivery"
     ],
-    "description": "Senior application development engineer with fifteen years gathering requirements, documenting functional specifications, and coordinating user acceptance testing in regulated enterprise environments. I validate scope with stakeholders, translate ambiguous needs into developer ready requirements, and track status through Agile delivery cycles with audit ready documentation. Available immediately for remote contract work from northern Illinois.",
+    "description": "Senior contract application development engineer with fifteen years on scoped consulting assignments: gather and validate requirements, document functional specifications, coordinate user acceptance testing, and deliver audit ready handoffs in regulated enterprise environments. I translate ambiguous stakeholder requests into developer ready requirements, track status through Agile delivery cycles, and keep sponsors informed as scope shifts. Client names withheld under standard NDAs. Available immediately for remote contract work from northern Illinois.",
     "primaryCta": "Discuss This Role",
     "secondaryCta": "View Delivery Record"
   },
   "highlights": [
     {
-      "label": "Requirements gathering, requirements validation, functional specifications, business process modeling, user acceptance testing, UAT coordination, user stories, product backlogs, stakeholder communication, technical documentation, user training support, defect tracking, Agile delivery, SQL, Power BI, Tableau, Jira, Confluence, regulated enterprise systems, remote contract delivery"
+      "label": "Contract consulting delivery, requirements gathering, requirements validation, functional specifications, business process modeling, user acceptance testing, UAT coordination, user stories, product backlogs, stakeholder communication, technical documentation, defect tracking, Agile delivery, SQL, Power BI, Tableau, Jira, Confluence, regulated enterprise systems, remote contract delivery"
     }
   ],
   "experience": {
@@ -28,7 +28,7 @@
     "intro": "Contract consulting work. Client names withheld under standard NDAs.",
     "items": [
       {
-        "title": "Senior Application Requirements and Validation Specialist",
+        "title": "Contract Senior Application Requirements and Validation Specialist",
         "organization": "",
         "context": "",
         "bullets": [
@@ -38,7 +38,7 @@
         ]
       },
       {
-        "title": "Application Integration and Reporting Analyst",
+        "title": "Contract Application Integration and Reporting Analyst",
         "organization": "",
         "context": "",
         "bullets": [
@@ -57,7 +57,7 @@
     ]
   },
   "skills": {
-    "title": "Skills & Expertise",
+    "title": "Contract Skills & Expertise",
     "groups": [
       {
         "title": "Requirements and delivery",
@@ -72,9 +72,9 @@
         ]
       },
       {
-        "title": "Domain",
+        "title": "Contract delivery",
         "items": [
-          "regulated enterprise applications, reporting and analytics platforms, audit ready documentation, remote contract collaboration"
+          "scoped contract assignments, NDA compliant documentation, audit ready handoffs, remote contract collaboration"
         ]
       }
     ]
@@ -84,13 +84,13 @@
       "visible": false
     },
     "education": {
-      "visible": true
+      "visible": false
     }
   },
   "contact": {
     "label": "06 / Hire",
     "title": "Available for Contract Engagements",
-    "intro": "Open to contract roles through agencies and direct clients. Based in Illinois; available for remote and hybrid engagements.",
+    "intro": "Open to remote contract roles through Randstad and other agency partners. Based in northern Illinois; available for standard business hours and defined deliverable engagements.",
     "engagementPills": [
       "Contract",
       "Remote",
@@ -99,19 +99,19 @@
     "valueItems": [
       {
         "label": "Fast ramp",
-        "body": "Deep domain experience across regulated enterprise application environments"
+        "body": "Senior contract delivery without permanent headcount onboarding overhead"
       },
       {
         "label": "Scoped delivery",
-        "body": "Milestone-driven work with documented handoffs"
+        "body": "Milestone driven requirements, UAT, and documentation with documented handoffs"
       },
       {
         "label": "Independent execution",
-        "body": "Self-directed within matrix teams across finance, IT, and compliance"
+        "body": "Self directed within matrix teams across business, IT, and compliance partners"
       },
       {
         "label": "Audit-ready",
-        "body": "Governance-aligned documentation and knowledge transfer"
+        "body": "NDA compliant documentation and knowledge transfer at engagement close"
       }
     ],
     "email": "jonathansbrownstein@icloud.com"
