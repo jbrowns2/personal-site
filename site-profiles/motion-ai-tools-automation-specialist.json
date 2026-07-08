@@ -4,23 +4,23 @@
   "accessCode": "MOTION2026",
   "employmentType": "contract",
   "meta": {
-    "title": "Jonathan Brownstein — AI Tools & Automation Specialist — Job 6117",
-    "description": "Builder with fifteen years at the intersection of operations analytics, production software, and applied machine learning. I design prompt driven tools, lightweight applications, and workflow automations using Claude, Ch"
+    "title": "Jonathan Brownstein — Remote Contract Data Engineer — Job 6117",
+    "description": "Data engineer with fifteen years building pipelines, governed warehouse assets, and reporting layers in regulated enterprise environments. Python and SQL for ELT workflows, query optimization, and data quality monitoring"
   },
   "hero": {
-    "badge": "AI Tools & Automation Specialist — Job 6117 · Contract",
+    "badge": "Remote Contract Data Engineer — Job 6117 · Contract",
     "typingPhrases": [
-      "AI Tools and Automation Specialist",
-      "LLM Workflows",
-      "AI Assisted Development"
+      "Data Engineer",
+      "SQL and ELT Pipelines",
+      "Warehouse Design and Data Integrity"
     ],
-    "description": "Builder with fifteen years at the intersection of operations analytics, production software, and applied machine learning. I design prompt driven tools, lightweight applications, and workflow automations using Claude, ChatGPT, Cursor, Python, and JavaScript, then train business teams to adopt them. Contract work spans AI assisted internal platforms, econometric ML tooling, reporting automation across Microsoft 365, and a computer vision system pairing ML with LLMs. Available immediately for full time remote work from northern Illinois.",
+    "description": "Data engineer with fifteen years building pipelines, governed warehouse assets, and reporting layers in regulated enterprise environments. Python and SQL for ELT workflows, query optimization, and data quality monitoring. Contract work spans Databricks batch pipelines, large scale warehouse analytics, metadata and lineage architecture, and client facing Power BI and Tableau dashboards. Available immediately for remote contract work from northern Illinois.",
     "primaryCta": "Discuss This Role",
     "secondaryCta": "View Delivery Record"
   },
   "highlights": [
     {
-      "label": "AI tools and automation, prompt engineering, context engineering, AI assisted coding, Cursor, Claude, ChatGPT, workflow automation, Python, JavaScript, Node.js, React, Power BI, Microsoft 365, document generators, data summarization, agentic workflow design, stakeholder training, prompt libraries, LLM integration, operations analytics, cross functional enablement"
+      "label": "Data engineering, SQL development, ELT pipelines, Python, Databricks, query optimization, data warehouse design, metadata management, data lineage, data quality monitoring, multi source integration, Power BI, Tableau, batch analytics, governed data assets, requirements translation, remote contract delivery"
     }
   ],
   "experience": {
@@ -28,33 +28,31 @@
     "intro": "Contract consulting work. Client names withheld under standard NDAs.",
     "items": [
       {
-        "title": "AI Tools and Automation Builder",
-        "organization": "Independent product and internal tooling, remote contract",
+        "title": "Senior Data Engineering and Analytics Pipeline Specialist",
+        "organization": "Regulated financial services enterprise, remote hybrid contract, Chief Data Office ecosystem",
         "context": "",
         "bullets": [
-          "Production web platform with serverless APIs, gated profiles, and resume driven content generation built primarily through Cursor and Claude assisted development workflows.",
-          "Automated document build pipelines generating ATS resumes and cover letters from structured markdown sources.",
-          "Home camera vision prototype interpreting property activity with ML models and LLM summarization for practical alerting use cases."
+          "Designed and maintained batch ELT workflows on Databricks transforming high volume actuarial, finance, and operational sources into governed analytical datasets.",
+          "Wrote and tuned SQL across lakehouse environments for recurring reporting, ad hoc requests, and performance sensitive valuation extracts.",
+          "Built enterprise metadata and lineage tooling adopted as the authoritative schema reference for a trillion record warehouse program.",
+          "Statistical outlier detection and action monitor reporting flagged attribute shifts before downstream consumers relied on the data."
         ]
       },
       {
-        "title": "ML Tooling and Analytics Automation Specialist",
-        "organization": "Regulated financial services enterprise, remote hybrid contract",
-        "context": "",
-        "bullets": [
-          "Architected scheduled forecasting and classification platforms that replaced manual analyst steps with repeatable, documented automation.",
-          "Built enterprise metadata and lineage tooling adopted as the reference standard for field definitions and governed data assets.",
-          "Prepared walkthroughs and documentation so finance, actuarial, and executive sponsors could use new reporting tools without engineering support."
-        ]
-      },
-      {
-        "title": "Operations Analytics and Reporting Automation Consultant",
+        "title": "Data Integration and Reporting Engineer",
         "organization": "Global manufacturing group, regional finance leadership",
         "context": "",
         "bullets": [
-          "Partnered with HR, Sales, Operations, and regional leadership on workforce and sales adjacent reporting workflows.",
-          "Automated KPI dashboards and Excel based reporting packages that reduced month end manual preparation.",
-          "Quality checks and validation routines before operational metrics reached leadership review."
+          "Modernized executive reporting with automated KPI dashboards and SQL driven data packages for finance and operations leadership.",
+          "Translated ambiguous business questions into scoped data models and recurring reporting outputs on planning timelines."
+        ]
+      },
+      {
+        "title": "Contract Data Validation and Reconciliation Analyst",
+        "organization": "Commercial banking and public sector financial systems, part time contract",
+        "context": "",
+        "bullets": [
+          "Validated SQL reporting outputs against source extracts with documented reconciliation routines and sign off before internal distribution."
         ]
       }
     ]
@@ -63,21 +61,21 @@
     "title": "Skills & Expertise",
     "groups": [
       {
-        "title": "AI and automation",
+        "title": "Data engineering",
         "items": [
-          "prompt engineering, Claude, ChatGPT, Gemini, Cursor, AI assisted application development, workflow automation, agentic multi step workflows, document generation, data summarization, prompt libraries"
+          "SQL development, ELT pipelines, query optimization, data warehouse design, metadata management, data lineage, data quality monitoring, multi source integration, batch analytics, reconciliation"
         ]
       },
       {
-        "title": "Build stack",
+        "title": "Platforms",
         "items": [
-          "Python, JavaScript, Node.js, React, SQL, Git, Vercel serverless, REST APIs, VBA, Power BI, Microsoft Excel, Power Automate familiarity"
+          "Python, Databricks, SQL, R, VBA, Power BI, Tableau, SSRS, relational databases, Git"
         ]
       },
       {
         "title": "Delivery",
         "items": [
-          "stakeholder training, quick start guides, operations enablement, cross functional collaboration, iterative shipping"
+          "stakeholder requirements, governed production releases, documentation, remote contract collaboration"
         ]
       }
     ]
