@@ -1,0 +1,130 @@
+{
+  "profileVersion": 1,
+  "slug": "summit-consultant",
+  "accessCode": "SUMMIT2026",
+  "employmentType": "contract",
+  "meta": {
+    "title": "Jonathan Brownstein — Consultant — Future Roles / Talent Pool",
+    "description": "Quantitative analytics consultant with fifteen years designing forecasting models, risk analytics, and evidence-based reporting in regulated financial services and global industrial environments. MS in Economics and a gr"
+  },
+  "hero": {
+    "badge": "Consultant — Future Roles / Talent Pool · Contract",
+    "typingPhrases": [
+      "Quantitative Analytics Consultant",
+      "Risk Modeling and Applied Econometrics",
+      "Data Science for Program Integrity"
+    ],
+    "description": "Quantitative analytics consultant with fifteen years designing forecasting models, risk analytics, and evidence-based reporting in regulated financial services and global industrial environments. MS in Economics and a graduate certificate in Applied Econometrics, with production experience in time series forecasting, statistical outlier detection, classification modeling, and audit-ready documentation for executive and compliance reviewers. Translate complex analytical output into clear recommendations for mixed technical and non-technical stakeholders. Available for consultant roles with Summit directly or as an independent subcontractor through Your Website In 7 Days, LLC, with standard MSA and W-9 on file.",
+    "primaryCta": "Discuss This Role",
+    "secondaryCta": "View Delivery Record"
+  },
+  "highlights": [
+    {
+      "label": "Risk analytics and statistical modeling"
+    },
+    {
+      "label": "Applied econometrics and time series forecasting"
+    },
+    {
+      "label": "Program integrity and anomaly detection"
+    },
+    {
+      "label": "Evidence-based analysis and executive reporting"
+    }
+  ],
+  "experience": {
+    "title": "Delivery Record",
+    "intro": "Contract consulting work.",
+    "items": [
+      {
+        "title": "Risk Analytics and Time Series Forecasting Specialist",
+        "organization": "",
+        "context": "",
+        "bullets": [
+          "Designed and deployed an automated ARIMA forecasting platform on a scheduled production pipeline, with model validation, anomaly review, and trend reporting used by actuarial and finance leadership before period close.",
+          "Built statistical outlier and anomaly detection frameworks using probability density function methods across platforms processing more than a trillion records, supporting early warning on attribute drift and program integrity review.",
+          "Authored model lifecycle documentation and methodology summaries for business and governance reviewers, translating statistical output into plain-language narratives for mixed audiences."
+        ]
+      },
+      {
+        "title": "Data Science and Program Analytics Consultant",
+        "organization": "",
+        "context": "",
+        "bullets": [
+          "Led a classification machine learning rebuild of a regulated reporting workflow, materially improving accuracy, consistency, and audit readiness; work received formal recognition from client executive leadership.",
+          "Developed repeatable period-over-period valuation movement analysis across time periods and source systems, with documented methodology and audit-friendly outputs other teams extended for variance and trend work.",
+          "Architected the metadata and data-lineage reference standard for a strategic enterprise data warehouse, establishing engineering and analytics standards on lineage, data quality, and audit controls."
+        ]
+      },
+      {
+        "title": "Evidence-Based Reporting and Analytics Lead",
+        "organization": "",
+        "context": "",
+        "bullets": [
+          "Build executive dashboards in Power BI, Tableau, and SSRS and brief senior leaders on findings, assumptions, and recommended next steps.",
+          "Led cross-functional reporting modernization that improved validation checkpoints and operational efficiency before numbers reached executive sponsors."
+        ]
+      }
+    ]
+  },
+  "skills": {
+    "title": "Skills & Expertise",
+    "groups": [
+      {
+        "title": "Econometrics and modeling",
+        "items": [
+          "ARIMA, time series forecasting, applied econometrics, statistical outlier detection, classification machine learning, model validation and diagnostics, cointegration and multivariate time series methods"
+        ]
+      },
+      {
+        "title": "Languages and platforms",
+        "items": [
+          "Python (pandas, NumPy, scikit-learn, statsmodels), R, SAS, SQL, Databricks, advanced Excel and VBA"
+        ]
+      },
+      {
+        "title": "Reporting and delivery",
+        "items": [
+          "Power BI, Tableau, SSRS, governed model documentation, executive written and oral briefing, remote contract collaboration"
+        ]
+      }
+    ]
+  },
+  "sections": {
+    "projects": {
+      "visible": false
+    },
+    "education": {
+      "visible": true
+    }
+  },
+  "contact": {
+    "label": "06 / Hire",
+    "title": "Available for Contract Engagements",
+    "intro": "Open to contract roles through agencies and direct clients. Based in Illinois; available for remote and hybrid engagements.",
+    "engagementPills": [
+      "Contract",
+      "Remote",
+      "Defined Deliverables"
+    ],
+    "valueItems": [
+      {
+        "label": "Fast ramp",
+        "body": "Deep domain experience across regulated enterprise environments"
+      },
+      {
+        "label": "Scoped delivery",
+        "body": "Milestone-driven work with documented handoffs"
+      },
+      {
+        "label": "Independent execution",
+        "body": "Self-directed within matrix teams across finance, IT, and compliance"
+      },
+      {
+        "label": "Audit-ready",
+        "body": "Governance-aligned documentation and knowledge transfer"
+      }
+    ],
+    "email": "jonathan@yourwebsitein7days.com"
+  }
+}

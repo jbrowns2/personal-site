@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-08T20:36:51.633Z",
+  "generatedAt": "2026-07-13T11:32:11.838Z",
   "profiles": [
     {
       "slug": "actalent-hr-data-analyst-jp-006125903",
@@ -182,6 +182,13 @@
       "folder": "Steward-Partners-Mgr-Finance-Data-Analytics",
       "employmentType": "full_time",
       "role": "Jonathan Brownstein — Manager, Finance Data & Analytics"
+    },
+    {
+      "slug": "summit-consultant",
+      "accessCode": "SUMMIT2026",
+      "folder": "Summit-Consultant-Future-Roles",
+      "employmentType": "contract",
+      "role": "Jonathan Brownstein — Consultant — Future Roles / Talent Pool"
     },
     {
       "slug": "syneos-survey",

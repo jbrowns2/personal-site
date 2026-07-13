@@ -51,6 +51,7 @@ const SLUG_OVERRIDES = {
     'Kforce-Senior-SQL-Developer-2176943': 'kforce-senior-sql-developer',
     'Brooksource-Jr-Data-Engineer-JN-062026-574854': 'brooksource-jr-data-engineer',
     'Akkodis-Consultant-1634792': 'akkodis-consultant',
+    'Summit-Consultant-Future-Roles': 'summit-consultant',
 };
 
 function findResumeFiles() {
