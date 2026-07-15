@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-13T11:32:11.838Z",
+  "generatedAt": "2026-07-15T16:03:15.370Z",
   "profiles": [
     {
       "slug": "actalent-hr-data-analyst-jp-006125903",
@@ -79,13 +79,6 @@
       "role": "Jonathan Brownstein — Manager, Sales Reporting & Analytics"
     },
     {
-      "slug": "itw",
-      "accessCode": "ITW2026",
-      "folder": "ITW-Controller-JR7846",
-      "employmentType": "full_time",
-      "role": "Jonathan Brownstein — Controller"
-    },
-    {
       "slug": "insight-global-remote-junior-data-engineer",
       "accessCode": "INSIGHTDE2026",
       "folder": "Insight-Global-Remote-Junior-Data-Engineer-435519",
@@ -98,6 +91,13 @@
       "folder": "Insight-Global-Senior-Data-Analyst-Data-Engineer-549347",
       "employmentType": "contract",
       "role": "Jonathan Brownstein — Senior Data Analyst / Data Engineer — Job 549347"
+    },
+    {
+      "slug": "itw",
+      "accessCode": "ITW2026",
+      "folder": "ITW-Controller-JR7846",
+      "employmentType": "full_time",
+      "role": "Jonathan Brownstein — Controller"
     },
     {
       "slug": "jpmc-quant",
@@ -121,13 +121,6 @@
       "role": "Jonathan Brownstein — Data Scientist"
     },
     {
-      "slug": "mmd-remote-data-architect",
-      "accessCode": "MMD2026",
-      "folder": "MMD-Remote-Data-Architect",
-      "employmentType": "contract",
-      "role": "Jonathan Brownstein — Remote Data Architect"
-    },
-    {
       "slug": "markel",
       "accessCode": "MARKEL2026",
       "folder": "Markel-Sr-Actuarial-Analyst-R0023059",
@@ -135,11 +128,25 @@
       "role": "Jonathan Brownstein — Senior Actuarial Analyst / Actuary"
     },
     {
+      "slug": "mcc-ai-business-analytics",
+      "accessCode": "MCC2026",
+      "folder": "MCC-AI-Enhanced-Business-Analytics",
+      "employmentType": "full_time",
+      "role": "Jonathan Brownstein — AI-Enhanced Business Analytics Instructor"
+    },
+    {
       "slug": "michael-page",
       "accessCode": "MICHAELPAGE2026",
       "folder": "Michael-Page",
       "employmentType": "full_time",
       "role": "Jonathan Brownstein — Data & Analytics Leader"
+    },
+    {
+      "slug": "mmd-remote-data-architect",
+      "accessCode": "MMD2026",
+      "folder": "MMD-Remote-Data-Architect",
+      "employmentType": "contract",
+      "role": "Jonathan Brownstein — Remote Data Architect"
     },
     {
       "slug": "motion-ai-tools-automation-specialist",

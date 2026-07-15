@@ -52,6 +52,7 @@ const SLUG_OVERRIDES = {
     'Brooksource-Jr-Data-Engineer-JN-062026-574854': 'brooksource-jr-data-engineer',
     'Akkodis-Consultant-1634792': 'akkodis-consultant',
     'Summit-Consultant-Future-Roles': 'summit-consultant',
+    'MCC-AI-Enhanced-Business-Analytics': 'mcc-ai-business-analytics',
 };
 
 function findResumeFiles() {
@@ -106,6 +107,11 @@ function main() {
 
         try {
             const profile = parseResumeToProfile(markdown, { slug: slug, accessCode: accessCode });
+            const overridesPath = path.join(entry.folderPath, 'site-profile.overrides.json');
+            if (fs.existsSync(overridesPath)) {
+                Object.assign(profile, JSON.parse(fs.readFileSync(overridesPath, 'utf8')));
+                profile.slug = slug;
+            }
             validateProfile(profile);
             const outPath = path.join(PROFILES_DIR, slug + '.json');
             if (!dryRun) {

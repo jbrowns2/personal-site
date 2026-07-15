@@ -1,0 +1,113 @@
+{
+  "profileVersion": 1,
+  "slug": "mcc-ai-business-analytics",
+  "accessCode": "MCC2026",
+  "employmentType": "full_time",
+  "meta": {
+    "title": "Jonathan Brownstein — AI-Enhanced Business Analytics Instructor",
+    "description": "Part-time workforce instructor proposal for McHenry County College: AI-Enhanced Business Analytics, taught by a senior data analyst with fifteen years of industry practice in SQL, BI, and responsible AI."
+  },
+  "hero": {
+    "badge": "AI-Enhanced Business Analytics · Part-Time Instruction",
+    "typingPhrases": [
+      "Workforce Instruction",
+      "Business Analytics",
+      "Responsible AI",
+      "MSE, FLMI"
+    ],
+    "description": "Senior data analyst and applied AI practitioner proposing a part-time workforce course for McHenry County College: AI-Enhanced Business Analytics. Fifteen years translating business questions into reliable analytics, reporting, and decision support—SQL, BI dashboards, statistical modeling, machine learning, and generative AI used daily in professional work. Emphasizes validation, data quality, and responsible AI. Available evenings, weekends, open enrollment, customized employer training, or adjunct-style delivery alongside full-time industry work.",
+    "primaryCta": "Discuss This Course",
+    "secondaryCta": "View Experience"
+  },
+  "highlights": [
+    {
+      "label": "Business and data analytics · SQL and database fundamentals · Power BI and data storytelling · generative AI for analysts · prompt engineering · AI-assisted data preparation and reporting · requirements documentation · process automation · responsible AI and data privacy · adult learner curriculum design · hands-on lab instruction · stakeholder communication · capstone coaching"
+    }
+  ],
+  "experience": {
+    "title": "Professional Experience",
+    "items": [
+      {
+        "title": "Senior Data Analyst III",
+        "organization": "Hannover Life Reassurance Company of America",
+        "context": "Enterprise data science · ML architecture · AI-assisted analytics · 2019 – Present",
+        "bullets": [
+          "Apply SQL, statistical modeling, machine learning, and AI-assisted workflows to actuarial, finance, and enterprise data processes in a Chief Data Office setting.",
+          "Design analytics stakeholders can trust: clear requirements, validated outputs, documented methods, and executive-ready recommendations.",
+          "Built forecasting, classification, and outlier-detection solutions recognized at senior leadership; emphasize accuracy, governance, and explainability.",
+          "Coach teammates on SQL, visualization, and safe AI use—mirroring the teach-then-validate habit central to workforce training.",
+          "Create reusable reference assets (metadata, lineage, valuation frameworks) that help others learn systems and reduce tribal knowledge."
+        ]
+      },
+      {
+        "title": "Assistant Business Controller",
+        "organization": "Chicago Pneumatic Company LLC",
+        "context": "Cross-functional reporting · KPI design · process documentation · 2012 – 2018",
+        "bullets": [
+          "Led reporting modernization for HR, Sales, Marketing, and executives—bridging business need and technical delivery for mixed skill-level teams.",
+          "Built automated reporting frameworks and turned ambiguous requests into scoped KPIs, reports, and process documentation managers could actually use."
+        ]
+      }
+    ]
+  },
+  "skills": {
+    "title": "Skills & Expertise",
+    "groups": [
+      {
+        "title": "Analytics",
+        "items": [
+          "SQL, Excel, Power BI, Tableau, SSRS, statistical modeling, applied econometrics, machine learning fundamentals"
+        ]
+      },
+      {
+        "title": "AI tools",
+        "items": [
+          "ChatGPT, Claude, Microsoft Copilot, Google Gemini, AI coding assistants (practical professional use)"
+        ]
+      },
+      {
+        "title": "Instruction",
+        "items": [
+          "module design for working adults, live demonstration, assigned practice, output validation, clear written materials"
+        ]
+      }
+    ]
+  },
+  "sections": {
+    "projects": {
+      "visible": true
+    },
+    "education": {
+      "visible": true
+    }
+  },
+  "contact": {
+    "label": "06 / Contact",
+    "title": "Part-Time Teaching Inquiry",
+    "intro": "Proposing a part-time AI-Enhanced Business Analytics offering for MCC Talent Impact or credit pathways. Based in Wauconda; available for evening, weekend, Catalyst Campus, or hybrid delivery.",
+    "engagementPills": [
+      "Part-Time",
+      "Workforce / Adjunct",
+      "McHenry County"
+    ],
+    "valueItems": [
+      {
+        "label": "Industry practice",
+        "body": "Current senior data analyst bringing real SQL, BI, and AI workflows into the classroom"
+      },
+      {
+        "label": "Adult learners",
+        "body": "Curriculum designed for Excel-familiar professionals—no prior AI or programming required"
+      },
+      {
+        "label": "Responsible AI",
+        "body": "Validation, privacy, and governance taught alongside productivity tools"
+      },
+      {
+        "label": "Local instructor",
+        "body": "Wauconda resident invested in McHenry County workforce skills"
+      }
+    ],
+    "email": "JonathanBrownstein12@icloud.com"
+  }
+}
