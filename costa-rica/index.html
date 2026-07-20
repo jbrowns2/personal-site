@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Pura Vida Play — silly Costa Rica mini-games for friends and family.">
+  <title>Pura Vida Play — Costa Rica Arcade</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="sky" aria-hidden="true">
+    <div class="cloud cloud-a"></div>
+    <div class="cloud cloud-b"></div>
+    <div class="cloud cloud-c"></div>
+    <div class="palm palm-left"></div>
+    <div class="palm palm-right"></div>
+  </div>
+
+  <div id="gate-check" class="gate-check" role="status">
+    <p class="gate-check-text">Warming up the toucans…</p>
+  </div>
+
+  <div id="app" class="app" hidden>
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-flag" aria-hidden="true"></span>
+        <div>
+          <p class="brand-kicker">Family arcade</p>
+          <h1 class="brand-title">Pura Vida Play</h1>
+        </div>
+      </div>
+      <p class="topbar-score" id="lifetime-score" aria-live="polite">Best day: 0</p>
+    </header>
+
+    <main>
+      <section class="hero" id="lobby">
+        <p class="hero-eyebrow">¡Pura vida!</p>
+        <h2 class="hero-title">Costa Rica clubhouse games</h2>
+        <p class="hero-copy">
+          Three silly mini-games inspired by sloths, coffee, and volcanic drama.
+          No résumés. No dashboards. Just mango-level chaos.
+        </p>
+        <div class="game-grid" role="list">
+          <button type="button" class="game-card" data-game="sloth" role="listitem">
+            <span class="game-emoji" aria-hidden="true">🦥</span>
+            <span class="game-name">Sloth Crossing</span>
+            <span class="game-blurb">Help a sleepy sloth dodge Tico traffic for mangoes.</span>
+          </button>
+          <button type="button" class="game-card" data-game="coffee" role="listitem">
+            <span class="game-emoji" aria-hidden="true">☕</span>
+            <span class="game-name">Coffee Catch</span>
+            <span class="game-blurb">Catch falling beans. Dodge volcanic rocks. Stay caffeinated.</span>
+          </button>
+          <button type="button" class="game-card" data-game="memory" role="listitem">
+            <span class="game-emoji" aria-hidden="true">🦜</span>
+            <span class="game-name">Jungle Memory</span>
+            <span class="game-blurb">Match toucans, volcanoes, and surfboards before the rain.</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="stage" id="stage" hidden>
+        <div class="stage-bar">
+          <button type="button" class="btn btn-ghost" id="back-lobby">← Lobby</button>
+          <h2 class="stage-title" id="stage-title">Game</h2>
+          <p class="stage-hud" id="stage-hud">Score 0</p>
+        </div>
+        <div class="stage-frame">
+          <canvas id="game-canvas" width="720" height="480" aria-label="Game canvas"></canvas>
+          <div id="memory-board" class="memory-board" hidden></div>
+          <div id="stage-overlay" class="stage-overlay" hidden>
+            <p class="overlay-title" id="overlay-title">Ready?</p>
+            <p class="overlay-copy" id="overlay-copy"></p>
+            <button type="button" class="btn btn-primary" id="overlay-action">Play</button>
+          </div>
+        </div>
+        <p class="stage-hint" id="stage-hint"></p>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Built for beach days, rainy afternoons, and anyone who thinks “portfolio” means a fruit basket.</p>
+    </footer>
+  </div>
+
+  <script src="games.js" defer></script>
+</body>
+</html>

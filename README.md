@@ -160,20 +160,39 @@ Every code submission (correct or incorrect) is recorded in `portfolio_gate_acce
 
 #### Local invitation report (dashboard + CLI)
 
-Reporting is **local only**. Set `ALLOW_GATE_REPORT=true` in `.env` (never on Vercel production).
+Reporting is **local only**. Set `ALLOW_GATE_REPORT=true` in `.env` for the live dashboard (never on Vercel production).
 
 ```bash
+# Self-contained HTML report (open in any browser — no dev server)
+npm run gate:report:html
+npm run gate:report:open   # regenerate + open in browser (or use VS Code task)
+# writes gate-report.html in the project root
+open gate-report.html
+
+# Optional filters / custom output path
+npm run gate:report -- --html --status pending --min-days 14
+npm run gate:report -- --html --output reports/snapshot.html
+
 # Terminal report
 npm run gate:report
 npm run gate:report -- --status pending --min-days 14
 npm run gate:report -- --csv
 
-# Web dashboard (requires full stack)
+# Live web dashboard (requires full stack)
 npm run dev:vercel
 # open http://localhost:3000/admin/gate-report.html
 ```
 
-The dashboard shows response rates, failed-entry tracking, follow-up lists (stale pending, tried-but-never-succeeded), daily activity charts, and per-employer event timelines. Export invitations as CSV from the dashboard or API (`GET /api/gate-report?format=csv`).
+The HTML report includes the same dashboard as the live admin page — summary cards, charts, invitation table, activity feed, and per-employer event timelines. Export invitations as CSV from the page or via `npm run gate:report -- --csv`.
+
+**Exclude your own test logins** — add to `.env` (report-only; events stay in the DB):
+
+```bash
+GATE_REPORT_EXCLUDE_FINGERPRINTS=your-sha256-fingerprint-here
+GATE_REPORT_EXCLUDE_IPS=203.0.113.42
+```
+
+Log in once, open an event in the report drawer to copy your fingerprint and IP, then regenerate: `npm run gate:report:html`. Multiple values: comma, space, or newline separated.
 
 ## Google Search (Get Indexed)
 

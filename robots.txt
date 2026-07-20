@@ -2,5 +2,6 @@ User-agent: *
 Allow: /
 Disallow: /Projects/
 Disallow: /admin/
+Disallow: /costa-rica/
 
 Sitemap: https://www.jonathansbrownstein.com/sitemap.xml

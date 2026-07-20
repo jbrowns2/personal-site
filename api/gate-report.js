@@ -43,12 +43,20 @@ module.exports = async function gateReportHandler(req, res) {
         if (format === 'csv') {
             if (sheet === 'events') {
                 const data = await gateReport.fetchReportData(sql);
+                const filtered = gateReport.filterReportEvents(data.events);
                 const codesById = new Map();
                 data.codes.forEach(function (c) {
                     codesById.set(c.id, c);
                 });
-                const proximityMap = gateReport.buildProximityMap(data.events, codesById);
-                const csv = gateReport.eventsToCsv(data.events, codesById, proximityMap);
+                const proximityMap = gateReport.buildProximityMap(
+                    filtered.events,
+                    codesById,
+                );
+                const csv = gateReport.eventsToCsv(
+                    filtered.events,
+                    codesById,
+                    proximityMap,
+                );
                 res.setHeader('Content-Type', 'text/csv; charset=utf-8');
                 res.setHeader(
                     'Content-Disposition',

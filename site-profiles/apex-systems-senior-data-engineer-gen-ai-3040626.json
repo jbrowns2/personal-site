@@ -1,0 +1,121 @@
+{
+  "profileVersion": 1,
+  "slug": "apex-systems-senior-data-engineer-gen-ai-3040626",
+  "accessCode": "APEX2026",
+  "employmentType": "contract",
+  "meta": {
+    "title": "Jonathan Brownstein — Senior Data Engineer & Gen AI — Job# 3040626",
+    "description": "Senior data engineer with fifteen years building enterprise ELT pipelines, governed analytical models, and production analytics platforms in regulated environments. Expert Python and SQL for scalable data workflows on cl"
+  },
+  "hero": {
+    "badge": "Senior Data Engineer & Gen AI — Job# 3040626 · Contract",
+    "typingPhrases": [
+      "Senior Data Engineer",
+      "Python and SQL Pipelines",
+      "Gen AI and Cloud Data Platforms"
+    ],
+    "description": "Senior data engineer with fifteen years building enterprise ELT pipelines, governed analytical models, and production analytics platforms in regulated environments. Expert Python and SQL for scalable data workflows on cloud and lakehouse platforms including Databricks. Recent contract delivery adds Gen AI integration, API orchestration, and React and Next.js application layers supporting intelligent automation. Strong data quality, lineage documentation, and cross-functional collaboration from architecture through production support. Available immediately for remote contract work from northern Illinois.",
+    "primaryCta": "Discuss This Role",
+    "secondaryCta": "View Delivery Record"
+  },
+  "highlights": [
+    {
+      "label": "Data engineering, ETL and ELT pipelines, Python, SQL, cloud data platforms, Databricks, data modeling, workflow orchestration, data quality and governance, Gen AI and LLM integration, REST APIs, React and Next.js, Docker, Git and CI/CD participation, technical documentation, stakeholder communication, remote contract delivery"
+    }
+  ],
+  "experience": {
+    "title": "Delivery Record",
+    "intro": "Contract consulting work.",
+    "items": [
+      {
+        "title": "Contract Senior Data Engineering and Cloud Pipeline Architect",
+        "organization": "",
+        "context": "",
+        "bullets": [
+          "Designed and maintained batch ELT workflows across multiple enterprise sources with Python and SQL transformation logic on Databricks and cloud lakehouse platforms.",
+          "Built analytical data models, tuned query performance, and resolved reliability issues across recurring pipeline loads and downstream reporting consumers.",
+          "Documented lineage, metadata standards, and data quality checks with exception reporting before production releases."
+        ]
+      },
+      {
+        "title": "Contract Gen AI and Application Integration Engineer",
+        "organization": "",
+        "context": "",
+        "bullets": [
+          "Integrated LLM services into production applications through API orchestration layers supporting conversational and automation use cases.",
+          "Delivered React and Next.js front-end components and serverless API endpoints connected to relational data stores and profile-driven content workflows.",
+          "Partnered with product and engineering stakeholders to translate business requirements into tested technical solutions."
+        ]
+      },
+      {
+        "title": "Contract Platform Automation and Data Quality Engineer",
+        "organization": "",
+        "context": "",
+        "bullets": [
+          "Automated recurring data workflows and validation routines replacing manual uploads and ad hoc handoffs in regulated environments.",
+          "Participated in code review, Git-based release cycles, and Docker-backed development supporting repeatable deployments."
+        ]
+      }
+    ]
+  },
+  "skills": {
+    "title": "Skills & Expertise",
+    "groups": [
+      {
+        "title": "Data engineering",
+        "items": [
+          "ETL and ELT pipelines, data modeling, query optimization, data quality monitoring, lineage documentation, pipeline troubleshooting"
+        ]
+      },
+      {
+        "title": "Platforms",
+        "items": [
+          "Python, SQL, Databricks, relational databases, REST APIs, React, Next.js, TypeScript, Docker, Git, cloud data platform patterns"
+        ]
+      },
+      {
+        "title": "AI and delivery",
+        "items": [
+          "LLM integration, workflow automation, CI/CD collaboration, remote contract collaboration"
+        ]
+      }
+    ]
+  },
+  "sections": {
+    "projects": {
+      "visible": true
+    },
+    "education": {
+      "visible": true
+    }
+  },
+  "contact": {
+    "label": "06 / Hire",
+    "title": "Available for Contract Engagements",
+    "intro": "Open to contract roles through agencies and direct clients. Based in Illinois; available for remote and hybrid engagements.",
+    "engagementPills": [
+      "Contract",
+      "Remote",
+      "Defined Deliverables"
+    ],
+    "valueItems": [
+      {
+        "label": "Fast ramp",
+        "body": "Deep domain experience across regulated enterprise environments"
+      },
+      {
+        "label": "Scoped delivery",
+        "body": "Milestone-driven work with documented handoffs"
+      },
+      {
+        "label": "Independent execution",
+        "body": "Self-directed within matrix teams across finance, IT, and compliance"
+      },
+      {
+        "label": "Audit-ready",
+        "body": "Governance-aligned documentation and knowledge transfer"
+      }
+    ],
+    "email": "jonathansbrownstein@icloud.com"
+  }
+}

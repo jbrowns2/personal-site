@@ -616,6 +616,17 @@
 
     /** JPMC Quant Analytics interview access code — minimal demo launcher for interviewers. */
     const DEMO_INVITE_ACCESS_CODE = 'JPMC210741105';
+    /** Employer-safe decoy shell — silly Costa Rica games, not the portfolio. */
+    const DECOY_SHELL_PROFILE_SLUG = 'costa-rica';
+    const DECOY_SHELL_PATH = '/costa-rica/';
+
+    function isDecoyShellProfile(slug) {
+        return slug === DECOY_SHELL_PROFILE_SLUG;
+    }
+
+    function redirectToDecoyShell() {
+        window.location.replace(DECOY_SHELL_PATH);
+    }
 
     let gateApiReady = false;
     let serverBlockUntil = 0;
@@ -1397,12 +1408,36 @@
                 if (/^#access=/.test(window.location.hash)) {
                     history.replaceState(null, '', window.location.pathname + window.location.search);
                 }
+                if (result.profileSlug) {
+                    persistProfileSlug(result.profileSlug);
+                }
+                if (isDecoyShellProfile(result.profileSlug)) {
+                    gate.classList.remove('access-gate--verifying');
+                    gate.classList.add('access-gate--success');
+                    const decoyInner = form.closest('.access-gate-inner');
+                    if (decoyInner) {
+                        const decoyBlock = document.createElement('div');
+                        decoyBlock.className = 'access-gate-success-block';
+                        decoyBlock.setAttribute('role', 'status');
+                        decoyBlock.setAttribute('aria-live', 'polite');
+                        decoyBlock.innerHTML =
+                            '<div class="access-gate-success-check" aria-hidden="true">' +
+                            '<svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>' +
+                            '</div>' +
+                            '<p class="access-gate-success-text">\u00a1Pura vida!</p>' +
+                            '<p class="access-gate-success-sub">Opening the arcade</p>';
+                        decoyInner.appendChild(decoyBlock);
+                    }
+                    setTimeout(function () {
+                        redirectToDecoyShell();
+                    }, 500);
+                    return;
+                }
                 applyUnlockedDom({ clearLoading: true });
                 if (result.contactEmail) {
                     setSiteContactEmail(result.contactEmail);
                 }
                 if (result.profileSlug) {
-                    persistProfileSlug(result.profileSlug);
                     await hydrateSiteProfile(result.profileSlug, result.employmentType);
                 } else {
                     applyEmploymentVariant(result.employmentType || EMPLOYMENT_FULL_TIME);
@@ -1829,6 +1864,11 @@
         const preloader = document.getElementById('preloader');
 
         if (stored) {
+            if (isDecoyShellProfile(profileSlug)) {
+                persistProfileSlug(profileSlug);
+                redirectToDecoyShell();
+                return;
+            }
             if (contactEmail) {
                 setSiteContactEmail(contactEmail);
             }

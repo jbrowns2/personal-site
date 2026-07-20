@@ -1,7 +1,8 @@
 (function () {
     'use strict';
 
-    var reportData = null;
+    var isStatic = !!window.__GATE_REPORT_STATIC__;
+    var reportData = window.__GATE_REPORT_DATA__ || null;
     var currentStatus = 'all';
     var searchQuery = '';
     var sortKey = 'invited-desc';
@@ -462,6 +463,9 @@
                             ? '<br>' + esc(ev.deviceType) + ' · ' + esc(ev.browser)
                             : '') +
                         (ev.ip ? '<br>IP: ' + esc(ev.ip) : '') +
+                        (ev.fingerprint
+                            ? '<br>Fingerprint: <code>' + esc(ev.fingerprint) + '</code>'
+                            : '') +
                         (ev.attribution === 'proximity'
                             ? '<br><em>Attributed via same visitor before success</em>'
                             : '') +
@@ -477,8 +481,28 @@
         els.drawer.hidden = true;
     }
 
+    function renderExclusionBanner() {
+        var existing = document.getElementById('exclusion-banner');
+        if (existing) existing.remove();
+        var ex = reportData.exclusions;
+        if (!ex || !ex.active) return;
+        var banner = document.createElement('div');
+        banner.id = 'exclusion-banner';
+        banner.className = 'exclusion-banner';
+        banner.textContent =
+            'Excluding ' +
+            ex.excludedEventCount +
+            ' test event(s) — ' +
+            ex.fingerprintCount +
+            ' fingerprint(s), ' +
+            ex.ipCount +
+            ' IP(s) from GATE_REPORT_EXCLUDE_* in .env';
+        els.content.insertBefore(banner, els.content.firstChild);
+    }
+
     function renderAll() {
         var s = reportData.summary;
+        renderExclusionBanner();
         renderSummary(s);
         renderFunnel(s);
         renderDailyChart(reportData.activity.dailyRollup || []);
@@ -507,8 +531,16 @@
             : '';
     }
 
-    document.getElementById('btn-refresh').addEventListener('click', loadReport);
+    var refreshBtn = document.getElementById('btn-refresh');
+    if (refreshBtn) {
+        refreshBtn.addEventListener('click', loadReport);
+    }
+
     document.getElementById('btn-export').addEventListener('click', function () {
+        if (isStatic && reportData) {
+            downloadCsv(invitationsToCsv(reportData.invitations), 'gate-invitations.csv');
+            return;
+        }
         window.location.href = apiBase() + '/gate-report?format=csv';
     });
     document.getElementById('drawer-close').addEventListener('click', closeDrawer);
@@ -540,5 +572,76 @@
         renderActivityFeed();
     });
 
-    loadReport();
+    function invitationsToCsv(invitations) {
+        var headers = [
+            'access_code',
+            'employer_label',
+            'contact_name',
+            'contact_email',
+            'role_title',
+            'invited_at',
+            'expires_at',
+            'active',
+            'response_status',
+            'days_outstanding',
+            'days_to_first_use',
+            'first_used_at',
+            'last_used_at',
+            'use_count',
+            'failed_attempt_count',
+            'failed_before_first_success',
+            'had_incorrect_entries',
+            'engagement_level',
+            'unique_ips',
+            'notes',
+        ];
+        var rows = invitations.map(function (inv) {
+            return [
+                inv.accessCode || '',
+                inv.employerLabel,
+                inv.contactName || '',
+                inv.contactEmail || '',
+                inv.roleTitle || '',
+                inv.invitedAt || '',
+                inv.expiresAt || '',
+                inv.active,
+                inv.responseStatus,
+                inv.daysOutstanding != null ? inv.daysOutstanding : '',
+                inv.daysToFirstUse != null ? inv.daysToFirstUse : '',
+                inv.firstUsedAt || '',
+                inv.lastUsedAt || '',
+                inv.useCount,
+                inv.failedAttemptCount,
+                inv.failedBeforeFirstSuccess,
+                inv.hadIncorrectEntries,
+                inv.engagementLevel,
+                inv.uniqueIpCount,
+                (inv.notes || '').replace(/"/g, '""'),
+            ]
+                .map(function (v) {
+                    var s = String(v);
+                    return s.indexOf(',') >= 0 || s.indexOf('"') >= 0 ? '"' + s + '"' : s;
+                })
+                .join(',');
+        });
+        return headers.join(',') + '\n' + rows.join('\n') + '\n';
+    }
+
+    function downloadCsv(content, filename) {
+        var blob = new Blob([content], { type: 'text/csv;charset=utf-8' });
+        var url = URL.createObjectURL(blob);
+        var link = document.createElement('a');
+        link.href = url;
+        link.download = filename;
+        link.click();
+        URL.revokeObjectURL(url);
+    }
+
+    if (reportData) {
+        els.loading.hidden = true;
+        els.content.hidden = false;
+        renderAll();
+    } else {
+        loadReport();
+    }
 })();

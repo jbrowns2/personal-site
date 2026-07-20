@@ -10,6 +10,7 @@ const fs = require('fs');
 const path = require('path');
 const { neon } = require('@neondatabase/serverless');
 const { getInvitationReport, invitationsToCsv } = require('../lib/gate-report.js');
+const { reportToHtml } = require('../lib/gate-report-html.js');
 
 loadDotEnvIfPresent(path.join(__dirname, '..', '.env'));
 
@@ -33,6 +34,8 @@ async function main() {
     };
     let asCsv = false;
     let asJson = false;
+    let asHtml = false;
+    let outputPath = null;
 
     for (let i = 0; i < args.length; i++) {
         const a = args[i];
@@ -43,6 +46,13 @@ async function main() {
             filters.minDaysPending = parseInt(a.slice('--min-days='.length), 10);
         } else if (a === '--csv') asCsv = true;
         else if (a === '--json') asJson = true;
+        else if (a === '--html') asHtml = true;
+        else if (a === '--output' || a === '-o') outputPath = args[++i];
+        else if (a.startsWith('--output=')) outputPath = a.slice('--output='.length);
+    }
+
+    if (asHtml) {
+        filters.includeEvents = true;
     }
 
     const url = process.env.DATABASE_URL;
@@ -53,6 +63,24 @@ async function main() {
 
     const sql = neon(url);
     const report = await getInvitationReport(sql, filters);
+
+    if (report.exclusions && report.exclusions.active) {
+        console.error(
+            'Note: excluded ' +
+                report.exclusions.excludedEventCount +
+                ' test event(s) via GATE_REPORT_EXCLUDE_* in .env',
+        );
+    }
+
+    if (asHtml) {
+        const html = reportToHtml(report);
+        const out =
+            outputPath ||
+            path.join(__dirname, '..', 'gate-report.html');
+        fs.writeFileSync(out, html, 'utf8');
+        console.log('Wrote HTML report: ' + path.resolve(out));
+        return;
+    }
 
     if (asJson) {
         console.log(JSON.stringify(report, null, 2));
@@ -151,6 +179,8 @@ function printUsage() {
             '  npm run gate:report -- --min-days 14',
             '  npm run gate:report -- --csv',
             '  npm run gate:report -- --json',
+            '  npm run gate:report:html',
+            '  npm run gate:report:html -- --output reports/snapshot.html',
             '',
         ].join('\n'),
     );

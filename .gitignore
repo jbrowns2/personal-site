@@ -35,6 +35,10 @@ node_modules/
 # Build output
 dist/
 
+# Generated login reports (may contain access codes)
+gate-report.html
+reports/
+
 .vercel
 .env*.local
 

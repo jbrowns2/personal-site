@@ -1,0 +1,576 @@
+@layer reset, base, theme, components, utilities;
+
+@layer reset {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    margin: 0;
+  }
+
+  button {
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+  }
+
+  button:disabled {
+    cursor: not-allowed;
+  }
+}
+
+@layer theme {
+  :root {
+    --in-oklab: ;
+    --ocean: #0b6e8a;
+    --lagoon: #1db8c8;
+    --jungle: #1f7a4d;
+    --leaf: #3cbf6f;
+    --banana: #f5c518;
+    --hibiscus: #e85d4c;
+    --sand: #fff6e8;
+    --bark: #2a1f14;
+    --foam: #ffffff;
+    --shadow: color-mix(in oklab, var(--bark) 28%, transparent);
+    --radius: 1.25rem;
+    --font-display: "Fredoka", "Trebuchet MS", sans-serif;
+    --font-body: "Nunito", "Segoe UI", sans-serif;
+  }
+
+  @supports (linear-gradient(in oklab, white, black)) {
+    :root {
+      --in-oklab: in oklab;
+    }
+  }
+}
+
+@layer base {
+  body {
+    min-block-size: 100dvh;
+    font-family: var(--font-body);
+    color: var(--bark);
+    background:
+      radial-gradient(ellipse 80% 50% at 20% 10%, color-mix(in oklab, var(--banana) 55%, transparent), transparent 55%),
+      radial-gradient(ellipse 70% 45% at 90% 0%, color-mix(in oklab, var(--hibiscus) 35%, transparent), transparent 50%),
+      linear-gradient(to bottom var(--in-oklab), #7ed6e8 0%, #45b8d0 38%, #2f9f6b 72%, #1f7a4d 100%);
+    overflow-x: clip;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--banana);
+    outline-offset: 3px;
+  }
+
+  h1,
+  h2,
+  .brand-title,
+  .hero-title,
+  .overlay-title,
+  .game-name {
+    font-family: var(--font-display);
+    text-wrap: balance;
+    line-height: 1.1;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+}
+
+@layer components {
+  .sky {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .cloud {
+    position: absolute;
+    border-radius: 999px;
+    background: color-mix(in oklab, var(--foam) 88%, transparent);
+    filter: blur(1px);
+    animation: drift 28s linear infinite;
+  }
+
+  .cloud::before,
+  .cloud::after {
+    content: "";
+    position: absolute;
+    border-radius: inherit;
+    background: inherit;
+  }
+
+  .cloud-a {
+    inline-size: 9rem;
+    block-size: 2.4rem;
+    inset-block-start: 8%;
+    inset-inline-start: -12%;
+  }
+
+  .cloud-a::before {
+    inline-size: 3.2rem;
+    block-size: 3.2rem;
+    inset-block-end: 0.4rem;
+    inset-inline-start: 1.2rem;
+  }
+
+  .cloud-a::after {
+    inline-size: 4rem;
+    block-size: 4rem;
+    inset-block-end: 0.2rem;
+    inset-inline-start: 3.6rem;
+  }
+
+  .cloud-b {
+    inline-size: 7rem;
+    block-size: 2rem;
+    inset-block-start: 18%;
+    inset-inline-start: 40%;
+    animation-duration: 36s;
+    animation-delay: -8s;
+  }
+
+  .cloud-b::before {
+    inline-size: 2.6rem;
+    block-size: 2.6rem;
+    inset-block-end: 0.3rem;
+    inset-inline-start: 1rem;
+  }
+
+  .cloud-b::after {
+    inline-size: 3.2rem;
+    block-size: 3.2rem;
+    inset-block-end: 0.1rem;
+    inset-inline-start: 2.8rem;
+  }
+
+  .cloud-c {
+    inline-size: 11rem;
+    block-size: 2.6rem;
+    inset-block-start: 5%;
+    inset-inline-start: 70%;
+    animation-duration: 42s;
+    animation-delay: -18s;
+  }
+
+  .cloud-c::before {
+    inline-size: 3.8rem;
+    block-size: 3.8rem;
+    inset-block-end: 0.5rem;
+    inset-inline-start: 1.6rem;
+  }
+
+  .cloud-c::after {
+    inline-size: 4.4rem;
+    block-size: 4.4rem;
+    inset-block-end: 0.3rem;
+    inset-inline-start: 4.4rem;
+  }
+
+  .palm {
+    position: absolute;
+    inset-block-end: -2rem;
+    inline-size: 8rem;
+    block-size: 18rem;
+    background:
+      linear-gradient(to top, #1a5c38, #2f9a58),
+      radial-gradient(circle at 50% 12%, #3cbf6f 0 28%, transparent 29%);
+    background-blend-mode: multiply;
+    clip-path: polygon(46% 100%, 54% 100%, 52% 28%, 78% 8%, 54% 22%, 62% 0, 48% 18%, 34% 0, 42% 22%, 18% 6%, 46% 28%);
+    opacity: 0.55;
+  }
+
+  .palm-left {
+    inset-inline-start: -1rem;
+    transform: rotate(-8deg);
+  }
+
+  .palm-right {
+    inset-inline-end: -1rem;
+    transform: scaleX(-1) rotate(-6deg);
+  }
+
+  .gate-check,
+  .app {
+    position: relative;
+    z-index: 1;
+  }
+
+  .gate-check {
+    display: grid;
+    place-items: center;
+    min-block-size: 100dvh;
+    padding: 2rem;
+  }
+
+  .gate-check-text {
+    margin: 0;
+    padding: 1rem 1.25rem;
+    border-radius: 999px;
+    background: color-mix(in oklab, var(--sand) 92%, transparent);
+    box-shadow: 0 10px 30px var(--shadow);
+    font-weight: 700;
+  }
+
+  .app {
+    width: min(68rem, calc(100% - 2rem));
+    margin-inline: auto;
+    padding-block: 1.25rem 2.5rem;
+  }
+
+  .topbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-block-end: 1.5rem;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+  }
+
+  .brand-flag {
+    inline-size: 3.25rem;
+    block-size: 2.15rem;
+    border-radius: 0.45rem;
+    box-shadow: 0 6px 16px var(--shadow);
+    background:
+      linear-gradient(
+        to bottom,
+        #001da0 0 33%,
+        #ffffff 33% 66%,
+        #d40000 66% 100%
+      );
+    position: relative;
+  }
+
+  .brand-flag::after {
+    content: "";
+    position: absolute;
+    inset: 33% 0 33%;
+    background: #001da0;
+  }
+
+  .brand-kicker {
+    margin: 0;
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: color-mix(in oklab, var(--bark) 70%, var(--foam));
+  }
+
+  .brand-title {
+    margin: 0.1rem 0 0;
+    font-size: clamp(1.6rem, 1.2rem + 1.6vw, 2.2rem);
+    color: var(--foam);
+    text-shadow: 0 2px 0 color-mix(in oklab, var(--bark) 25%, transparent);
+  }
+
+  .topbar-score {
+    margin: 0;
+    padding: 0.55rem 0.9rem;
+    border-radius: 999px;
+    background: color-mix(in oklab, var(--sand) 90%, transparent);
+    font-weight: 800;
+  }
+
+  .hero {
+    padding: clamp(1.25rem, 3vw, 2rem);
+    border-radius: calc(var(--radius) + 0.35rem);
+    background:
+      linear-gradient(145deg var(--in-oklab), color-mix(in oklab, var(--sand) 94%, transparent), color-mix(in oklab, #ffe7b8 88%, transparent));
+    box-shadow: 0 18px 40px var(--shadow);
+  }
+
+  .hero-eyebrow {
+    margin: 0;
+    display: inline-block;
+    padding: 0.35rem 0.7rem;
+    border-radius: 999px;
+    background: color-mix(in oklab, var(--leaf) 22%, var(--sand));
+    color: var(--jungle);
+    font-weight: 800;
+    font-size: 0.85rem;
+  }
+
+  .hero-title {
+    margin: 0.75rem 0 0.5rem;
+    font-size: clamp(2rem, 1.4rem + 2.8vw, 3.4rem);
+    color: var(--ocean);
+  }
+
+  .hero-copy {
+    margin: 0 0 1.5rem;
+    max-inline-size: 42rem;
+    font-size: 1.05rem;
+    line-height: 1.55;
+    color: color-mix(in oklab, var(--bark) 82%, var(--ocean));
+  }
+
+  .game-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: 1rem;
+  }
+
+  .game-card {
+    display: grid;
+    gap: 0.45rem;
+    text-align: start;
+    padding: 1.15rem 1.1rem 1.25rem;
+    border: 0;
+    border-radius: var(--radius);
+    background: var(--foam);
+    box-shadow: 0 10px 24px color-mix(in oklab, var(--bark) 12%, transparent);
+    transition: transform 180ms ease, box-shadow 180ms ease;
+    min-block-size: 10rem;
+  }
+
+  .game-card:hover:not(:disabled),
+  .game-card:focus-visible {
+    transform: translateY(-4px) rotate(-0.4deg);
+    box-shadow: 0 16px 28px color-mix(in oklab, var(--bark) 18%, transparent);
+  }
+
+  .game-emoji {
+    font-size: 2rem;
+    line-height: 1;
+  }
+
+  .game-name {
+    font-size: 1.25rem;
+    color: var(--ocean);
+  }
+
+  .game-blurb {
+    font-size: 0.95rem;
+    line-height: 1.4;
+    color: color-mix(in oklab, var(--bark) 72%, transparent);
+  }
+
+  .stage {
+    margin-block-start: 1rem;
+    padding: 1rem;
+    border-radius: calc(var(--radius) + 0.35rem);
+    background: color-mix(in oklab, var(--sand) 92%, transparent);
+    box-shadow: 0 18px 40px var(--shadow);
+  }
+
+  .stage-bar {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 0.75rem;
+    align-items: center;
+    margin-block-end: 0.85rem;
+  }
+
+  .stage-title {
+    margin: 0;
+    text-align: center;
+    font-size: 1.35rem;
+    color: var(--ocean);
+  }
+
+  .stage-hud {
+    margin: 0;
+    font-weight: 800;
+    white-space: nowrap;
+  }
+
+  .stage-frame {
+    position: relative;
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: #0d5f74;
+    box-shadow: inset 0 0 0 3px color-mix(in oklab, var(--banana) 70%, white);
+    aspect-ratio: 3 / 2;
+  }
+
+  #game-canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    touch-action: none;
+  }
+
+  .memory-board {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.65rem;
+    padding: 0.85rem;
+    background:
+      radial-gradient(circle at 20% 20%, color-mix(in oklab, var(--leaf) 35%, transparent), transparent 40%),
+      linear-gradient(160deg var(--in-oklab), #167a55, #0d5f74);
+  }
+
+  .memory-card {
+    border: 0;
+    border-radius: 0.9rem;
+    background: color-mix(in oklab, var(--sand) 92%, transparent);
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
+    min-block-size: 24px;
+    min-inline-size: 24px;
+    transition: transform 160ms ease, background 160ms ease;
+  }
+
+  .memory-card:hover:not(:disabled) {
+    transform: scale(1.03);
+  }
+
+  .memory-card.is-face-down {
+    background:
+      repeating-linear-gradient(
+        -45deg,
+        color-mix(in oklab, var(--ocean) 80%, black),
+        color-mix(in oklab, var(--ocean) 80%, black) 8px,
+        color-mix(in oklab, var(--lagoon) 70%, black) 8px,
+        color-mix(in oklab, var(--lagoon) 70%, black) 16px
+      );
+    color: transparent;
+  }
+
+  .memory-card.is-matched {
+    background: color-mix(in oklab, var(--banana) 55%, white);
+    opacity: 0.85;
+  }
+
+  .stage-overlay {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-content: center;
+    gap: 0.65rem;
+    padding: 1.25rem;
+    text-align: center;
+    background: color-mix(in oklab, var(--bark) 48%, transparent);
+    color: var(--foam);
+    backdrop-filter: blur(2px);
+  }
+
+  .overlay-title {
+    margin: 0;
+    font-size: clamp(1.8rem, 1.2rem + 2vw, 2.6rem);
+  }
+
+  .overlay-copy {
+    margin: 0;
+    max-inline-size: 28rem;
+    justify-self: center;
+    line-height: 1.45;
+  }
+
+  .stage-hint {
+    margin: 0.75rem 0 0;
+    text-align: center;
+    font-weight: 700;
+    color: color-mix(in oklab, var(--bark) 75%, var(--ocean));
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    min-block-size: 2.75rem;
+    min-inline-size: 2.75rem;
+    padding: 0.55rem 1rem;
+    border: 0;
+    border-radius: 999px;
+    font-weight: 800;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg var(--in-oklab), var(--banana), #ff9f1c);
+    color: var(--bark);
+    box-shadow: 0 8px 18px color-mix(in oklab, var(--bark) 22%, transparent);
+  }
+
+  .btn-primary:hover:not(:disabled) {
+    transform: translateY(-1px);
+  }
+
+  .btn-ghost {
+    background: color-mix(in oklab, var(--foam) 70%, transparent);
+    color: var(--ocean);
+  }
+
+  .footer {
+    margin-block-start: 1.75rem;
+    text-align: center;
+    color: color-mix(in oklab, var(--foam) 88%, transparent);
+    text-shadow: 0 1px 2px color-mix(in oklab, var(--bark) 35%, transparent);
+  }
+
+  .footer p {
+    margin: 0;
+    font-size: 0.95rem;
+  }
+}
+
+@layer utilities {
+  [hidden] {
+    display: none !important;
+  }
+}
+
+@keyframes drift {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(120vw);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cloud,
+  .game-card,
+  .memory-card,
+  .btn-primary {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .stage-bar {
+    grid-template-columns: 1fr;
+    justify-items: start;
+  }
+
+  .stage-title,
+  .stage-hud {
+    justify-self: start;
+    text-align: start;
+  }
+
+  .memory-board {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.45rem;
+    padding: 0.55rem;
+  }
+}
+
+@media (pointer: coarse) {
+  .game-card,
+  .btn,
+  .memory-card {
+    min-block-size: 3rem;
+  }
+}

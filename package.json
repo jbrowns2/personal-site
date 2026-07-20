@@ -15,6 +15,8 @@
     "gate:enable": "node scripts/manage-gate-codes.js enable",
     "gate:remove": "node scripts/manage-gate-codes.js remove",
     "gate:report": "node scripts/gate-report.js",
+    "gate:report:html": "node scripts/gate-report.js --html",
+    "gate:report:open": "node scripts/gate-report.js --html && open gate-report.html",
     "gate:report:reset": "node scripts/reset-gate-report.js",
     "profile:build": "node scripts/build-site-profile.js",
     "profile:generate-all": "node scripts/generate-all-profiles.js",

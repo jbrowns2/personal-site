@@ -1,0 +1,120 @@
+{
+  "profileVersion": 1,
+  "slug": "robert-half-revenue-accounting-data-analyst",
+  "accessCode": "ROBERTHALF2026",
+  "employmentType": "contract",
+  "meta": {
+    "title": "Jonathan Brownstein — Revenue & Accounting Data Analyst",
+    "description": "Revenue and accounting analytics specialist with fifteen years connecting financial data, reporting accuracy, and stakeholder decisions in regulated healthcare-adjacent and enterprise finance environments. I reconcile re"
+  },
+  "hero": {
+    "badge": "Revenue & Accounting Data Analyst · Contract",
+    "typingPhrases": [
+      "Revenue & Accounting Data Analyst",
+      "Healthcare Revenue Reporting",
+      "SQL & Tableau"
+    ],
+    "description": "Revenue and accounting analytics specialist with fifteen years connecting financial data, reporting accuracy, and stakeholder decisions in regulated healthcare-adjacent and enterprise finance environments. I reconcile revenue extracts across periods, write SQL on large operational datasets, and build Tableau and Power BI dashboards for variance and trend reporting. Contract work spans extract comparison frameworks, GAAP-aligned validation, advanced Excel and Power Query, and workflow automation comparable to Alteryx-style prep. Six years in FP&A and controllership strengthened month-end reconciliation and executive financial reporting. Available immediately for remote temporary contract work on Mountain Time hours from northern Illinois.",
+    "primaryCta": "Discuss This Role",
+    "secondaryCta": "View Delivery Record"
+  },
+  "highlights": [
+    {
+      "label": "Revenue reporting and analysis, accounting reconciliations, healthcare revenue cycle adjacent reporting, billing and collections performance analysis, financial data validation, GAAP-based financial analysis, SQL, Tableau, Power BI, advanced Microsoft Excel, Power Query, workflow automation, variance and trend analysis, stakeholder communication, Microsoft Dynamics 365 adjacent ERP reporting"
+    }
+  ],
+  "experience": {
+    "title": "Delivery Record",
+    "intro": "Contract consulting work. Client names withheld under standard NDAs.",
+    "items": [
+      {
+        "title": "Senior Revenue and Financial Reporting Analyst",
+        "organization": "Life and health financial services enterprise, remote hybrid contract, Chief Data Office ecosystem",
+        "context": "",
+        "bullets": [
+          "Examined financial and revenue reporting extracts to validate accuracy, reconcile movement across periods and source systems, and document logic for audit-ready review.",
+          "Wrote SQL to retrieve, join, and analyze large premium, claims, and valuation datasets; built Tableau, Power BI, and SSRS dashboards for revenue and KPI reporting.",
+          "Designed a valuation extract comparison framework for period-over-period revenue movement analysis that replaced ad hoc reconciliations."
+        ]
+      },
+      {
+        "title": "FP&A and Accounting Analytics Consultant",
+        "organization": "Global manufacturing group, regional finance leadership",
+        "context": "",
+        "bullets": [
+          "Supported planning, forecasting, budgeting, and month-end P&L variance analysis for finance, sales, operations, and regional leadership.",
+          "Prepared and reconciled financial information using advanced Excel, Power Query, and VBA automation across recurring KPI packages.",
+          "Partnered with finance and operational stakeholders to explain findings and package executive-ready commentary."
+        ]
+      },
+      {
+        "title": "Contract Financial Reporting Validation Analyst",
+        "organization": "Commercial banking and public sector financial systems, part time contract",
+        "context": "",
+        "bullets": [
+          "Validated SQL reporting outputs against source extracts, executed reconciliation checks, and documented variances and sign off evidence in regulated environments."
+        ]
+      }
+    ]
+  },
+  "skills": {
+    "title": "Skills & Expertise",
+    "groups": [
+      {
+        "title": "Revenue and accounting",
+        "items": [
+          "revenue reporting, reconciliations, billing and collections analysis, healthcare revenue cycle familiarity, GAAP-based analysis, extract validation"
+        ]
+      },
+      {
+        "title": "Tools",
+        "items": [
+          "SQL, Tableau, Power BI, SSRS, Excel, Power Query, Python, VBA, Databricks"
+        ]
+      },
+      {
+        "title": "Automation and systems",
+        "items": [
+          "workflow automation (Python, Power Query, Alteryx-comparable), ERP reporting familiarity (Dynamics-style GL workflows)"
+        ]
+      }
+    ]
+  },
+  "sections": {
+    "projects": {
+      "visible": true
+    },
+    "education": {
+      "visible": true
+    }
+  },
+  "contact": {
+    "label": "06 / Hire",
+    "title": "Available for Contract Engagements",
+    "intro": "Open to contract roles through agencies and direct clients. Based in Illinois; available for remote and hybrid engagements.",
+    "engagementPills": [
+      "Contract",
+      "Remote",
+      "Defined Deliverables"
+    ],
+    "valueItems": [
+      {
+        "label": "Fast ramp",
+        "body": "Deep domain experience across regulated enterprise environments"
+      },
+      {
+        "label": "Scoped delivery",
+        "body": "Milestone-driven work with documented handoffs"
+      },
+      {
+        "label": "Independent execution",
+        "body": "Self-directed within matrix teams across finance, IT, and compliance"
+      },
+      {
+        "label": "Audit-ready",
+        "body": "Governance-aligned documentation and knowledge transfer"
+      }
+    ],
+    "email": "jonathansbrownstein@icloud.com"
+  }
+}

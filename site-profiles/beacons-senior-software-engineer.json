@@ -1,0 +1,117 @@
+{
+  "profileVersion": 1,
+  "slug": "beacons-senior-software-engineer",
+  "accessCode": "BEACONS2026",
+  "employmentType": "contract",
+  "meta": {
+    "title": "Jonathan Brownstein — Senior Software Engineer",
+    "description": "Senior full stack engineer with fifteen years shipping production Python, SQL, and web applications in environments that expect fast iteration and clear ownership. AI assisted development is my default starting point: Cu"
+  },
+  "hero": {
+    "badge": "Senior Software Engineer · Contract",
+    "typingPhrases": [
+      "Data & Analytics",
+      "MSE, FLMI"
+    ],
+    "description": "Senior full stack engineer with fifteen years shipping production Python, SQL, and web applications in environments that expect fast iteration and clear ownership. AI assisted development is my default starting point: Cursor for implementation and review, LLMs for scoping, spec writing, and debugging before I write boilerplate by hand. Delivery spans a production platform with React UI, serverless APIs, and PostgreSQL, plus enterprise Python analytics systems used at high data volume. I scope product features with teammates in ambiguous settings and bias toward shipping usable increments. Principal at Your Website In 7 Days LLC, with ongoing work pairing ML and LLMs on creator facing tooling. Open to contract or LLC billed engagement for this full time role. Available immediately.",
+    "primaryCta": "Discuss This Role",
+    "secondaryCta": "View Delivery Record"
+  },
+  "highlights": [
+    {
+      "label": "TypeScript and React · Python backend services · PostgreSQL and SQL · AI native development with Cursor and LLM tooling · REST API design · serverless Node.js · Flask patterns · Firebase familiarity · product scoping and iteration · creator focused UX · Git delivery · code review · startup pace execution · cross functional collaboration"
+    }
+  ],
+  "experience": {
+    "title": "Delivery Record",
+    "items": [
+      {
+        "title": "Full Stack Product Engineering",
+        "organization": "Production React UI · serverless APIs · PostgreSQL · AI assisted delivery",
+        "context": "",
+        "bullets": [
+          "Built and maintain a production web platform with serverless API endpoints, session authentication, and profile driven content loading on PostgreSQL, supporting gated profile experiences and access controlled client deliverables.",
+          "Lead frontend and backend iteration in TypeScript and Python; use AI coding assistants daily for implementation, review, and test scaffolding rather than manual boilerplate.",
+          "Ship responsive UI and Git based cloud releases for a multi profile product used as a gated portfolio and client delivery surface, with async UI state management and documented handoffs for contract stakeholders."
+        ]
+      },
+      {
+        "title": "Python Backend and AI Powered Systems",
+        "organization": "Enterprise analytics · classification ML · LLM integration · high volume SQL",
+        "context": "Remote contract · governed production releases",
+        "bullets": [
+          "Architected Python forecasting and classification platforms on scheduled pipelines, translating model output into production signals for data science and business partners.",
+          "Built classification workflows and statistical outlier detection adopted in regulated production environments; recognized by senior leadership.",
+          "Integrated LLM tooling into product R&D, including a camera vision project that interprets scene context for end users rather than raw motion events.",
+          "Led metadata and lineage systems used as the enterprise reference for a trillion record warehouse; technical lead on governed production analytics releases."
+        ]
+      }
+    ]
+  },
+  "skills": {
+    "title": "Skills & Expertise",
+    "groups": [
+      {
+        "title": "Frontend",
+        "items": [
+          "TypeScript, React, JavaScript, HTML, CSS, responsive layout, component driven UI, async UI state management, form validation"
+        ]
+      },
+      {
+        "title": "Backend",
+        "items": [
+          "Python, Flask patterns, Node.js, REST APIs, serverless functions, authentication flows, profile routing, session management, deployment monitoring"
+        ]
+      },
+      {
+        "title": "Data",
+        "items": [
+          "PostgreSQL, SQL, relational databases, data modeling, query optimization, metadata and lineage tooling"
+        ]
+      },
+      {
+        "title": "AI and Tools",
+        "items": [
+          "Cursor, LLM assisted planning and code review, ML integration, prompt iteration, Docker, Git, Vercel serverless"
+        ]
+      }
+    ]
+  },
+  "sections": {
+    "projects": {
+      "visible": true
+    },
+    "education": {
+      "visible": true
+    }
+  },
+  "contact": {
+    "label": "06 / Hire",
+    "title": "Available for Contract Engagements",
+    "intro": "Open to contract roles through agencies and direct clients. Based in Illinois; available for remote and hybrid engagements.",
+    "engagementPills": [
+      "Contract",
+      "Remote",
+      "Defined Deliverables"
+    ],
+    "valueItems": [
+      {
+        "label": "Fast ramp",
+        "body": "Deep domain experience across regulated enterprise environments"
+      },
+      {
+        "label": "Scoped delivery",
+        "body": "Milestone-driven work with documented handoffs"
+      },
+      {
+        "label": "Independent execution",
+        "body": "Self-directed within matrix teams across finance, IT, and compliance"
+      },
+      {
+        "label": "Audit-ready",
+        "body": "Governance-aligned documentation and knowledge transfer"
+      }
+    ],
+    "email": "jonathansbrownstein@icloud.com"
+  }
+}

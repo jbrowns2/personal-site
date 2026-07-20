@@ -8,6 +8,10 @@
     "slug": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
     "accessCode": { "type": "string" },
     "employmentType": { "enum": ["contract", "full_time"] },
+    "siteShell": {
+      "type": "string",
+      "description": "Optional alternate HTML shell path key (e.g. costa-rica). When set, the portfolio redirects instead of applying this profile."
+    },
     "meta": {
       "type": "object",
       "required": ["title", "description"],

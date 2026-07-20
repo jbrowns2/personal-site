@@ -101,6 +101,10 @@ async function build() {
       copyDir('demos', path.join(distDir, 'demos'));
       console.log('✅ Demos copied');
     }
+    if (fs.existsSync('costa-rica')) {
+      copyDir('costa-rica', path.join(distDir, 'costa-rica'));
+      console.log('✅ Costa Rica decoy arcade copied');
+    }
     
     // Copy other static files
     const staticFiles = ['robots.txt', 'sitemap.xml', 'favicon.svg'];

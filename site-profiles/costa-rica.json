@@ -1,0 +1,34 @@
+{
+  "profileVersion": 1,
+  "slug": "costa-rica",
+  "accessCode": "CostaRica",
+  "employmentType": "full_time",
+  "siteShell": "costa-rica",
+  "meta": {
+    "title": "Pura Vida Play — Costa Rica Arcade",
+    "description": "Silly Costa Rica mini-games for friends and family. Sloths, coffee beans, and jungle memory."
+  },
+  "hero": {
+    "badge": "Pura Vida Play",
+    "typingPhrases": ["Sloth Crossing", "Coffee Catch", "Jungle Memory"],
+    "description": "A decoy arcade shell — visitors with this code never see the portfolio.",
+    "primaryCta": "Play",
+    "secondaryCta": "Lobby"
+  },
+  "experience": {
+    "title": "Games",
+    "items": [
+      {
+        "title": "Sloth Crossing",
+        "organization": "San José Traffic Authority (honorary)",
+        "bullets": ["Dodge buses", "Collect mangoes", "Nap afterward"]
+      }
+    ]
+  },
+  "contact": {
+    "label": "Clubhouse",
+    "title": "Pura vida",
+    "intro": "This shell is intentional cover — not a recruiting profile.",
+    "email": ""
+  }
+}
