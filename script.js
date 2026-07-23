@@ -1360,8 +1360,8 @@
             const code = normalizeGateCode(getCode());
             if (code.length < MIN_GATE_CODE_LEN) {
                 showGateError(
-                    'Enter your code',
-                    'Check your email, or request access below.',
+                    'Enter a code',
+                    'Please enter a valid access code.',
                 );
                 codeInput.focus();
                 return;
