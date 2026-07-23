@@ -54,6 +54,7 @@ const SLUG_OVERRIDES = {
     'Summit-Consultant-Future-Roles': 'summit-consultant',
     'MCC-AI-Enhanced-Business-Analytics': 'mcc-ai-business-analytics',
     'KornFerry-Reporting-FPA-Support-1688929': 'kornferry-reporting-fpa-support',
+    'Hays-Sr-Data-Analyst-1185351': 'hays-sr-data-analyst',
 };
 
 function findResumeFiles() {

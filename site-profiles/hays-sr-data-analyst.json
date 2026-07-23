@@ -1,0 +1,149 @@
+{
+  "profileVersion": 1,
+  "slug": "hays-sr-data-analyst",
+  "accessCode": "HAYS2026",
+  "employmentType": "contract",
+  "meta": {
+    "title": "Jonathan Brownstein — Sr. Data Analyst (Life Insurance Conversion)",
+    "description": "Senior data analyst for life insurance and annuity admin system conversion support. Alteryx, Excel, SQL. Available immediately for remote contract work."
+  },
+  "hero": {
+    "badge": "Sr. Data Analyst · Contract",
+    "typingPhrases": [
+      "Senior Data Analyst",
+      "Life Insurance and Annuity Data Validation",
+      "Balancing and Conversion Analysis",
+      "Alteryx, Excel, and SQL"
+    ],
+    "description": "Senior data analyst with fifteen years supporting life insurance, reinsurance, and financial reporting work where policy values, product features, and large extracts have to reconcile cleanly across systems. Seven years inside the Data Analytics Office of a global reinsurer, partnering with actuarial, valuation, finance, product, and IT on balancing style comparisons, conversion ready documentation, and the repeatable analysis that product support teams need when blocks move between administrative platforms. Six years as Assistant Business Controller inside a global manufacturer, owning planning cycles and the Excel driven reporting that leadership used every month. Day to day toolkit includes Alteryx, advanced Excel, SQL, Python, R, Power BI, Tableau, and SSRS. FLMI from LOMA, MS in Economics with an Applied Econometrics certificate, and BS in Economics. Available immediately for remote contract work.",
+    "primaryCta": "Discuss This Role",
+    "secondaryCta": "View Delivery Record"
+  },
+  "highlights": [
+    {
+      "label": "Life insurance and annuity data validation"
+    },
+    {
+      "label": "Balancing reports and source to target reconciliation"
+    },
+    {
+      "label": "Alteryx, Excel, and SQL data manipulation"
+    },
+    {
+      "label": "Admin system conversion analysis and difference research"
+    }
+  ],
+  "experience": {
+    "title": "Delivery Record",
+    "items": [
+      {
+        "title": "Senior Data Analyst III",
+        "organization": "Hannover Reinsurance Company LLC",
+        "context": "Senior data analysis and validation lead inside the Data Analytics Office",
+        "dates": "2019 to 2026",
+        "intro": "Senior individual contributor supporting life reinsurance analytics for actuarial, valuation, finance, and related partners. Work centered on large policy and valuation extracts, balancing style comparisons across systems and periods, documented research when values did not line up, and the production ready analysis product and finance stakeholders needed for period close and initiative reviews.",
+        "bullets": [],
+        "subsections": [
+          {
+            "title": "Balancing Analysis, Conversion Style Validation, and Difference Research",
+            "bullets": [
+              "Built and operated the firm's first valuation extract comparison framework for comparing reporting and policy related outputs across periods and source systems.",
+              "Analyzed balancing style outputs and multi source extracts, documented differences, and researched likely causes before recommending follow up changes.",
+              "Executed detailed, repeatable validation steps across large life insurance and reinsurance datasets with clear written results for product, actuarial, and finance partners.",
+              "Partnered with actuarial process and control minded stakeholders on how differences should be investigated, logged, and signed off."
+            ]
+          },
+          {
+            "title": "Alteryx, Excel, SQL, and Large Scale Data Manipulation",
+            "bullets": [
+              "Designed Alteryx workflows to prepare, join, and compare large extracts, reducing manual spreadsheet handoffs.",
+              "Wrote SQL queries against warehouse and extract sources to isolate policy, valuation, and portfolio populations, then reconciled results in Excel.",
+              "Combined Alteryx, Excel, SQL, Python, and R when needed, documenting assumptions and transformation steps for rerunability.",
+              "Applied statistical outlier and anomaly detection across platforms processing very large record volumes."
+            ]
+          },
+          {
+            "title": "Life Insurance Product Context, Reporting, and Stakeholder Delivery",
+            "bullets": [
+              "Supported life reinsurance analytics where product features, policy values, and in force movement mattered, drawing on FLMI coursework and actuarial partnership.",
+              "Built and maintained Power BI, Tableau, and SSRS packages for KPI review, variance commentary, and financial movement analysis.",
+              "Created documentation covering lineage, refresh cadence, ownership, and control points so analysis processes remained operable after handoff."
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Assistant Business Controller",
+        "organization": "Chicago Pneumatic Company LLC (Atlas Copco Group)",
+        "context": "FP&A and corporate finance partner inside a global industrial manufacturer",
+        "dates": "2012 to 2018",
+        "bullets": [
+          "Owned annual planning, monthly forecasting, and budgeting for finance, sales, operations, marketing, HR, and regional leadership.",
+          "Built financial models and automated KPI dashboards in advanced Excel, shortening month end analysis cycles.",
+          "Reconciled operational and financial datasets across spreadsheets and system extracts, documenting differences until numbers were reliable for executive review.",
+          "Partnered across accounting, finance, operations, and technology on reporting and finance systems improvements."
+        ]
+      }
+    ]
+  },
+  "skills": {
+    "title": "Skills & Expertise",
+    "groups": [
+      {
+        "title": "Conversion and validation",
+        "items": [
+          "Life insurance and annuity data analysis, balancing reports, source to target reconciliation, difference research, admin system conversion support"
+        ]
+      },
+      {
+        "title": "Tools",
+        "items": [
+          "Alteryx, advanced Excel and VBA, SQL, Python, R, Power BI, Tableau, SSRS, Databricks"
+        ]
+      },
+      {
+        "title": "Domain and delivery",
+        "items": [
+          "Actuarial and finance partnership, FLMI life product literacy, audit ready documentation, release oriented process execution"
+        ]
+      }
+    ]
+  },
+  "sections": {
+    "projects": {
+      "visible": false
+    },
+    "education": {
+      "visible": true
+    }
+  },
+  "contact": {
+    "label": "06 / Hire",
+    "title": "Available for This Engagement",
+    "intro": "Interested in the Sr. Data Analyst contract through Hays (Job ID 1185351) supporting life insurance and annuity admin system conversion. Based in Wauconda, Illinois; available immediately for remote contract work.",
+    "engagementPills": [
+      "Contract",
+      "Remote",
+      "Immediate availability"
+    ],
+    "valueItems": [
+      {
+        "label": "Balancing analysis",
+        "body": "Source versus target policy value comparison with documented differences"
+      },
+      {
+        "label": "Alteryx and Excel",
+        "body": "Workflows and reconciliations that scale beyond manual spreadsheet handoffs"
+      },
+      {
+        "label": "Life product literacy",
+        "body": "FLMI and reinsurer experience reading policy values and product language"
+      },
+      {
+        "label": "Ready to start",
+        "body": "Available immediately for remote contract engagement"
+      }
+    ],
+    "email": "JonathanBrownstein12@icloud.com"
+  }
+}
