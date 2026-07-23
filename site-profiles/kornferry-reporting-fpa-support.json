@@ -1,0 +1,149 @@
+{
+  "profileVersion": 1,
+  "slug": "kornferry-reporting-fpa-support",
+  "accessCode": "KORNFERRY2026",
+  "employmentType": "contract",
+  "meta": {
+    "title": "Jonathan Brownstein — Reporting / Financial Reporting / FP&A Support",
+    "description": "Financial reporting and FP&A support for systems migration and management reporting. Available immediately for remote contract work."
+  },
+  "hero": {
+    "badge": "Reporting / Financial Reporting / FP&A Support · Contract",
+    "typingPhrases": [
+      "Reporting, Financial Reporting, and FP&A Support",
+      "Systems Migration and Reporting Validation",
+      "Forecasting, Budgeting, and Variance Analysis",
+      "Financial Services"
+    ],
+    "description": "Financial reporting and FP&A professional with fifteen years across regulated financial services and global industrial manufacturing. Six years owning planning, forecasting, budgeting, and management reporting as Assistant Business Controller inside a multidivisional manufacturer. Seven years supporting finance, actuarial, valuation, and senior leadership from the Data Analytics Office of a global reinsurer. Most recent work focused on management and financial reporting packages, validating outputs across source systems, translating stakeholder requirements into reporting solutions, and supporting budgeting, forecasting, and variance analysis. Built a valuation extract comparison framework for repeatable period over period movement analysis, and an automated forecasting platform that flags anomalies before period close. Comfortable partnering with accounting, finance, operations, technology, and business teams through testing, documentation, and handoff. MS in Economics with an Applied Econometrics certificate, BS in Economics, and FLMI from LOMA. Available immediately for remote contract work.",
+    "primaryCta": "Discuss This Role",
+    "secondaryCta": "View Delivery Record"
+  },
+  "highlights": [
+    {
+      "label": "Management reporting and financial reporting"
+    },
+    {
+      "label": "FP&A support (budgeting, forecasting, variance analysis)"
+    },
+    {
+      "label": "Reporting output validation across accounting and warehouse platforms"
+    },
+    {
+      "label": "Systems change, UAT support, and process documentation"
+    }
+  ],
+  "experience": {
+    "title": "Delivery Record",
+    "items": [
+      {
+        "title": "Senior Data Analyst III",
+        "organization": "Hannover Reinsurance Company LLC",
+        "context": "Senior reporting, financial analytics, and forecasting lead inside the Data Analytics Office",
+        "dates": "2019 to 2026",
+        "intro": "Senior individual contributor and technical lead inside the Data Analytics Office of a global financial services organization. Partnered with finance, actuarial, valuation, risk, IT, and BI on management reporting, financial analysis, and the validation work that kept reporting trustworthy when source systems and processes changed.",
+        "bullets": [],
+        "subsections": [
+          {
+            "title": "Management Reporting, Financial Reporting, and Output Validation",
+            "bullets": [
+              "Built and maintained Power BI, Tableau, and SSRS management reporting used by finance leadership and the C suite for KPI review, variance commentary, and financial movement analysis.",
+              "Designed the firm's first valuation extract comparison architecture for comparing reporting outputs across periods and source systems when extracts change.",
+              "Analyzed and validated reporting outputs from investment and financial services accounting environments, assessing downstream impacts of upstream data and process changes.",
+              "Partnered with accounting, finance, operations, technology, and business stakeholders to gather reporting requirements and deliver actionable reporting solutions."
+            ]
+          },
+          {
+            "title": "FP&A Support: Budgeting, Forecasting, and Variance Analysis",
+            "bullets": [
+              "Designed and deployed an automated ARIMA based forecasting platform that surfaces anomalies before period close.",
+              "Coordinated forecasting inputs and analytical support for in flight initiatives, turning business assumptions into structured models partners could stress test.",
+              "Ran recurring ad hoc analyses and special projects for finance sponsors, including variance and driver work for planning cycles."
+            ]
+          },
+          {
+            "title": "Systems Change, Testing, Documentation, and Process Improvement",
+            "bullets": [
+              "Supported testing, validation, and user acceptance style review for reporting related workstreams with documented expected results and sign off evidence.",
+              "Created documentation and reporting process maps covering lineage, refresh cadence, ownership, and control points.",
+              "Set analytics standards on metadata, lineage, data quality, and audit controls, and architected the Field Inventory Report for governed financial reporting consumption.",
+              "Identified automation opportunities in recurring reporting and reconciliation cycles where risk and volume justified governed, scheduled processes."
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Assistant Business Controller",
+        "organization": "Chicago Pneumatic Company LLC (Atlas Copco Group)",
+        "context": "FP&A and corporate finance partner inside a global industrial manufacturer",
+        "dates": "2012 to 2018",
+        "bullets": [
+          "Owned annual planning, monthly forecasting, and budgeting for finance, sales, operations, marketing, HR, and regional leadership, including P&L and variance analysis and management reporting.",
+          "Built financial models and automated KPI dashboards, shortening month end analysis cycles.",
+          "Partnered across accounting, finance, operations, and technology on reporting and finance systems improvements.",
+          "Led cross functional reporting modernization and documented reporting processes for reliable month end and planning handoffs."
+        ]
+      }
+    ]
+  },
+  "skills": {
+    "title": "Skills & Expertise",
+    "groups": [
+      {
+        "title": "Financial reporting and FP&A",
+        "items": [
+          "Management reporting, financial reporting, budgeting, forecasting, P&L and variance analysis, advanced Excel and VBA"
+        ]
+      },
+      {
+        "title": "Validation and systems work",
+        "items": [
+          "Multi system reporting validation, extract comparison, requirements translation, UAT support, process mapping, documentation"
+        ]
+      },
+      {
+        "title": "Platforms and analytics",
+        "items": [
+          "Power BI, Tableau, SSRS, SQL, Python, R, Databricks, ARIMA forecasting, statistical outlier detection"
+        ]
+      }
+    ]
+  },
+  "sections": {
+    "projects": {
+      "visible": false
+    },
+    "education": {
+      "visible": true
+    }
+  },
+  "contact": {
+    "label": "06 / Hire",
+    "title": "Available for This Engagement",
+    "intro": "Interested in the Reporting / Financial Reporting / FP&A Support contract through Korn Ferry (Job #1688929). Based in Wauconda, Illinois; available immediately for remote contract work.",
+    "engagementPills": [
+      "Contract",
+      "Remote",
+      "Immediate availability"
+    ],
+    "valueItems": [
+      {
+        "label": "Reporting validation",
+        "body": "Multi system extract comparison and output validation for cutover work"
+      },
+      {
+        "label": "FP&A support",
+        "body": "Budgeting, forecasting, and variance analysis that leadership can use"
+      },
+      {
+        "label": "Systems change",
+        "body": "Requirements, UAT support, and process documentation through handoff"
+      },
+      {
+        "label": "Ready to start",
+        "body": "Available immediately for remote contract engagement"
+      }
+    ],
+    "email": "JonathanBrownstein12@icloud.com"
+  }
+}

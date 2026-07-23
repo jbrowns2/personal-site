@@ -53,6 +53,7 @@ const SLUG_OVERRIDES = {
     'Akkodis-Consultant-1634792': 'akkodis-consultant',
     'Summit-Consultant-Future-Roles': 'summit-consultant',
     'MCC-AI-Enhanced-Business-Analytics': 'mcc-ai-business-analytics',
+    'KornFerry-Reporting-FPA-Support-1688929': 'kornferry-reporting-fpa-support',
 };
 
 function findResumeFiles() {
